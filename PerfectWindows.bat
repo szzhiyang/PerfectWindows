@@ -43,7 +43,7 @@ del %systemroot%\ZZYTEMP\tmp1.txt 1>nul 2>nul
 del %systemroot%\ZZYTEMP\tmp2.txt 1>nul 2>nul
 del %systemroot%\ZZYTEMP\tmp3.txt 1>nul 2>nul
 del %systemroot%\ZZYTEMP\services.txt 1>nul 2>nul
-sc query state=all >%systemroot%\ZZYTEMP\tmp1.txt
+sc query state= all >%systemroot%\ZZYTEMP\tmp1.txt
 findstr SERVICE_NAME %systemroot%\ZZYTEMP\tmp1.txt >> %systemroot%\ZZYTEMP\tmp2.txt
 
 for /f "tokens=2 delims=:" %%i in (%systemroot%\ZZYTEMP\tmp2.txt) do (
