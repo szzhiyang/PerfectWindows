@@ -31,6 +31,11 @@ md %systemroot%\PerfectWindows 1>nul 2>nul
 md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
+rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+md %systemroot%\PerfectWindows 1>nul 2>nul
+md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+powercfg /hibernate /size 75 1>nul 2>nul
+powercfg /hibernate /type full 1>nul 2>nul
 
 
 
