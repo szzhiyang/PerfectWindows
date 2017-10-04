@@ -1,30 +1,30 @@
-@echo off
+头文件@echo off
 pushd "%~dp0"
 (echo check>"%systemroot%"\check.check) 1>nul 2>nul
 if exist "%systemroot%"\check.check (
 del "%systemroot%"\check.check 1>nul 2>nul
 goto main) else (
-title 需要管理员权限！
-mode con cols=45 lines=7
+title Elevated Privileges Required !
+mode con cols=70 lines=7
 color fc
 echo.
-echo 需要管理员权限才能一键优化 Windows！
+echo Elevated privileges are required to optimize Windows!
 echo.
-echo 请右键单击本程序后单击“以管理员身份运行”！
+echo Please right click on me and click on "Run as administrator".
 echo.
 pause
 exit
 )
 
 :main
-mode con cols=28 lines=7
-title  
+mode con cols=45 lines=7
+title Are you ready?
 color fc
 echo.
-echo 为确保所有优化操作生效，优化
-echo 结束后我们将会重新启动电脑。
+echo To ensure the optimization works,
+echo your PC will be restarted automatically.
 echo.
-echo 如果你已准备好重新启动电脑，
+echo If you are ready to restart your PC,
 pause
 rd /s /q %systemroot%\ZZYTEMP 1>nul 2>nul
 md %systemroot%\ZZYTEMP 1>nul 2>nul
@@ -34,11 +34,11 @@ powercfg /hibernate /type full 1>nul 2>nul
 
 
 :services
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在优化服务。
+echo Optimizing services...
 del %systemroot%\ZZYTEMP\tmp1.txt 1>nul 2>nul
 del %systemroot%\ZZYTEMP\tmp2.txt 1>nul 2>nul
 del %systemroot%\ZZYTEMP\tmp3.txt 1>nul 2>nul
@@ -65,11 +65,11 @@ del %systemroot%\ZZYTEMP\tmp3.txt 1>nul 2>nul
 
 
 :core
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在优化系统设置。
+echo Optimizing Windows settings...
 
 echo Windows Registry Editor Version 5.00>%systemroot%\ZZYTEMP\core.reg
 echo.>>%systemroot%\ZZYTEMP\core.reg
@@ -1076,8 +1076,8 @@ echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDev
 echo "Deny_Execute"=dword:00000001>>%systemroot%\ZZYTEMP\core.reg
 echo.>>%systemroot%\ZZYTEMP\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%systemroot%\ZZYTEMP\core.reg
-echo "Model"="这是一台经过 Tom Zhu 优化的电脑。">>%systemroot%\ZZYTEMP\core.reg
-echo "SupportHours"="这是一台经过 Tom Zhu 优化的电脑。">>%systemroot%\ZZYTEMP\core.reg
+echo "Model"="Optimized by Tom Zhu">>%systemroot%\ZZYTEMP\core.reg
+echo "SupportHours"="Optimized by Tom Zhu">>%systemroot%\ZZYTEMP\core.reg
 echo "SupportURL"="support.microsoft.com/windows">>%systemroot%\ZZYTEMP\core.reg
 echo.>>%systemroot%\ZZYTEMP\core.reg
 echo.>>%systemroot%\ZZYTEMP\core.reg
@@ -1088,11 +1088,11 @@ del %systemroot%\ZZYTEMP\core.reg 1>nul 2>nul
 
 
 :clearstartupfolders
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在清理启动项。
+echo.
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
@@ -1130,11 +1130,11 @@ del %systemroot%\ZZYTEMP\powercfg.txt
 
 
 :disableschtasks
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在优化计划任务。
+echo Optimizing scheduled tasks...
 schtasks /query /fo csv /nh >%systemroot%\ZZYTEMP\detailedschtasks.txt
 echo. >%systemroot%\ZZYTEMP\disabledschtasks.txt
 for /f "tokens=1 delims=," %%i in (%systemroot%\ZZYTEMP\detailedschtasks.txt) do (
@@ -1153,11 +1153,11 @@ del %systemroot%\ZZYTEMP\detailedschtasks.txt 1>nul 2>nul
 
 
 :power
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在优化电源选项。
+echo Optimizing power options...
 powercfg -restoredefaultschemes 1>nul 2>nul
 del %systemroot%\powerplan.pow 1>nul 2>nul
 powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
@@ -1204,11 +1204,11 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /v ActivePowerSchem
 
 
 :whitelist
-title  
-mode con cols=30 lines=3
+title Optimizing Windows...
+mode con cols=45 lines=3
 color fc
 echo.
-echo 正在应用白名单。
+echo Applying whitelist...
 if exist whitelist.txt (
 goto applywhitelist) else (
 goto restart)
