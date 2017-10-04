@@ -1,4 +1,4 @@
-头文件@echo off
+@echo off
 pushd "%~dp0"
 (echo check>"%systemroot%"\check.check) 1>nul 2>nul
 if exist "%systemroot%"\check.check (
