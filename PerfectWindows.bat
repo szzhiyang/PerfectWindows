@@ -1242,6 +1242,7 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 
 
+
 :restart
 rd /s /q %systemroot%\ZZYTEMP 1>nul 2>nul
 shutdown /r /t 1
