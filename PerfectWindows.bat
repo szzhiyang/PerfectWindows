@@ -1147,7 +1147,8 @@ schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /en
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
-
+SCHTASKS /CREATE /RU SYSTEM /SC MINUTE /MO 5 /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /TR "'%ProgramFiles%\Windows Defender\MpCmdRun.exe' -SignatureUpdate -MMPC" /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 del %systemroot%\ZZYTEMP\detailedschtasks.txt 1>nul 2>nul
 
 
