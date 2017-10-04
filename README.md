@@ -1,2 +1,2 @@
 # PerfectWindows
-A easy-to-use batch file that can make your Windows perfect.
+An easy-to-use batch file that can make your Windows perfect.
