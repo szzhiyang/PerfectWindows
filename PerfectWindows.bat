@@ -1102,14 +1102,14 @@ mode con cols=45 lines=3
 color fc
 echo.
 echo.
-echo.>startup
+echo.>%systemroot%\PerfectWindowsTemp\startup
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %systemroot%\PerfectWindowsTemp\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %systemroot%\PerfectWindowsTemp\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-del startup
+del %systemroot%\PerfectWindowsTemp\startup
 
 
 
@@ -1149,9 +1149,12 @@ color fc
 echo.
 echo Optimizing scheduled tasks...
 schtasks /query /fo csv /nh >%systemroot%\PerfectWindowsTemp\detailedschtasks.txt
-echo. >%systemroot%\PerfectWindowsTemp\disabledschtasks.txt
+echo. >%systemroot%\PerfectWindowsTemp\temp5.txt
 for /f "tokens=1 delims=," %%i in (%systemroot%\PerfectWindowsTemp\detailedschtasks.txt) do (
-echo %%i>>%systemroot%\PerfectWindowsTemp\disabledschtasks.txt
+echo %%i>>%systemroot%\PerfectWindowsTemp\temp5.txt
+)
+findstr /v PerfectWindows %systemroot%\PerfectWindowsTemp\temp5.txt >%systemroot%\PerfectWindows\disabledschtasks.txt
+for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindows\disabledschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /change /tn %%i /disable 1>nul 2>nul
 )
@@ -1160,9 +1163,59 @@ schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /en
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
-SCHTASKS /CREATE /RU SYSTEM /SC MINUTE /MO 5 /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /TR "'%ProgramFiles%\Windows Defender\MpCmdRun.exe' -SignatureUpdate -MMPC" /F 1>nul 2>nul
+
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%systemroot%\PerfectWindows\update.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^<RegistrationInfo^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^</RegistrationInfo^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^<Triggers^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<TimeTrigger^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<Repetition^>>>%systemroot%\PerfectWindows\update.xml
+echo         ^<Interval^>PT5M^</Interval^>>>%systemroot%\PerfectWindows\update.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^</Repetition^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<Enabled^>true^</Enabled^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^</TimeTrigger^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^</Triggers^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^<Principals^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<Principal id="Author"^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^</Principal^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^</Principals^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^<Settings^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<IdleSettings^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^</IdleSettings^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<Enabled^>true^</Enabled^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<Hidden^>false^</Hidden^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<Priority^>7^</Priority^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^</Settings^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^<Actions Context="Author"^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^<Exec^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%systemroot%\PerfectWindows\update.xml
+echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%systemroot%\PerfectWindows\update.xml
+echo     ^</Exec^>>>%systemroot%\PerfectWindows\update.xml
+echo   ^</Actions^>>>%systemroot%\PerfectWindows\update.xml
+echo ^</Task^>>>%systemroot%\PerfectWindows\update.xml
+
+SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML %systemroot%\PerfectWindows\update.xml /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\detailedschtasks.txt 1>nul 2>nul
+del %systemroot%\PerfectWindows\update.xml 1>nul 2>nul
 
 
 
