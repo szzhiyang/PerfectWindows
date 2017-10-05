@@ -68,6 +68,62 @@ del %systemroot%\PerfectWindowsTemp\tmp1.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp2.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp3.txt 1>nul 2>nul
 
+sc config WbioSrvc start= auto 1>nul 2>nul
+sc config UserManager start= auto 1>nul 2>nul
+sc config SystemEventsBroker start= auto 1>nul 2>nul
+sc config PolicyAgent start= auto 1>nul 2>nul
+sc config gpsvc start= auto 1>nul 2>nul
+sc config Dnscache start= auto 1>nul 2>nul
+sc config DusmSvc start= auto 1>nul 2>nul
+sc config WlanSvc start= auto 1>nul 2>nul
+sc config Winmgmt start= auto 1>nul 2>nul
+sc config stisvc start= auto 1>nul 2>nul
+sc config FontCache start= auto 1>nul 2>nul
+sc config MpsSvc start= auto 1>nul 2>nul
+sc config EventLog start= auto 1>nul 2>nul
+sc config SecurityHealthService start= auto 1>nul 2>nul
+sc config WinDefend start= auto 1>nul 2>nul
+sc config AudioEndpointBuilder start= auto 1>nul 2>nul
+sc config Audiosrv start= auto 1>nul 2>nul
+sc config ProfSvc start= auto 1>nul 2>nul
+sc config Themes start= auto 1>nul 2>nul
+sc config Schedule start= auto 1>nul 2>nul
+sc config wscsvc start= auto 1>nul 2>nul
+sc config Power start= auto 1>nul 2>nul
+sc config PlugPlay start= auto 1>nul 2>nul
+sc config nsi start= auto 1>nul 2>nul
+sc config NlaSvc start= auto 1>nul 2>nul
+sc config LSM start= auto 1>nul 2>nul
+sc config TrkWks start= auto 1>nul 2>nul
+sc config Dhcp start= auto 1>nul 2>nul
+sc config DoSvc start= auto 1>nul 2>nul
+sc config DcomLaunch start= auto 1>nul 2>nul
+sc config CryptSvc start= auto 1>nul 2>nul
+sc config wuauserv start= auto 1>nul 2>nul
+sc config sppsvc start= auto 1>nul 2>nul
+sc config CoreMessagingRegistrar start= auto 1>nul 2>nul
+sc config EventSystem start= auto 1>nul 2>nul
+sc config BFE start= auto 1>nul 2>nul
+sc config BrokerInfrastructure start= auto 1>nul 2>nul
+sc config BITS start= auto 1>nul 2>nul
+sc config WSearch start= auto 1>nul 2>nul
+sc config W32Time start= auto 1>nul 2>nul
+sc config Wcmsvc start= auto 1>nul 2>nul
+sc config lfsvc start= auto 1>nul 2>nul
+sc config DsmSvc start= auto 1>nul 2>nul
+sc config DeviceInstall start= auto 1>nul 2>nul
+sc config DeviceAssociationService start= auto 1>nul 2>nul
+sc config CDPUserSvc_420c0 start= auto 1>nul 2>nul
+sc config LanmanWorkstation start= auto 1>nul 2>nul
+sc config WpnUserService_420c0 start= auto 1>nul 2>nul
+sc config WpnService start= auto 1>nul 2>nul
+sc config tiledatamodelsvc start= auto 1>nul 2>nul
+sc config LanmanServer start= auto 1>nul 2>nul
+sc config ShellHWDetection start= auto 1>nul 2>nul
+sc config RpcEptMapper start= auto 1>nul 2>nul
+sc config RpcSs start= auto 1>nul 2>nul
+sc config Spooler start= auto 1>nul 2>nul
+
 
 
 :core
@@ -939,7 +995,7 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A2702
 echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000064>>%systemroot%\PerfectWindows\core.reg
+echo "DCSettingIndex"=dword:00000014>>%systemroot%\PerfectWindows\core.reg
 echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]>>%systemroot%\PerfectWindows\core.reg
