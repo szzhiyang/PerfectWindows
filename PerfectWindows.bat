@@ -73,7 +73,7 @@ sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
 sc config PolicyAgent start= auto 1>nul 2>nul
 sc config gpsvc start= auto 1>nul 2>nul
-sc config Dnscache start= auto 1>nul 2>nul
+sc config Dnscache start= disabled 1>nul 2>nul
 sc config DusmSvc start= auto 1>nul 2>nul
 sc config WlanSvc start= auto 1>nul 2>nul
 sc config Winmgmt start= auto 1>nul 2>nul
@@ -106,7 +106,7 @@ sc config EventSystem start= auto 1>nul 2>nul
 sc config BFE start= auto 1>nul 2>nul
 sc config BrokerInfrastructure start= auto 1>nul 2>nul
 sc config BITS start= auto 1>nul 2>nul
-sc config WSearch start= auto 1>nul 2>nul
+sc config UsoSvc start= auto 1>nul 2>nul
 sc config W32Time start= auto 1>nul 2>nul
 sc config Wcmsvc start= auto 1>nul 2>nul
 sc config lfsvc start= auto 1>nul 2>nul
@@ -123,6 +123,19 @@ sc config ShellHWDetection start= auto 1>nul 2>nul
 sc config RpcEptMapper start= auto 1>nul 2>nul
 sc config RpcSs start= auto 1>nul 2>nul
 sc config Spooler start= auto 1>nul 2>nul
+sc config LanmanWorkstation depend= bowser/nsi 1>nul 2>nul
+sc config mrxsmb10 start= disabled 1>nul 2>nul
+sc config mrxsmb20 start= disabled 1>nul 2>nul
+sc config DiagTrack start= disabled 1>nul 2>nul
+sc config HomeGroupListener start= disabled 1>nul 2>nul
+sc config HomeGroupProvider start= disabled 1>nul 2>nul
+sc config iphlpsvc start= disabled 1>nul 2>nul
+sc config PcaSvc start= disabled 1>nul 2>nul
+sc config RemoteRegistry start= disabled 1>nul 2>nul
+sc config SysMain start= disabled 1>nul 2>nul
+sc config WerSvc start= disabled 1>nul 2>nul
+sc config SDRSVC start= disabled 1>nul 2>nul
+sc config WSearch start= delayed-auto 1>nul 2>nul
 
 
 
@@ -137,226 +150,6 @@ echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%systemroot%\PerfectWindows\core.reg
 echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserManager]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SystemEventsBroker]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gpsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DusmSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WlanSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Winmgmt]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stisvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FontCache]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MpsSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WinDefend]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AudioEndpointBuilder]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Audiosrv]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ProfSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Themes]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PlugPlay]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nsi]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LSM]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DcomLaunch]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CryptSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sppsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CoreMessagingRegistrar]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventSystem]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BFE]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BrokerInfrastructure]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BITS]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wcmsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DsmSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceInstall]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationService]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc_420c0]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnUserService_420c0]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnService]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tiledatamodelsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ShellHWDetection]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcEptMapper]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcSs]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%systemroot%\PerfectWindows\core.reg
 echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
@@ -384,18 +177,6 @@ echo "EnablePeercaching"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%systemroot%\PerfectWindows\core.reg
 echo "DODownloadMode"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iphlpsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%systemroot%\PerfectWindows\core.reg
 echo "PreventOverride"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -455,77 +236,6 @@ echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Paramete
 echo "DisableNotifications"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "EnableFirewall"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MpsSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FontCache]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ProfSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PlugPlay]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserManager]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BFE]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationService]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceInstall]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DsmSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SDRSVC]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]>>%systemroot%\PerfectWindows\core.reg
 echo "AntiVirusOverride"=->>%systemroot%\PerfectWindows\core.reg
 echo "FirewallDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
@@ -540,14 +250,6 @@ echo "UpdatesDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableWindowsUpdateAccess"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UsoSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DelayedAutoStart"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutoUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -601,31 +303,16 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]>>%systemroot%\PerfectWindows\core.reg
 echo "EnableSuperfetch"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%systemroot%\PerfectWindows\core.reg
 echo "DisablePCA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableEngine"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "VDMDisallowed"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PcaSvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableHomeGroup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000004>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%systemroot%\PerfectWindows\core.reg
 echo "NoGenTicket"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\defragsvc]>>%systemroot%\PerfectWindows\core.reg
-echo "Start"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]>>%systemroot%\PerfectWindows\core.reg
 echo "AnimationsShiftKey"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
