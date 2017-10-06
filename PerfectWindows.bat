@@ -73,7 +73,7 @@ sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
 sc config PolicyAgent start= auto 1>nul 2>nul
 sc config gpsvc start= auto 1>nul 2>nul
-sc config Dnscache start= disabled 1>nul 2>nul
+sc config Dnscache start= auto 1>nul 2>nul
 sc config DusmSvc start= auto 1>nul 2>nul
 sc config WlanSvc start= auto 1>nul 2>nul
 sc config Winmgmt start= auto 1>nul 2>nul
@@ -150,6 +150,9 @@ echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%systemroot%\PerfectWindows\core.reg
 echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%systemroot%\PerfectWindows\core.reg
+echo "SMBDeviceEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%systemroot%\PerfectWindows\core.reg
 echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
