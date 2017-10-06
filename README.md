@@ -1,4 +1,4 @@
-# Perfect Windows
+# PerfectWindows.bat
 An easy-to-use batch file that can make your Windows perfect.
 
 # Functions
