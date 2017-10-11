@@ -73,6 +73,7 @@ sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
 sc config PolicyAgent start= auto 1>nul 2>nul
 sc config gpsvc start= auto 1>nul 2>nul
+sc config AppIDSvc start= auto 1>nul 2>nul
 sc config Dnscache start= auto 1>nul 2>nul
 sc config DusmSvc start= auto 1>nul 2>nul
 sc config WlanSvc start= auto 1>nul 2>nul
@@ -599,6 +600,21 @@ echo "DisableFileSync"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "NoDriveTypeAutoRun"=dword:000000ff>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "NoAutorun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "NoDriveTypeAutoRun"=dword:000000ff>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "NoAutorun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%systemroot%\PerfectWindows\core.reg
 echo "AutoIndexSharedFolders"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
