@@ -1,5 +1,5 @@
 # PerfectWindows.bat
-An easy-to-use batch file that can make your Windows swift, tidy, elegant, less cluttered and more secured. 
+An easy-to-use batch file that can make your Windows swift, tidy, elegant, less cluttered and more secured.
 Well, in a word, This batch file can make your Windows Perfect.
 
 # Functions
