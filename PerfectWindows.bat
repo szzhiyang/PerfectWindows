@@ -810,6 +810,16 @@ echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shel
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRoutinelyTakingAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "DisableAntiSpyware"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "AllowFastServiceStartup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ServiceKeepAlive"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]>>%systemroot%\PerfectWindows\core.reg
+echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]>>%systemroot%\PerfectWindows\core.reg
 echo "MpEnablePus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "MpCloudBlockLevel"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
@@ -817,16 +827,39 @@ echo "MpBafsExtendedTimeout"=dword:00000032>>%systemroot%\PerfectWindows\core.re
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableIOAVProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRealtimeMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "RealtimeScanDirection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideDisableIOAVProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideRealtimeScanDirection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideScan_ScheduleTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]>>%systemroot%\PerfectWindows\core.reg
 echo "SpynetReporting"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideSpynetReporting"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "SubmitSamplesConsent"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
 echo "DisableBlockAtFirstSeen"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableEmailScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableArchiveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisablePackedExeScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableHeuristics"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "CheckForSignaturesBeforeRunningScan"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ScanOnlyIfIdle"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideScanParameters"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideAvgCPULoadFactor"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideScheduleDay"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideScheduleQuickScanTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "LocalSettingOverrideScheduleTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]>>%systemroot%\PerfectWindows\core.reg
 echo "UpdateOnStartUp"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -838,11 +871,10 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]>>
 echo "Threats_ThreatSeverityDefaultAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]>>%systemroot%\PerfectWindows\core.reg
-echo "1"="2">>%systemroot%\PerfectWindows\core.reg
-echo "2"="2">>%systemroot%\PerfectWindows\core.reg
-echo "4"="2">>%systemroot%\PerfectWindows\core.reg
-echo "5"="2">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
+echo "1"="3">>%systemroot%\PerfectWindows\core.reg
+echo "2"="3">>%systemroot%\PerfectWindows\core.reg
+echo "4"="3">>%systemroot%\PerfectWindows\core.reg
+echo "5"="3">>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%systemroot%\PerfectWindows\core.reg
 echo "Deny_Execute"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
