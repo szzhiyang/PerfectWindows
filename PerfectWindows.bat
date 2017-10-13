@@ -811,7 +811,7 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRoutinelyTakingAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRoutinelyTakingAction"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableAntiSpyware"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "AllowFastServiceStartup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ServiceKeepAlive"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -871,10 +871,10 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]>>
 echo "Threats_ThreatSeverityDefaultAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]>>%systemroot%\PerfectWindows\core.reg
-echo "1"="3">>%systemroot%\PerfectWindows\core.reg
-echo "2"="3">>%systemroot%\PerfectWindows\core.reg
-echo "4"="3">>%systemroot%\PerfectWindows\core.reg
-echo "5"="3">>%systemroot%\PerfectWindows\core.reg
+echo "1"="2">>%systemroot%\PerfectWindows\core.reg
+echo "2"="2">>%systemroot%\PerfectWindows\core.reg
+echo "4"="2">>%systemroot%\PerfectWindows\core.reg
+echo "5"="2">>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%systemroot%\PerfectWindows\core.reg
 echo "Deny_Execute"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
