@@ -209,12 +209,15 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Syst
 echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
 echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableSecureUIAPaths"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableInstallerDetection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
+echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
 echo "DefaultLevel"=dword:00040000>>%systemroot%\PerfectWindows\core.reg
