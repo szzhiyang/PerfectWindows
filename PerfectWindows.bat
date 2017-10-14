@@ -811,7 +811,7 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRoutinelyTakingAction"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRoutinelyTakingAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableAntiSpyware"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "AllowFastServiceStartup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ServiceKeepAlive"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
