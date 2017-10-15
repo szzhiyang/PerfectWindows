@@ -208,8 +208,8 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
 echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorAdmin"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorUser"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
