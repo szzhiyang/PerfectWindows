@@ -104,7 +104,7 @@ sc config Dhcp start= auto 1>nul 2>nul
 sc config DoSvc start= auto 1>nul 2>nul
 sc config DcomLaunch start= auto 1>nul 2>nul
 sc config CryptSvc start= auto 1>nul 2>nul
-sc config wuauserv start= auto 1>nul 2>nul
+sc config wuauserv start= demand 1>nul 2>nul
 sc config sppsvc start= auto 1>nul 2>nul
 sc config CoreMessagingRegistrar start= auto 1>nul 2>nul
 sc config EventSystem start= auto 1>nul 2>nul
@@ -327,10 +327,8 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%sy
 echo "DisableWindowsUpdateAccess"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutoUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "NoAutoUpdate"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "AUOptions"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DetectionFrequencyEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DetectionFrequency"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
@@ -1174,5 +1172,4 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 :restart
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 shutdown /r /t 0
-
 
