@@ -447,21 +447,19 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]>>%systemroot%\PerfectWindows\core.reg
 echo "MinAnimate"="1">>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]>>%systemroot%\PerfectWindows\core.reg
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]>>%systemroot%\PerfectWindows\core.reg
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]>>%systemroot%\PerfectWindows\core.reg
 echo @=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\>>%systemroot%\PerfectWindows\core.reg
