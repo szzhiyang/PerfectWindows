@@ -71,6 +71,7 @@ del %systemroot%\PerfectWindowsTemp\tmp1.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp2.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp3.txt 1>nul 2>nul
 
+sc config etdservice start= auto 1>nul 2>nul
 sc config WbioSrvc start= auto 1>nul 2>nul
 sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
@@ -478,7 +479,7 @@ echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modul
 echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "ExtendedUIHoverTime"=dword:99999999>>%systemroot%\PerfectWindows\core.reg
+echo "ExtendedUIHoverTime"=dword:01111111>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%systemroot%\PerfectWindows\core.reg
 echo "NumThumbnails"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -574,7 +575,7 @@ echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Syste
 echo "NoDispScrSavPage"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDesktop"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "NoDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "NoClose"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
@@ -1172,4 +1173,5 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 :restart
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
-shutdown /r /t 1
+shutdown /r /t 0
+
