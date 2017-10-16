@@ -1,4 +1,5 @@
 @echo off
+chcp 437 1>nul 2>nul
 pushd "%~dp0"
 (echo check>"%systemroot%"\check.check) 1>nul 2>nul
 if exist "%systemroot%"\check.check (
@@ -17,6 +18,7 @@ exit
 )
 
 :main
+chcp 437 1>nul 2>nul
 mode con cols=45 lines=7
 title Are you ready?
 color fc
@@ -509,7 +511,7 @@ echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Syste
 echo "NoDispScrSavPage"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "NoDesktop"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "NoClose"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
@@ -945,7 +947,7 @@ mode con cols=45 lines=3
 color fc
 echo.
 echo Optimizing scheduled tasks...
-schtasks /query /fo csv /nh >%systemroot%\PerfectWindowsTemp\detailedschtasks.txt
+schtasks /query /fo csv >%systemroot%\PerfectWindowsTemp\detailedschtasks.txt
 echo. >%systemroot%\PerfectWindowsTemp\temp5.txt
 for /f "tokens=1 delims=," %%i in (%systemroot%\PerfectWindowsTemp\detailedschtasks.txt) do (
 echo %%i>>%systemroot%\PerfectWindowsTemp\temp5.txt
