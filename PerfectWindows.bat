@@ -1,6 +1,8 @@
 @echo off
-chcp 437 1>nul 2>nul
+mode con cols=45 lines=7
+color fc
 pushd "%~dp0"
+chcp 437 1>nul 2>nul
 (echo check>"%systemroot%"\check.check) 1>nul 2>nul
 if exist "%systemroot%"\check.check (
 del "%systemroot%"\check.check 1>nul 2>nul
@@ -18,7 +20,6 @@ exit
 )
 
 :main
-chcp 437 1>nul 2>nul
 mode con cols=45 lines=7
 title Are you ready?
 color fc
@@ -153,6 +154,70 @@ echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%systemroot%\PerfectWindows\core.reg
 echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\VmApplet]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot\AlternateShell]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System\Scripts]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System\Scripts]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%systemroot%\PerfectWindows\core.reg
 echo "SMBDeviceEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -898,7 +963,7 @@ title Optimizing Windows...
 mode con cols=45 lines=3
 color fc
 echo.
-echo.
+echo Optimizing autoruns...
 echo.>%systemroot%\PerfectWindowsTemp\startup
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %systemroot%\PerfectWindowsTemp\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
@@ -930,8 +995,8 @@ echo "FlipFlopWheel"=dword:00000001 >>%systemroot%\PerfectWindowsTemp\Reverse.re
 echo. >>%systemroot%\PerfectWindowsTemp\Reverse.reg
 )
 
-reg import %systemroot%\PerfectWindowsTemp\Reverse.reg 1>nul 2>nul
-reg import %systemroot%\PerfectWindowsTemp\Reverse.reg 1>nul 2>nul
+reg import %systemroot%\PerfectWindowsTemp\Reverse.reg /reg:32 1>nul 2>nul
+reg import %systemroot%\PerfectWindowsTemp\Reverse.reg /reg:32 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\find.txt
 del %systemroot%\PerfectWindowsTemp\Reverse.txt
 del %systemroot%\PerfectWindowsTemp\Reverse.reg
