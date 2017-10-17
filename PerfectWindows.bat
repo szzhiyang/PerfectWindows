@@ -798,9 +798,15 @@ echo "Start_ShowUser"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "Start_ShowHelp"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "Start_MinMFU"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "Start_ShowMyGames"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "Start_TrackProgs"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "IconUnderline"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%systemroot%\PerfectWindows\core.reg
+echo "Enabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Control Panel\International\User Profile]>>%systemroot%\PerfectWindows\core.reg
+echo "HttpAcceptLanguageOptOut"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%systemroot%\PerfectWindows\core.reg
 echo "Disabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -1148,7 +1154,8 @@ reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v DisableFileSyn
 
 if %%i equ cortana (
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortana /f 1>nul 2>nul
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortanaAboveLock /f 1>nul 2>nul)
+reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortanaAboveLock /f 1>nul 2>nul
+reg delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /f  1>nul 2>nul)
 
 if %%i equ power (
 reg delete HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /f 1>nul 2>nul
