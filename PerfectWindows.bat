@@ -140,7 +140,7 @@ sc config RemoteRegistry start= disabled 1>nul 2>nul
 sc config SysMain start= disabled 1>nul 2>nul
 sc config WerSvc start= disabled 1>nul 2>nul
 sc config SDRSVC start= disabled 1>nul 2>nul
-sc config WSearch start= delayed-auto 1>nul 2>nul
+sc config WSearch start= auto 1>nul 2>nul
 
 
 
@@ -403,6 +403,9 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%systemroot%\PerfectWindows\core.reg
 echo "NoLockScreen"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
+echo "AllowOnlineTips"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableLockScreenAppNotifications"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableLogonBackgroundImage"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -412,9 +415,17 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "EnableLegacyBalloonNotifications"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableNotificationCenter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "HidePeopleBar"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]>>%systemroot%\PerfectWindows\core.reg
 echo "EnableTransparency"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]>>%systemroot%\PerfectWindows\core.reg
+echo "PeopleBand"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]>>%systemroot%\PerfectWindows\core.reg
+echo "ShoulderTap"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ShoulderTapAudio"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]>>%systemroot%\PerfectWindows\core.reg
 echo "AwayModeEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -471,6 +482,7 @@ echo "DisableCurrentUserRunOnce"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableLocalMachineRun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "HidePowerOptions"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableLocalMachineRunOnce"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%systemroot%\PerfectWindows\core.reg
@@ -647,10 +659,14 @@ echo "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001>>%systemro
 echo "DisableThirdPartySuggestions"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableWindowsSpotlightOnActionCenter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "DisableWindowsSpotlightFeatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%systemroot%\PerfectWindows\core.reg
 echo "DisableSoftLanding"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DisableWindowsConsumerFeatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]>>%systemroot%\PerfectWindows\core.reg
+echo "AllowSpeechModelUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%systemroot%\PerfectWindows\core.reg
 echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -667,11 +683,7 @@ echo "DisableFileSync"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "NoDriveTypeAutoRun"=dword:000000ff>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutorun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
 echo "DontSetAutoplayCheckbox"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
@@ -887,7 +899,7 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemr
 echo "DisableRoutinelyTakingAction"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableAntiSpyware"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "AllowFastServiceStartup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ServiceKeepAlive"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ServiceKeepAlive"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]>>%systemroot%\PerfectWindows\core.reg
 echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -903,6 +915,9 @@ echo "DisableIOAVProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.re
 echo "DisableRealtimeMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableScanOnRealtimeEnable"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableRawWriteNotification"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "IOAVMaxSize"=dword:0098967f>>%systemroot%\PerfectWindows\core.reg
 echo "RealtimeScanDirection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -919,12 +934,17 @@ echo "SubmitSamplesConsent"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
 echo "DisableBlockAtFirstSeen"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]>>%systemroot%\PerfectWindows\core.reg
+echo "ArchieveMaxSize"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ArchieveMaxDepth"=dword:ffffffff>>%systemroot%\PerfectWindows\core.reg
+echo "AvgCPULoadFactor"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
 echo "DisableEmailScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableArchiveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisablePackedExeScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableHeuristics"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableReparsePointScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableScanningNetworkFiles"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "CheckForSignaturesBeforeRunningScan"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ScanOnlyIfIdle"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -948,6 +968,43 @@ echo "1"="2">>%systemroot%\PerfectWindows\core.reg
 echo "2"="2">>%systemroot%\PerfectWindows\core.reg
 echo "4"="3">>%systemroot%\PerfectWindows\core.reg
 echo "5"="3">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]>>%systemroot%\PerfectWindows\core.reg
+echo "ExploitGuard_ASR_Rules"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]>>%systemroot%\PerfectWindows\core.reg
+echo "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550"="1">>%systemroot%\PerfectWindows\core.reg
+echo "D4F940AB-401B-4EFC-AADC-AD5F3C50688A"="1">>%systemroot%\PerfectWindows\core.reg
+echo "3B576869-A4EC-4529-8536-B80A7769E899"="1">>%systemroot%\PerfectWindows\core.reg
+echo "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84"="1">>%systemroot%\PerfectWindows\core.reg
+echo "D3E037E1-3EB8-44C8-A917-57927947596D"="1">>%systemroot%\PerfectWindows\core.reg
+echo "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1">>%systemroot%\PerfectWindows\core.reg
+echo "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]>>%systemroot%\PerfectWindows\core.reg
+echo "EnableControlledFolderAccess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]>>%systemroot%\PerfectWindows\core.reg
+echo "EnableNetworkProtection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]>>%systemroot%\PerfectWindows\core.reg
+echo "ExploitProtectionSettings"=->>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]>>%systemroot%\PerfectWindows\core.reg
+echo "UILockDown"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]>>%systemroot%\PerfectWindows\core.reg
+echo "UILockDown"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Firewall and network protection]>>%systemroot%\PerfectWindows\core.reg
+echo "UILockDown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]>>%systemroot%\PerfectWindows\core.reg
+echo "UILockDown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterprise Customization]>>%systemroot%\PerfectWindows\core.reg
+echo "Url"="microsoft.com/en-us/wdsi">>%systemroot%\PerfectWindows\core.reg
+echo "CompanyName"="Windows Defender Security Intelligence">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%systemroot%\PerfectWindows\core.reg
 echo "Deny_Execute"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
@@ -1163,6 +1220,7 @@ reg delete "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v S
 reg delete "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v ScreenSaveActive /f 1>nul 2>nul
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v NoDispScrSavPage /f 1>nul 2>nul
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoClose /f 1>nul 2>nul
+reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HidePowerOptions /f 1>nul 2>nul
 reg delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v PowerButtonAction /f 1>nul 2>nul
 reg delete "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v ShowSleepOption /f 1>nul 2>nul
 reg delete "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v ShowHibernateOption /f 1>nul 2>nul
