@@ -982,13 +982,17 @@ echo "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1">>%systemroot%\PerfectWindows\cor
 echo "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1">>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableControlledFolderAccess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "EnableControlledFolderAccess"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ExploitGuard_ControlledFolderAccess_ProtectedFolders"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access\ProtectedFolders]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]>>%systemroot%\PerfectWindows\core.reg
 echo "EnableNetworkProtection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]>>%systemroot%\PerfectWindows\core.reg
 echo "ExploitProtectionSettings"=->>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]>>%systemroot%\PerfectWindows\core.reg
 echo "UILockDown"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
@@ -1237,3 +1241,4 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 :restart
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 shutdown /r /t 0
+
