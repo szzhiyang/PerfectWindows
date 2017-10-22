@@ -287,6 +287,8 @@ echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
 echo "DefaultLevel"=dword:00040000>>%systemroot%\PerfectWindows\core.reg
 echo "TransparentEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -1240,4 +1242,6 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 :restart
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+rd /s /q "%tmp%" 1>nul 2>nul
 shutdown /r /t 0
+
