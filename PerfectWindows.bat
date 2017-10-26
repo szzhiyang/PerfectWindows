@@ -1253,3 +1253,4 @@ rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 shutdown /r /t 0
 
+Published by szzhiyang
