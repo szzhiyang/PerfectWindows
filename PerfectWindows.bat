@@ -71,13 +71,17 @@ del %systemroot%\PerfectWindowsTemp\tmp1.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp2.txt 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\tmp3.txt 1>nul 2>nul
 
+
 sc config etdservice start= auto 1>nul 2>nul
+sc config ClickToRunSvc start= auto 1>nul 2>nul
+
+
 sc config WbioSrvc start= auto 1>nul 2>nul
 sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
 sc config PolicyAgent start= auto 1>nul 2>nul
 sc config gpsvc start= auto 1>nul 2>nul
-sc config AppIDSvc start= auto 1>nul 2>nul
+sc config AppIDSvc start= disabled 1>nul 2>nul
 sc config Dnscache start= auto 1>nul 2>nul
 sc config DusmSvc start= auto 1>nul 2>nul
 sc config WlanSvc start= auto 1>nul 2>nul
@@ -155,6 +159,12 @@ echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%systemroot%\PerfectWindows\core.reg
 echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]>>%systemroot%\PerfectWindows\core.reg
+echo "User Policies 2"="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%systemroot%\PerfectWindows\core.reg
+echo "Machine Policies 2"="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%systemroot%\PerfectWindows\core.reg
+echo "User Policies 1"="HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft">>%systemroot%\PerfectWindows\core.reg
+echo "Machine Policies 1"="HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft">>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
@@ -276,8 +286,8 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
 echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorAdmin"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorUser"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
 echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -287,12 +297,7 @@ echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
-echo "DefaultLevel"=dword:00040000>>%systemroot%\PerfectWindows\core.reg
-echo "TransparentEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PolicyScope"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "AuthenticodeEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%systemroot%\PerfectWindows\core.reg
@@ -325,8 +330,10 @@ echo "FirewallDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
 echo "UacDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
 echo "UpdatesDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsUpdateAccess"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "DisableWindowsUpdateAccess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutoUpdate"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
