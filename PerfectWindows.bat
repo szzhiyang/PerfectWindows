@@ -36,6 +36,7 @@ attrib +h +s "%ProgramData%" 1>nul 2>nul
 attrib +h +s "%systemdrive%\Users" 1>nul 2>nul
 attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
+rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 md %systemroot%\PerfectWindows 1>nul 2>nul
 md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
@@ -1297,8 +1298,8 @@ echo. >%systemroot%\PerfectWindowsTemp\temp5.txt
 for /f "tokens=1 delims=," %%i in (%systemroot%\PerfectWindowsTemp\detailedschtasks.txt) do (
 echo %%i>>%systemroot%\PerfectWindowsTemp\temp5.txt
 )
-findstr /v PerfectWindows %systemroot%\PerfectWindowsTemp\temp5.txt >%systemroot%\PerfectWindows\disabledschtasks.txt
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindows\disabledschtasks.txt) do (
+findstr /v PerfectWindows %systemroot%\PerfectWindowsTemp\temp5.txt >%systemroot%\PerfectWindowsTemp\disabledschtasks.txt
+for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\disabledschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /change /tn %%i /disable 1>nul 2>nul
 )
