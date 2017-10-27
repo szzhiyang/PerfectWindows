@@ -29,6 +29,13 @@ echo your PC will be restarted automatically.
 echo.
 echo If you are ready to restart your PC,
 pause
+attrib +h +s "%systemroot%" 1>nul 2>nul
+attrib +h +s "%ProgramFiles%" 1>nul 2>nul
+attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
+attrib +h +s "%ProgramData%" 1>nul 2>nul
+attrib +h +s "%systemdrive%\Users" 1>nul 2>nul
+attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
+attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 md %systemroot%\PerfectWindows 1>nul 2>nul
 md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
@@ -143,7 +150,18 @@ sc config PcaSvc start= disabled 1>nul 2>nul
 sc config RemoteRegistry start= disabled 1>nul 2>nul
 sc config SysMain start= disabled 1>nul 2>nul
 sc config WerSvc start= disabled 1>nul 2>nul
+sc config LanmanWorkstation start= disabled 1>nul 2>nul
+sc config LanmanServer start= disabled 1>nul 2>nul
 sc config SDRSVC start= disabled 1>nul 2>nul
+sc config lmhosts start= disabled 1>nul 2>nul
+sc config NetBIOS start= disabled 1>nul 2>nul
+sc config NetBT start= disabled 1>nul 2>nul
+sc config RpcSs start= disabled 1>nul 2>nul
+sc config TermService start= disabled 1>nul 2>nul
+sc config RpcLocator start= disabled 1>nul 2>nul
+sc config EventSystem start= disabled 1>nul 2>nul
+sc config COMSysApp start= disabled 1>nul 2>nul
+sc config DcomLaunch start= disabled 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
 
 
@@ -232,6 +250,14 @@ echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%systemroot%\PerfectWindows\core.reg
 echo "SMBDeviceEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "TransportBindName"=->>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]>>%systemroot%\PerfectWindows\core.reg
+echo "AutoShareServer"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "AutoShareWks"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA]>>%systemroot%\PerfectWindows\core.reg
+echo "RestrictAnonymous"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%systemroot%\PerfectWindows\core.reg
 echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
@@ -600,6 +626,8 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
 echo "SeparateProcess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "Hidden"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
+echo "ShowSuperHidden"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ShowEncryptCompressedColor"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "HideFileExt"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "AutoCheckSelect"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarSizeMove"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -1026,6 +1054,184 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformatio
 echo "Model"="Optimized by Tom Zhu">>%systemroot%\PerfectWindows\core.reg
 echo "SupportHours"="Optimized by Tom Zhu">>%systemroot%\PerfectWindows\core.reg
 echo "SupportURL"="support.microsoft.com/windows">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+
+
+
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
+echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%systemroot%\PerfectWindows\core.reg
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
+echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "EnableSecureUIAPaths"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "EnableInstallerDetection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%systemroot%\PerfectWindows\core.reg
+echo "AuthenticodeFlags"=dword:00000300>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
+echo "DefaultLevel"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "TransparentEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "PolicyScope"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   50,00,00,00,41,00,44,00,45,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo "AuthenticodeEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Program Files (x86)">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Windows">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,6f,00,74,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Program Files">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,73,00,44,00,69,00,72,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Program Files (x86)">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Windows">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   74,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Program Files">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   6c,00,65,00,73,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow ProgramData">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Disallow 7 - Zip Temp">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,54,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow 7z*.tmp">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Disallow WinRAR Temp">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow AppData Roaming">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow AppData Local">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   61,00,74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow Temp">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow TrustedApps">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"="*\\TrustedApps">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Disallow AppData Local Microsoft">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,74,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Disallow AppData Local Packages">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow AppData Local Microsoft OneDrive">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8041c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Allow AppData Local Google">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   61,00,74,00,61,00,25,00,5c,00,47,00,6f,00,6f,00,67,00,6c,00,65,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 reg import %systemroot%\PerfectWindows\core.reg 1>nul 2>nul
