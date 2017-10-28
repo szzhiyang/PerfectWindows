@@ -157,12 +157,7 @@ sc config SDRSVC start= disabled 1>nul 2>nul
 sc config lmhosts start= disabled 1>nul 2>nul
 sc config NetBIOS start= disabled 1>nul 2>nul
 sc config NetBT start= disabled 1>nul 2>nul
-sc config RpcSs start= disabled 1>nul 2>nul
-sc config TermService start= disabled 1>nul 2>nul
-sc config RpcLocator start= disabled 1>nul 2>nul
-sc config EventSystem start= disabled 1>nul 2>nul
-sc config COMSysApp start= disabled 1>nul 2>nul
-sc config DcomLaunch start= disabled 1>nul 2>nul
+sc config winmgmt start= disabled 1>nul 2>nul
 sc config wmiApSrv start= disabled 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
 
@@ -254,6 +249,12 @@ echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%s
 echo "SMBDeviceEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "TransportBindName"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole]>>%systemroot%\PerfectWindows\core.reg
+echo "EnableDCOM"="N">>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc]>>%systemroot%\PerfectWindows\core.reg
+echo "DCOM Protocols"=hex(7):00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]>>%systemroot%\PerfectWindows\core.reg
 echo "AutoShareServer"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "AutoShareWks"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -309,7 +310,7 @@ echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System]>>%systemroot
 echo "DisableCMD"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]>>%systemroot%\PerfectWindows\core.reg
-echo "BootExecute"=->>%systemroot%\PerfectWindows\core.reg
+echo "BootExecute"=hex(7):00,00>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
 echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -1467,4 +1468,14 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 shutdown /r /t 0
+
+
+
+:reg bak
+
+:[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc]
+:"ConnectionOptionsFlag"=dword:00000001
+:"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+:  74,00,63,00,70,00,00,00,00,00
+
 
