@@ -163,6 +163,7 @@ sc config RpcLocator start= disabled 1>nul 2>nul
 sc config EventSystem start= disabled 1>nul 2>nul
 sc config COMSysApp start= disabled 1>nul 2>nul
 sc config DcomLaunch start= disabled 1>nul 2>nul
+sc config wmiApSrv start= disabled 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
 
 
