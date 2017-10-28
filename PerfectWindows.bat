@@ -1164,6 +1164,13 @@ echo "Description"="Disallow 7 - Zip Temp">>%systemroot%\PerfectWindows\core.reg
 echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "ItemData"=hex(2):25,00,54,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%systemroot%\PerfectWindows\core.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
+echo "Description"="Disallow Windows Explorer Zip Temp">>%systemroot%\PerfectWindows\core.reg
+echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%systemroot%\PerfectWindows\core.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
 echo "Description"="Allow 7z*.tmp">>%systemroot%\PerfectWindows\core.reg
