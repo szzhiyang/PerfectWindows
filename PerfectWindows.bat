@@ -1239,7 +1239,8 @@ echo "Description"="Allow AppData Local Microsoft OneDrive">>%systemroot%\Perfec
 echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
 echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%systemroot%\PerfectWindows\core.reg
+echo   00,00>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8041c}]>>%systemroot%\PerfectWindows\core.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
