@@ -1436,7 +1436,7 @@ echo.
 echo Applying whitelist...
 if exist whitelist.txt (
 goto applywhitelist) else (
-goto restart)
+goto hosts)
 :applywhitelist
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
 if %%i equ onedrive (
@@ -1468,10 +1468,23 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 
 
+:hosts
+if exist hosts.txt (
+goto applyhosts) else (
+goto restart)
+:applyhosts
+ren hosts.txt hosts
+copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+ren hosts hosts.txt
+
+
+
 :restart
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
-shutdown /r /t 0
+ipconfig /flushdns 1>nul 2>nul
+shutdown /r /t 0 1>nul 2>nul
+
 
 
 
