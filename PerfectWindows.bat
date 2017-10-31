@@ -625,6 +625,7 @@ echo "NoClose"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
 echo "SeparateProcess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ShowTypeOverlay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "Hidden"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
 echo "ShowSuperHidden"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "ShowEncryptCompressedColor"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
@@ -635,6 +636,9 @@ echo "PersistBrowsers"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarAnimations"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarGlomLevel"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarGlomming"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "IconsOnly"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo "ListviewShadow"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
+echo "ListviewAlphaSelect"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TaskbarSmallIcons"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "UseTabletModeNotificationIcons"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
@@ -647,6 +651,10 @@ echo "VirtualDesktopAltTabFilter"=dword:00000001>>%systemroot%\PerfectWindows\co
 echo "ShowEncryptCompressedColor"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "TypeAhead"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo "AlwaysShowMenus"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
+echo.>>%systemroot%\PerfectWindows\core.reg
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%systemroot%\PerfectWindows\core.reg
+echo "Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00>>%systemroot%\PerfectWindows\core.reg
+echo "FullPath"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Software\Microsoft\CTF\LangBar]>>%systemroot%\PerfectWindows\core.reg
 echo "ShowStatus"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
@@ -664,6 +672,8 @@ echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_CURRENT_USER\Control Panel\Desktop]>>%systemroot%\PerfectWindows\core.reg
 echo "WheelScrollLines"="9">>%systemroot%\PerfectWindows\core.reg
 echo "MenuShowDelay"="0">>%systemroot%\PerfectWindows\core.reg
+echo "DragFullWindows"="1">>%systemroot%\PerfectWindows\core.reg
+echo "FontSmoothing"="2">>%systemroot%\PerfectWindows\core.reg
 echo "UserPreferencesMask"=hex:98,52,07,80,12,01,00,00>>%systemroot%\PerfectWindows\core.reg
 echo "WindowArrangementActive"="1">>%systemroot%\PerfectWindows\core.reg
 echo "PaintDesktopVersion"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
