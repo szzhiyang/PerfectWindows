@@ -36,6 +36,8 @@ attrib +h +s "%ProgramData%" 1>nul 2>nul
 attrib +h +s "%systemdrive%\Users" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfLogs" 1>nul 2>nul
 attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
+attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
+attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
 rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
 rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
@@ -1509,4 +1511,5 @@ shutdown /r /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
