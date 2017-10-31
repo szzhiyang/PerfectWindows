@@ -123,7 +123,6 @@ sc config EventSystem start= auto 1>nul 2>nul
 sc config BFE start= auto 1>nul 2>nul
 sc config BrokerInfrastructure start= auto 1>nul 2>nul
 sc config BITS start= auto 1>nul 2>nul
-sc config UsoSvc start= auto 1>nul 2>nul
 sc config W32Time start= auto 1>nul 2>nul
 sc config Wcmsvc start= auto 1>nul 2>nul
 sc config lfsvc start= auto 1>nul 2>nul
@@ -157,8 +156,8 @@ sc config SDRSVC start= disabled 1>nul 2>nul
 sc config lmhosts start= disabled 1>nul 2>nul
 sc config NetBIOS start= disabled 1>nul 2>nul
 sc config NetBT start= disabled 1>nul 2>nul
-sc config winmgmt start= disabled 1>nul 2>nul
-sc config wmiApSrv start= disabled 1>nul 2>nul
+sc config winmgmt start= auto 1>nul 2>nul
+sc config wmiApSrv start= auto 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
 
 
@@ -363,12 +362,8 @@ echo "UpdatesDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsUpdateAccess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutoUpdate"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "AUOptions"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
 echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
 echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
 echo.>>%systemroot%\PerfectWindows\core.reg
@@ -1317,6 +1312,14 @@ schtasks /end /tn %%i 1>nul 2>nul
 schtasks /change /tn %%i /disable 1>nul 2>nul
 )
 
+findstr UpdateOrchestrator %systemroot%\PerfectWindowsTemp\disabledschtasks.txt >%systemroot%\PerfectWindowsTemp\deletedschtasks.txt
+findstr WindowsUpdate %systemroot%\PerfectWindowsTemp\disabledschtasks.txt >>%systemroot%\PerfectWindowsTemp\deletedschtasks.txt
+for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\deletedschtasks.txt) do (
+schtasks /end /tn %%i 1>nul 2>nul
+schtasks /delete /tn %%i /f 1>nul 2>nul
+)
+
+
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
@@ -1374,6 +1377,7 @@ SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Def
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 del %systemroot%\PerfectWindowsTemp\detailedschtasks.txt 1>nul 2>nul
 del %systemroot%\PerfectWindows\update.xml 1>nul 2>nul
+
 
 
 
