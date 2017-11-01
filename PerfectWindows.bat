@@ -39,15 +39,19 @@ attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
-rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
-rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
-md %systemroot%\PerfectWindows 1>nul 2>nul
-md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+set P=%systemroot%\PerfectWindows
+set T=%systemroot%\PerfectWindowsTemp
+set LM=HKEY_LOCAL_MACHINE
+set CU=HKEY_CURRENT_USER
+rd /s /q %P% 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
+md %P% 1>nul 2>nul
+md %T% 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
-rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
-md %systemroot%\PerfectWindows 1>nul 2>nul
-md %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
+md %P% 1>nul 2>nul
+md %T% 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
 
@@ -59,28 +63,28 @@ mode con cols=45 lines=3
 color fc
 echo.
 echo Optimizing services...
-del %systemroot%\PerfectWindowsTemp\tmp1.txt 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\tmp2.txt 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\tmp3.txt 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\services.txt 1>nul 2>nul
-sc query state= all >%systemroot%\PerfectWindowsTemp\tmp1.txt
-findstr SERVICE_NAME %systemroot%\PerfectWindowsTemp\tmp1.txt >> %systemroot%\PerfectWindowsTemp\tmp2.txt
+del %T%\tmp1.txt 1>nul 2>nul
+del %T%\tmp2.txt 1>nul 2>nul
+del %T%\tmp3.txt 1>nul 2>nul
+del %T%\services.txt 1>nul 2>nul
+sc query state= all >%T%\tmp1.txt
+findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
 
-for /f "tokens=2 delims=:" %%i in (%systemroot%\PerfectWindowsTemp\tmp2.txt) do (
-echo %%i>>%systemroot%\PerfectWindowsTemp\tmp3.txt
+for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
+echo %%i>>%T%\tmp3.txt
 )
 
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\tmp3.txt) do (
-echo %%i>>%systemroot%\PerfectWindowsTemp\services.txt
+for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
+echo %%i>>%T%\services.txt
 )
 
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\services.txt) do (
+for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
 sc config "%%i" start= demand 1>nul 2>nul
 )
 
-del %systemroot%\PerfectWindowsTemp\tmp1.txt 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\tmp2.txt 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\tmp3.txt 1>nul 2>nul
+del %T%\tmp1.txt 1>nul 2>nul
+del %T%\tmp2.txt 1>nul 2>nul
+del %T%\tmp3.txt 1>nul 2>nul
 
 
 sc config etdservice start= auto 1>nul 2>nul
@@ -172,1093 +176,1094 @@ color fc
 echo.
 echo Optimizing Windows settings...
 
-echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%systemroot%\PerfectWindows\core.reg
-echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]>>%systemroot%\PerfectWindows\core.reg
-echo "User Policies 2"="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%systemroot%\PerfectWindows\core.reg
-echo "Machine Policies 2"="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%systemroot%\PerfectWindows\core.reg
-echo "User Policies 1"="HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft">>%systemroot%\PerfectWindows\core.reg
-echo "Machine Policies 1"="HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\VmApplet]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot\AlternateShell]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System\Scripts]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System\Scripts]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%systemroot%\PerfectWindows\core.reg
-echo "SMBDeviceEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "TransportBindName"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableDCOM"="N">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc]>>%systemroot%\PerfectWindows\core.reg
-echo "DCOM Protocols"=hex(7):00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]>>%systemroot%\PerfectWindows\core.reg
-echo "AutoShareServer"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "AutoShareWks"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA]>>%systemroot%\PerfectWindows\core.reg
-echo "RestrictAnonymous"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%systemroot%\PerfectWindows\core.reg
-echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".tiff"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".jpg"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".jpeg"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".jpe"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".jfif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".bmp"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".gif"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".png"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".ico"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".dib"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".wdp"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo ".jxr"="PhotoViewer.FileAssoc.Tiff">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]>>%systemroot%\PerfectWindows\core.reg
-echo "fAllowToGetHelp"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]>>%systemroot%\PerfectWindows\core.reg
-echo "fDenyTSConnections"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\BITS]>>%systemroot%\PerfectWindows\core.reg
-echo "EnablePeercaching"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%systemroot%\PerfectWindows\core.reg
-echo "DODownloadMode"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%systemroot%\PerfectWindows\core.reg
-echo "PreventOverride"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "EnabledV9"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]>>%systemroot%\PerfectWindows\core.reg
-echo "EnabledV9"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PreventOverride"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableSmartScreen"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShellSmartScreenLevel"="Warn">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableTaskMgr"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableCMD"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]>>%systemroot%\PerfectWindows\core.reg
-echo "BootExecute"=hex(7):00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableSecureUIAPaths"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableInstallerDetection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
-echo "AuthenticodeEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRootAutoUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%systemroot%\PerfectWindows\core.reg
-echo "AuthenticodeFlags"=dword:00000300>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableNotifications"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "EnableFirewall"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableFirewall"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableNotifications"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableNotifications"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "EnableFirewall"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]>>%systemroot%\PerfectWindows\core.reg
-echo "AntiVirusOverride"=->>%systemroot%\PerfectWindows\core.reg
-echo "FirewallDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo "UacDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo "UpdatesDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center\Svc]>>%systemroot%\PerfectWindows\core.reg
-echo "AntiVirusOverride"=->>%systemroot%\PerfectWindows\core.reg
-echo "FirewallDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo "UacDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo "UpdatesDisableNotify"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutoUpdate"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]>>%systemroot%\PerfectWindows\core.reg
-echo "DontOfferThroughWUAU"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexityBeta]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]>>%systemroot%\PerfectWindows\core.reg
-echo "WakeUp"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "MaintenanceDisabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]>>%systemroot%\PerfectWindows\core.reg
-echo "AutoReboot"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "AlwaysKeepMemoryDump"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "CrashDumpEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%systemroot%\PerfectWindows\core.reg
-echo "AutoDownloadAndUpdateMapData"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]>>%systemroot%\PerfectWindows\core.reg
-echo "AutoDownload"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableConfig"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableSR"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%systemroot%\PerfectWindows\core.reg
-echo "CEIPEnable"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%systemroot%\PerfectWindows\core.reg
-echo "DontShowUI"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DontSendAdditionalData"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "Disabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%systemroot%\PerfectWindows\core.reg
-echo "DoReport"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableSuperfetch"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%systemroot%\PerfectWindows\core.reg
-echo "DisablePCA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableEngine"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "VDMDisallowed"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableHomeGroup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%systemroot%\PerfectWindows\core.reg
-echo "NoGenTicket"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]>>%systemroot%\PerfectWindows\core.reg
-echo "AnimationsShiftKey"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoToolbarsOnTaskbar"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%systemroot%\PerfectWindows\core.reg
-echo "NoToastApplicationNotification"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoToastApplicationNotificationOnLockScreen"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoTileApplicationNotification"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoCloudApplicationNotification"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisallowNotificationMirroring"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%systemroot%\PerfectWindows\core.reg
-echo "NoLockScreen"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowOnlineTips"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableLockScreenAppNotifications"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableLogonBackgroundImage"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HiberbootEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableLegacyBalloonNotifications"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableNotificationCenter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HidePeopleBar"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableTransparency"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]>>%systemroot%\PerfectWindows\core.reg
-echo "PeopleBand"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]>>%systemroot%\PerfectWindows\core.reg
-echo "ShoulderTap"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ShoulderTapAudio"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]>>%systemroot%\PerfectWindows\core.reg
-echo "AwayModeEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "UseOLEDTaskbarTransparency"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]>>%systemroot%\PerfectWindows\core.reg
-echo "Grid_backgroundPercent"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "BackgroundDimmingLayer_percent"=dword:00000028>>%systemroot%\PerfectWindows\core.reg
-echo "wallpaper"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableAutoTray"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "DontUsePowerShellOnWinX"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "Start_TrackDocs"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "LaunchTo"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowFrequent"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ShowRecent"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%systemroot%\PerfectWindows\core.reg
-echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]>>%systemroot%\PerfectWindows\core.reg
-echo "DetailsContainer"=hex:02,00,00,00,02,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "ClearTilesOnExit"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableSearchBoxSuggestions"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableIndexedLibraryExperience"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableSearchHistory"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "ForceClassicControlPanel"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnforceShellExtensionSecurity"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ClearRecentDocsOnExit"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoRecentDocsMenu"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoStartMenuMFUprogramsList"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoTrayContextMenu"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoTaskGrouping"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableCurrentUserRun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableCurrentUserRunOnce"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableLocalMachineRun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HidePowerOptions"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableLocalMachineRunOnce"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%systemroot%\PerfectWindows\core.reg
-echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "ExtendedUIHoverTime"=dword:01111111>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%systemroot%\PerfectWindows\core.reg
-echo "NumThumbnails"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowTaskViewButton"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]>>%systemroot%\PerfectWindows\core.reg
-echo "WholeFileSystem"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SystemFolders"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ArchivedFiles"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]>>%systemroot%\PerfectWindows\core.reg
-echo "SearchOnly"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%systemroot%\PerfectWindows\core.reg
-echo "PenWorkspaceButtonDesiredVisibility"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]>>%systemroot%\PerfectWindows\core.reg
-echo "SearchboxTaskbarMode"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Touchpad]>>%systemroot%\PerfectWindows\core.reg
-echo "TouchpadDesiredVisibility"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "NoPinningToTaskbar"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoPinningStoreToTaskbar"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarNoPinnedList"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]>>%systemroot%\PerfectWindows\core.reg
-echo "MinAnimate"="1">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]>>%systemroot%\PerfectWindows\core.reg
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]>>%systemroot%\PerfectWindows\core.reg
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]>>%systemroot%\PerfectWindows\core.reg
-echo @=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6c,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,20,00,2f,00,44,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,20,00,25,00,63,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\DefragPath]>>%systemroot%\PerfectWindows\core.reg
-echo @=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,00,25,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,66,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   72,00,67,00,75,00,69,00,2e,00,65,00,78,00,65,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CLASSES_ROOT\lnkfile]>>%systemroot%\PerfectWindows\core.reg
-echo @="Shortcut">>%systemroot%\PerfectWindows\core.reg
-echo "IsShortcut"="">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes]>>%systemroot%\PerfectWindows\core.reg
-echo "ThemeChangesDesktopIcons"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ThemeChangesMousePointers"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Control Panel\Mouse]>>%systemroot%\PerfectWindows\core.reg
-echo "MouseSensitivity"="10">>%systemroot%\PerfectWindows\core.reg
-echo "MouseSpeed"="2">>%systemroot%\PerfectWindows\core.reg
-echo "MouseThreshold1"="6">>%systemroot%\PerfectWindows\core.reg
-echo "MouseThreshold2"="10">>%systemroot%\PerfectWindows\core.reg
-echo "MouseTrails"="0">>%systemroot%\PerfectWindows\core.reg
-echo "MouseHoverTime"="2">>%systemroot%\PerfectWindows\core.reg
-echo "SnapToDefaultButton"="0">>%systemroot%\PerfectWindows\core.reg
-echo "DoubleClickSpeed"="500">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Control Panel\Desktop]>>%systemroot%\PerfectWindows\core.reg
-echo "MouseWheelRouting"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoInternetIcon"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HideSCANetwork"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HideSCAHealth"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HideSCAVolume"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutoTrayNotify"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%systemroot%\PerfectWindows\core.reg
-echo "ScreenSaveTimeOut"="0">>%systemroot%\PerfectWindows\core.reg
-echo "ScreenSaverIsSecure"="1">>%systemroot%\PerfectWindows\core.reg
-echo "ScreenSaveActive"="0">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDispScrSavPage"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "NoClose"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "SeparateProcess"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowTypeOverlay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "Hidden"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "ShowSuperHidden"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ShowEncryptCompressedColor"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "HideFileExt"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "AutoCheckSelect"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarSizeMove"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PersistBrowsers"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarAnimations"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarGlomLevel"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarGlomming"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "IconsOnly"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ListviewShadow"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ListviewAlphaSelect"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TaskbarSmallIcons"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "UseTabletModeNotificationIcons"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ShowSyncProviderNotifications"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "JointResize"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "SnapAssist"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "SnapFill"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "VirtualDesktopTaskbarFilter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "VirtualDesktopAltTabFilter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowEncryptCompressedColor"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "TypeAhead"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "AlwaysShowMenus"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%systemroot%\PerfectWindows\core.reg
-echo "Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo "FullPath"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\CTF\LangBar]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowStatus"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]>>%systemroot%\PerfectWindows\core.reg
-echo "VisualFXSetting"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]>>%systemroot%\PerfectWindows\core.reg
-echo "AlwaysHibernateThumbnails"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "EnableAeroPeek"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%systemroot%\PerfectWindows\core.reg
-echo "PenWorkspaceAppSuggestionsEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Control Panel\Desktop]>>%systemroot%\PerfectWindows\core.reg
-echo "WheelScrollLines"="9">>%systemroot%\PerfectWindows\core.reg
-echo "MenuShowDelay"="0">>%systemroot%\PerfectWindows\core.reg
-echo "DragFullWindows"="1">>%systemroot%\PerfectWindows\core.reg
-echo "FontSmoothing"="2">>%systemroot%\PerfectWindows\core.reg
-echo "UserPreferencesMask"=hex:98,52,07,80,12,01,00,00>>%systemroot%\PerfectWindows\core.reg
-echo "WindowArrangementActive"="1">>%systemroot%\PerfectWindows\core.reg
-echo "PaintDesktopVersion"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]>>%systemroot%\PerfectWindows\core.reg
-echo "DisplayVersion"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]>>%systemroot%\PerfectWindows\core.reg
-echo "SignInMode"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "ConvertibleSlateModePromptPreference"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableAutoplay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]>>%systemroot%\PerfectWindows\core.reg
-echo "FeatureManagementEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "OemPreInstalledAppsEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PreInstalledAppsEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SilentInstalledAppsEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SoftLandingEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SystemPaneSuggestionsEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ContentDeliveryAllowed"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PreInstalledAppsEverEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "RotatingLockScreenEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "RotatingLockScreenOverlayEnabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SubscribedContent-310093Enabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableThirdPartySuggestions"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsSpotlightOnActionCenter"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsSpotlightFeatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableSoftLanding"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsConsumerFeatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowSpeechModelUpdate"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\Software\Microsoft\TabletTip]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowCortana"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "AllowCortanaAboveLock"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableFileSyncNGSC"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableFileSync"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutorun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "NoAutorun"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%systemroot%\PerfectWindows\core.reg
-echo "AutoIndexSharedFolders"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIndexOnBattery"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "AllowIndexingEncryptedStoresOrItems"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIndexingOfflineFiles"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIndexingPublicFolders"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIndexingEmailAttachments"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIndexingOutlook"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRemovableDriveIndexing"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]>>%systemroot%\PerfectWindows\core.reg
-echo "GlobalUserDisabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "VerboseStatus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableStartupSound"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowSleepOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowHibernateOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowLockOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "ShowSleepOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowHibernateOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ShowLockOption"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "PowerButtonAction"=dword:00000010>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "ShutdownWithoutLogon"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA]>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00002a30>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E]>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\5CA83367-6E45-459F-A27B-476B1D01C936]>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\637EA02F-BBCB-4015-8E2C-A1C7B9C0B546]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:0000012c>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7648EFA3-DD9C-4E3E-B566-50F929386280]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\8183ba9a-e910-48da-8769-14ae6dc1170a]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:0000000a>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\96996BC0-AD50-47EC-923B-6F41874DD9EB]>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9A66D8D7-4FF7-4EF9-B5A2-5A326CA2A469]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000005>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00002a30>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A504-2B96CAD225A1]>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000014>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f1fbfde2-a960-4165-9f88-50667911ce96]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo "ACSettingIndex"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA6B-90DB844A8F00]>>%systemroot%\PerfectWindows\core.reg
-echo "DCSettingIndex"=dword:00000007>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowNetPlaces"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_NotifyNewApps"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowDownloads"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowVideos"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "Start_AutoCascade"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_LargeMFUIcons"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowPrinters"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowSetProgramAccessAndDefaults"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowUser"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowHelp"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_MinMFU"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_ShowMyGames"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "Start_TrackProgs"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo "IconUnderline"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%systemroot%\PerfectWindows\core.reg
-echo "Enabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Control Panel\International\User Profile]>>%systemroot%\PerfectWindows\core.reg
-echo "HttpAcceptLanguageOptOut"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%systemroot%\PerfectWindows\core.reg
-echo "Disabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\MobilePC\MobilityCenter]>>%systemroot%\PerfectWindows\core.reg
-echo "RunOnDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]>>%systemroot%\PerfectWindows\core.reg
-echo "NoActivities"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]>>%systemroot%\PerfectWindows\core.reg
-echo "CheckExeSignatures"="yes">>%systemroot%\PerfectWindows\core.reg
-echo "RunInvalidSignatures"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]>>%systemroot%\PerfectWindows\core.reg
-echo "Enabled"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]>>%systemroot%\PerfectWindows\core.reg
-echo "Enable Browser Extensions Beta"="no">>%systemroot%\PerfectWindows\core.reg
-echo "DoNotTrack"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "Isolation"="PMEM">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%systemroot%\PerfectWindows\core.reg
-echo "PreventIgnoreCertErrors"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "CertificateRevocation"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]>>%systemroot%\PerfectWindows\core.reg
-echo "Persistent"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions]>>%systemroot%\PerfectWindows\core.reg
-echo "NoHelpItemSendFeedback"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]>>%systemroot%\PerfectWindows\core.reg
-echo "HideNewEdgeButton"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\TabbedBrowsing]>>%systemroot%\PerfectWindows\core.reg
-echo "NewTabPageShow"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]>>%systemroot%\PerfectWindows\core.reg
-echo "MaxConnectionsPerServer"=dword:00000008>>%systemroot%\PerfectWindows\core.reg
-echo "MaxConnectionsPer1_0Server"=dword:00000008>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsSettingSync"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "DisableWindowsSettingSyncUserOverride"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableSyncOnPaidNetwork"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%systemroot%\PerfectWindows\core.reg
-echo "SyncOverMeteredNetwork"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SyncOverMeteredNetworkWhenRoaming"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]>>%systemroot%\PerfectWindows\core.reg
-echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowWebContentOnNewTabPage"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]>>%systemroot%\PerfectWindows\core.reg
-echo "AllowTelemetry"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableConfigFlighting"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "EnableExperimentation"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRoutinelyTakingAction"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "AllowFastServiceStartup"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ServiceKeepAlive"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableAntispyware"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]>>%systemroot%\PerfectWindows\core.reg
-echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]>>%systemroot%\PerfectWindows\core.reg
-echo "MpEnablePus"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "MpCloudBlockLevel"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "MpBafsExtendedTimeout"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%systemroot%\PerfectWindows\core.reg
-echo "DisableIOAVProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRealtimeMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableScanOnRealtimeEnable"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRawWriteNotification"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "IOAVMaxSize"=dword:0098967f>>%systemroot%\PerfectWindows\core.reg
-echo "RealtimeScanDirection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideDisableIOAVProtection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideRealtimeScanDirection"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideScan_ScheduleTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]>>%systemroot%\PerfectWindows\core.reg
-echo "SpynetReporting"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideSpynetReporting"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "SubmitSamplesConsent"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo "DisableBlockAtFirstSeen"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]>>%systemroot%\PerfectWindows\core.reg
-echo "ArchieveMaxSize"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ArchieveMaxDepth"=dword:ffffffff>>%systemroot%\PerfectWindows\core.reg
-echo "AvgCPULoadFactor"=dword:00000032>>%systemroot%\PerfectWindows\core.reg
-echo "DisableEmailScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableArchiveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisablePackedExeScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableHeuristics"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableReparsePointScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableRemovableDriveScanning"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "DisableScanningNetworkFiles"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "CheckForSignaturesBeforeRunningScan"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ScanOnlyIfIdle"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PurgeItemsAfterDelay"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideScanParameters"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideAvgCPULoadFactor"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideScheduleDay"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideScheduleQuickScanTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "LocalSettingOverrideScheduleTime"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]>>%systemroot%\PerfectWindows\core.reg
-echo "UpdateOnStartUp"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DisableUpdateOnStartupWithoutEngine"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "AVSignatureDue"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ASSignatureDue"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]>>%systemroot%\PerfectWindows\core.reg
-echo "Threats_ThreatSeverityDefaultAction"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]>>%systemroot%\PerfectWindows\core.reg
-echo "1"="2">>%systemroot%\PerfectWindows\core.reg
-echo "2"="2">>%systemroot%\PerfectWindows\core.reg
-echo "4"="3">>%systemroot%\PerfectWindows\core.reg
-echo "5"="3">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]>>%systemroot%\PerfectWindows\core.reg
-echo "ExploitGuard_ASR_Rules"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]>>%systemroot%\PerfectWindows\core.reg
-echo "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550"="1">>%systemroot%\PerfectWindows\core.reg
-echo "D4F940AB-401B-4EFC-AADC-AD5F3C50688A"="1">>%systemroot%\PerfectWindows\core.reg
-echo "3B576869-A4EC-4529-8536-B80A7769E899"="1">>%systemroot%\PerfectWindows\core.reg
-echo "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84"="1">>%systemroot%\PerfectWindows\core.reg
-echo "D3E037E1-3EB8-44C8-A917-57927947596D"="1">>%systemroot%\PerfectWindows\core.reg
-echo "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1">>%systemroot%\PerfectWindows\core.reg
-echo "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableControlledFolderAccess"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ExploitGuard_ControlledFolderAccess_ProtectedFolders"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access\ProtectedFolders]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableNetworkProtection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]>>%systemroot%\PerfectWindows\core.reg
-echo "ExploitProtectionSettings"=->>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]>>%systemroot%\PerfectWindows\core.reg
-echo "UILockDown"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]>>%systemroot%\PerfectWindows\core.reg
-echo "UILockDown"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Firewall and network protection]>>%systemroot%\PerfectWindows\core.reg
-echo "UILockDown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]>>%systemroot%\PerfectWindows\core.reg
-echo "UILockDown"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterprise Customization]>>%systemroot%\PerfectWindows\core.reg
-echo "Url"="microsoft.com/en-us/wdsi">>%systemroot%\PerfectWindows\core.reg
-echo "CompanyName"="Windows Defender Security Intelligence">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%systemroot%\PerfectWindows\core.reg
-echo "Deny_Execute"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%systemroot%\PerfectWindows\core.reg
-echo "Model"="Optimized by Tom Zhu">>%systemroot%\PerfectWindows\core.reg
-echo "SupportHours"="Optimized by Tom Zhu">>%systemroot%\PerfectWindows\core.reg
-echo "SupportURL"="support.microsoft.com/windows">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
+echo Windows Registry Editor Version 5.00>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%P%\1.reg
+echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]>>%P%\1.reg
+echo "User Policies 2"="%CU%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%P%\1.reg
+echo "Machine Policies 2"="%LM%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%P%\1.reg
+echo "User Policies 1"="%CU%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
+echo "Machine Policies 1"="%LM%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\VmApplet]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SYSTEM\CurrentControlSet\Control\SafeBoot\AlternateShell]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Active Setup\Installed Components]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\Software\Policies\Microsoft\Windows\System\Scripts]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Policies\Microsoft\Windows\System\Scripts]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%P%\1.reg
+echo "SMBDeviceEnabled"=dword:00000000>>%P%\1.reg
+echo "TransportBindName"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Ole]>>%P%\1.reg
+echo "EnableDCOM"="N">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Rpc]>>%P%\1.reg
+echo "DCOM Protocols"=hex(7):00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]>>%P%\1.reg
+echo "AutoShareServer"=dword:00000000>>%P%\1.reg
+echo "AutoShareWks"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\LSA]>>%P%\1.reg
+echo "RestrictAnonymous"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%P%\1.reg
+echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".tiff"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".jpg"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".jpeg"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".jpe"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".jfif"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".bmp"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".gif"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".png"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".ico"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".dib"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".wdp"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo ".jxr"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Remote Assistance]>>%P%\1.reg
+echo "fAllowToGetHelp"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Terminal Server]>>%P%\1.reg
+echo "fDenyTSConnections"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\BITS]>>%P%\1.reg
+echo "EnablePeercaching"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%P%\1.reg
+echo "DODownloadMode"=dword:00000003>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%P%\1.reg
+echo "PreventOverride"=dword:00000000>>%P%\1.reg
+echo "PreventOverrideAppRepUnknown"=dword:00000000>>%P%\1.reg
+echo "EnabledV9"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]>>%P%\1.reg
+echo "EnabledV9"=dword:00000001>>%P%\1.reg
+echo "PreventOverride"=dword:00000000>>%P%\1.reg
+echo "PreventOverrideAppRepUnknown"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%P%\1.reg
+echo "EnableSmartScreen"=dword:00000001>>%P%\1.reg
+echo "ShellSmartScreenLevel"="Warn">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "DisableTaskMgr"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\System]>>%P%\1.reg
+echo "DisableCMD"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager]>>%P%\1.reg
+echo "BootExecute"=hex(7):00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "VerboseStatus"=dword:00000001>>%P%\1.reg
+echo "EnableLUA"=dword:00000001>>%P%\1.reg
+echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%P%\1.reg
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%P%\1.reg
+echo "PromptOnSecureDesktop"=dword:00000001>>%P%\1.reg
+echo "EnableUIADesktopToggle"=dword:00000000>>%P%\1.reg
+echo "FilterAdministratorToken"=dword:00000001>>%P%\1.reg
+echo "EnableSecureUIAPaths"=dword:00000001>>%P%\1.reg
+echo "EnableInstallerDetection"=dword:00000001>>%P%\1.reg
+echo "EnableVirtualization"=dword:00000001>>%P%\1.reg
+echo "ValidateAdminCodeSignatures"=dword:00000001>>%P%\1.reg
+echo "DSCAutomationHostEnabled"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%P%\1.reg
+echo "DisableRootAutoUpdate"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%P%\1.reg
+echo "AuthenticodeFlags"=dword:00000300>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%P%\1.reg
+echo "DisableNotifications"=dword:00000000>>%P%\1.reg
+echo "EnableFirewall"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]>>%P%\1.reg
+echo "EnableFirewall"=dword:00000001>>%P%\1.reg
+echo "DisableNotifications"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]>>%P%\1.reg
+echo "DisableNotifications"=dword:00000000>>%P%\1.reg
+echo "EnableFirewall"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Security Center]>>%P%\1.reg
+echo "AntiVirusOverride"=->>%P%\1.reg
+echo "FirewallDisableNotify"=->>%P%\1.reg
+echo "UacDisableNotify"=->>%P%\1.reg
+echo "UpdatesDisableNotify"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Security Center\Svc]>>%P%\1.reg
+echo "AntiVirusOverride"=->>%P%\1.reg
+echo "FirewallDisableNotify"=->>%P%\1.reg
+echo "UacDisableNotify"=->>%P%\1.reg
+echo "UpdatesDisableNotify"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%P%\1.reg
+echo "NoAutoUpdate"=dword:00000001>>%P%\1.reg
+echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%P%\1.reg
+echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%P%\1.reg
+echo "DontOfferThroughWUAU"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexityBeta]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]>>%P%\1.reg
+echo "WakeUp"=dword:00000000>>%P%\1.reg
+echo "MaintenanceDisabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\CrashControl]>>%P%\1.reg
+echo "AutoReboot"=dword:00000000>>%P%\1.reg
+echo "AlwaysKeepMemoryDump"=dword:00000000>>%P%\1.reg
+echo "CrashDumpEnabled"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%P%\1.reg
+echo "AutoDownloadAndUpdateMapData"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%P%\1.reg
+echo "AutoDownload"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%P%\1.reg
+echo "DisableConfig"=dword:00000001>>%P%\1.reg
+echo "DisableSR"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%P%\1.reg
+echo "CEIPEnable"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%P%\1.reg
+echo "DontShowUI"=dword:00000001>>%P%\1.reg
+echo "DontSendAdditionalData"=dword:00000001>>%P%\1.reg
+echo "Disabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%P%\1.reg
+echo "DoReport"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]>>%P%\1.reg
+echo "EnableSuperfetch"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%P%\1.reg
+echo "DisablePCA"=dword:00000001>>%P%\1.reg
+echo "DisableEngine"=dword:00000001>>%P%\1.reg
+echo "VDMDisallowed"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%P%\1.reg
+echo "DisableHomeGroup"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%P%\1.reg
+echo "NoGenTicket"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\DWM]>>%P%\1.reg
+echo "AnimationsShiftKey"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoToolbarsOnTaskbar"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%P%\1.reg
+echo "NoToastApplicationNotification"=dword:00000001>>%P%\1.reg
+echo "NoToastApplicationNotificationOnLockScreen"=dword:00000001>>%P%\1.reg
+echo "NoTileApplicationNotification"=dword:00000001>>%P%\1.reg
+echo "NoCloudApplicationNotification"=dword:00000001>>%P%\1.reg
+echo "DisallowNotificationMirroring"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%P%\1.reg
+echo "NoLockScreen"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "AllowOnlineTips"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%P%\1.reg
+echo "DisableLockScreenAppNotifications"=dword:00000001>>%P%\1.reg
+echo "DisableLogonBackgroundImage"=dword:00000001>>%P%\1.reg
+echo "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001>>%P%\1.reg
+echo "HiberbootEnabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "EnableLegacyBalloonNotifications"=dword:00000001>>%P%\1.reg
+echo "DisableNotificationCenter"=dword:00000001>>%P%\1.reg
+echo "HidePeopleBar"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]>>%P%\1.reg
+echo "EnableTransparency"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]>>%P%\1.reg
+echo "PeopleBand"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]>>%P%\1.reg
+echo "ShoulderTap"=dword:00000000>>%P%\1.reg
+echo "ShoulderTapAudio"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager\Power]>>%P%\1.reg
+echo "AwayModeEnabled"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "UseOLEDTaskbarTransparency"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]>>%P%\1.reg
+echo "Grid_backgroundPercent"=dword:00000000>>%P%\1.reg
+echo "BackgroundDimmingLayer_percent"=dword:00000028>>%P%\1.reg
+echo "wallpaper"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%P%\1.reg
+echo "EnableAutoTray"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "DontUsePowerShellOnWinX"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "Start_TrackDocs"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "LaunchTo"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%P%\1.reg
+echo "ShowFrequent"=dword:00000000>>%P%\1.reg
+echo "ShowRecent"=dword:00000000>>%P%\1.reg
+echo "ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%P%\1.reg
+echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]>>%P%\1.reg
+echo "DetailsContainer"=hex:02,00,00,00,02,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "ClearTilesOnExit"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "DisableSearchBoxSuggestions"=dword:00000001>>%P%\1.reg
+echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%P%\1.reg
+echo "DisableIndexedLibraryExperience"=dword:00000001>>%P%\1.reg
+echo "DisableSearchHistory"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "ForceClassicControlPanel"=dword:00000001>>%P%\1.reg
+echo "EnforceShellExtensionSecurity"=dword:00000001>>%P%\1.reg
+echo "ClearRecentDocsOnExit"=dword:00000001>>%P%\1.reg
+echo "NoRecentDocsMenu"=dword:00000001>>%P%\1.reg
+echo "NoStartMenuMFUprogramsList"=dword:00000001>>%P%\1.reg
+echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%P%\1.reg
+echo "NoTrayContextMenu"=dword:00000001>>%P%\1.reg
+echo "NoTaskGrouping"=dword:00000000>>%P%\1.reg
+echo "DisableCurrentUserRun"=dword:00000001>>%P%\1.reg
+echo "DisableCurrentUserRunOnce"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "DisableLocalMachineRun"=dword:00000001>>%P%\1.reg
+echo "HidePowerOptions"=dword:00000001>>%P%\1.reg
+echo "DisableLocalMachineRunOnce"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%P%\1.reg
+echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "ExtendedUIHoverTime"=dword:01111111>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%P%\1.reg
+echo "NumThumbnails"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "ShowTaskViewButton"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]>>%P%\1.reg
+echo "WholeFileSystem"=dword:00000000>>%P%\1.reg
+echo "SystemFolders"=dword:00000000>>%P%\1.reg
+echo "ArchivedFiles"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]>>%P%\1.reg
+echo "SearchOnly"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%P%\1.reg
+echo "PenWorkspaceButtonDesiredVisibility"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Search]>>%P%\1.reg
+echo "SearchboxTaskbarMode"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Touchpad]>>%P%\1.reg
+echo "TouchpadDesiredVisibility"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000002>>%P%\1.reg
+echo "NoPinningToTaskbar"=dword:00000001>>%P%\1.reg
+echo "NoPinningStoreToTaskbar"=dword:00000001>>%P%\1.reg
+echo "TaskbarNoPinnedList"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Control Panel\Desktop\WindowMetrics]>>%P%\1.reg
+echo "MinAnimate"="1">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]>>%P%\1.reg
+echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%P%\1.reg
+echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%P%\1.reg
+echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%P%\1.reg
+echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%P%\1.reg
+echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]>>%P%\1.reg
+echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%P%\1.reg
+echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%P%\1.reg
+echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%P%\1.reg
+echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%P%\1.reg
+echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]>>%P%\1.reg
+echo @=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\>>%P%\1.reg
+echo   00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6c,00,\>>%P%\1.reg
+echo   65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,20,00,2f,00,44,\>>%P%\1.reg
+echo   00,20,00,25,00,63,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\DefragPath]>>%P%\1.reg
+echo @=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,00,25,\>>%P%\1.reg
+echo   00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,66,00,\>>%P%\1.reg
+echo   72,00,67,00,75,00,69,00,2e,00,65,00,78,00,65,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [HKEY_CLASSES_ROOT\lnkfile]>>%P%\1.reg
+echo @="Shortcut">>%P%\1.reg
+echo "IsShortcut"="">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Themes]>>%P%\1.reg
+echo "ThemeChangesDesktopIcons"=dword:00000000>>%P%\1.reg
+echo "ThemeChangesMousePointers"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Control Panel\Mouse]>>%P%\1.reg
+echo "MouseSensitivity"="10">>%P%\1.reg
+echo "MouseSpeed"="2">>%P%\1.reg
+echo "MouseThreshold1"="6">>%P%\1.reg
+echo "MouseThreshold2"="10">>%P%\1.reg
+echo "MouseTrails"="0">>%P%\1.reg
+echo "MouseHoverTime"="2">>%P%\1.reg
+echo "SnapToDefaultButton"="0">>%P%\1.reg
+echo "DoubleClickSpeed"="500">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Control Panel\Desktop]>>%P%\1.reg
+echo "MouseWheelRouting"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoInternetIcon"=dword:00000001>>%P%\1.reg
+echo "HideSCANetwork"=dword:00000001>>%P%\1.reg
+echo "HideSCAHealth"=dword:00000001>>%P%\1.reg
+echo "HideSCAVolume"=dword:00000001>>%P%\1.reg
+echo "NoAutoTrayNotify"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%P%\1.reg
+echo "ScreenSaveTimeOut"="0">>%P%\1.reg
+echo "ScreenSaverIsSecure"="1">>%P%\1.reg
+echo "ScreenSaveActive"="0">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "NoDispScrSavPage"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoDesktop"=dword:00000001>>%P%\1.reg
+echo "NoClose"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "SeparateProcess"=dword:00000001>>%P%\1.reg
+echo "ShowTypeOverlay"=dword:00000001>>%P%\1.reg
+echo "Hidden"=dword:00000002>>%P%\1.reg
+echo "ShowSuperHidden"=dword:00000000>>%P%\1.reg
+echo "ShowEncryptCompressedColor"=dword:00000001>>%P%\1.reg
+echo "HideFileExt"=dword:00000001>>%P%\1.reg
+echo "AutoCheckSelect"=dword:00000001>>%P%\1.reg
+echo "TaskbarSizeMove"=dword:00000000>>%P%\1.reg
+echo "PersistBrowsers"=dword:00000001>>%P%\1.reg
+echo "TaskbarAnimations"=dword:00000000>>%P%\1.reg
+echo "TaskbarGlomLevel"=dword:00000001>>%P%\1.reg
+echo "TaskbarGlomming"=dword:00000000>>%P%\1.reg
+echo "IconsOnly"=dword:00000000>>%P%\1.reg
+echo "ListviewShadow"=dword:00000001>>%P%\1.reg
+echo "ListviewAlphaSelect"=dword:00000001>>%P%\1.reg
+echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%P%\1.reg
+echo "TaskbarSmallIcons"=dword:00000001>>%P%\1.reg
+echo "UseTabletModeNotificationIcons"=dword:00000000>>%P%\1.reg
+echo "ShowSyncProviderNotifications"=dword:00000000>>%P%\1.reg
+echo "JointResize"=dword:00000001>>%P%\1.reg
+echo "SnapAssist"=dword:00000001>>%P%\1.reg
+echo "SnapFill"=dword:00000001>>%P%\1.reg
+echo "VirtualDesktopTaskbarFilter"=dword:00000001>>%P%\1.reg
+echo "VirtualDesktopAltTabFilter"=dword:00000001>>%P%\1.reg
+echo "ShowEncryptCompressedColor"=dword:00000001>>%P%\1.reg
+echo "TypeAhead"=dword:00000001>>%P%\1.reg
+echo "AlwaysShowMenus"=dword:00000000>>%P%\1.reg
+echo "HideDrivesWithNoMedia"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%P%\1.reg
+echo "Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00>>%P%\1.reg
+echo "FullPath"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\CTF\LangBar]>>%P%\1.reg
+echo "ShowStatus"=dword:00000003>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]>>%P%\1.reg
+echo "VisualFXSetting"=dword:00000003>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\DWM]>>%P%\1.reg
+echo "AlwaysHibernateThumbnails"=dword:00000000>>%P%\1.reg
+echo "EnableAeroPeek"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%P%\1.reg
+echo "PenWorkspaceAppSuggestionsEnabled"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Control Panel\Desktop]>>%P%\1.reg
+echo "WheelScrollLines"="9">>%P%\1.reg
+echo "MenuShowDelay"="0">>%P%\1.reg
+echo "DragFullWindows"="1">>%P%\1.reg
+echo "FontSmoothing"="2">>%P%\1.reg
+echo "UserPreferencesMask"=hex:98,52,07,80,12,01,00,00>>%P%\1.reg
+echo "WindowArrangementActive"="1">>%P%\1.reg
+echo "PaintDesktopVersion"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]>>%P%\1.reg
+echo "DisplayVersion"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]>>%P%\1.reg
+echo "SignInMode"=dword:00000002>>%P%\1.reg
+echo "ConvertibleSlateModePromptPreference"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]>>%P%\1.reg
+echo "DisableAutoplay"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]>>%P%\1.reg
+echo "FeatureManagementEnabled"=dword:00000000>>%P%\1.reg
+echo "OemPreInstalledAppsEnabled"=dword:00000000>>%P%\1.reg
+echo "PreInstalledAppsEnabled"=dword:00000000>>%P%\1.reg
+echo "SilentInstalledAppsEnabled"=dword:00000000>>%P%\1.reg
+echo "SoftLandingEnabled"=dword:00000000>>%P%\1.reg
+echo "SystemPaneSuggestionsEnabled"=dword:00000000>>%P%\1.reg
+echo "ContentDeliveryAllowed"=dword:00000000>>%P%\1.reg
+echo "PreInstalledAppsEverEnabled"=dword:00000000>>%P%\1.reg
+echo "RotatingLockScreenEnabled"=dword:00000000>>%P%\1.reg
+echo "RotatingLockScreenOverlayEnabled"=dword:00000000>>%P%\1.reg
+echo "SubscribedContent-310093Enabled"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\CloudContent]>>%P%\1.reg
+echo "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001>>%P%\1.reg
+echo "DisableThirdPartySuggestions"=dword:00000001>>%P%\1.reg
+echo "DisableWindowsSpotlightOnActionCenter"=dword:00000001>>%P%\1.reg
+echo "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001>>%P%\1.reg
+echo "DisableWindowsSpotlightFeatures"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%P%\1.reg
+echo "DisableSoftLanding"=dword:00000001>>%P%\1.reg
+echo "DisableWindowsConsumerFeatures"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Speech]>>%P%\1.reg
+echo "AllowSpeechModelUpdate"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%P%\1.reg
+echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\TabletTip]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%P%\1.reg
+echo "AllowCortana"=dword:00000000>>%P%\1.reg
+echo "AllowCortanaAboveLock"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%P%\1.reg
+echo "DisableFileSyncNGSC"=dword:00000001>>%P%\1.reg
+echo "DisableFileSync"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoDriveTypeAutoRun"=dword:000000ff>>%P%\1.reg
+echo "NoAutorun"=dword:00000001>>%P%\1.reg
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoDriveTypeAutoRun"=dword:000000ff>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoAutorun"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%P%\1.reg
+echo "AutoIndexSharedFolders"=dword:00000001>>%P%\1.reg
+echo "PreventIndexOnBattery"=dword:00000001>>%P%\1.reg
+echo "AllowIndexingEncryptedStoresOrItems"=dword:00000000>>%P%\1.reg
+echo "PreventIndexingOfflineFiles"=dword:00000001>>%P%\1.reg
+echo "PreventIndexingPublicFolders"=dword:00000001>>%P%\1.reg
+echo "PreventIndexingEmailAttachments"=dword:00000001>>%P%\1.reg
+echo "PreventIndexingOutlook"=dword:00000001>>%P%\1.reg
+echo "DisableRemovableDriveIndexing"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]>>%P%\1.reg
+echo "GlobalUserDisabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "VerboseStatus"=dword:00000001>>%P%\1.reg
+echo "DisableStartupSound"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]>>%P%\1.reg
+echo "ShowSleepOption"=dword:00000001>>%P%\1.reg
+echo "ShowHibernateOption"=dword:00000001>>%P%\1.reg
+echo "ShowLockOption"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "ShowSleepOption"=dword:00000001>>%P%\1.reg
+echo "ShowHibernateOption"=dword:00000001>>%P%\1.reg
+echo "ShowLockOption"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "PowerButtonAction"=dword:00000010>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "ShutdownWithoutLogon"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000001>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA]>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000000>>%P%\1.reg
+echo "DCSettingIndex"=dword:00002a30>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E]>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000000>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\5CA83367-6E45-459F-A27B-476B1D01C936]>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\637EA02F-BBCB-4015-8E2C-A1C7B9C0B546]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E]>>%P%\1.reg
+echo "DCSettingIndex"=dword:0000012c>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7648EFA3-DD9C-4E3E-B566-50F929386280]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000002>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\8183ba9a-e910-48da-8769-14ae6dc1170a]>>%P%\1.reg
+echo "DCSettingIndex"=dword:0000000a>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\96996BC0-AD50-47EC-923B-6F41874DD9EB]>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9A66D8D7-4FF7-4EF9-B5A2-5A326CA2A469]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000005>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00002a30>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000000>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A504-2B96CAD225A1]>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000014>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000032>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000032>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f1fbfde2-a960-4165-9f88-50667911ce96]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000032>>%P%\1.reg
+echo "ACSettingIndex"=dword:00000032>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA6B-90DB844A8F00]>>%P%\1.reg
+echo "DCSettingIndex"=dword:00000007>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%P%\1.reg
+echo "Start_ShowNetPlaces"=dword:00000000>>%P%\1.reg
+echo "Start_NotifyNewApps"=dword:00000000>>%P%\1.reg
+echo "Start_ShowDownloads"=dword:00000001>>%P%\1.reg
+echo "Start_ShowVideos"=dword:00000001>>%P%\1.reg
+echo "Start_AutoCascade"=dword:00000000>>%P%\1.reg
+echo "Start_LargeMFUIcons"=dword:00000000>>%P%\1.reg
+echo "Start_ShowPrinters"=dword:00000000>>%P%\1.reg
+echo "Start_ShowSetProgramAccessAndDefaults"=dword:00000000>>%P%\1.reg
+echo "Start_ShowUser"=dword:00000000>>%P%\1.reg
+echo "Start_ShowHelp"=dword:00000000>>%P%\1.reg
+echo "Start_MinMFU"=dword:00000000>>%P%\1.reg
+echo "Start_ShowMyGames"=dword:00000000>>%P%\1.reg
+echo "Start_TrackProgs"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%P%\1.reg
+echo "IconUnderline"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%P%\1.reg
+echo "Enabled"=dword:00000000>>%P%\1.reg
+echo [%CU%\Control Panel\International\User Profile]>>%P%\1.reg
+echo "HttpAcceptLanguageOptOut"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%P%\1.reg
+echo "Disabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\MobilePC\MobilityCenter]>>%P%\1.reg
+echo "RunOnDesktop"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]>>%P%\1.reg
+echo "NoActivities"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]>>%P%\1.reg
+echo "CheckExeSignatures"="yes">>%P%\1.reg
+echo "RunInvalidSignatures"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]>>%P%\1.reg
+echo "Enabled"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]>>%P%\1.reg
+echo "Enable Browser Extensions Beta"="no">>%P%\1.reg
+echo "DoNotTrack"=dword:00000001>>%P%\1.reg
+echo "Isolation"="PMEM">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%P%\1.reg
+echo "PreventIgnoreCertErrors"=dword:00000001>>%P%\1.reg
+echo "CertificateRevocation"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]>>%P%\1.reg
+echo "Persistent"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Internet Explorer\Restrictions]>>%P%\1.reg
+echo "NoHelpItemSendFeedback"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Internet Explorer\Main]>>%P%\1.reg
+echo "HideNewEdgeButton"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Internet Explorer\TabbedBrowsing]>>%P%\1.reg
+echo "NewTabPageShow"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Internet Settings]>>%P%\1.reg
+echo "MaxConnectionsPerServer"=dword:00000008>>%P%\1.reg
+echo "MaxConnectionsPer1_0Server"=dword:00000008>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%P%\1.reg
+echo "DisableWindowsSettingSync"=dword:00000002>>%P%\1.reg
+echo "DisableWindowsSettingSyncUserOverride"=dword:00000001>>%P%\1.reg
+echo "DisableSyncOnPaidNetwork"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%P%\1.reg
+echo "SyncOverMeteredNetwork"=dword:00000000>>%P%\1.reg
+echo "SyncOverMeteredNetworkWhenRoaming"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]>>%P%\1.reg
+echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]>>%P%\1.reg
+echo "AllowWebContentOnNewTabPage"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%P%\1.reg
+echo "AllowTelemetry"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%P%\1.reg
+echo "EnableConfigFlighting"=dword:00000000>>%P%\1.reg
+echo "EnableExperimentation"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%P%\1.reg
+echo "DisableRoutinelyTakingAction"=dword:00000000>>%P%\1.reg
+echo "AllowFastServiceStartup"=dword:00000001>>%P%\1.reg
+echo "ServiceKeepAlive"=dword:00000000>>%P%\1.reg
+echo "DisableAntispyware"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]>>%P%\1.reg
+echo "PurgeItemsAfterDelay"=dword:00000001>>%P%\1.reg
+echo "LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]>>%P%\1.reg
+echo "MpEnablePus"=dword:00000001>>%P%\1.reg
+echo "MpCloudBlockLevel"=dword:00000002>>%P%\1.reg
+echo "MpBafsExtendedTimeout"=dword:00000032>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%P%\1.reg
+echo "DisableIOAVProtection"=dword:00000000>>%P%\1.reg
+echo "DisableRealtimeMonitoring"=dword:00000000>>%P%\1.reg
+echo "DisableBehaviorMonitoring"=dword:00000000>>%P%\1.reg
+echo "DisableOnAccessProtection"=dword:00000000>>%P%\1.reg
+echo "DisableScanOnRealtimeEnable"=dword:00000000>>%P%\1.reg
+echo "DisableRawWriteNotification"=dword:00000000>>%P%\1.reg
+echo "IOAVMaxSize"=dword:0098967f>>%P%\1.reg
+echo "RealtimeScanDirection"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideDisableIOAVProtection"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideRealtimeScanDirection"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]>>%P%\1.reg
+echo "LocalSettingOverrideScan_ScheduleTime"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]>>%P%\1.reg
+echo "SpynetReporting"=dword:00000002>>%P%\1.reg
+echo "LocalSettingOverrideSpynetReporting"=dword:00000000>>%P%\1.reg
+echo "SubmitSamplesConsent"=dword:00000003>>%P%\1.reg
+echo "DisableBlockAtFirstSeen"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]>>%P%\1.reg
+echo "ArchieveMaxSize"=dword:00000000>>%P%\1.reg
+echo "ArchieveMaxDepth"=dword:ffffffff>>%P%\1.reg
+echo "AvgCPULoadFactor"=dword:00000032>>%P%\1.reg
+echo "DisableEmailScanning"=dword:00000000>>%P%\1.reg
+echo "DisableArchiveScanning"=dword:00000000>>%P%\1.reg
+echo "DisableRemovableDriveScanning"=dword:00000000>>%P%\1.reg
+echo "DisablePackedExeScanning"=dword:00000000>>%P%\1.reg
+echo "DisableHeuristics"=dword:00000000>>%P%\1.reg
+echo "DisableReparsePointScanning"=dword:00000000>>%P%\1.reg
+echo "DisableRemovableDriveScanning"=dword:00000000>>%P%\1.reg
+echo "DisableScanningNetworkFiles"=dword:00000000>>%P%\1.reg
+echo "CheckForSignaturesBeforeRunningScan"=dword:00000001>>%P%\1.reg
+echo "ScanOnlyIfIdle"=dword:00000001>>%P%\1.reg
+echo "PurgeItemsAfterDelay"=dword:00000001>>%P%\1.reg
+echo "LocalSettingOverrideScanParameters"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideAvgCPULoadFactor"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideScheduleDay"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideScheduleQuickScanTime"=dword:00000000>>%P%\1.reg
+echo "LocalSettingOverrideScheduleTime"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]>>%P%\1.reg
+echo "UpdateOnStartUp"=dword:00000001>>%P%\1.reg
+echo "DisableUpdateOnStartupWithoutEngine"=dword:00000000>>%P%\1.reg
+echo "AVSignatureDue"=dword:00000001>>%P%\1.reg
+echo "ASSignatureDue"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]>>%P%\1.reg
+echo "Threats_ThreatSeverityDefaultAction"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]>>%P%\1.reg
+echo "1"="2">>%P%\1.reg
+echo "2"="2">>%P%\1.reg
+echo "4"="3">>%P%\1.reg
+echo "5"="3">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]>>%P%\1.reg
+echo "ExploitGuard_ASR_Rules"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]>>%P%\1.reg
+echo "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550"="1">>%P%\1.reg
+echo "D4F940AB-401B-4EFC-AADC-AD5F3C50688A"="1">>%P%\1.reg
+echo "3B576869-A4EC-4529-8536-B80A7769E899"="1">>%P%\1.reg
+echo "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84"="1">>%P%\1.reg
+echo "D3E037E1-3EB8-44C8-A917-57927947596D"="1">>%P%\1.reg
+echo "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1">>%P%\1.reg
+echo "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]>>%P%\1.reg
+echo "EnableControlledFolderAccess"=dword:00000000>>%P%\1.reg
+echo "ExploitGuard_ControlledFolderAccess_ProtectedFolders"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access\ProtectedFolders]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]>>%P%\1.reg
+echo "EnableNetworkProtection"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]>>%P%\1.reg
+echo "ExploitProtectionSettings"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]>>%P%\1.reg
+echo "UILockDown"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]>>%P%\1.reg
+echo "UILockDown"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Firewall and network protection]>>%P%\1.reg
+echo "UILockDown"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]>>%P%\1.reg
+echo "UILockDown"=dword:00000000>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterprise Customization]>>%P%\1.reg
+echo "Url"="microsoft.com/en-us/wdsi">>%P%\1.reg
+echo "CompanyName"="Windows Defender Security Intelligence">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%P%\1.reg
+echo "Deny_Execute"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%P%\1.reg
+echo "Model"="Optimized by Tom Zhu">>%P%\1.reg
+echo "SupportHours"="Optimized by Tom Zhu">>%P%\1.reg
+echo "SupportURL"="support.microsoft.com/windows">>%P%\1.reg
+echo.>>%P%\1.reg
 
 
 
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%systemroot%\PerfectWindows\core.reg
-echo "EnableLUA"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ValidateAdminCodeSignatures"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%systemroot%\PerfectWindows\core.reg
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%systemroot%\PerfectWindows\core.reg
-echo "PromptOnSecureDesktop"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableUIADesktopToggle"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "FilterAdministratorToken"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableSecureUIAPaths"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableInstallerDetection"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "EnableVirtualization"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "DSCAutomationHostEnabled"=dword:00000002>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%systemroot%\PerfectWindows\core.reg
-echo "AuthenticodeFlags"=dword:00000300>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\PerfectWindows\core.reg
-echo "DefaultLevel"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "TransparentEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo "PolicyScope"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   50,00,00,00,41,00,44,00,45,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo "AuthenticodeEnabled"=dword:00000001>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Program Files (x86)">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Windows">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,6f,00,74,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Program Files">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,73,00,44,00,69,00,72,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Program Files (x86)">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Windows">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   74,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Program Files">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   6c,00,65,00,73,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow ProgramData">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow 7 - Zip Temp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow Hao Zip Temp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow Windows Explorer Zip Temp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow 7z*.tmp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow WinRAR Temp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow AppData Roaming">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow AppData Local">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   61,00,74,00,61,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow Temp">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow TrustedApps">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"="*\\TrustedApps">>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow AppData Local Microsoft">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,74,00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Disallow AppData Local Packages">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%systemroot%\PerfectWindows\core.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%systemroot%\PerfectWindows\core.reg
-echo "Description"="Allow AppData Local Microsoft OneDrive">>%systemroot%\PerfectWindows\core.reg
-echo "SaferFlags"=dword:00000000>>%systemroot%\PerfectWindows\core.reg
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%systemroot%\PerfectWindows\core.reg
-echo   00,00>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-echo.>>%systemroot%\PerfectWindows\core.reg
-reg import %systemroot%\PerfectWindows\core.reg 1>nul 2>nul
-reg import %systemroot%\PerfectWindows\core.reg 1>nul 2>nul
-del %systemroot%\PerfectWindows\corebak.reg 1>nul 2>nul
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "EnableLUA"=dword:00000001>>%P%\1.reg
+echo "ValidateAdminCodeSignatures"=dword:00000001>>%P%\1.reg
+echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%P%\1.reg
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%P%\1.reg
+echo "PromptOnSecureDesktop"=dword:00000001>>%P%\1.reg
+echo "EnableUIADesktopToggle"=dword:00000000>>%P%\1.reg
+echo "FilterAdministratorToken"=dword:00000001>>%P%\1.reg
+echo "EnableSecureUIAPaths"=dword:00000001>>%P%\1.reg
+echo "EnableInstallerDetection"=dword:00000001>>%P%\1.reg
+echo "EnableVirtualization"=dword:00000001>>%P%\1.reg
+echo "DSCAutomationHostEnabled"=dword:00000002>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%P%\1.reg
+echo "AuthenticodeFlags"=dword:00000300>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\1.reg
+echo "DefaultLevel"=dword:00000000>>%P%\1.reg
+echo "TransparentEnabled"=dword:00000001>>%P%\1.reg
+echo "PolicyScope"=dword:00000000>>%P%\1.reg
+echo "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\>>%P%\1.reg
+echo   53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\>>%P%\1.reg
+echo   00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\>>%P%\1.reg
+echo   00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\>>%P%\1.reg
+echo   00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\>>%P%\1.reg
+echo   49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\>>%P%\1.reg
+echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\>>%P%\1.reg
+echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%P%\1.reg
+echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%P%\1.reg
+echo   50,00,00,00,41,00,44,00,45,00,00,00>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%P%\1.reg
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Program Files (x86)">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%P%\1.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%P%\1.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%P%\1.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%P%\1.reg
+echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%P%\1.reg
+echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%P%\1.reg
+echo   00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%P%\1.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Windows">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%P%\1.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%P%\1.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%P%\1.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\>>%P%\1.reg
+echo   00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\>>%P%\1.reg
+echo   73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\>>%P%\1.reg
+echo   00,6f,00,74,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%P%\1.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Program Files">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%P%\1.reg
+echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%P%\1.reg
+echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%P%\1.reg
+echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%P%\1.reg
+echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%P%\1.reg
+echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%P%\1.reg
+echo   00,73,00,44,00,69,00,72,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]>>%P%\1.reg
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Program Files (x86)">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%P%\1.reg
+echo   6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%P%\1.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Windows">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\>>%P%\1.reg
+echo   74,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]>>%P%\1.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Program Files">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%P%\1.reg
+echo   6c,00,65,00,73,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]>>%P%\1.reg
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%P%\1.reg
+echo "Description"="Allow ProgramData">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%P%\1.reg
+echo   74,00,61,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow 7 - Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow Hao Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow Windows Explorer Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%P%\1.reg
+echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow 7z*.tmp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%P%\1.reg
+echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow WinRAR Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%P%\1.reg
+echo   00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow AppData Roaming">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow AppData Local">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%P%\1.reg
+echo   61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow TrustedApps">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"="*\\TrustedApps">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow AppData Local Microsoft">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%P%\1.reg
+echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%P%\1.reg
+echo   00,74,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow AppData Local Packages">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%P%\1.reg
+echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%P%\1.reg
+echo   00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow AppData Local Microsoft OneDrive">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%P%\1.reg
+echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%P%\1.reg
+echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%P%\1.reg
+echo   00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo.>>%P%\1.reg
+echo.>>%P%\1.reg
+reg import %P%\1.reg 1>nul 2>nul
+reg import %P%\1.reg 1>nul 2>nul
+del %P%\corebak.reg 1>nul 2>nul
 
 
 
@@ -1268,43 +1273,43 @@ mode con cols=45 lines=3
 color fc
 echo.
 echo Optimizing autoruns...
-echo.>%systemroot%\PerfectWindowsTemp\startup
+echo.>%T%\startup
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %systemroot%\PerfectWindowsTemp\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %systemroot%\PerfectWindowsTemp\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\startup
+del %T%\startup
 
 
 
 :devicedisablewake
-powercfg /devicequery wake_armed >%systemroot%\PerfectWindowsTemp\powercfg.txt
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-powercfg /devicequery wake_armed >%systemroot%\PerfectWindowsTemp\powercfg.txt
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
+powercfg /devicequery wake_armed >%T%\powercfg.txt
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
+powercfg /devicequery wake_armed >%T%\powercfg.txt
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 
 
 
 :reversemouse
-echo Windows Registry Editor Version 5.00>%systemroot%\PerfectWindowsTemp\Reverse.reg
-echo. >>%systemroot%\PerfectWindowsTemp\Reverse.reg
-reg query HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Enum\HID /s >%systemroot%\PerfectWindowsTemp\Reverse.txt
-findstr Parameter %systemroot%\PerfectWindowsTemp\Reverse.txt > %systemroot%\PerfectWindowsTemp\find.txt
+echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
+reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
+findstr Parameter %T%\Reverse.txt > %T%\find.txt
 
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\find.txt) do (
-echo [%%i] >>%systemroot%\PerfectWindowsTemp\Reverse.reg
-echo "FlipFlopWheel"=dword:00000001 >>%systemroot%\PerfectWindowsTemp\Reverse.reg
-echo. >>%systemroot%\PerfectWindowsTemp\Reverse.reg
+for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
+echo [%%i] >>%T%\Reverse.reg
+echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
 )
 
-reg import %systemroot%\PerfectWindowsTemp\Reverse.reg /reg:32 1>nul 2>nul
-reg import %systemroot%\PerfectWindowsTemp\Reverse.reg /reg:32 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\find.txt
-del %systemroot%\PerfectWindowsTemp\Reverse.txt
-del %systemroot%\PerfectWindowsTemp\Reverse.reg
-del %systemroot%\PerfectWindowsTemp\powercfg.txt
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+del %T%\find.txt
+del %T%\Reverse.txt
+del %T%\Reverse.reg
+del %T%\powercfg.txt
 
 
 
@@ -1314,20 +1319,20 @@ mode con cols=45 lines=3
 color fc
 echo.
 echo Optimizing scheduled tasks...
-schtasks /query /fo csv >%systemroot%\PerfectWindowsTemp\detailedschtasks.txt
-echo. >%systemroot%\PerfectWindowsTemp\temp5.txt
-for /f "tokens=1 delims=," %%i in (%systemroot%\PerfectWindowsTemp\detailedschtasks.txt) do (
-echo %%i>>%systemroot%\PerfectWindowsTemp\temp5.txt
+schtasks /query /fo csv >%T%\detailedschtasks.txt
+echo. >%T%\temp5.txt
+for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
+echo %%i>>%T%\temp5.txt
 )
-findstr /v PerfectWindows %systemroot%\PerfectWindowsTemp\temp5.txt >%systemroot%\PerfectWindowsTemp\disabledschtasks.txt
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\disabledschtasks.txt) do (
+findstr /v PerfectWindows %T%\temp5.txt >%T%\disabledschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\disabledschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /change /tn %%i /disable 1>nul 2>nul
 )
 
-findstr UpdateOrchestrator %systemroot%\PerfectWindowsTemp\disabledschtasks.txt >%systemroot%\PerfectWindowsTemp\deletedschtasks.txt
-findstr WindowsUpdate %systemroot%\PerfectWindowsTemp\disabledschtasks.txt >>%systemroot%\PerfectWindowsTemp\deletedschtasks.txt
-for /f "tokens=* delims= " %%i in (%systemroot%\PerfectWindowsTemp\deletedschtasks.txt) do (
+findstr UpdateOrchestrator %T%\disabledschtasks.txt >%T%\deletedschtasks.txt
+findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
@@ -1338,58 +1343,58 @@ schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
 
-echo ^<?xml version="1.0" encoding="UTF-16"?^>>%systemroot%\PerfectWindows\update.xml
-echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^<RegistrationInfo^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^</RegistrationInfo^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^<Triggers^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<TimeTrigger^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<Repetition^>>>%systemroot%\PerfectWindows\update.xml
-echo         ^<Interval^>PT5M^</Interval^>>>%systemroot%\PerfectWindows\update.xml
-echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^</Repetition^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<Enabled^>true^</Enabled^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^</TimeTrigger^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^</Triggers^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^<Principals^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<Principal id="Author"^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^</Principal^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^</Principals^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^<Settings^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<IdleSettings^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^</IdleSettings^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<Enabled^>true^</Enabled^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<Hidden^>false^</Hidden^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<WakeToRun^>false^</WakeToRun^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<Priority^>7^</Priority^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^</Settings^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^<Actions Context="Author"^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^<Exec^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%systemroot%\PerfectWindows\update.xml
-echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%systemroot%\PerfectWindows\update.xml
-echo     ^</Exec^>>>%systemroot%\PerfectWindows\update.xml
-echo   ^</Actions^>>>%systemroot%\PerfectWindows\update.xml
-echo ^</Task^>>>%systemroot%\PerfectWindows\update.xml
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
+echo   ^<RegistrationInfo^>>>%P%\1.xml
+echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%P%\1.xml
+echo   ^</RegistrationInfo^>>>%P%\1.xml
+echo   ^<Triggers^>>>%P%\1.xml
+echo     ^<TimeTrigger^>>>%P%\1.xml
+echo       ^<Repetition^>>>%P%\1.xml
+echo         ^<Interval^>PT5M^</Interval^>>>%P%\1.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%P%\1.xml
+echo       ^</Repetition^>>>%P%\1.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%P%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^</TimeTrigger^>>>%P%\1.xml
+echo   ^</Triggers^>>>%P%\1.xml
+echo   ^<Principals^>>>%P%\1.xml
+echo     ^<Principal id="Author"^>>>%P%\1.xml
+echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%P%\1.xml
+echo     ^</Principal^>>>%P%\1.xml
+echo   ^</Principals^>>>%P%\1.xml
+echo   ^<Settings^>>>%P%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%P%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%P%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%P%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%P%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%P%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%P%\1.xml
+echo     ^<IdleSettings^>>>%P%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%P%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%P%\1.xml
+echo     ^</IdleSettings^>>>%P%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%P%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^<Hidden^>false^</Hidden^>>>%P%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%P%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%P%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%P%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%P%\1.xml
+echo   ^</Settings^>>>%P%\1.xml
+echo   ^<Actions Context="Author"^>>>%P%\1.xml
+echo     ^<Exec^>>>%P%\1.xml
+echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%P%\1.xml
+echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%P%\1.xml
+echo     ^</Exec^>>>%P%\1.xml
+echo   ^</Actions^>>>%P%\1.xml
+echo ^</Task^>>>%P%\1.xml
 
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
-SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML %systemroot%\PerfectWindows\update.xml /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML %P%\1.xml /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
-del %systemroot%\PerfectWindowsTemp\detailedschtasks.txt 1>nul 2>nul
-del %systemroot%\PerfectWindows\update.xml 1>nul 2>nul
+del %T%\detailedschtasks.txt 1>nul 2>nul
+del %P%\1.xml 1>nul 2>nul
 
 
 
@@ -1497,7 +1502,7 @@ ren hosts hosts.txt
 
 
 :restart
-rd /s /q %systemroot%\PerfectWindowsTemp 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
 shutdown /r /t 0 1>nul 2>nul
@@ -1507,7 +1512,7 @@ shutdown /r /t 0 1>nul 2>nul
 
 :reg bak
 
-:[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc]
+:[%LM%\SOFTWARE\Microsoft\Rpc]
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
