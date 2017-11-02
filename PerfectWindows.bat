@@ -54,8 +54,10 @@ md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
-SCHTASKS /END /TN "\Perfect Windows\Refresh Reg" 1>nul 2>nul
-SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Reg" /F 1>nul 2>nul
+SCHTASKS /END /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
+SCHTASKS /END /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
+SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Local Machine Reg" /F 1>nul 2>nul
+SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Current User Reg" /F 1>nul 2>nul
 
 
 
@@ -1359,7 +1361,7 @@ echo     ^</TimeTrigger^>>>%P%\1.xml
 echo   ^</Triggers^>>>%P%\1.xml
 echo   ^<Principals^>>>%P%\1.xml
 echo     ^<Principal id="Author"^>>>%P%\1.xml
-echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%P%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%P%\1.xml
 echo     ^</Principal^>>>%P%\1.xml
 echo   ^</Principals^>>>%P%\1.xml
 echo   ^<Settings^>>>%P%\1.xml
@@ -1375,7 +1377,7 @@ echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%P%\1.xml
 echo     ^</IdleSettings^>>>%P%\1.xml
 echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%P%\1.xml
 echo     ^<Enabled^>true^</Enabled^>>>%P%\1.xml
-echo     ^<Hidden^>false^</Hidden^>>>%P%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%P%\1.xml
 echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%P%\1.xml
 echo     ^<WakeToRun^>false^</WakeToRun^>>>%P%\1.xml
 echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%P%\1.xml
@@ -1522,9 +1524,15 @@ reg import %P%\1.reg /reg:32 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
 echo   ^<RegistrationInfo^>>>%P%\1.xml
-echo     ^<URI^>\Perfect Windows\Refresh Reg^</URI^>>>%P%\1.xml
+echo     ^<URI^>\Perfect Windows\Refresh Local Machine Reg^</URI^>>>%P%\1.xml
 echo   ^</RegistrationInfo^>>>%P%\1.xml
 echo   ^<Triggers^>>>%P%\1.xml
+echo     ^<BootTrigger^>>>%P%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^</BootTrigger^>>>%P%\1.xml
+echo     ^<LogonTrigger^>>>%P%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^</LogonTrigger^>>>%P%\1.xml
 echo     ^<TimeTrigger^>>>%P%\1.xml
 echo       ^<Repetition^>>>%P%\1.xml
 echo         ^<Interval^>PT1M^</Interval^>>>%P%\1.xml
@@ -1536,7 +1544,7 @@ echo     ^</TimeTrigger^>>>%P%\1.xml
 echo   ^</Triggers^>>>%P%\1.xml
 echo   ^<Principals^>>>%P%\1.xml
 echo     ^<Principal id="Author"^>>>%P%\1.xml
-echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%P%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%P%\1.xml
 echo     ^</Principal^>>>%P%\1.xml
 echo   ^</Principals^>>>%P%\1.xml
 echo   ^<Settings^>>>%P%\1.xml
@@ -1565,8 +1573,53 @@ echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
 echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
-SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Reg" /XML %P%\1.xml /F 1>nul 2>nul
-SCHTASKS /RUN /TN "\Perfect Windows\Refresh Reg" 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
+del %T%\detailedschtasks.txt 1>nul 2>nul
+del %P%\1.xml 1>nul 2>nul
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
+echo   ^<RegistrationInfo^>>>%P%\1.xml
+echo     ^<URI^>\Perfect Windows\Refresh Current User Reg^</URI^>>>%P%\1.xml
+echo   ^</RegistrationInfo^>>>%P%\1.xml
+echo   ^<Triggers^>>>%P%\1.xml
+echo     ^<LogonTrigger^>>>%P%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^</LogonTrigger^>>>%P%\1.xml
+echo   ^</Triggers^>>>%P%\1.xml
+echo   ^<Principals^>>>%P%\1.xml
+echo     ^<Principal id="Author"^>>>%P%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%P%\1.xml
+echo     ^</Principal^>>>%P%\1.xml
+echo   ^</Principals^>>>%P%\1.xml
+echo   ^<Settings^>>>%P%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%P%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%P%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%P%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%P%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%P%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%P%\1.xml
+echo     ^<IdleSettings^>>>%P%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%P%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%P%\1.xml
+echo     ^</IdleSettings^>>>%P%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%P%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%P%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%P%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%P%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%P%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%P%\1.xml
+echo   ^</Settings^>>>%P%\1.xml
+echo   ^<Actions Context="Author"^>>>%P%\1.xml
+echo     ^<Exec^>>>%P%\1.xml
+echo       ^<Command^>"%systemroot%\system32\reg.exe"^</Command^>>>%P%\1.xml
+echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
+echo     ^</Exec^>>>%P%\1.xml
+echo   ^</Actions^>>>%P%\1.xml
+echo ^</Task^>>>%P%\1.xml
+SCHTASKS /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 
