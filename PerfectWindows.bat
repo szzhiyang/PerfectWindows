@@ -1619,7 +1619,6 @@ echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
 SCHTASKS /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML %P%\1.xml /F 1>nul 2>nul
-SCHTASKS /RUN /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 
