@@ -54,6 +54,8 @@ md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
+SCHTASKS /END /TN "\Perfect Windows\Refresh Reg" 1>nul 2>nul
+SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Reg" /F 1>nul 2>nul
 
 
 
@@ -169,7 +171,7 @@ sc config WSearch start= auto 1>nul 2>nul
 
 
 
-:core
+:makereg
 title Optimizing Windows...
 mode con cols=45 lines=3
 color fc
@@ -186,8 +188,6 @@ echo "User Policies 2"="%CU%\\Software\\Microsoft\\Windows\\CurrentVersion\\Poli
 echo "Machine Policies 2"="%LM%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%P%\1.reg
 echo "User Policies 1"="%CU%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
 echo "Machine Policies 1"="%LM%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
-echo.>>%P%\1.reg
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%P%\1.reg
 echo.>>%P%\1.reg
@@ -1257,13 +1257,6 @@ echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,6
 echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%P%\1.reg
 echo   00,00>>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
-echo.>>%P%\1.reg
-echo.>>%P%\1.reg
-echo.>>%P%\1.reg
-reg import %P%\1.reg 1>nul 2>nul
-reg import %P%\1.reg 1>nul 2>nul
-del %P%\corebak.reg 1>nul 2>nul
 
 
 
@@ -1458,35 +1451,116 @@ echo.
 echo Applying whitelist...
 if exist whitelist.txt (
 goto applywhitelist) else (
-goto hosts)
+goto applyreg)
 :applywhitelist
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
 if %%i equ onedrive (
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v DisableFileSyncNGSC /f 1>nul 2>nul
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\OneDrive" /v DisableFileSync /f 1>nul 2>nul)
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%P%\1.reg
+echo "DisableFileSyncNGSC"=->>%P%\1.reg
+echo "DisableFileSync"=->>%P%\1.reg
+echo.>>%P%\1.reg)
 
 if %%i equ cortana (
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortana /f 1>nul 2>nul
-reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Windows Search" /v AllowCortanaAboveLock /f 1>nul 2>nul
-reg delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v DisableSearchBoxSuggestions /f  1>nul 2>nul)
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%P%\1.reg
+echo "AllowCortana"=->>%P%\1.reg
+echo "AllowCortanaAboveLock"=->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "DisableSearchBoxSuggestions"=->>%P%\1.reg
+echo.>>%P%\1.reg)
 
 if %%i equ power (
-reg delete HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /f 1>nul 2>nul
-reg delete "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v ScreenSaveTimeOut /f 1>nul 2>nul
-reg delete "HKCU\Software\Policies\Microsoft\Windows\Control Panel\Desktop" /v ScreenSaveActive /f 1>nul 2>nul
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System" /v NoDispScrSavPage /f 1>nul 2>nul
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoClose /f 1>nul 2>nul
-reg delete "HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v HidePowerOptions /f 1>nul 2>nul
-reg delete "HKCU\Software\Policies\Microsoft\Windows\Explorer" /v PowerButtonAction /f 1>nul 2>nul
-reg delete "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v ShowSleepOption /f 1>nul 2>nul
-reg delete "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v ShowHibernateOption /f 1>nul 2>nul
-reg delete "HKLM\Software\Policies\Microsoft\Windows\Explorer" /v ShowLockOption /f 1>nul 2>nul)
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%P%\1.reg
+echo "ScreenSaveTimeOut"->>%P%\1.reg
+echo "ScreenSaveActive"->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
+echo "NoDispScrSavPage"->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoClose"->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "HidePowerOptions"->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "PowerButtonAction"->>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
+echo "ShowSleepOption"->>%P%\1.reg
+echo "ShowHibernateOption"=->>%P%\1.reg
+echo "ShowLockOption"=->>%P%\1.reg
+echo.>>%P%\1.reg)
 
 if %%i equ desktop (
-reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoDesktop /f 1>nul 2>nul) else (
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
+echo "NoDesktop"->>%P%\1.reg
+echo.>>%P%\1.reg) else (
 sc config "%%i" start= auto 1>nul 2>nul
 schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 )
+
+
+
+:applyreg
+echo.>>%P%\1.reg
+echo.>>%P%\1.reg
+echo.>>%P%\1.reg
+echo.>>%P%\1.reg
+reg import %P%\1.reg /reg:32 1>nul 2>nul
+reg import %P%\1.reg /reg:32 1>nul 2>nul
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
+echo   ^<RegistrationInfo^>>>%P%\1.xml
+echo     ^<URI^>\Perfect Windows\Refresh Reg^</URI^>>>%P%\1.xml
+echo   ^</RegistrationInfo^>>>%P%\1.xml
+echo   ^<Triggers^>>>%P%\1.xml
+echo     ^<TimeTrigger^>>>%P%\1.xml
+echo       ^<Repetition^>>>%P%\1.xml
+echo         ^<Interval^>PT1M^</Interval^>>>%P%\1.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%P%\1.xml
+echo       ^</Repetition^>>>%P%\1.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%P%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^</TimeTrigger^>>>%P%\1.xml
+echo   ^</Triggers^>>>%P%\1.xml
+echo   ^<Principals^>>>%P%\1.xml
+echo     ^<Principal id="Author"^>>>%P%\1.xml
+echo       ^<RunLevel^>LeastPrivilege^</RunLevel^>>>%P%\1.xml
+echo     ^</Principal^>>>%P%\1.xml
+echo   ^</Principals^>>>%P%\1.xml
+echo   ^<Settings^>>>%P%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%P%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%P%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%P%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%P%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%P%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%P%\1.xml
+echo     ^<IdleSettings^>>>%P%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%P%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%P%\1.xml
+echo     ^</IdleSettings^>>>%P%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%P%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%P%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%P%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%P%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%P%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%P%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%P%\1.xml
+echo   ^</Settings^>>>%P%\1.xml
+echo   ^<Actions Context="Author"^>>>%P%\1.xml
+echo     ^<Exec^>>>%P%\1.xml
+echo       ^<Command^>"%systemroot%\system32\reg.exe"^</Command^>>>%P%\1.xml
+echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
+echo     ^</Exec^>>>%P%\1.xml
+echo   ^</Actions^>>>%P%\1.xml
+echo ^</Task^>>>%P%\1.xml
+SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Reg" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Perfect Windows\Refresh Reg" 1>nul 2>nul
+del %T%\detailedschtasks.txt 1>nul 2>nul
+del %P%\1.xml 1>nul 2>nul
 
 
 
@@ -1510,7 +1584,7 @@ shutdown /r /t 0 1>nul 2>nul
 
 
 
-:reg bak
+:regbak
 
 :[%LM%\SOFTWARE\Microsoft\Rpc]
 :"ConnectionOptionsFlag"=dword:00000001
