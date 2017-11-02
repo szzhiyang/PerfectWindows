@@ -189,6 +189,12 @@ echo "Machine Policies 2"="%LM%\\Software\\Microsoft\\Windows\\CurrentVersion\\P
 echo "User Policies 1"="%CU%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
 echo "Machine Policies 1"="%LM%\\SOFTWARE\\Policies\\Microsoft">>%P%\1.reg
 echo.>>%P%\1.reg
+echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [-%CU%\SOFTWARE\Policies\Microsoft]>>%P%\1.reg
+echo.>>%P%\1.reg
 echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%P%\1.reg
@@ -1511,6 +1517,8 @@ echo.>>%P%\1.reg
 echo.>>%P%\1.reg
 reg import %P%\1.reg /reg:32 1>nul 2>nul
 reg import %P%\1.reg /reg:32 1>nul 2>nul
+reg import %P%\1.reg /reg:32 1>nul 2>nul
+reg import %P%\1.reg /reg:32 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
 echo   ^<RegistrationInfo^>>>%P%\1.xml
@@ -1571,6 +1579,7 @@ goto restart)
 :applyhosts
 ren hosts.txt hosts
 copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 ren hosts hosts.txt
 
 
@@ -1579,7 +1588,11 @@ ren hosts hosts.txt
 rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
-shutdown /r /t 0 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
+rd /s /q "%tmp%" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+shutdown /r /t 0
+shutdown /r /t 0
 
 
 
