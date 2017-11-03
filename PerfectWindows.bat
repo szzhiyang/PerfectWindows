@@ -381,7 +381,7 @@ echo "ValidateAdminCodeSignatures"=dword:00000000>>%P%\1.reg
 echo "DSCAutomationHostEnabled"=dword:00000002>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\1.reg
-echo "AuthenticodeEnabled"=dword:00000000>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%P%\1.reg
 echo "DisableRootAutoUpdate"=dword:00000000>>%P%\1.reg
@@ -1160,7 +1160,7 @@ echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,0
 echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%P%\1.reg
 echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%P%\1.reg
 echo   50,00,00,00,41,00,44,00,45,00,00,00>>%P%\1.reg
-echo "AuthenticodeEnabled"=dword:00000000>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%P%\1.reg
 echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%P%\1.reg
