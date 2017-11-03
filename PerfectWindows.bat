@@ -121,6 +121,21 @@ sc config PlugPlay start= auto 1>nul 2>nul
 sc config nsi start= auto 1>nul 2>nul
 sc config NlaSvc start= auto 1>nul 2>nul
 sc config LSM start= auto 1>nul 2>nul
+sc config luafv start= auto 1>nul 2>nul
+sc config clr_optimization_v2.0.50727_32 start= auto 1>nul 2>nul
+sc config UxSms start= auto 1>nul 2>nul
+sc config lltdio start= auto 1>nul 2>nul
+sc config rspndr start= auto 1>nul 2>nul
+sc config MMCSS start= auto 1>nul 2>nul
+sc config PEAUTH start= auto 1>nul 2>nul
+sc config secdrv start= auto 1>nul 2>nul
+sc config ShellHWDetection start= auto 1>nul 2>nul
+sc config NlaSvc start= auto 1>nul 2>nul
+sc config TrkWks start= auto 1>nul 2>nul
+sc config SENS start= auto 1>nul 2>nul
+sc config tcpipreg start= auto 1>nul 2>nul
+sc config Parvdm start= auto 1>nul 2>nul
+sc config TrustedInstaller start= auto 1>nul 2>nul
 sc config TrkWks start= auto 1>nul 2>nul
 sc config Dhcp start= auto 1>nul 2>nul
 sc config DoSvc start= auto 1>nul 2>nul
@@ -338,17 +353,17 @@ echo "FilterAdministratorToken"=dword:00000001>>%P%\1.reg
 echo "EnableSecureUIAPaths"=dword:00000001>>%P%\1.reg
 echo "EnableInstallerDetection"=dword:00000001>>%P%\1.reg
 echo "EnableVirtualization"=dword:00000001>>%P%\1.reg
-echo "ValidateAdminCodeSignatures"=dword:00000001>>%P%\1.reg
+echo "ValidateAdminCodeSignatures"=dword:00000000>>%P%\1.reg
 echo "DSCAutomationHostEnabled"=dword:00000002>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\1.reg
-echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%P%\1.reg
 echo "DisableRootAutoUpdate"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%P%\1.reg
-echo "AuthenticodeFlags"=dword:00000300>>%P%\1.reg
+echo "AuthenticodeFlags"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%P%\1.reg
 echo "DisableNotifications"=dword:00000000>>%P%\1.reg
@@ -1087,7 +1102,7 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
 echo "EnableLUA"=dword:00000001>>%P%\1.reg
-echo "ValidateAdminCodeSignatures"=dword:00000001>>%P%\1.reg
+echo "ValidateAdminCodeSignatures"=dword:00000000>>%P%\1.reg
 echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%P%\1.reg
 echo "ConsentPromptBehaviorUser"=dword:00000003>>%P%\1.reg
 echo "PromptOnSecureDesktop"=dword:00000001>>%P%\1.reg
@@ -1099,7 +1114,7 @@ echo "EnableVirtualization"=dword:00000001>>%P%\1.reg
 echo "DSCAutomationHostEnabled"=dword:00000002>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%P%\1.reg
-echo "AuthenticodeFlags"=dword:00000300>>%P%\1.reg
+echo "AuthenticodeFlags"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\1.reg
 echo "DefaultLevel"=dword:00000000>>%P%\1.reg
@@ -1115,7 +1130,7 @@ echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,0
 echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%P%\1.reg
 echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%P%\1.reg
 echo   50,00,00,00,41,00,44,00,45,00,00,00>>%P%\1.reg
-echo "AuthenticodeEnabled"=dword:00000001>>%P%\1.reg
+echo "AuthenticodeEnabled"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%P%\1.reg
 echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%P%\1.reg
