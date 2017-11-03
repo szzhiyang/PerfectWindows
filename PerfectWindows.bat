@@ -29,6 +29,7 @@ echo your PC will be restarted automatically.
 echo.
 echo If you are ready to restart your PC,
 pause
+bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
@@ -211,6 +212,8 @@ echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [-%CU%\SOFTWARE\Policies\Microsoft]>>%P%\1.reg
 echo.>>%P%\1.reg
+echo [-%LM%\SOFTWARE\Policies\MicrosoftBeta]>>%P%\1.reg
+echo.>>%P%\1.reg
 echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%P%\1.reg
@@ -291,6 +294,26 @@ echo "AutoShareWks"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SYSTEM\CurrentControlSet\Control\LSA]>>%P%\1.reg
 echo "RestrictAnonymous"=dword:00000001>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%P%\1.reg
+echo "EnableFirstLogonAnimation"=dword:00000001>>%P%\1.reg
+echo "WinStationsDisabled"="0">>%P%\1.reg
+echo "Userinit"="C:\\WINDOWS\\system32\\userinit.exe,">>%P%\1.reg
+echo "Shell"="explorer.exe">>%P%\1.reg
+echo "ShellCritical"=dword:00000000>>%P%\1.reg
+echo "ShellInfrastructure"="sihost.exe">>%P%\1.reg
+echo "SiHostCritical"=dword:00000000>>%P%\1.reg
+echo "SiHostReadyTimeOut"=dword:00000000>>%P%\1.reg
+echo "SiHostRestartCountLimit"=dword:00000000>>%P%\1.reg
+echo "SiHostRestartTimeGap"=dword:00000000>>%P%\1.reg
+echo "AutoRestartShell"=dword:00000001>>%P%\1.reg
+echo "DisableBackButton"=dword:00000001>>%P%\1.reg
+echo "EnableSIHostIntegration"=dword:00000001>>%P%\1.reg
+echo "ForceUnlockLogon"=dword:00000000>>%P%\1.reg
+echo "LegalNoticeCaption"="">>%P%\1.reg
+echo "LegalNoticeText"="">>%P%\1.reg
+echo "PowerdownAfterShutdown"="0">>%P%\1.reg
+echo "ReportBootOk"="1">>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%P%\1.reg
 echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%P%\1.reg
@@ -1657,8 +1680,8 @@ ipconfig /flushdns 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
-shutdown /r /t 0
-shutdown /r /t 0
+shutdown /r /o /t 0 1>nul 2>nul
+shutdown /r /t 0 1>nul 2>nul
 
 
 
