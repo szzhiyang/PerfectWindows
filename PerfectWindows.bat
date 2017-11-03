@@ -1117,8 +1117,7 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterpri
 echo "Url"="microsoft.com/en-us/wdsi">>%P%\1.reg
 echo "CompanyName"="Windows Defender Security Intelligence">>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f5630d-b6bf-11d0-94f2-00a0c91efb8b}]>>%P%\1.reg
-echo "Deny_Execute"=dword:00000001>>%P%\1.reg
+echo [-%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%P%\1.reg
 echo "Model"="Optimized by Tom Zhu">>%P%\1.reg
