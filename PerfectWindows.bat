@@ -1481,30 +1481,30 @@ if %%i equ power (
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%P%\1.reg
-echo "ScreenSaveTimeOut"->>%P%\1.reg
-echo "ScreenSaveActive"->>%P%\1.reg
+echo "ScreenSaveTimeOut"=->>%P%\1.reg
+echo "ScreenSaveActive"=->>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
-echo "NoDispScrSavPage"->>%P%\1.reg
+echo "NoDispScrSavPage"=->>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
-echo "NoClose"->>%P%\1.reg
+echo "NoClose"=->>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
-echo "HidePowerOptions"->>%P%\1.reg
+echo "HidePowerOptions"=->>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
-echo "PowerButtonAction"->>%P%\1.reg
+echo "PowerButtonAction"=->>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
-echo "ShowSleepOption"->>%P%\1.reg
+echo "ShowSleepOption"=->>%P%\1.reg
 echo "ShowHibernateOption"=->>%P%\1.reg
 echo "ShowLockOption"=->>%P%\1.reg
 echo.>>%P%\1.reg)
 
 if %%i equ desktop (
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
-echo "NoDesktop"->>%P%\1.reg
+echo "NoDesktop"=->>%P%\1.reg
 echo.>>%P%\1.reg) else (
 sc config "%%i" start= auto 1>nul 2>nul
 schtasks /change /tn "%%i" /enable 1>nul 2>nul)
