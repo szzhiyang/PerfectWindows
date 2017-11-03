@@ -299,7 +299,7 @@ echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%P%\1.reg
 echo "EnableFirstLogonAnimation"=dword:00000001>>%P%\1.reg
 echo "WinStationsDisabled"="0">>%P%\1.reg
-echo "Userinit"="C:\\WINDOWS\\system32\\userinit.exe,">>%P%\1.reg
+echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%P%\1.reg
 echo "Shell"="explorer.exe">>%P%\1.reg
 echo "ShellCritical"=dword:00000000>>%P%\1.reg
 echo "ShellInfrastructure"="sihost.exe">>%P%\1.reg
