@@ -1280,7 +1280,7 @@ attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\St
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-del %T%\startup
+del %T%\startup 1>nul 2>nul
 
 
 
@@ -1306,10 +1306,10 @@ echo. >>%T%\Reverse.reg
 
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-del %T%\find.txt
-del %T%\Reverse.txt
-del %T%\Reverse.reg
-del %T%\powercfg.txt
+del %T%\find.txt 1>nul 2>nul
+del %T%\Reverse.txt 1>nul 2>nul
+del %T%\Reverse.reg 1>nul 2>nul
+del %T%\powercfg.txt 1>nul 2>nul
 
 
 
