@@ -110,7 +110,6 @@ sc config FontCache start= auto 1>nul 2>nul
 sc config MpsSvc start= auto 1>nul 2>nul
 sc config EventLog start= auto 1>nul 2>nul
 sc config SecurityHealthService start= auto 1>nul 2>nul
-sc config WinDefend start= auto 1>nul 2>nul
 sc config AudioEndpointBuilder start= auto 1>nul 2>nul
 sc config Audiosrv start= auto 1>nul 2>nul
 sc config ProfSvc start= auto 1>nul 2>nul
