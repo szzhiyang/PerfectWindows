@@ -1688,8 +1688,9 @@ rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
 shutdown /r /o /t 0 1>nul 2>nul
+shutdown /r /o /t 0 1>nul 2>nul
 shutdown /r /t 0 1>nul 2>nul
-
+shutdown /r /t 0 1>nul 2>nul
 
 
 
