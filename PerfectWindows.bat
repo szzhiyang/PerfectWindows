@@ -1545,6 +1545,10 @@ echo "ShowHibernateOption"=->>%P%\1.reg
 echo "ShowLockOption"=->>%P%\1.reg
 echo.>>%P%\1.reg)
 
+if %%i equ safer (
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
+echo.>>%P%\1.reg)
+
 if %%i equ desktop (
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%P%\1.reg
 echo "NoDesktop"=->>%P%\1.reg
