@@ -44,6 +44,10 @@ set P=%systemroot%\PerfectWindows
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
+SCHTASKS /END /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
+SCHTASKS /END /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
+SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Local Machine Reg" /F 1>nul 2>nul
+SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Current User Reg" /F 1>nul 2>nul
 rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 md %P% 1>nul 2>nul
@@ -55,10 +59,7 @@ md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
-SCHTASKS /END /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
-SCHTASKS /END /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
-SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Local Machine Reg" /F 1>nul 2>nul
-SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Current User Reg" /F 1>nul 2>nul
+
 
 
 
@@ -823,7 +824,7 @@ echo "ShowHibernateOption"=dword:00000001>>%P%\1.reg
 echo "ShowLockOption"=dword:00000001>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
-echo "PowerButtonAction"=dword:00000010>>%P%\1.reg
+echo "PowerButtonAction"=dword:00000200>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%P%\1.reg
 echo "ShutdownWithoutLogon"=dword:00000001>>%P%\1.reg
@@ -910,7 +911,13 @@ echo "Start_ShowUser"=dword:00000000>>%P%\1.reg
 echo "Start_ShowHelp"=dword:00000000>>%P%\1.reg
 echo "Start_MinMFU"=dword:00000000>>%P%\1.reg
 echo "Start_ShowMyGames"=dword:00000000>>%P%\1.reg
-echo "Start_TrackProgs"=dword:00000001>>%P%\1.reg
+echo "Start_ShowMyPics"=dword:00000001>>%P%\1.reg
+echo "Start_ShowMyDocs"=dword:00000001>>%P%\1.reg
+echo "Start_ShowMyMusic"=dword:00000001>>%P%\1.reg
+echo "Start_ShowMyComputer"=dword:00000001>>%P%\1.reg
+echo "Start_ShowControlPanel"=dword:00000001>>%P%\1.reg
+echo "Start_SearchFiles"=dword:00000002>>%P%\1.reg
+echo "Start_ShowHomeGroup"=dword:00000000>>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%P%\1.reg
 echo "IconUnderline"=dword:00000002>>%P%\1.reg
@@ -1429,7 +1436,7 @@ echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
 
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
-SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%P%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
@@ -1610,7 +1617,7 @@ echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
 echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
-SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
@@ -1655,7 +1662,7 @@ echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
 echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
-SCHTASKS /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML %P%\1.xml /F 1>nul 2>nul
+SCHTASKS /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 
