@@ -200,57 +200,57 @@ echo.
 echo.
 echo Optimizing Windows settings...
 
-echo @echo off>%systemroot%\restore.bat
-echo start regedit /s %P%\1.reg>>%systemroot%\restore.bat
-echo chcp 437>>%systemroot%\restore.bat
-echo title CONGRATULATIONS !>>%systemroot%\restore.bat
-echo color 2f>>%systemroot%\restore.bat
-echo mode con cols=38 lines=19>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo YOUR PC IS SAFE AND SOUND !>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo HAVE A NICE DAY, %USERNAME% !>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo echo.>>%systemroot%\restore.bat
-echo pause>>%systemroot%\restore.bat
-echo exit>>%systemroot%\restore.bat
+echo @echo off>%systemroot%\safe.bat
+echo start regedit /s %P%\1.reg>>%systemroot%\safe.bat
+echo chcp 437>>%systemroot%\safe.bat
+echo title CONGRATULATIONS !>>%systemroot%\safe.bat
+echo color 2f>>%systemroot%\safe.bat
+echo mode con cols=38 lines=19>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo YOUR PC IS SAFE AND SOUND !>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo HAVE A NICE DAY, %USERNAME% !>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo echo.>>%systemroot%\safe.bat
+echo pause>>%systemroot%\safe.bat
+echo exit>>%systemroot%\safe.bat
 
 
-echo @echo off>%systemroot%\pause.bat
-echo start regedit /s %P%\2.reg>>%systemroot%\pause.bat
-echo chcp 437>>%systemroot%\pause.bat
-echo title WARNING !>>%systemroot%\pause.bat
-echo color cf>>%systemroot%\pause.bat
-echo mode con cols=38 lines=23>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo YOUR PC IS NOT SAFE NOW !>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo "RESTORE" FROM START MENU TO>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo BRING YOUR PC BACK TO SAFETY !>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo echo.>>%systemroot%\pause.bat
-echo pause>>%systemroot%\pause.bat
-echo exit>>%systemroot%\pause.bat
+echo @echo off>%systemroot%\indanger.bat
+echo start regedit /s %P%\2.reg>>%systemroot%\indanger.bat
+echo chcp 437>>%systemroot%\indanger.bat
+echo title WARNING !>>%systemroot%\indanger.bat
+echo color cf>>%systemroot%\indanger.bat
+echo mode con cols=38 lines=23>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo YOUR PC IS NOT SAFE NOW !>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo "RESTORE" FROM START MENU TO>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo BRING YOUR PC BACK TO SAFETY !>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo echo.>>%systemroot%\indanger.bat
+echo pause>>%systemroot%\indanger.bat
+echo exit>>%systemroot%\indanger.bat
 
 
 echo Windows Registry Editor Version 5.00>%P%\2.reg
