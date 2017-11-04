@@ -22,7 +22,7 @@ exit
 
 :main
 mode con cols=45 lines=7
-title   Ready ?
+title Ready ?
 color fc
 pushd "%~dp0"
 chcp 437 1>nul 2>nul
@@ -64,14 +64,13 @@ powercfg /hibernate /type full 1>nul 2>nul
 
 
 :services
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Optimizing services . . .
-echo.
 echo.
 echo.
 del %T%\tmp1.txt 1>nul 2>nul
@@ -195,14 +194,13 @@ sc config WSearch start= auto 1>nul 2>nul
 
 
 :makereg
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Optimizing Windows settings . . .
-echo.
 echo.
 echo.
 echo @echo off>%systemroot%\besafe.bat
@@ -1387,14 +1385,13 @@ echo.>>%P%\1.reg
 
 
 :clearstartupfolders
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Optimizing autoruns. . .
-echo.
 echo.
 echo.
 echo.>%T%\startup
@@ -1438,14 +1435,13 @@ del %T%\powercfg.txt 1>nul 2>nul
 
 
 :disableschtasks
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Optimizing scheduled tasks. . .
-echo.
 echo.
 echo.
 schtasks /query /fo csv >%T%\detailedschtasks.txt
@@ -1529,14 +1525,13 @@ del %P%\1.xml 1>nul 2>nul
 
 
 :power
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Optimizing power options. . .
-echo.
 echo.
 echo.
 powercfg -restoredefaultschemes 1>nul 2>nul
@@ -1585,14 +1580,13 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /v ActivePowerSchem
 
 
 :whitelist
-title   Optimizing . . .
+title Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
 echo Applying whitelist . . .
-echo.
 echo.
 echo.
 if exist whitelist.txt (
