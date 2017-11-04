@@ -244,7 +244,7 @@ echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
-echo echo "RESTORE" FROM START MENU TO>>%systemroot%\beindanger.bat
+echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
