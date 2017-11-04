@@ -209,6 +209,7 @@ echo.>>%systemroot%\disablesafer.reg
 echo.>>%systemroot%\disablesafer.reg
 echo.>>%systemroot%\disablesafer.reg
 
+
 echo Windows Registry Editor Version 5.00>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%P%\1.reg
@@ -1276,6 +1277,51 @@ echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,6
 echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%P%\1.reg
 echo   00,00>>%P%\1.reg
 echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow TrustedApps">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"="*\\TrustedApps">>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow 7 - Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow Hao Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow Windows Explorer Zip Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%P%\1.reg
+echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow 7z*.tmp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%P%\1.reg
+echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Disallow WinRAR Temp">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%P%\1.reg
+echo   00,00>>%P%\1.reg
+echo.>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%P%\1.reg
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
+echo "Description"="Allow AppData Roaming">>%P%\1.reg
+echo "SaferFlags"=dword:00000000>>%P%\1.reg
+echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
+echo.>>%P%\1.reg
 
 
 
@@ -1658,4 +1704,5 @@ shutdown /r /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
