@@ -7,11 +7,11 @@ chcp 437 1>nul 2>nul
 if exist "%systemroot%"\check.check (
 del "%systemroot%"\check.check 1>nul 2>nul
 goto main) else (
-title Elevated Privileges Required!
+title   Elevated Privileges Required !
 mode con cols=70 lines=7
 color fc
 echo.
-echo Elevated privileges are required to optimize Windows!
+echo Elevated privileges are required to optimize Windows !
 echo.
 echo Please right click on me and click on "Run as administrator".
 echo.
@@ -22,7 +22,7 @@ exit
 
 :main
 mode con cols=45 lines=7
-title Are you ready?
+title   Ready ?
 color fc
 pushd "%~dp0"
 chcp 437 1>nul 2>nul
@@ -64,13 +64,16 @@ powercfg /hibernate /type full 1>nul 2>nul
 
 
 :services
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Optimizing services...
+echo Optimizing services . . .
+echo.
+echo.
+echo.
 del %T%\tmp1.txt 1>nul 2>nul
 del %T%\tmp2.txt 1>nul 2>nul
 del %T%\tmp3.txt 1>nul 2>nul
@@ -192,25 +195,27 @@ sc config WSearch start= auto 1>nul 2>nul
 
 
 :makereg
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Optimizing Windows settings...
-
+echo Optimizing Windows settings . . .
+echo.
+echo.
+echo.
 echo @echo off>%systemroot%\besafe.bat
 echo start regedit /s %P%\1.reg>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
-echo title CONGRATULATIONS !>>%systemroot%\besafe.bat
+echo title   WELL DONE !>>%systemroot%\besafe.bat
 echo color 2f>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS SAFE AND SOUND !>>%systemroot%\besafe.bat
+echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -227,13 +232,13 @@ echo exit>>%systemroot%\besafe.bat
 echo @echo off>%systemroot%\beindanger.bat
 echo start regedit /s %P%\2.reg>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
-echo title WARNING !>>%systemroot%\beindanger.bat
+echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
 echo color cf>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS NOT SAFE NOW !>>%systemroot%\beindanger.bat
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -245,7 +250,7 @@ echo echo "RESTORE" FROM START MENU TO>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
-echo echo BRING YOUR PC BACK TO SAFETY !>>%systemroot%\beindanger.bat
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -1382,13 +1387,16 @@ echo.>>%P%\1.reg
 
 
 :clearstartupfolders
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Optimizing autoruns...
+echo Optimizing autoruns. . .
+echo.
+echo.
+echo.
 echo.>%T%\startup
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
@@ -1430,13 +1438,16 @@ del %T%\powercfg.txt 1>nul 2>nul
 
 
 :disableschtasks
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Optimizing scheduled tasks...
+echo Optimizing scheduled tasks. . .
+echo.
+echo.
+echo.
 schtasks /query /fo csv >%T%\detailedschtasks.txt
 echo. >%T%\temp5.txt
 for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
@@ -1518,13 +1529,16 @@ del %P%\1.xml 1>nul 2>nul
 
 
 :power
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Optimizing power options...
+echo Optimizing power options. . .
+echo.
+echo.
+echo.
 powercfg -restoredefaultschemes 1>nul 2>nul
 del %systemroot%\powerplan.pow 1>nul 2>nul
 powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
@@ -1571,13 +1585,16 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /v ActivePowerSchem
 
 
 :whitelist
-title Optimizing Windows...
+title   Optimizing . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo Applying whitelist...
+echo Applying whitelist . . .
+echo.
+echo.
+echo.
 if exist whitelist.txt (
 goto applywhitelist) else (
 goto applyreg)
