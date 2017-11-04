@@ -205,105 +205,17 @@ echo.
 echo OPTIMIZING WINDOWS SETTINGS . . .
 echo.
 echo.
+
+
 echo explorer %systemdrive%\TrustedApps\PerfectWindows\>%systemroot%\beperfect.bat
-echo @echo off>%systemroot%\besafe.bat
-echo start regedit /s %A%>>%systemroot%\besafe.bat
-echo chcp 437>>%systemroot%\besafe.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
-echo title   WARNING ! ! !>>%systemroot%\besafe.bat
-echo color cf>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo title   WELL DONE !>>%systemroot%\besafe.bat
-echo color 2f>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit)>>%systemroot%\besafe.bat
 
 
-echo @echo off>%systemroot%\beindanger.bat
-echo start regedit /s %B%>>%systemroot%\beindanger.bat
-echo chcp 437>>%systemroot%\beindanger.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
-echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
-echo color cf>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo title   WELL DONE !>>%systemroot%\beindanger.bat
-echo color 2f>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit)>>%systemroot%\beindanger.bat
+echo start regedit /s %A%>%systemroot%\besafe.bat
+echo shutdown /l /f>>%systemroot%\besafe.bat
+
+
+echo start regedit /s %B%>%systemroot%\beindanger.bat
+echo shutdown /l /f>>%systemroot%\beindanger.bat
 
 
 echo Windows Registry Editor Version 5.00>%B%
@@ -312,6 +224,8 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
 echo.>>%B%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%B%
 echo "AuthenticodeEnabled"=dword:00000000>>%B%
+echo [%CU%\Control Panel\Desktop]>>%B%
+echo "UserPreferencesMask"=hex:98,52,07,80,13,01,00,00>>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%B%
 echo.>>%B%
 echo.>>%B%
