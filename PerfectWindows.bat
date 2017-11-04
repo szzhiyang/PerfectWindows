@@ -205,7 +205,7 @@ echo start regedit /s %P%\1.reg>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
 echo title CONGRATULATIONS !>>%systemroot%\besafe.bat
 echo color 2f>>%systemroot%\besafe.bat
-echo mode con cols=38 lines=19>>%systemroot%\besafe.bat
+echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -215,7 +215,7 @@ echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
-echo echo HAVE A NICE DAY, %USERNAME% !>>%systemroot%\besafe.bat
+echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -229,7 +229,7 @@ echo start regedit /s %P%\2.reg>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
 echo title WARNING !>>%systemroot%\beindanger.bat
 echo color cf>>%systemroot%\beindanger.bat
-echo mode con cols=38 lines=23>>%systemroot%\beindanger.bat
+echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -259,6 +259,7 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\2.reg
 echo.>>%P%\2.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\2.reg
 echo "AuthenticodeEnabled"=dword:00000000>>%P%\2.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%P%\2.reg
 echo.>>%P%\2.reg
 echo.>>%P%\2.reg
 echo.>>%P%\2.reg
