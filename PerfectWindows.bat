@@ -47,10 +47,6 @@ set P=%systemroot%\PerfectWindows
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
-SCHTASKS /END /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
-SCHTASKS /END /TN "\Perfect Windows\Refresh Current User Reg" 1>nul 2>nul
-SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Local Machine Reg" /F 1>nul 2>nul
-SCHTASKS /DELETE /TN "\Perfect Windows\Refresh Current User Reg" /F 1>nul 2>nul
 rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 md %P% 1>nul 2>nul
