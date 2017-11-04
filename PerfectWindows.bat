@@ -196,6 +196,16 @@ color fc
 echo.
 echo Optimizing Windows settings...
 
+echo Windows Registry Editor Version 5.00>%systemroot%\disablesafer.reg
+echo.>>%systemroot%\disablesafer.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\disablesafer.reg
+echo.>>%systemroot%\disablesafer.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\disablesafer.reg
+echo "AuthenticodeEnabled"=dword:00000000>>%systemroot%\disablesafer.reg
+echo.>>%systemroot%\disablesafer.reg
+echo.>>%systemroot%\disablesafer.reg
+echo.>>%systemroot%\disablesafer.reg
+
 echo Windows Registry Editor Version 5.00>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%P%\1.reg
@@ -1543,10 +1553,6 @@ echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%P%\1.reg
 echo "ShowSleepOption"=->>%P%\1.reg
 echo "ShowHibernateOption"=->>%P%\1.reg
 echo "ShowLockOption"=->>%P%\1.reg
-echo.>>%P%\1.reg)
-
-if %%i equ safer (
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\1.reg
 echo.>>%P%\1.reg)
 
 if %%i equ desktop (
