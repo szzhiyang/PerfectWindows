@@ -1303,9 +1303,9 @@ echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%P%\1.reg
 echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow 7z*.tmp">>%P%\1.reg
+echo "Description"="Disallow 7z*.tmp">>%P%\1.reg
 echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%P%\1.reg
 echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
