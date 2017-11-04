@@ -69,8 +69,10 @@ powercfg /hibernate /type full 1>nul 2>nul
 
 :services
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Optimizing services...
 del %T%\tmp1.txt 1>nul 2>nul
@@ -195,20 +197,76 @@ sc config WSearch start= auto 1>nul 2>nul
 
 :makereg
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Optimizing Windows settings...
 
-echo Windows Registry Editor Version 5.00>%systemroot%\disablesafer.reg
-echo.>>%systemroot%\disablesafer.reg
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%systemroot%\disablesafer.reg
-echo.>>%systemroot%\disablesafer.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%systemroot%\disablesafer.reg
-echo "AuthenticodeEnabled"=dword:00000000>>%systemroot%\disablesafer.reg
-echo.>>%systemroot%\disablesafer.reg
-echo.>>%systemroot%\disablesafer.reg
-echo.>>%systemroot%\disablesafer.reg
+echo @echo off>%systemroot%\restore.bat
+echo start regedit /s %P%\1.reg>>%systemroot%\restore.bat
+echo chcp 437>>%systemroot%\restore.bat
+echo title CONGRATULATIONS !>>%systemroot%\restore.bat
+echo color 2f>>%systemroot%\restore.bat
+echo mode con cols=38 lines=19>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo YOUR PC IS SAFE AND SOUND !>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo HAVE A NICE DAY, %USERNAME% !>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo echo.>>%systemroot%\restore.bat
+echo pause>>%systemroot%\restore.bat
+echo exit>>%systemroot%\restore.bat
+
+
+echo @echo off>%systemroot%\pause.bat
+echo start regedit /s %P%\2.reg>>%systemroot%\pause.bat
+echo chcp 437>>%systemroot%\pause.bat
+echo title WARNING !>>%systemroot%\pause.bat
+echo color cf>>%systemroot%\pause.bat
+echo mode con cols=38 lines=23>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo YOUR PC IS NOT SAFE NOW !>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo "RESTORE" FROM START MENU TO>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo BRING YOUR PC BACK TO SAFETY !>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo echo.>>%systemroot%\pause.bat
+echo pause>>%systemroot%\pause.bat
+echo exit>>%systemroot%\pause.bat
+
+
+echo Windows Registry Editor Version 5.00>%P%\2.reg
+echo.>>%P%\2.reg
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%P%\2.reg
+echo.>>%P%\2.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%P%\2.reg
+echo "AuthenticodeEnabled"=dword:00000000>>%P%\2.reg
+echo.>>%P%\2.reg
+echo.>>%P%\2.reg
+echo.>>%P%\2.reg
+echo.>>%P%\2.reg
 
 
 echo Windows Registry Editor Version 5.00>%P%\1.reg
@@ -1328,8 +1386,10 @@ echo.>>%P%\1.reg
 
 :clearstartupfolders
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Optimizing autoruns...
 echo.>%T%\startup
@@ -1374,8 +1434,10 @@ del %T%\powercfg.txt 1>nul 2>nul
 
 :disableschtasks
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Optimizing scheduled tasks...
 schtasks /query /fo csv >%T%\detailedschtasks.txt
@@ -1460,8 +1522,10 @@ del %P%\1.xml 1>nul 2>nul
 
 :power
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Optimizing power options...
 powercfg -restoredefaultschemes 1>nul 2>nul
@@ -1511,8 +1575,10 @@ REG ADD HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /v ActivePowerSchem
 
 :whitelist
 title Optimizing Windows...
-mode con cols=45 lines=3
+mode con cols=45 lines=7
 color fc
+echo.
+echo.
 echo.
 echo Applying whitelist...
 if exist whitelist.txt (
@@ -1623,7 +1689,7 @@ echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
 echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
-SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
+SCHTASKSBETA /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
@@ -1667,7 +1733,7 @@ echo       ^<Arguments^>import %P%\1.reg /reg:32^</Arguments^>>>%P%\1.xml
 echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
-SCHTASKS /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
+SCHTASKSBETA /CREATE /TN "\Perfect Windows\Refresh Current User Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 
