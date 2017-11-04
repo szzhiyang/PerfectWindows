@@ -1575,7 +1575,9 @@ powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460
 powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 0 1>nul 2>nul
 powercfg /setactive 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
 del %systemroot%\powerplan.pow 1>nul 2>nul
-REG ADD HKLM\SOFTWARE\Policies\Microsoft\Power\PowerSettings /v ActivePowerScheme /t REG_SZ /d 281b4222-f694-41f0-9685-ff5bb260df2e /f 1>nul 2>nul
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%P%\1.reg
+echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%P%\1.reg
+echo.>>%P%\1.reg
 
 
 
