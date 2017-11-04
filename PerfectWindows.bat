@@ -19,10 +19,13 @@ pause
 exit
 )
 
+
 :main
 mode con cols=45 lines=7
 title Are you ready?
 color fc
+pushd "%~dp0"
+chcp 437 1>nul 2>nul
 echo.
 echo To ensure the optimization works,
 echo your PC will be restarted automatically.
@@ -1235,45 +1238,6 @@ echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%P%\1.reg
 echo   74,00,61,00,25,00,00,00>>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Disallow 7 - Zip Temp">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Disallow Hao Zip Temp">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Disallow Windows Explorer Zip Temp">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%P%\1.reg
-echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow 7z*.tmp">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%P%\1.reg
-echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Disallow WinRAR Temp">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%P%\1.reg
-echo   00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow AppData Roaming">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
 echo "Description"="Allow AppData Local">>%P%\1.reg
@@ -1281,17 +1245,11 @@ echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%P%\1.reg
 echo   61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow Temp">>%P%\1.reg
+echo "Description"="Disallow Temp">>%P%\1.reg
 echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%P%\1.reg
-echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%P%\1.reg
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow TrustedApps">>%P%\1.reg
-echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"="*\\TrustedApps">>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
@@ -1700,4 +1658,5 @@ shutdown /r /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
