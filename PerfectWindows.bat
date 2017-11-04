@@ -1281,7 +1281,7 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Path
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
 echo "Description"="Allow TrustedApps">>%P%\1.reg
 echo "SaferFlags"=dword:00000000>>%P%\1.reg
-echo "ItemData"="*\\TrustedApps">>%P%\1.reg
+echo "ItemData"="%systemdrive%\\TrustedApps">>%P%\1.reg
 echo.>>%P%\1.reg
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
@@ -1316,9 +1316,9 @@ echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%P%\1.reg
 echo   00,00>>%P%\1.reg
 echo.>>%P%\1.reg
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%P%\1.reg
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%P%\1.reg
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%P%\1.reg
-echo "Description"="Allow AppData Roaming">>%P%\1.reg
+echo "Description"="Disallow AppData Roaming">>%P%\1.reg
 echo "SaferFlags"=dword:00000000>>%P%\1.reg
 echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%P%\1.reg
 echo.>>%P%\1.reg
