@@ -55,6 +55,7 @@ rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
+md %systemdrive%\TrustedApps 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
