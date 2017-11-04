@@ -1580,14 +1580,6 @@ echo     ^</BootTrigger^>>>%P%\1.xml
 echo     ^<LogonTrigger^>>>%P%\1.xml
 echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
 echo     ^</LogonTrigger^>>>%P%\1.xml
-echo     ^<TimeTrigger^>>>%P%\1.xml
-echo       ^<Repetition^>>>%P%\1.xml
-echo         ^<Interval^>PT1M^</Interval^>>>%P%\1.xml
-echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%P%\1.xml
-echo       ^</Repetition^>>>%P%\1.xml
-echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%P%\1.xml
-echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
-echo     ^</TimeTrigger^>>>%P%\1.xml
 echo   ^</Triggers^>>>%P%\1.xml
 echo   ^<Principals^>>>%P%\1.xml
 echo     ^<Principal id="Author"^>>>%P%\1.xml
@@ -1621,7 +1613,6 @@ echo     ^</Exec^>>>%P%\1.xml
 echo   ^</Actions^>>>%P%\1.xml
 echo ^</Task^>>>%P%\1.xml
 SCHTASKS /CREATE /RU SYSTEM /TN "\Perfect Windows\Refresh Local Machine Reg" /XML "%P%\1.xml" /F 1>nul 2>nul
-SCHTASKS /RUN /TN "\Perfect Windows\Refresh Local Machine Reg" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
 del %P%\1.xml 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
@@ -1703,4 +1694,5 @@ shutdown /r /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
