@@ -246,7 +246,7 @@ echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
 echo title   WARNING ! ! !>>%systemroot%\besafe.bat
 echo color cf>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -271,7 +271,7 @@ echo exit) else (>>%systemroot%\besafe.bat
 echo title   WELL DONE !>>%systemroot%\besafe.bat
 echo color 2f>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -309,7 +309,7 @@ echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
 echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
 echo color cf>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -334,7 +334,7 @@ echo exit) else (>>%systemroot%\beindanger.bat
 echo title   WELL DONE !>>%systemroot%\beindanger.bat
 echo color 2f>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
