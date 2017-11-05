@@ -34,7 +34,25 @@ echo If you are ready to restart your PC,
 pause
 taskkill /f /im explorer.exe 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
+set P=%systemroot%\PerfectWindowsZZY
+set T=%systemroot%\PerfectWindowsTemp
+set LM=HKEY_LOCAL_MACHINE
+set CU=HKEY_CURRENT_USER
+set A=%P%\Core.reg
+set B=%P%\ClearSoftwareRestrictionPolicies.reg
+rd /s /q %P% 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
+rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
+md %P% 1>nul 2>nul
+md %T% 1>nul 2>nul
+md %LocalAppdata%\PerfectWindows 1>nul 2>nul
+powercfg /hibernate /size 75 1>nul 2>nul
+powercfg /hibernate /type full 1>nul 2>nul
+rd /s /q %T% 1>nul 2>nul
+md %P% 1>nul 2>nul
+md %T% 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
 attrib +h +s "%ProgramData%" 1>nul 2>nul
@@ -44,22 +62,12 @@ attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
-set P=%systemroot%\PerfectWindows
-set T=%systemroot%\PerfectWindowsTemp
-set LM=HKEY_LOCAL_MACHINE
-set CU=HKEY_CURRENT_USER
-set A=%P%\Core.reg
-set B=%P%\ClearSoftwareRestrictionPolicies.reg
-rd /s /q %P% 1>nul 2>nul
-rd /s /q %T% 1>nul 2>nul
-md %P% 1>nul 2>nul
-md %T% 1>nul 2>nul
-md %LocalAppdata%\PerfectWindows 1>nul 2>nul
-powercfg /hibernate /size 75 1>nul 2>nul
-powercfg /hibernate /type full 1>nul 2>nul
-rd /s /q %T% 1>nul 2>nul
-md %P% 1>nul 2>nul
-md %T% 1>nul 2>nul
+attrib +h +s "%LocalAppData%" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
+attrib +h +s "%AppData%" 1>nul 2>nul
+attrib +h +s "%tmp%" 1>nul 2>nul
+attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
 
@@ -207,10 +215,12 @@ echo OPTIMIZING WINDOWS SETTINGS . . .
 echo.
 echo.
 
-
+attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
 echo explorer %LocalAppdata%\PerfectWindows\>%systemroot%\beperfect.bat
+attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 
+attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\besafe.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo start regedit /s %A%>>%systemroot%\besafe.bat
@@ -262,8 +272,10 @@ echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo pause>>%systemroot%\besafe.bat
 echo exit)>>%systemroot%\besafe.bat
+attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
 
 
+attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beindanger.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo start regedit /s %B%>>%systemroot%\beindanger.bat
@@ -315,6 +327,7 @@ echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo pause>>%systemroot%\beindanger.bat
 echo exit)>>%systemroot%\beindanger.bat
+attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 
 
 
@@ -352,6 +365,7 @@ echo.>>%B%
 echo.>>%B%
 echo.>>%B%
 echo.>>%B%
+attrib +h +s "%B%" 1>nul 2>nul
 
 
 echo Windows Registry Editor Version 5.00>%A%
@@ -1739,6 +1753,7 @@ echo.>>%A%
 echo.>>%A%
 echo.>>%A%
 echo.>>%A%
+attrib +h +s "%A%" 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
@@ -1776,6 +1791,7 @@ ipconfig /flushdns 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
