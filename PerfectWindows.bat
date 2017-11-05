@@ -66,7 +66,6 @@ attrib +h +s "%LocalAppData%" 1>nul 2>nul
 attrib -h -s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
 attrib +h +s "%AppData%" 1>nul 2>nul
-attrib +h +s "%tmp%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
@@ -216,13 +215,30 @@ echo.
 echo.
 
 attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
-echo explorer %LocalAppdata%\PerfectWindows\>%systemroot%\beperfect.bat
+echo @echo off>%systemroot%\beperfect.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo explorer %LocalAppdata%\PerfectWindows\>>%systemroot%\beperfect.bat
 attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 
 attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\besafe.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo start regedit /s %A%>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
@@ -278,6 +294,14 @@ attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
 attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beindanger.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo start regedit /s %B%>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
@@ -1785,12 +1809,17 @@ copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
 
 
 :restart
-rd /s /q %T% 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
-rd /s /q %T% 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
+md "%tmp%" 1>nul 2>nul
+attrib +h +s "%tmp%" 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+md "%tmp%" 1>nul 2>nul
+attrib +h +s "%tmp%" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
