@@ -54,7 +54,7 @@ rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
-md %systemdrive%\TrustedApps\PerfectWindows 1>nul 2>nul
+md %LocalAppdata%\PerfectWindows 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
@@ -208,7 +208,7 @@ echo.
 echo.
 
 
-echo explorer %systemdrive%\TrustedApps\PerfectWindows\>%systemroot%\beperfect.bat
+echo explorer %LocalAppdata%\PerfectWindows\>%systemroot%\beperfect.bat
 
 
 echo @echo off>%systemroot%\besafe.bat
@@ -1426,10 +1426,6 @@ echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,0
 echo   00,00>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow TrustedApps">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\TrustedApps">>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
@@ -1761,12 +1757,12 @@ ren hosts hosts.txt
 
 
 :copy
-if "%~0" equ "%systemdrive%\TrustedApps\PerfectWindows\PerfectWindows.bat" (
+if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
 goto restart) else (
-copy "%~0" /Y %systemdrive%\TrustedApps\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
+copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
 )
-copy whitelist.txt /Y %systemdrive%\TrustedApps\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %systemdrive%\TrustedApps\PerfectWindows\hosts.txt 1>nul 2>nul
+copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
+copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
 
 
 
