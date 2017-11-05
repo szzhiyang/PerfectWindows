@@ -239,7 +239,7 @@ echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo start regedit /s %A%>>%systemroot%\besafe.bat
+echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
@@ -302,7 +302,7 @@ echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo start regedit /s %B%>>%systemroot%\beindanger.bat
+echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
