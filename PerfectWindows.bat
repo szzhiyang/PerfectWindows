@@ -437,6 +437,8 @@ echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%A
 echo.>>%A%
 echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%A%
 echo.>>%A%
+echo [-%CU%\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]>>%A%
+echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%A%
 echo "SMBDeviceEnabled"=dword:00000000>>%A%
 echo "TransportBindName"=->>%A%
