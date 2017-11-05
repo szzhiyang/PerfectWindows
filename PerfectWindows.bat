@@ -32,6 +32,7 @@ echo your PC will be restarted automatically.
 echo.
 echo If you are ready to restart your PC,
 pause
+taskkill /f /im explorer.exe 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
@@ -211,6 +212,7 @@ echo explorer %systemdrive%\TrustedApps\PerfectWindows\>%systemroot%\beperfect.b
 
 
 echo @echo off>%systemroot%\besafe.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo start regedit /s %A%>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
@@ -218,6 +220,7 @@ echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
 echo title   WARNING ! ! !>>%systemroot%\besafe.bat
 echo color cf>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -242,6 +245,7 @@ echo exit) else (>>%systemroot%\besafe.bat
 echo title   WELL DONE !>>%systemroot%\besafe.bat
 echo color 2f>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -261,6 +265,7 @@ echo exit)>>%systemroot%\besafe.bat
 
 
 echo @echo off>%systemroot%\beindanger.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo start regedit /s %B%>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
@@ -268,6 +273,7 @@ echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
 echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
 echo color cf>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -292,6 +298,7 @@ echo exit) else (>>%systemroot%\beindanger.bat
 echo title   WELL DONE !>>%systemroot%\beindanger.bat
 echo color 2f>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -317,10 +324,30 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
 echo.>>%B%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%B%
 echo "AuthenticodeEnabled"=dword:00000000>>%B%
+echo.>>%B%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
+echo "NoTrayItemsDisplay"=dword:00000001>>%B%
+echo.>>%B%
 echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
 echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
+echo.>>%B%
+echo [%CU%\Control Panel\International]>>%B%
+echo "sShortTime"="tt H:mm">>%B%
+echo "s1159"="IN DANGER!  ">>%B%
+echo "s2359"="IN DANGER!  ">>%B%
+echo.>>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%B%
+echo.>>%B%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%B%
+echo "SeparateProcess"=dword:00000001>>%B%
+echo "Hidden"=dword:00000002>>%B%
+echo "ShowSuperHidden"=dword:00000000>>%B%
+echo "HideFileExt"=dword:00000000>>%B%
+echo "TaskbarSizeMove"=dword:00000000>>%B%
+echo "TaskbarGlomLevel"=dword:00000001>>%B%
+echo "TaskbarGlomming"=dword:00000000>>%B%
+echo "TaskbarSmallIcons"=dword:00000001>>%B%
 echo.>>%B%
 echo.>>%B%
 echo.>>%B%
@@ -666,6 +693,10 @@ echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "Start_TrackDocs"=dword:00000000>>%A%
 echo.>>%A%
+echo [%CU%\Control Panel\International]>>%A%
+echo "sShortTime"=->>%A%
+echo "s1159"=->>%A%
+echo "s2359"=->>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "LaunchTo"=dword:00000001>>%A%
 echo.>>%A%
