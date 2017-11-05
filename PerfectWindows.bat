@@ -1088,6 +1088,7 @@ echo "IconUnderline"=dword:00000002>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%A%
 echo "Enabled"=dword:00000000>>%A%
+echo.>>%A%
 echo [%CU%\Control Panel\International\User Profile]>>%A%
 echo "HttpAcceptLanguageOptOut"=dword:00000001>>%A%
 echo.>>%A%
