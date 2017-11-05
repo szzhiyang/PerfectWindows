@@ -38,8 +38,8 @@ set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
-set A=%P%\Core.reg
-set B=%P%\ClearSoftwareRestrictionPolicies.reg
+set A=%P%\Core%random%.reg
+set B=%P%\ClearSoftwareRestrictionPolicies%random%.reg
 rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
 rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
