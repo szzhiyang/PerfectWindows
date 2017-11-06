@@ -215,6 +215,12 @@ echo.
 
 attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beperfect.bat
+echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\beperfect.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo exit) else (>>%systemroot%\beperfect.bat
+echo goto main)>>%systemroot%\beperfect.bat
+echo :main>>%systemroot%\beperfect.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
@@ -229,6 +235,12 @@ attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\besafe.bat
+echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\besafe.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo exit) else (>>%systemroot%\besafe.bat
+echo goto main)>>%systemroot%\besafe.bat
+echo :main>>%systemroot%\besafe.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
@@ -292,6 +304,12 @@ attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beindanger.bat
+echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\beindanger.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo exit) else (>>%systemroot%\beindanger.bat
+echo goto main)>>%systemroot%\beindanger.bat
+echo :main>>%systemroot%\beindanger.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
@@ -1810,4 +1828,5 @@ shutdown /r /f /t 0 1>nul 2>nul
 :"ConnectionOptionsFlag"=dword:00000001
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
+
 
