@@ -1726,6 +1726,20 @@ powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41f
 powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 2 1>nul 2>nul
 powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 2 1>nul 2>nul
 powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 64 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 3 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 0 1>nul 2>nul
 powercfg /setactive 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
 del %systemroot%\powerplan.pow 1>nul 2>nul
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
