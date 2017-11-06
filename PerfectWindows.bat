@@ -215,7 +215,7 @@ echo.
 
 attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beperfect.bat
-echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo if exist "%systemroot%"\check.check (>>%systemroot%\beperfect.bat
 echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo exit) else (>>%systemroot%\beperfect.bat
@@ -235,7 +235,7 @@ attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\besafe.bat
-echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo if exist "%systemroot%"\check.check (>>%systemroot%\besafe.bat
 echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo exit) else (>>%systemroot%\besafe.bat
@@ -304,7 +304,7 @@ attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beindanger.bat
-echo (echo check>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo if exist "%systemroot%"\check.check (>>%systemroot%\beindanger.bat
 echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo exit) else (>>%systemroot%\beindanger.bat
