@@ -52,7 +52,6 @@ rd /s /q %T% 1>nul 2>nul
 md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
 attrib +h +s "%ProgramData%" 1>nul 2>nul
@@ -368,6 +367,7 @@ echo.>>%B%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%B%
 echo "ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%B%
 echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%B%
+echo "IconUnderline"=dword:00000001>>%B%
 echo.>>%B%
 echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
@@ -1087,7 +1087,7 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A5
 echo "ACSettingIndex"=dword:00000001>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]>>%A%
-echo "DCSettingIndex"=dword:00000014>>%A%
+echo "DCSettingIndex"=dword:00000064>>%A%
 echo "ACSettingIndex"=dword:00000001>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]>>%A%
@@ -1126,7 +1126,7 @@ echo "Start_SearchFiles"=dword:00000002>>%A%
 echo "Start_ShowHomeGroup"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
-echo "IconUnderline"=dword:00000002>>%A%
+echo "IconUnderline"=dword:00000001>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%A%
 echo "Enabled"=dword:00000000>>%A%
@@ -1739,36 +1739,6 @@ echo "AllowCortanaAboveLock"=->>%A%
 echo.>>%A%
 echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
-echo.>>%A%)
-
-if %%i equ power (
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%A%
-echo "ScreenSaveTimeOut"=->>%A%
-echo "ScreenSaveActive"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "NoDispScrSavPage"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoClose"=->>%A%
-echo.>>%A%
-echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "HidePowerOptions"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "PowerButtonAction"=->>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ShowSleepOption"=->>%A%
-echo "ShowHibernateOption"=->>%A%
-echo "ShowLockOption"=->>%A%
-echo.>>%A%)
-
-if %%i equ desktop (
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=->>%A%
 echo.>>%A%) else (
 sc config "%%i" start= auto 1>nul 2>nul
 schtasks /change /tn "%%i" /enable 1>nul 2>nul)
@@ -1825,6 +1795,8 @@ attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
