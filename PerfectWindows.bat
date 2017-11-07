@@ -32,17 +32,32 @@ echo your PC will be restarted automatically.
 echo.
 echo If you are ready to restart your PC,
 pause
+
+title OPTIMIZING . . .
+mode con cols=45 lines=7
+color fc
+echo.
+echo.
+echo.
+echo OPTIMIZING WINDOWS SERVICES . . .
+echo.
+echo.
 taskkill /f /im explorer.exe 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
-set A=%P%\Core%random%.reg
-set B=%P%\ClearSoftwareRestrictionPolicies%random%.reg
+set A=%P%\Core.reg
+set B=%P%\ClearSoftwareRestrictionPolicies.reg
 rd /s /q %P% 1>nul 2>nul
 rd /s /q %T% 1>nul 2>nul
-rd /s /q %systemroot%\PerfectWindows 1>nul 2>nul
+sc pause sysmain 1>nul 2>nul
+sc pause sysmain 1>nul 2>nul
+sc stop sysmain 1>nul 2>nul
+sc stop sysmain 1>nul 2>nul
+rd /s /q %systemroot%\Prefetch 1>nul 2>nul
+rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md %P% 1>nul 2>nul
 md %T% 1>nul 2>nul
 md %LocalAppdata%\PerfectWindows 1>nul 2>nul
@@ -66,26 +81,110 @@ attrib -h -s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
 attrib +h +s "%AppData%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
-powercfg /hibernate /size 75 1>nul 2>nul
-powercfg /hibernate /type full 1>nul 2>nul
+echo.>%T%\startup
+rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+del %T%\startup 1>nul 2>nul
+rd /s /q "%tmp%" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+rd /s /q "%tmp%" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+md "%tmp%" 1>nul 2>nul
+attrib +h +s "%tmp%" 1>nul 2>nul
+md "%tmp%" 1>nul 2>nul
+attrib +h +s "%tmp%" 1>nul 2>nul
+
+if exist whitelist.txt (
+goto hosts) else (
+echo You can exclude your needed services or scheduled tasks here.>whitelist.txt
+goto hosts)
+
+:hosts
+if exist hosts.txt (
+goto applyhosts) else (
+goto copy)
+
+:applyhosts
+ren hosts.txt hosts
+copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+ren hosts hosts.txt
+
+:copy
+if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
+goto power) else (
+copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
+)
+copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
+copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+
+:power
+powercfg -restoredefaultschemes 1>nul 2>nul
+del %systemroot%\powerplan.pow 1>nul 2>nul
+powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
+powercfg /delete 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
+powercfg /export %systemroot%\powerplan.pow 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
+powercfg /import %systemroot%\powerplan.pow 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
+powercfg /changename 281b4222-f694-41f0-9685-ff5bb260df2e "Perfect" "Favors performance when plugged in. Saves energy when on battery." 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 1 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 3 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 2 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 100 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 5 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 2 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 2 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 64 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 3 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 0 1>nul 2>nul
+powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 1 1>nul 2>nul
+powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 0 1>nul 2>nul
+powercfg /setactive 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
+del %systemroot%\powerplan.pow 1>nul 2>nul
 
 
 
 
 :services
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING SERVICES . . .
-echo.
-echo.
-del %T%\tmp1.txt 1>nul 2>nul
-del %T%\tmp2.txt 1>nul 2>nul
-del %T%\tmp3.txt 1>nul 2>nul
-del %T%\services.txt 1>nul 2>nul
 sc query state= all >%T%\tmp1.txt
 findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
 
@@ -200,6 +299,10 @@ sc config winmgmt start= auto 1>nul 2>nul
 sc config wmiApSrv start= auto 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
 
+for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+sc config "%%i" start= auto 1>nul 2>nul
+)
+
 
 
 :makereg
@@ -213,162 +316,7 @@ echo OPTIMIZING WINDOWS SETTINGS . . .
 echo.
 echo.
 
-attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beperfect.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\beperfect.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo exit) else (>>%systemroot%\beperfect.bat
-echo goto main)>>%systemroot%\beperfect.bat
-echo :main>>%systemroot%\beperfect.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo explorer %LocalAppdata%\PerfectWindows\>>%systemroot%\beperfect.bat
-attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
-
-attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\besafe.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\besafe.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo goto main)>>%systemroot%\besafe.bat
-echo :main>>%systemroot%\besafe.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo chcp 437>>%systemroot%\besafe.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
-echo title   WARNING ! ! !>>%systemroot%\besafe.bat
-echo color cf>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo title   WELL DONE !>>%systemroot%\besafe.bat
-echo color 2f>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit)>>%systemroot%\besafe.bat
-attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
-
-
-attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beindanger.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\beindanger.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo goto main)>>%systemroot%\beindanger.bat
-echo :main>>%systemroot%\beindanger.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo chcp 437>>%systemroot%\beindanger.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
-echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
-echo color cf>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo title   WELL DONE !>>%systemroot%\beindanger.bat
-echo color 2f>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit)>>%systemroot%\beindanger.bat
-attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 
 
 
@@ -1538,31 +1486,208 @@ echo "Description"="Disallow AppData Roaming">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
+echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%A%
+echo.>>%A%
 
 
+for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+if %%i equ onedrive (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=->>%A%
+echo "DisableFileSync"=->>%A%
+echo.>>%A%)
 
-:clearstartupfolders
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING AUTORUNS . . .
-echo.
-echo.
-echo.>%T%\startup
-rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-del %T%\startup 1>nul 2>nul
+if %%i equ cortana (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
+echo "AllowCortana"=->>%A%
+echo "AllowCortanaAboveLock"=->>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "DisableSearchBoxSuggestions"=->>%A%
+echo.>>%A%)
+)
 
+echo.>>%A%
+echo.>>%A%
+echo.>>%A%
+echo.>>%A%
+attrib +h +s "%A%" 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
+
+
+attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\beperfect.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\beperfect.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo exit) else (>>%systemroot%\beperfect.bat
+echo goto main)>>%systemroot%\beperfect.bat
+echo :main>>%systemroot%\beperfect.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo explorer %LocalAppdata%\PerfectWindows\>>%systemroot%\beperfect.bat
+attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
+
+
+attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\besafe.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\besafe.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo exit) else (>>%systemroot%\besafe.bat
+echo goto main)>>%systemroot%\besafe.bat
+echo :main>>%systemroot%\besafe.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo chcp 437>>%systemroot%\besafe.bat
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
+echo title   WARNING ! ! !>>%systemroot%\besafe.bat
+echo color cf>>%systemroot%\besafe.bat
+echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo pause>>%systemroot%\besafe.bat
+echo exit) else (>>%systemroot%\besafe.bat
+echo title   WELL DONE !>>%systemroot%\besafe.bat
+echo color 2f>>%systemroot%\besafe.bat
+echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo pause>>%systemroot%\besafe.bat
+echo exit)>>%systemroot%\besafe.bat
+attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
+
+
+attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\beindanger.bat
+echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if exist "%systemroot%"\check.check (>>%systemroot%\beindanger.bat
+echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo exit) else (>>%systemroot%\beindanger.bat
+echo goto main)>>%systemroot%\beindanger.bat
+echo :main>>%systemroot%\beindanger.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo chcp 437>>%systemroot%\beindanger.bat
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
+echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
+echo color cf>>%systemroot%\beindanger.bat
+echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo pause>>%systemroot%\beindanger.bat
+echo exit) else (>>%systemroot%\beindanger.bat
+echo title   WELL DONE !>>%systemroot%\beindanger.bat
+echo color 2f>>%systemroot%\beindanger.bat
+echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo pause>>%systemroot%\beindanger.bat
+echo exit)>>%systemroot%\beindanger.bat
+attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 
 
 :devicedisablewake
+powercfg /devicequery wake_armed >%T%\powercfg.txt
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
+powercfg /devicequery wake_armed >%T%\powercfg.txt
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 powercfg /devicequery wake_armed >%T%\powercfg.txt
 for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 powercfg /devicequery wake_armed >%T%\powercfg.txt
@@ -1588,6 +1713,50 @@ del %T%\find.txt 1>nul 2>nul
 del %T%\Reverse.txt 1>nul 2>nul
 del %T%\Reverse.reg 1>nul 2>nul
 del %T%\powercfg.txt 1>nul 2>nul
+
+
+:reversemouse
+echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
+reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
+findstr Parameter %T%\Reverse.txt > %T%\find.txt
+
+for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
+echo [%%i] >>%T%\Reverse.reg
+echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
+)
+
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+del %T%\find.txt 1>nul 2>nul
+del %T%\Reverse.txt 1>nul 2>nul
+del %T%\Reverse.reg 1>nul 2>nul
+del %T%\powercfg.txt 1>nul 2>nul
+
+:reversemouse
+echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
+reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
+findstr Parameter %T%\Reverse.txt > %T%\find.txt
+
+for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
+echo [%%i] >>%T%\Reverse.reg
+echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
+echo. >>%T%\Reverse.reg
+)
+
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+del %T%\find.txt 1>nul 2>nul
+del %T%\Reverse.txt 1>nul 2>nul
+del %T%\Reverse.reg 1>nul 2>nul
+del %T%\powercfg.txt 1>nul 2>nul
+
 
 
 
@@ -1625,219 +1794,70 @@ schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 
 schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
 schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
 
-echo ^<?xml version="1.0" encoding="UTF-16"?^>>%P%\1.xml
-echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%P%\1.xml
-echo   ^<RegistrationInfo^>>>%P%\1.xml
-echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%P%\1.xml
-echo   ^</RegistrationInfo^>>>%P%\1.xml
-echo   ^<Triggers^>>>%P%\1.xml
-echo     ^<TimeTrigger^>>>%P%\1.xml
-echo       ^<Repetition^>>>%P%\1.xml
-echo         ^<Interval^>PT5M^</Interval^>>>%P%\1.xml
-echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%P%\1.xml
-echo       ^</Repetition^>>>%P%\1.xml
-echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%P%\1.xml
-echo       ^<Enabled^>true^</Enabled^>>>%P%\1.xml
-echo     ^</TimeTrigger^>>>%P%\1.xml
-echo   ^</Triggers^>>>%P%\1.xml
-echo   ^<Principals^>>>%P%\1.xml
-echo     ^<Principal id="Author"^>>>%P%\1.xml
-echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%P%\1.xml
-echo     ^</Principal^>>>%P%\1.xml
-echo   ^</Principals^>>>%P%\1.xml
-echo   ^<Settings^>>>%P%\1.xml
-echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%P%\1.xml
-echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%P%\1.xml
-echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%P%\1.xml
-echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%P%\1.xml
-echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%P%\1.xml
-echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%P%\1.xml
-echo     ^<IdleSettings^>>>%P%\1.xml
-echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%P%\1.xml
-echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%P%\1.xml
-echo     ^</IdleSettings^>>>%P%\1.xml
-echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%P%\1.xml
-echo     ^<Enabled^>true^</Enabled^>>>%P%\1.xml
-echo     ^<Hidden^>true^</Hidden^>>>%P%\1.xml
-echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%P%\1.xml
-echo     ^<WakeToRun^>false^</WakeToRun^>>>%P%\1.xml
-echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%P%\1.xml
-echo     ^<Priority^>7^</Priority^>>>%P%\1.xml
-echo   ^</Settings^>>>%P%\1.xml
-echo   ^<Actions Context="Author"^>>>%P%\1.xml
-echo     ^<Exec^>>>%P%\1.xml
-echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%P%\1.xml
-echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%P%\1.xml
-echo     ^</Exec^>>>%P%\1.xml
-echo   ^</Actions^>>>%P%\1.xml
-echo ^</Task^>>>%P%\1.xml
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
+echo   ^<RegistrationInfo^>>>%T%\1.xml
+echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%T%\1.xml
+echo   ^</RegistrationInfo^>>>%T%\1.xml
+echo   ^<Triggers^>>>%T%\1.xml
+echo     ^<TimeTrigger^>>>%T%\1.xml
+echo       ^<Repetition^>>>%T%\1.xml
+echo         ^<Interval^>PT5M^</Interval^>>>%T%\1.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%T%\1.xml
+echo       ^</Repetition^>>>%T%\1.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%T%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^</TimeTrigger^>>>%T%\1.xml
+echo   ^</Triggers^>>>%T%\1.xml
+echo   ^<Principals^>>>%T%\1.xml
+echo     ^<Principal id="Author"^>>>%T%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%T%\1.xml
+echo     ^</Principal^>>>%T%\1.xml
+echo   ^</Principals^>>>%T%\1.xml
+echo   ^<Settings^>>>%T%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%T%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%T%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%T%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%T%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%T%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%T%\1.xml
+echo     ^<IdleSettings^>>>%T%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%T%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%T%\1.xml
+echo     ^</IdleSettings^>>>%T%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%T%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%T%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%T%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%T%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%T%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%T%\1.xml
+echo   ^</Settings^>>>%T%\1.xml
+echo   ^<Actions Context="Author"^>>>%T%\1.xml
+echo     ^<Exec^>>>%T%\1.xml
+echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%T%\1.xml
+echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%T%\1.xml
+echo     ^</Exec^>>>%T%\1.xml
+echo   ^</Actions^>>>%T%\1.xml
+echo ^</Task^>>>%T%\1.xml
 
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
-SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%P%\1.xml" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 del %T%\detailedschtasks.txt 1>nul 2>nul
-del %P%\1.xml 1>nul 2>nul
+del %T%\1.xml 1>nul 2>nul
 
 
-
-
-:power
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING POWER OPTIONS . . .
-echo.
-echo.
-powercfg -restoredefaultschemes 1>nul 2>nul
-del %systemroot%\powerplan.pow 1>nul 2>nul
-powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /delete 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /export %systemroot%\powerplan.pow 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /import %systemroot%\powerplan.pow 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /changename 281b4222-f694-41f0-9685-ff5bb260df2e "Perfect" "Favors performance when plugged in. Saves energy when on battery." 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 1 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 3 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 2 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 100 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 2 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 2 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 64 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 3 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 0 1>nul 2>nul
-powercfg /setactive 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-del %systemroot%\powerplan.pow 1>nul 2>nul
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%A%
-echo.>>%A%
-
-
-
-:whitelist
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo APPLYING WHITELIST . . .
-echo.
-echo.
-if exist whitelist.txt (
-goto applywhitelist) else (
-goto applyreg)
-:applywhitelist
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-if %%i equ onedrive (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
-
-if %%i equ cortana (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=->>%A%
-echo "AllowCortanaAboveLock"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableSearchBoxSuggestions"=->>%A%
-echo.>>%A%) else (
-sc config "%%i" start= auto 1>nul 2>nul
 schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 )
 
 
 
-:applyreg
-echo.>>%A%
-echo.>>%A%
-echo.>>%A%
-echo.>>%A%
-attrib +h +s "%A%" 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-
-
-
-
-:hosts
-if exist hosts.txt (
-goto applyhosts) else (
-goto copy)
-:applyhosts
-ren hosts.txt hosts
-copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
-copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
-ren hosts hosts.txt
-
-
-
-:copy
-if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
-goto restart) else (
-copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
-)
-copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
-
-
 
 :restart
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%tmp%" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%tmp%" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
-md "%tmp%" 1>nul 2>nul
-attrib +h +s "%tmp%" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
-md "%tmp%" 1>nul 2>nul
-attrib +h +s "%tmp%" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
@@ -1852,4 +1872,5 @@ shutdown /r /f /t 0 1>nul 2>nul
 :"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
 :  74,00,63,00,70,00,00,00,00,00
 
-
+:cleareventlogs
+:FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
