@@ -1127,6 +1127,10 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA
 echo "DCSettingIndex"=dword:00000007>>%A%
 echo "ACSettingIndex"=dword:00000007>>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d8742dcb-3e6a-4b3c-b3fe-374623cdcf06]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "Start_ShowNetPlaces"=dword:00000000>>%A%
 echo "Start_NotifyNewApps"=dword:00000000>>%A%
