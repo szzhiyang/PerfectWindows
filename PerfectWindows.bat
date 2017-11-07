@@ -352,7 +352,12 @@ echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
 echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
 echo.>>%B%
 echo [%CU%\Control Panel\International]>>%B%
-echo "sShortTime"="tt HH:mm">>%B%
+echo "sShortTime"="H:m">>%B%
+echo "sLongTime"="H:m:s">>%B%
+echo "sShortTime"="tt H:mm">>%B%
+echo "sLongTime"="H:mm:ss">>%B%
+echo "s1159"=->>%B%
+echo "s2359"=->>%B%
 echo "s1159"="IN DANGER!  ">>%B%
 echo "s2359"="IN DANGER!  ">>%B%
 echo.>>%B%
@@ -716,7 +721,10 @@ echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "Start_TrackDocs"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Control Panel\International]>>%A%
-echo "sShortTime"="HH:mm">>%A%
+echo "sShortTime"="H:m">>%B%
+echo "sLongTime"="H:m:s">>%B%
+echo "sShortTime"="H:mm">>%B%
+echo "sLongTime"="H:mm:ss">>%B%
 echo "s1159"=->>%A%
 echo "s2359"=->>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
