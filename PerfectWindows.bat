@@ -721,10 +721,10 @@ echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "Start_TrackDocs"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Control Panel\International]>>%A%
-echo "sShortTime"="H:m">>%B%
-echo "sLongTime"="H:m:s">>%B%
-echo "sShortTime"="H:mm">>%B%
-echo "sLongTime"="H:mm:ss">>%B%
+echo "sShortTime"="H:m">>%A%
+echo "sLongTime"="H:m:s">>%A%
+echo "sShortTime"="H:mm">>%A%
+echo "sLongTime"="H:mm:ss">>%A%
 echo "s1159"=->>%A%
 echo "s2359"=->>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
