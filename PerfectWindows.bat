@@ -1086,8 +1086,8 @@ echo "DCSettingIndex"=dword:0000000a>>%A%
 echo "ACSettingIndex"=dword:0000000a>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\96996BC0-AD50-47EC-923B-6F41874DD9EB]>>%A%
 echo "ACSettingIndex"=dword:00000001>>%A%
