@@ -1,3 +1,15 @@
+:PLEASE DO NOT MODIFY THIS BATCH FILE UNLESS YOU KNOW WHAT YOU ARE DOING ! ! !
+
+
+
+:YOU CAN FIND THE LATEST VERSION OF PERFECTWINDOWS.BAT AT THE FOLLOWING WEBSITE :
+
+
+
+:GITHUB.COM\SZZHIYANG\PERFECTWINDOWS
+
+
+
 @echo off
 mode con cols=45 lines=7
 color fc
@@ -340,7 +352,7 @@ echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
 echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
 echo.>>%B%
 echo [%CU%\Control Panel\International]>>%B%
-echo "sShortTime"="tt H:mm">>%B%
+echo "sShortTime"="tt HH:mm">>%B%
 echo "s1159"="IN DANGER!  ">>%B%
 echo "s2359"="IN DANGER!  ">>%B%
 echo.>>%B%
@@ -704,7 +716,7 @@ echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "Start_TrackDocs"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Control Panel\International]>>%A%
-echo "sShortTime"=->>%A%
+echo "sShortTime"="HH:mm">>%A%
 echo "s1159"=->>%A%
 echo "s2359"=->>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
