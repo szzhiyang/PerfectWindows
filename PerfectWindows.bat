@@ -1858,8 +1858,6 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 :restart
 rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
-FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
-FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
@@ -1867,9 +1865,12 @@ shutdown /r /f /t 0 1>nul 2>nul
 
 
 
-:regbak
+:backup
 
-:[%LM%\SOFTWARE\Microsoft\Rpc]
-:"ConnectionOptionsFlag"=dword:00000001
-:"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
-:  74,00,63,00,70,00,00,00,00,00
+[%LM%\SOFTWARE\Microsoft\Rpc]
+"ConnectionOptionsFlag"=dword:00000001
+"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+  74,00,63,00,70,00,00,00,00,00
+
+
+FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
