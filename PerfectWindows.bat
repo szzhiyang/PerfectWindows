@@ -65,20 +65,13 @@ set B=%P%\ClearSoftwareRestrictionPolicies.reg
 rd /s /q "%P%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
-sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
-sc stop sysmain 1>nul 2>nul
-rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%LocalAppdata%\PerfectWindows" 1>nul 2>nul
 md "%LocalAppdata%\PerfectWindows" 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%P%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
@@ -104,10 +97,6 @@ attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>n
 del %T%\startup 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
-rd /s /q "%tmp%" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
-md "%tmp%" 1>nul 2>nul
-attrib +h +s "%tmp%" 1>nul 2>nul
 md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
@@ -123,7 +112,6 @@ goto copy)
 
 :applyhosts
 ren hosts.txt hosts
-copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 ren hosts hosts.txt
 
@@ -316,8 +304,6 @@ for /f "tokens=* delims= " %%i in (whitelist.txt) do (
 sc config "%%i" start= auto 1>nul 2>nul
 )
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
 
@@ -1536,19 +1522,9 @@ echo.>>%A%)
 )
 
 echo.>>%A%
-echo.>>%A%
-echo.>>%A%
-echo.>>%A%
 attrib +h +s "%A%" 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 
 
@@ -1562,10 +1538,6 @@ echo goto main)>>%systemroot%\beperfect.bat
 echo :main>>%systemroot%\beperfect.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo explorer %LocalAppdata%\PerfectWindows\>>%systemroot%\beperfect.bat
@@ -1583,10 +1555,6 @@ echo :main>>%systemroot%\besafe.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
@@ -1652,10 +1620,6 @@ echo :main>>%systemroot%\beindanger.bat
 echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
@@ -1713,15 +1677,7 @@ attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 :devicedisablewake
 powercfg /devicequery wake_armed >%T%\powercfg.txt
 for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
 
@@ -1745,59 +1701,6 @@ del %T%\Reverse.txt 1>nul 2>nul
 del %T%\Reverse.reg 1>nul 2>nul
 del %T%\powercfg.txt 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-:reversemouse
-echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
-echo. >>%T%\Reverse.reg
-reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
-findstr Parameter %T%\Reverse.txt > %T%\find.txt
-
-for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
-echo [%%i] >>%T%\Reverse.reg
-echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
-echo. >>%T%\Reverse.reg
-)
-
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-del %T%\find.txt 1>nul 2>nul
-del %T%\Reverse.txt 1>nul 2>nul
-del %T%\Reverse.reg 1>nul 2>nul
-del %T%\powercfg.txt 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-:reversemouse
-echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
-echo. >>%T%\Reverse.reg
-reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
-findstr Parameter %T%\Reverse.txt > %T%\find.txt
-
-for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
-echo [%%i] >>%T%\Reverse.reg
-echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
-echo. >>%T%\Reverse.reg
-)
-
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-del %T%\find.txt 1>nul 2>nul
-del %T%\Reverse.txt 1>nul 2>nul
-del %T%\Reverse.reg 1>nul 2>nul
-del %T%\powercfg.txt 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
 
@@ -1899,12 +1802,7 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 :restart
 rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
-shutdown /r /o /f /t 0 1>nul 2>nul
-shutdown /r /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
 
 
