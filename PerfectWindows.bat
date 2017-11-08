@@ -44,14 +44,13 @@ echo your PC will be restarted automatically.
 echo.
 echo If you are ready to restart your PC,
 pause
-
 title OPTIMIZING . . .
 mode con cols=45 lines=7
 color fc
 echo.
 echo.
 echo.
-echo OPTIMIZING WINDOWS SERVICES . . .
+echo OPTIMIZING WINDOWS SETTINGS . . .
 echo.
 echo.
 taskkill /f /im explorer.exe 1>nul 2>nul
@@ -117,7 +116,7 @@ ren hosts hosts.txt
 
 :copy
 if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
-goto power) else (
+goto core) else (
 copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
 )
 copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
@@ -125,204 +124,9 @@ copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
 attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 
-:power
-powercfg -restoredefaultschemes 1>nul 2>nul
-del %systemroot%\powerplan.pow 1>nul 2>nul
-powercfg /setactive 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /delete 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /export %systemroot%\powerplan.pow 381b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /import %systemroot%\powerplan.pow 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-powercfg /changename 281b4222-f694-41f0-9685-ff5bb260df2e "Perfect" "Favors performance when plugged in. Saves energy when on battery." 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 02f815b5-a5cf-4c84-bf20-649d1f75d3d8 4c793e7d-a264-42e1-87d3-7a0d2f523ccd 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 0d7dbae2-4294-402a-ba8e-26777e8488cd 309dce9b-bef4-4119-9921-a851fb12f0f4 1 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 19cbb8fa-5279-450e-9fac-8a3d5fedd0c1 12bbebe6-58d6-4636-95bb-3217ef867c1a 3 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 94ac6d29-73ce-41a6-809f-6363ba21b47e 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 238c9fa8-0aad-41ed-83f4-97be242c8f20 bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 2a737441-1930-4402-8d77-b2bebba308a3 48e6b7a6-50f5-4782-a5d4-53bb8f07e226 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 501a4d13-42af-4429-9fd1-a8218c268e20 ee12f906-d277-404b-b6da-e5fa1a576df5 2 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 75b0ae3f-bce0-45a7-8c89-c9611c25e100 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 100 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 893dee8e-2bef-41e0-89c6-b55d0929964c 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 94d3a615-a899-4ac5-ae2b-e4d8f634367f 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00 bc5038f7-23e0-4960-96da-33abaf5935ec 100 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 7516b95f-f776-4464-8c53-06167f40cc99 fbd9aa66-9553-4097-ba44-ed6e9d65eab8 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 03680956-93bc-4294-bba6-4e0f09bb717f 1 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 10778347-1370-4ee0-8bbd-33bdacaade49 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 9596fb26-9850-41fd-ac3e-f7c3c00afd4b 34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4 2 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 2 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 44f3beca-a7c0-460e-9df2-bb8b99e0cba6 3619c3f2-afb2-4afc-b0e9-e7fef372de36 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 497350cf-03a7-4fd1-871a-8be0d67fce86 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 24938ce5-14a5-46d6-859e-227ac9853880 80c4e615-3f57-42b9-a30f-a2f187063f42 64 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 07029cd8-4664-4698-95d8-43b2e9666596 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 4a44b800-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e 48df9d60-4f68-11dc-8314-0800200c9a66 63c39116-4f72-11dc-8314-0800200c9a66 5 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 3 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e e276e160-7cb0-43c6-b20b-73f5dce39954 a1662ab2-9d34-4e53-ba8b-2639b9e20857 0 1>nul 2>nul
-powercfg /setacvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 1 1>nul 2>nul
-powercfg /setdcvalueindex 281b4222-f694-41f0-9685-ff5bb260df2e f693fb01-e858-4f00-b20f-f30e12ac06d6 191f65b5-d45c-4a4f-8aae-1ab8bfd980e6 0 1>nul 2>nul
-powercfg /setactive 281b4222-f694-41f0-9685-ff5bb260df2e 1>nul 2>nul
-del %systemroot%\powerplan.pow 1>nul 2>nul
 
 
-
-
-:services
-sc query state= all >%T%\tmp1.txt
-findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
-
-for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
-echo %%i>>%T%\tmp3.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
-echo %%i>>%T%\services.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
-sc config "%%i" start= demand 1>nul 2>nul
-)
-
-del %T%\tmp1.txt 1>nul 2>nul
-del %T%\tmp2.txt 1>nul 2>nul
-del %T%\tmp3.txt 1>nul 2>nul
-
-
-sc config etdservice start= auto 1>nul 2>nul
-sc config ClickToRunSvc start= auto 1>nul 2>nul
-
-
-sc config WbioSrvc start= auto 1>nul 2>nul
-sc config UserManager start= auto 1>nul 2>nul
-sc config SystemEventsBroker start= auto 1>nul 2>nul
-sc config PolicyAgent start= auto 1>nul 2>nul
-sc config gpsvc start= auto 1>nul 2>nul
-sc config AppIDSvc start= disabled 1>nul 2>nul
-sc config Dnscache start= auto 1>nul 2>nul
-sc config DusmSvc start= auto 1>nul 2>nul
-sc config WlanSvc start= auto 1>nul 2>nul
-sc config Winmgmt start= auto 1>nul 2>nul
-sc config stisvc start= auto 1>nul 2>nul
-sc config FontCache start= auto 1>nul 2>nul
-sc config MpsSvc start= auto 1>nul 2>nul
-sc config EventLog start= auto 1>nul 2>nul
-sc config SecurityHealthService start= auto 1>nul 2>nul
-sc config AudioEndpointBuilder start= auto 1>nul 2>nul
-sc config Audiosrv start= auto 1>nul 2>nul
-sc config ProfSvc start= auto 1>nul 2>nul
-sc config Themes start= auto 1>nul 2>nul
-sc config Schedule start= auto 1>nul 2>nul
-sc config wscsvc start= auto 1>nul 2>nul
-sc config Power start= auto 1>nul 2>nul
-sc config PlugPlay start= auto 1>nul 2>nul
-sc config nsi start= auto 1>nul 2>nul
-sc config NlaSvc start= auto 1>nul 2>nul
-sc config LSM start= auto 1>nul 2>nul
-sc config luafv start= auto 1>nul 2>nul
-sc config clr_optimization_v2.0.50727_32 start= auto 1>nul 2>nul
-sc config UxSms start= auto 1>nul 2>nul
-sc config lltdio start= auto 1>nul 2>nul
-sc config rspndr start= auto 1>nul 2>nul
-sc config MMCSS start= auto 1>nul 2>nul
-sc config PEAUTH start= auto 1>nul 2>nul
-sc config secdrv start= auto 1>nul 2>nul
-sc config ShellHWDetection start= auto 1>nul 2>nul
-sc config NlaSvc start= auto 1>nul 2>nul
-sc config TrkWks start= auto 1>nul 2>nul
-sc config SENS start= auto 1>nul 2>nul
-sc config tcpipreg start= auto 1>nul 2>nul
-sc config Parvdm start= auto 1>nul 2>nul
-sc config TrustedInstaller start= auto 1>nul 2>nul
-sc config TrkWks start= auto 1>nul 2>nul
-sc config Dhcp start= auto 1>nul 2>nul
-sc config DoSvc start= auto 1>nul 2>nul
-sc config DcomLaunch start= auto 1>nul 2>nul
-sc config CryptSvc start= auto 1>nul 2>nul
-sc config wuauserv start= demand 1>nul 2>nul
-sc config sppsvc start= auto 1>nul 2>nul
-sc config CoreMessagingRegistrar start= auto 1>nul 2>nul
-sc config EventSystem start= auto 1>nul 2>nul
-sc config BFE start= auto 1>nul 2>nul
-sc config BrokerInfrastructure start= auto 1>nul 2>nul
-sc config BITS start= auto 1>nul 2>nul
-sc config W32Time start= auto 1>nul 2>nul
-sc config Wcmsvc start= auto 1>nul 2>nul
-sc config lfsvc start= auto 1>nul 2>nul
-sc config DsmSvc start= auto 1>nul 2>nul
-sc config DeviceInstall start= auto 1>nul 2>nul
-sc config DeviceAssociationService start= auto 1>nul 2>nul
-sc config CDPUserSvc_420c0 start= auto 1>nul 2>nul
-sc config LanmanWorkstation start= auto 1>nul 2>nul
-sc config WpnUserService_420c0 start= auto 1>nul 2>nul
-sc config WpnService start= auto 1>nul 2>nul
-sc config tiledatamodelsvc start= auto 1>nul 2>nul
-sc config LanmanServer start= auto 1>nul 2>nul
-sc config ShellHWDetection start= auto 1>nul 2>nul
-sc config RpcEptMapper start= auto 1>nul 2>nul
-sc config RpcSs start= auto 1>nul 2>nul
-sc config Spooler start= auto 1>nul 2>nul
-sc config LanmanWorkstation depend= bowser/nsi 1>nul 2>nul
-sc config mrxsmb10 start= disabled 1>nul 2>nul
-sc config mrxsmb20 start= disabled 1>nul 2>nul
-sc config DiagTrack start= disabled 1>nul 2>nul
-sc config HomeGroupListener start= disabled 1>nul 2>nul
-sc config HomeGroupProvider start= disabled 1>nul 2>nul
-sc config iphlpsvc start= disabled 1>nul 2>nul
-sc config PcaSvc start= disabled 1>nul 2>nul
-sc config RemoteRegistry start= disabled 1>nul 2>nul
-sc config SysMain start= disabled 1>nul 2>nul
-sc config WerSvc start= disabled 1>nul 2>nul
-sc config LanmanWorkstation start= disabled 1>nul 2>nul
-sc config LanmanServer start= disabled 1>nul 2>nul
-sc config SDRSVC start= disabled 1>nul 2>nul
-sc config lmhosts start= disabled 1>nul 2>nul
-sc config NetBIOS start= disabled 1>nul 2>nul
-sc config NetBT start= disabled 1>nul 2>nul
-sc config winmgmt start= auto 1>nul 2>nul
-sc config wmiApSrv start= auto 1>nul 2>nul
-sc config WSearch start= auto 1>nul 2>nul
-
-for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-sc config "%%i" start= auto 1>nul 2>nul
-)
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-
-:makereg
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING WINDOWS SETTINGS . . .
-echo.
-echo.
-
-
-
-
-
+:core
 echo Windows Registry Editor Version 5.00>%B%
 echo.>>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
@@ -996,17 +800,29 @@ echo.>>%A%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%A%
+echo "ActivePowerScheme"=->>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%A%
 echo "DCSettingIndex"=dword:00000001>>%A%
 echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA]>>%A%
 echo "ACSettingIndex"=dword:00002a30>>%A%
 echo "DCSettingIndex"=dword:00002a30>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E]>>%A%
+echo "ACSettingIndex"=dword:00002a30>>%A%
+echo "DCSettingIndex"=dword:00002a30>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7bc4a2f9-d8fc-4469-b07b-33eb785aaca0]>>%A%
+echo "ACSettingIndex"=dword:00002a30>>%A%
+echo "DCSettingIndex"=dword:00002a30>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\90959D22-D6A1-49B9-AF93-BCE885AD335B]>>%A%
 echo "ACSettingIndex"=dword:00002a30>>%A%
 echo "DCSettingIndex"=dword:00002a30>>%A%
 echo.>>%A%
@@ -1017,6 +833,50 @@ echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\637EA02F-BBCB-4015-8E2C-A1C7B9C0B546]>>%A%
 echo "DCSettingIndex"=dword:00000002>>%A%
 echo "ACSettingIndex"=dword:00000002>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\309dce9b-bef4-4119-9921-a851fb12f0f4]>>%A%
+echo "DCSettingIndex"=dword:00000001>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A504-2B96CAD225A1]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bcded951-187b-4d05-bccc-f7e51960c258]>>%A%
+echo "DCSettingIndex"=dword:00000001>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d4c1d4c8-d5cc-43d3-b83e-fc51215cb04d]>>%A%
+echo "DCSettingIndex"=dword:00000001>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\4c793e7d-a264-42e1-87d3-7a0d2f523ccd]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\12bbebe6-58d6-4636-95bb-3217ef867c1a]>>%A%
+echo "DCSettingIndex"=dword:00000003>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]>>%A%
+echo "DCSettingIndex"=dword:00000001>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\48e6b7a6-50f5-4782-a5d4-53bb8f07e226]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3619c3f2-afb2-4afc-b0e9-e7fef372de36]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000002>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94d3a615-a899-4ac5-ae2b-e4d8f634367f]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E]>>%A%
 echo "DCSettingIndex"=dword:0000012c>>%A%
@@ -1058,13 +918,41 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aa
 echo "DCSettingIndex"=dword:00000032>>%A%
 echo "ACSettingIndex"=dword:00000032>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f1fbfde2-a960-4165-9f88-50667911ce96]>>%A%
-echo "DCSettingIndex"=dword:00000032>>%A%
-echo "ACSettingIndex"=dword:00000032>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\893dee8e-2bef-41e0-89c6-b55d0929964c]>>%A%
+echo "DCSettingIndex"=dword:00000005>>%A%
+echo "ACSettingIndex"=dword:00000064>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bc5038f7-23e0-4960-96da-33abaf5935ec]>>%A%
+echo "DCSettingIndex"=dword:00000064>>%A%
+echo "ACSettingIndex"=dword:00000064>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\fbd9aa66-9553-4097-ba44-ed6e9d65eab8]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\03680956-93bc-4294-bba6-4e0f09bb717f]>>%A%
+echo "DCSettingIndex"=dword:00000001>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\10778347-1370-4ee0-8bbd-33bdacaade49]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4]>>%A%
+echo "DCSettingIndex"=dword:00000002>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\ee12f906-d277-404b-b6da-e5fa1a576df5]>>%A%
+echo "DCSettingIndex"=dword:00000002>>%A%
+echo "ACSettingIndex"=dword:00000000>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]>>%A%
 echo "DCSettingIndex"=dword:00000000>>%A%
 echo "ACSettingIndex"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\a1662ab2-9d34-4e53-ba8b-2639b9e20857]>>%A%
+echo "DCSettingIndex"=dword:00000000>>%A%
+echo "ACSettingIndex"=dword:00000003>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA6B-90DB844A8F00]>>%A%
 echo "DCSettingIndex"=dword:00000007>>%A%
@@ -1169,6 +1057,7 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
 echo "NoLockScreen"=dword:00000001>>%A%
+echo "NoChangingLockScreen"=dword:00000001>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
 echo.>>%A%
@@ -1706,6 +1595,140 @@ md "%T%" 1>nul 2>nul
 
 
 
+:services
+title OPTIMIZING . . .
+mode con cols=45 lines=7
+color fc
+echo.
+echo.
+echo.
+echo OPTIMIZING WINDOWS SERVICES . . .
+echo.
+echo.
+sc query state= all >%T%\tmp1.txt
+findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
+
+for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
+echo %%i>>%T%\tmp3.txt
+)
+
+for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
+echo %%i>>%T%\services.txt
+)
+
+for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
+sc config "%%i" start= demand 1>nul 2>nul
+)
+
+del %T%\tmp1.txt 1>nul 2>nul
+del %T%\tmp2.txt 1>nul 2>nul
+del %T%\tmp3.txt 1>nul 2>nul
+
+
+sc config etdservice start= auto 1>nul 2>nul
+sc config ClickToRunSvc start= auto 1>nul 2>nul
+
+
+sc config WbioSrvc start= auto 1>nul 2>nul
+sc config UserManager start= auto 1>nul 2>nul
+sc config SystemEventsBroker start= auto 1>nul 2>nul
+sc config PolicyAgent start= auto 1>nul 2>nul
+sc config gpsvc start= auto 1>nul 2>nul
+sc config AppIDSvc start= disabled 1>nul 2>nul
+sc config Dnscache start= auto 1>nul 2>nul
+sc config DusmSvc start= auto 1>nul 2>nul
+sc config WlanSvc start= auto 1>nul 2>nul
+sc config Winmgmt start= auto 1>nul 2>nul
+sc config stisvc start= auto 1>nul 2>nul
+sc config FontCache start= auto 1>nul 2>nul
+sc config MpsSvc start= auto 1>nul 2>nul
+sc config EventLog start= auto 1>nul 2>nul
+sc config SecurityHealthService start= auto 1>nul 2>nul
+sc config AudioEndpointBuilder start= auto 1>nul 2>nul
+sc config Audiosrv start= auto 1>nul 2>nul
+sc config ProfSvc start= auto 1>nul 2>nul
+sc config Themes start= auto 1>nul 2>nul
+sc config Schedule start= auto 1>nul 2>nul
+sc config wscsvc start= auto 1>nul 2>nul
+sc config Power start= auto 1>nul 2>nul
+sc config PlugPlay start= auto 1>nul 2>nul
+sc config nsi start= auto 1>nul 2>nul
+sc config NlaSvc start= auto 1>nul 2>nul
+sc config LSM start= auto 1>nul 2>nul
+sc config luafv start= auto 1>nul 2>nul
+sc config clr_optimization_v2.0.50727_32 start= auto 1>nul 2>nul
+sc config UxSms start= auto 1>nul 2>nul
+sc config lltdio start= auto 1>nul 2>nul
+sc config rspndr start= auto 1>nul 2>nul
+sc config MMCSS start= auto 1>nul 2>nul
+sc config PEAUTH start= auto 1>nul 2>nul
+sc config secdrv start= auto 1>nul 2>nul
+sc config ShellHWDetection start= auto 1>nul 2>nul
+sc config NlaSvc start= auto 1>nul 2>nul
+sc config TrkWks start= auto 1>nul 2>nul
+sc config SENS start= auto 1>nul 2>nul
+sc config tcpipreg start= auto 1>nul 2>nul
+sc config Parvdm start= auto 1>nul 2>nul
+sc config TrustedInstaller start= auto 1>nul 2>nul
+sc config TrkWks start= auto 1>nul 2>nul
+sc config Dhcp start= auto 1>nul 2>nul
+sc config DoSvc start= auto 1>nul 2>nul
+sc config DcomLaunch start= auto 1>nul 2>nul
+sc config CryptSvc start= auto 1>nul 2>nul
+sc config wuauserv start= demand 1>nul 2>nul
+sc config sppsvc start= auto 1>nul 2>nul
+sc config CoreMessagingRegistrar start= auto 1>nul 2>nul
+sc config EventSystem start= auto 1>nul 2>nul
+sc config BFE start= auto 1>nul 2>nul
+sc config BrokerInfrastructure start= auto 1>nul 2>nul
+sc config BITS start= auto 1>nul 2>nul
+sc config W32Time start= auto 1>nul 2>nul
+sc config Wcmsvc start= auto 1>nul 2>nul
+sc config lfsvc start= auto 1>nul 2>nul
+sc config DsmSvc start= auto 1>nul 2>nul
+sc config DeviceInstall start= auto 1>nul 2>nul
+sc config DeviceAssociationService start= auto 1>nul 2>nul
+sc config CDPUserSvc_420c0 start= auto 1>nul 2>nul
+sc config LanmanWorkstation start= auto 1>nul 2>nul
+sc config WpnUserService_420c0 start= auto 1>nul 2>nul
+sc config WpnService start= auto 1>nul 2>nul
+sc config tiledatamodelsvc start= auto 1>nul 2>nul
+sc config LanmanServer start= auto 1>nul 2>nul
+sc config ShellHWDetection start= auto 1>nul 2>nul
+sc config RpcEptMapper start= auto 1>nul 2>nul
+sc config RpcSs start= auto 1>nul 2>nul
+sc config Spooler start= auto 1>nul 2>nul
+sc config LanmanWorkstation depend= bowser/nsi 1>nul 2>nul
+sc config mrxsmb10 start= disabled 1>nul 2>nul
+sc config mrxsmb20 start= disabled 1>nul 2>nul
+sc config DiagTrack start= disabled 1>nul 2>nul
+sc config HomeGroupListener start= disabled 1>nul 2>nul
+sc config HomeGroupProvider start= disabled 1>nul 2>nul
+sc config iphlpsvc start= disabled 1>nul 2>nul
+sc config PcaSvc start= disabled 1>nul 2>nul
+sc config RemoteRegistry start= disabled 1>nul 2>nul
+sc config SysMain start= disabled 1>nul 2>nul
+sc config WerSvc start= disabled 1>nul 2>nul
+sc config LanmanWorkstation start= disabled 1>nul 2>nul
+sc config LanmanServer start= disabled 1>nul 2>nul
+sc config SDRSVC start= disabled 1>nul 2>nul
+sc config lmhosts start= disabled 1>nul 2>nul
+sc config NetBIOS start= disabled 1>nul 2>nul
+sc config NetBT start= disabled 1>nul 2>nul
+sc config winmgmt start= auto 1>nul 2>nul
+sc config wmiApSrv start= auto 1>nul 2>nul
+sc config WSearch start= auto 1>nul 2>nul
+
+for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+sc config "%%i" start= auto 1>nul 2>nul
+)
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+
+
+
+
+
 :disableschtasks
 title OPTIMIZING . . .
 mode con cols=45 lines=7
@@ -1809,10 +1832,10 @@ shutdown /r /f /t 0 1>nul 2>nul
 
 :backup
 
-[%LM%\SOFTWARE\Microsoft\Rpc]
-"ConnectionOptionsFlag"=dword:00000001
-"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+:[%LM%\SOFTWARE\Microsoft\Rpc]
+:"ConnectionOptionsFlag"=dword:00000001
+:"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
   74,00,63,00,70,00,00,00,00,00
 
 
-FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
+:FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
