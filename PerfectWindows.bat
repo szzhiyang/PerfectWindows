@@ -522,65 +522,11 @@ echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Terminal Server]>>%A%
 echo "fDenyTSConnections"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\BITS]>>%A%
-echo "EnablePeercaching"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%A%
-echo "DODownloadMode"=dword:00000003>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%A%
-echo "PreventOverride"=dword:00000000>>%A%
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
-echo "EnabledV9"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]>>%A%
-echo "EnabledV9"=dword:00000001>>%A%
-echo "PreventOverride"=dword:00000000>>%A%
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "EnableSmartScreen"=dword:00000001>>%A%
-echo "ShellSmartScreenLevel"="Warn">>%A%
-echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
 echo "DisableTaskMgr"=->>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableCMD"=->>%A%
-echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager]>>%A%
 echo "BootExecute"=hex(7):00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "VerboseStatus"=dword:00000001>>%A%
-echo "EnableLUA"=dword:00000001>>%A%
-echo "ConsentPromptBehaviorAdmin"=dword:00000005>>%A%
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%A%
-echo "PromptOnSecureDesktop"=dword:00000001>>%A%
-echo "EnableUIADesktopToggle"=dword:00000000>>%A%
-echo "FilterAdministratorToken"=dword:00000001>>%A%
-echo "EnableSecureUIAPaths"=dword:00000001>>%A%
-echo "EnableInstallerDetection"=dword:00000001>>%A%
-echo "EnableVirtualization"=dword:00000001>>%A%
-echo "ValidateAdminCodeSignatures"=dword:00000000>>%A%
-echo "DSCAutomationHostEnabled"=dword:00000002>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
-echo "AuthenticodeEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%A%
-echo "DisableRootAutoUpdate"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%A%
-echo "AuthenticodeFlags"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%A%
-echo "DisableNotifications"=dword:00000000>>%A%
-echo "EnableFirewall"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]>>%A%
-echo "EnableFirewall"=dword:00000001>>%A%
-echo "DisableNotifications"=dword:00000000>>%A%
 echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]>>%A%
 echo "DisableNotifications"=dword:00000000>>%A%
@@ -598,22 +544,6 @@ echo "FirewallDisableNotify"=->>%A%
 echo "UacDisableNotify"=->>%A%
 echo "UpdatesDisableNotify"=->>%A%
 echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
-echo "NoAutoUpdate"=dword:00000001>>%A%
-echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%A%
-echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%A%
-echo "DontOfferThroughWUAU"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexityBeta]>>%A%
-echo.>>%A%
 echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization]>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]>>%A%
@@ -625,71 +555,14 @@ echo "AutoReboot"=dword:00000000>>%A%
 echo "AlwaysKeepMemoryDump"=dword:00000000>>%A%
 echo "CrashDumpEnabled"=dword:00000000>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%A%
-echo "AutoDownloadAndUpdateMapData"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%A%
-echo "AutoDownload"=dword:00000002>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%A%
-echo "DisableConfig"=dword:00000001>>%A%
-echo "DisableSR"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%A%
-echo "CEIPEnable"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%A%
-echo "DontShowUI"=dword:00000001>>%A%
-echo "DontSendAdditionalData"=dword:00000001>>%A%
-echo "Disabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%A%
-echo "DoReport"=dword:00000000>>%A%
-echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]>>%A%
 echo "EnableSuperfetch"=dword:00000000>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%A%
-echo "DisablePCA"=dword:00000001>>%A%
-echo "DisableEngine"=dword:00000001>>%A%
-echo "VDMDisallowed"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
-echo "DisableHomeGroup"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%A%
-echo "NoGenTicket"=dword:00000001>>%A%
-echo.>>%A%
+
 echo [%CU%\Software\Microsoft\Windows\DWM]>>%A%
 echo "AnimationsShiftKey"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoToolbarsOnTaskbar"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
-echo "NoToastApplicationNotification"=dword:00000001>>%A%
-echo "NoToastApplicationNotificationOnLockScreen"=dword:00000001>>%A%
-echo "NoTileApplicationNotification"=dword:00000001>>%A%
-echo "NoCloudApplicationNotification"=dword:00000001>>%A%
-echo "DisallowNotificationMirroring"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
-echo "NoLockScreen"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "AllowOnlineTips"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableLockScreenAppNotifications"=dword:00000001>>%A%
-echo "DisableLogonBackgroundImage"=dword:00000001>>%A%
-echo "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001>>%A%
-echo "HiberbootEnabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "EnableLegacyBalloonNotifications"=dword:00000001>>%A%
-echo "DisableNotificationCenter"=dword:00000001>>%A%
-echo "HidePeopleBar"=dword:00000001>>%A%
-echo.>>%A%
+
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]>>%A%
 echo "EnableTransparency"=dword:00000000>>%A%
 echo.>>%A%
@@ -711,15 +584,6 @@ echo "Grid_backgroundPercent"=dword:00000000>>%A%
 echo "BackgroundDimmingLayer_percent"=dword:00000028>>%A%
 echo "wallpaper"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
-echo "EnableAutoTray"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "DontUsePowerShellOnWinX"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "Start_TrackDocs"=dword:00000000>>%A%
-echo.>>%A%
 echo [%CU%\Control Panel\International]>>%A%
 echo "sShortTime"="H:m">>%A%
 echo "sLongTime"="H:m:s">>%A%
@@ -727,28 +591,85 @@ echo "sShortTime"="H:mm">>%A%
 echo "sLongTime"="H:mm:ss">>%A%
 echo "s1159"=->>%A%
 echo "s2359"=->>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "LaunchTo"=dword:00000001>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
+echo "EnableAutoTray"=dword:00000000>>%A%
 echo "ShowFrequent"=dword:00000000>>%A%
 echo "ShowRecent"=dword:00000000>>%A%
 echo "ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%A%
 echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%A%
+echo "IconUnderline"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
+echo "SeparateProcess"=dword:00000001>>%A%
+echo "ShowTypeOverlay"=dword:00000001>>%A%
+echo "DontUsePowerShellOnWinX"=dword:00000001>>%A%
+echo "ShowTaskViewButton"=dword:00000000>>%A%
+echo "Hidden"=dword:00000002>>%A%
+echo "ShowSuperHidden"=dword:00000000>>%A%
+echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
+echo "HideFileExt"=dword:00000001>>%A%
+echo "ExtendedUIHoverTime"=dword:11111111>>%A%
+echo "AutoCheckSelect"=dword:00000001>>%A%
+echo "TaskbarSizeMove"=dword:00000000>>%A%
+echo "PersistBrowsers"=dword:00000001>>%A%
+echo "TaskbarAnimations"=dword:00000000>>%A%
+echo "TaskbarGlomLevel"=dword:00000001>>%A%
+echo "TaskbarGlomming"=dword:00000000>>%A%
+echo "IconsOnly"=dword:00000000>>%A%
+echo "ListviewShadow"=dword:00000001>>%A%
+echo "ListviewAlphaSelect"=dword:00000001>>%A%
+echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%A%
+echo "TaskbarSmallIcons"=dword:00000001>>%A%
+echo "UseTabletModeNotificationIcons"=dword:00000000>>%A%
+echo "ShowSyncProviderNotifications"=dword:00000000>>%A%
+echo "LaunchTo"=dword:00000001>>%A%
+echo "JointResize"=dword:00000001>>%A%
+echo "SnapAssist"=dword:00000001>>%A%
+echo "SnapFill"=dword:00000001>>%A%
+echo "VirtualDesktopTaskbarFilter"=dword:00000001>>%A%
+echo "VirtualDesktopAltTabFilter"=dword:00000001>>%A%
+echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
+echo "TypeAhead"=dword:00000001>>%A%
+echo "AlwaysShowMenus"=dword:00000000>>%A%
+echo "HideDrivesWithNoMedia"=dword:00000001>>%A%
+echo "Start_TrackDocs"=dword:00000000>>%A%
+echo "Start_ShowNetPlaces"=dword:00000000>>%A%
+echo "Start_NotifyNewApps"=dword:00000000>>%A%
+echo "Start_ShowDownloads"=dword:00000001>>%A%
+echo "Start_ShowVideos"=dword:00000001>>%A%
+echo "Start_AutoCascade"=dword:00000000>>%A%
+echo "Start_LargeMFUIcons"=dword:00000000>>%A%
+echo "Start_ShowPrinters"=dword:00000000>>%A%
+echo "Start_ShowSetProgramAccessAndDefaults"=dword:00000000>>%A%
+echo "Start_ShowUser"=dword:00000000>>%A%
+echo "Start_ShowHelp"=dword:00000000>>%A%
+echo "Start_MinMFU"=dword:00000000>>%A%
+echo "Start_ShowMyGames"=dword:00000000>>%A%
+echo "Start_ShowMyPics"=dword:00000001>>%A%
+echo "Start_ShowMyDocs"=dword:00000001>>%A%
+echo "Start_ShowMyMusic"=dword:00000001>>%A%
+echo "Start_ShowMyComputer"=dword:00000001>>%A%
+echo "Start_ShowControlPanel"=dword:00000001>>%A%
+echo "Start_SearchFiles"=dword:00000002>>%A%
+echo "Start_ShowHomeGroup"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]>>%A%
 echo "DetailsContainer"=hex:02,00,00,00,02,00,00,00>>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ClearTilesOnExit"=dword:00000001>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%A%
+echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableSearchBoxSuggestions"=dword:00000001>>%A%
-echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%A%
-echo "DisableIndexedLibraryExperience"=dword:00000001>>%A%
-echo "DisableSearchHistory"=dword:00000001>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
+echo "NumThumbnails"=dword:00000000>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]>>%A%
+echo "WholeFileSystem"=dword:00000000>>%A%
+echo "SystemFolders"=dword:00000000>>%A%
+echo "ArchivedFiles"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoToolbarsOnTaskbar"=dword:00000001>>%A%
 echo "ForceClassicControlPanel"=dword:00000001>>%A%
 echo "EnforceShellExtensionSecurity"=dword:00000001>>%A%
 echo "ClearRecentDocsOnExit"=dword:00000001>>%A%
@@ -759,28 +680,16 @@ echo "NoTrayContextMenu"=dword:00000001>>%A%
 echo "NoTaskGrouping"=dword:00000000>>%A%
 echo "DisableCurrentUserRun"=dword:00000001>>%A%
 echo "DisableCurrentUserRunOnce"=->>%A%
-echo.>>%A%
-echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "DisableLocalMachineRun"=dword:00000001>>%A%
-echo "HidePowerOptions"=dword:00000001>>%A%
-echo "DisableLocalMachineRunOnce"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%A%
-echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "ExtendedUIHoverTime"=dword:01111111>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
-echo "NumThumbnails"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "ShowTaskViewButton"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]>>%A%
-echo "WholeFileSystem"=dword:00000000>>%A%
-echo "SystemFolders"=dword:00000000>>%A%
-echo "ArchivedFiles"=dword:00000000>>%A%
+echo "NoInternetIcon"=dword:00000001>>%A%
+echo "HideSCANetwork"=dword:00000001>>%A%
+echo "HideSCAHealth"=dword:00000001>>%A%
+echo "HideSCAVolume"=dword:00000001>>%A%
+echo "NoAutoTrayNotify"=dword:00000001>>%A%
+echo "NoDesktop"=dword:00000001>>%A%
+echo "NoClose"=dword:00000001>>%A%
+echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
+echo "NoAutorun"=dword:00000001>>%A%
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]>>%A%
 echo "SearchOnly"=dword:00000001>>%A%
@@ -793,12 +702,6 @@ echo "SearchboxTaskbarMode"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Touchpad]>>%A%
 echo "TouchpadDesiredVisibility"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000002>>%A%
-echo "NoPinningToTaskbar"=dword:00000001>>%A%
-echo "NoPinningStoreToTaskbar"=dword:00000001>>%A%
-echo "TaskbarNoPinnedList"=dword:00000001>>%A%
 echo.>>%A%
 echo [%CU%\Control Panel\Desktop\WindowMetrics]>>%A%
 echo "MinAnimate"="1">>%A%
@@ -849,54 +752,18 @@ echo.>>%A%
 echo [%CU%\Control Panel\Desktop]>>%A%
 echo "MouseWheelRouting"=dword:00000002>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoInternetIcon"=dword:00000001>>%A%
-echo "HideSCANetwork"=dword:00000001>>%A%
-echo "HideSCAHealth"=dword:00000001>>%A%
-echo "HideSCAVolume"=dword:00000001>>%A%
-echo "NoAutoTrayNotify"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%A%
-echo "ScreenSaveTimeOut"="0">>%A%
-echo "ScreenSaverIsSecure"="1">>%A%
-echo "ScreenSaveActive"="0">>%A%
-echo.>>%A%
+
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
 echo "NoDispScrSavPage"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=dword:00000001>>%A%
-echo "NoClose"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "SeparateProcess"=dword:00000001>>%A%
-echo "ShowTypeOverlay"=dword:00000001>>%A%
-echo "Hidden"=dword:00000002>>%A%
-echo "ShowSuperHidden"=dword:00000000>>%A%
-echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
-echo "HideFileExt"=dword:00000001>>%A%
-echo "AutoCheckSelect"=dword:00000001>>%A%
-echo "TaskbarSizeMove"=dword:00000000>>%A%
-echo "PersistBrowsers"=dword:00000001>>%A%
-echo "TaskbarAnimations"=dword:00000000>>%A%
-echo "TaskbarGlomLevel"=dword:00000001>>%A%
-echo "TaskbarGlomming"=dword:00000000>>%A%
-echo "IconsOnly"=dword:00000000>>%A%
-echo "ListviewShadow"=dword:00000001>>%A%
-echo "ListviewAlphaSelect"=dword:00000001>>%A%
-echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%A%
-echo "TaskbarSmallIcons"=dword:00000001>>%A%
-echo "UseTabletModeNotificationIcons"=dword:00000000>>%A%
-echo "ShowSyncProviderNotifications"=dword:00000000>>%A%
-echo "JointResize"=dword:00000001>>%A%
-echo "SnapAssist"=dword:00000001>>%A%
-echo "SnapFill"=dword:00000001>>%A%
-echo "VirtualDesktopTaskbarFilter"=dword:00000001>>%A%
-echo "VirtualDesktopAltTabFilter"=dword:00000001>>%A%
-echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
-echo "TypeAhead"=dword:00000001>>%A%
-echo "AlwaysShowMenus"=dword:00000000>>%A%
-echo "HideDrivesWithNoMedia"=dword:00000001>>%A%
+echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
+echo "NoAutorun"=dword:00000001>>%A%
+echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
+echo "DisableLocalMachineRun"=dword:00000001>>%A%
+echo "HidePowerOptions"=dword:00000001>>%A%
+echo "DisableLocalMachineRunOnce"=->>%A%
+echo "AllowOnlineTips"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%A%
 echo "Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00>>%A%
@@ -947,6 +814,79 @@ echo "RotatingLockScreenEnabled"=dword:00000000>>%A%
 echo "RotatingLockScreenOverlayEnabled"=dword:00000000>>%A%
 echo "SubscribedContent-310093Enabled"=dword:00000000>>%A%
 echo.>>%A%
+
+echo [-%CU%\Software\Microsoft\TabletTip]>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]>>%A%
+echo "GlobalUserDisabled"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]>>%A%
+echo "ShowSleepOption"=dword:00000001>>%A%
+echo "ShowHibernateOption"=dword:00000001>>%A%
+echo "ShowLockOption"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%A%
+echo "Enabled"=dword:00000000>>%A%
+echo.>>%A%
+echo [%CU%\Control Panel\International\User Profile]>>%A%
+echo "HttpAcceptLanguageOptOut"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\MobilePC\MobilityCenter]>>%A%
+echo "RunOnDesktop"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Internet Explorer\Main]>>%A%
+echo "HideNewEdgeButton"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Internet Explorer\TabbedBrowsing]>>%A%
+echo "NewTabPageShow"=dword:00000002>>%A%
+echo.>>%A%
+echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
+echo "MaxConnectionsPerServer"=dword:00000008>>%A%
+echo "MaxConnectionsPer1_0Server"=dword:00000008>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
+echo.>>%A%
+echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
+echo.>>%A%
+echo [-%CU%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Internet Explorer\Restrictions]>>%A%
+echo "NoHelpItemSendFeedback"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\System]>>%A%
+echo "DisableCMD"=->>%A%
+echo.>>%A%
+echo [-%CU%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
+echo "NoToastApplicationNotification"=dword:00000001>>%A%
+echo "NoToastApplicationNotificationOnLockScreen"=dword:00000001>>%A%
+echo "NoTileApplicationNotification"=dword:00000001>>%A%
+echo "NoCloudApplicationNotification"=dword:00000001>>%A%
+echo "DisallowNotificationMirroring"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "EnableLegacyBalloonNotifications"=dword:00000001>>%A%
+echo "DisableNotificationCenter"=dword:00000001>>%A%
+echo "HidePeopleBar"=dword:00000001>>%A%
+echo "ClearTilesOnExit"=dword:00000001>>%A%
+echo "DisableSearchBoxSuggestions"=dword:00000001>>%A%
+echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%A%
+echo "PowerButtonAction"=dword:00000200>>%A%
+echo "DisableIndexedLibraryExperience"=dword:00000001>>%A%
+echo "DisableSearchHistory"=dword:00000001>>%A%
+echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000002>>%A%
+echo "NoPinningToTaskbar"=dword:00000001>>%A%
+echo "NoPinningStoreToTaskbar"=dword:00000001>>%A%
+echo "TaskbarNoPinnedList"=dword:00000001>>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%A%
+echo "ScreenSaveTimeOut"="0">>%A%
+echo "ScreenSaverIsSecure"="1">>%A%
+echo "ScreenSaveActive"="0">>%A%
+echo.>>%A%
 echo [%CU%\Software\Policies\Microsoft\Windows\CloudContent]>>%A%
 echo "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001>>%A%
 echo "DisableThirdPartySuggestions"=dword:00000001>>%A%
@@ -954,72 +894,118 @@ echo "DisableWindowsSpotlightOnActionCenter"=dword:00000001>>%A%
 echo "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001>>%A%
 echo "DisableWindowsSpotlightFeatures"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%A%
-echo "DisableSoftLanding"=dword:00000001>>%A%
-echo "DisableWindowsConsumerFeatures"=dword:00000001>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices]>>%A%
 echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Speech]>>%A%
-echo "AllowSpeechModelUpdate"=dword:00000000>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%A%
+echo "DisableNotifications"=dword:00000000>>%A%
+echo "EnableFirewall"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%A%
-echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]>>%A%
+echo "EnableFirewall"=dword:00000001>>%A%
+echo "DisableNotifications"=dword:00000000>>%A%
 echo.>>%A%
-echo [-%CU%\Software\Microsoft\TabletTip]>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Windows\BITS]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=dword:00000000>>%A%
-echo "AllowCortanaAboveLock"=dword:00000000>>%A%
+echo [%LM%\Software\Policies\Microsoft\Windows\BITS]>>%A%
+echo "EnablePeercaching"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=dword:00000001>>%A%
-echo "DisableFileSync"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
-echo "NoAutorun"=dword:00000001>>%A%
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%A%
+echo "DODownloadMode"=dword:00000003>>%A%
 echo.>>%A%
-echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
 echo.>>%A%
-echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoAutorun"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]>>%A%
+echo "NoActivities"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]>>%A%
+echo "CheckExeSignatures"="yes">>%A%
+echo "RunInvalidSignatures"=dword:00000000>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AutoIndexSharedFolders"=dword:00000001>>%A%
-echo "PreventIndexOnBattery"=dword:00000001>>%A%
-echo "AllowIndexingEncryptedStoresOrItems"=dword:00000000>>%A%
-echo "PreventIndexingOfflineFiles"=dword:00000001>>%A%
-echo "PreventIndexingPublicFolders"=dword:00000001>>%A%
-echo "PreventIndexingEmailAttachments"=dword:00000001>>%A%
-echo "PreventIndexingOutlook"=dword:00000001>>%A%
-echo "DisableRemovableDriveIndexing"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]>>%A%
+echo "Enabled"=dword:00000000>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]>>%A%
-echo "GlobalUserDisabled"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]>>%A%
+echo "Enable Browser Extensions Beta"="no">>%A%
+echo "DoNotTrack"=dword:00000001>>%A%
+echo "Isolation"="PMEM">>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "VerboseStatus"=dword:00000001>>%A%
-echo "DisableStartupSound"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%A%
+echo "PreventOverride"=dword:00000000>>%A%
+echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
+echo "EnabledV9"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]>>%A%
-echo "ShowSleepOption"=dword:00000001>>%A%
-echo "ShowHibernateOption"=dword:00000001>>%A%
-echo "ShowLockOption"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge]>>%A%
 echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ShowSleepOption"=dword:00000001>>%A%
-echo "ShowHibernateOption"=dword:00000001>>%A%
-echo "ShowLockOption"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]>>%A%
+echo "EnabledV9"=dword:00000001>>%A%
+echo "PreventOverride"=dword:00000000>>%A%
+echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "PowerButtonAction"=dword:00000200>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]>>%A%
+echo "AllowWebContentOnNewTabPage"=dword:00000000>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "ShutdownWithoutLogon"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]>>%A%
+echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
+echo "AuthenticodeEnabled"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%A%
+echo "DisableRootAutoUpdate"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%A%
+echo "AuthenticodeFlags"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%A%
+echo.>>%A%
+echo [%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%A%
+echo "EnableConfigFlighting"=dword:00000000>>%A%
+echo "EnableExperimentation"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%A%
+echo.>>%A%
+echo [%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%A%
+echo "AllowTelemetry"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\Software\Policies\Microsoft\UEV]>>%A%
+echo.>>%A%
+echo [-%LM%\Software\Policies\Microsoft\UEV\Agent]>>%A%
+echo.>>%A%
+echo [-%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%A%
+echo.>>%A%
+echo [%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%A%
+echo "SyncOverMeteredNetwork"=dword:00000000>>%A%
+echo "SyncOverMeteredNetworkWhenRoaming"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%A%
+echo "DisableWindowsSettingSync"=dword:00000002>>%A%
+echo "DisableWindowsSettingSyncUserOverride"=dword:00000001>>%A%
+echo "DisableSyncOnPaidNetwork"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]>>%A%
+echo "Persistent"=dword:00000000>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
+echo "PreventIgnoreCertErrors"=dword:00000001>>%A%
+echo "CertificateRevocation"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%A%
+echo "Disabled"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
+echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%A%
 echo "DCSettingIndex"=dword:00000001>>%A%
@@ -1097,110 +1083,133 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d8742dcb-3e6a-4b3c-b3
 echo "DCSettingIndex"=dword:00000000>>%A%
 echo "ACSettingIndex"=dword:00000000>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "Start_ShowNetPlaces"=dword:00000000>>%A%
-echo "Start_NotifyNewApps"=dword:00000000>>%A%
-echo "Start_ShowDownloads"=dword:00000001>>%A%
-echo "Start_ShowVideos"=dword:00000001>>%A%
-echo "Start_AutoCascade"=dword:00000000>>%A%
-echo "Start_LargeMFUIcons"=dword:00000000>>%A%
-echo "Start_ShowPrinters"=dword:00000000>>%A%
-echo "Start_ShowSetProgramAccessAndDefaults"=dword:00000000>>%A%
-echo "Start_ShowUser"=dword:00000000>>%A%
-echo "Start_ShowHelp"=dword:00000000>>%A%
-echo "Start_MinMFU"=dword:00000000>>%A%
-echo "Start_ShowMyGames"=dword:00000000>>%A%
-echo "Start_ShowMyPics"=dword:00000001>>%A%
-echo "Start_ShowMyDocs"=dword:00000001>>%A%
-echo "Start_ShowMyMusic"=dword:00000001>>%A%
-echo "Start_ShowMyComputer"=dword:00000001>>%A%
-echo "Start_ShowControlPanel"=dword:00000001>>%A%
-echo "Start_SearchFiles"=dword:00000002>>%A%
-echo "Start_ShowHomeGroup"=dword:00000000>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
-echo "IconUnderline"=dword:00000001>>%A%
+echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "ShowSleepOption"=dword:00000001>>%A%
+echo "ShowHibernateOption"=dword:00000001>>%A%
+echo "ShowLockOption"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%A%
-echo "Enabled"=dword:00000000>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo.>>%A%
-echo [%CU%\Control Panel\International\User Profile]>>%A%
-echo "HttpAcceptLanguageOptOut"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
+echo "AllowCortana"=dword:00000000>>%A%
+echo "AllowCortanaAboveLock"=dword:00000000>>%A%
+echo "AutoIndexSharedFolders"=dword:00000001>>%A%
+echo "PreventIndexOnBattery"=dword:00000001>>%A%
+echo "AllowIndexingEncryptedStoresOrItems"=dword:00000000>>%A%
+echo "PreventIndexingOfflineFiles"=dword:00000001>>%A%
+echo "PreventIndexingPublicFolders"=dword:00000001>>%A%
+echo "PreventIndexingEmailAttachments"=dword:00000001>>%A%
+echo "PreventIndexingOutlook"=dword:00000001>>%A%
+echo "DisableRemovableDriveIndexing"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=dword:00000001>>%A%
+echo "DisableFileSync"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
+echo "NoAutoUpdate"=dword:00000001>>%A%
+echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%A%
+echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%A%
+echo "DontOfferThroughWUAU"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%A%
+echo "AutoDownloadAndUpdateMapData"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%A%
+echo "AutoDownload"=dword:00000002>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%A%
+echo "DisableConfig"=dword:00000001>>%A%
+echo "DisableSR"=dword:00000001>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%A%
+echo "CEIPEnable"=dword:00000000>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%A%
+echo "DontShowUI"=dword:00000001>>%A%
+echo "DontSendAdditionalData"=dword:00000001>>%A%
 echo "Disabled"=dword:00000001>>%A%
 echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\MobilePC\MobilityCenter]>>%A%
-echo "RunOnDesktop"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%A%
+echo "DoReport"=dword:00000000>>%A%
 echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%A%
 echo.>>%A%
-echo [-%CU%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%A%
+echo "DisablePCA"=dword:00000001>>%A%
+echo "DisableEngine"=dword:00000001>>%A%
+echo "VDMDisallowed"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]>>%A%
-echo "NoActivities"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]>>%A%
-echo "CheckExeSignatures"="yes">>%A%
-echo "RunInvalidSignatures"=dword:00000000>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
+echo "DisableHomeGroup"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]>>%A%
-echo "Enabled"=dword:00000000>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]>>%A%
-echo "Enable Browser Extensions Beta"="no">>%A%
-echo "DoNotTrack"=dword:00000001>>%A%
-echo "Isolation"="PMEM">>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%A%
+echo "NoGenTicket"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
-echo "PreventIgnoreCertErrors"=dword:00000001>>%A%
-echo "CertificateRevocation"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]>>%A%
-echo "Persistent"=dword:00000000>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
+echo "NoLockScreen"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Internet Explorer\Restrictions]>>%A%
-echo "NoHelpItemSendFeedback"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Internet Explorer\Main]>>%A%
-echo "HideNewEdgeButton"=dword:00000001>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
+echo "EnableSmartScreen"=dword:00000001>>%A%
+echo "ShellSmartScreenLevel"="Warn">>%A%
+echo "DisableLockScreenAppNotifications"=dword:00000001>>%A%
+echo "DisableLogonBackgroundImage"=dword:00000001>>%A%
+echo "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001>>%A%
+echo "HiberbootEnabled"=dword:00000001>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Internet Explorer\TabbedBrowsing]>>%A%
-echo "NewTabPageShow"=dword:00000002>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%A%
 echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
-echo "MaxConnectionsPerServer"=dword:00000008>>%A%
-echo "MaxConnectionsPer1_0Server"=dword:00000008>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%A%
+echo "DisableSoftLanding"=dword:00000001>>%A%
+echo "DisableWindowsConsumerFeatures"=dword:00000001>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%A%
-echo "DisableWindowsSettingSync"=dword:00000002>>%A%
-echo "DisableWindowsSettingSyncUserOverride"=dword:00000001>>%A%
-echo "DisableSyncOnPaidNetwork"=dword:00000001>>%A%
+echo [-%LM%\Software\Policies\Microsoft\Speech]>>%A%
 echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%A%
-echo "SyncOverMeteredNetwork"=dword:00000000>>%A%
-echo "SyncOverMeteredNetworkWhenRoaming"=dword:00000000>>%A%
+echo [%LM%\Software\Policies\Microsoft\Speech]>>%A%
+echo "AllowSpeechModelUpdate"=dword:00000000>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]>>%A%
-echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]>>%A%
-echo "AllowWebContentOnNewTabPage"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%A%
-echo "AllowTelemetry"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%A%
-echo "EnableConfigFlighting"=dword:00000000>>%A%
-echo "EnableExperimentation"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%A%
+echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center]>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard]>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%A%
 echo "DisableRoutinelyTakingAction"=dword:00000000>>%A%
@@ -1317,19 +1326,17 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterpri
 echo "Url"="microsoft.com/en-us/wdsi">>%A%
 echo "CompanyName"="Windows Defender Security Intelligence">>%A%
 echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices]>>%A%
-echo.>>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%A%
 echo "Model"="Optimized by Tom Zhu">>%A%
 echo "SupportHours"="Optimized by Tom Zhu">>%A%
 echo "SupportURL"="support.microsoft.com/windows">>%A%
 echo.>>%A%
-
-
-
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
+echo "VerboseStatus"=dword:00000001>>%A%
+echo "DisableStartupSound"=dword:00000001>>%A%
+echo "ShutdownWithoutLogon"=dword:00000001>>%A%
 echo "EnableLUA"=dword:00000001>>%A%
 echo "ValidateAdminCodeSignatures"=dword:00000000>>%A%
 echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%A%
@@ -1503,9 +1510,6 @@ echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow AppData Roaming">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo "ActivePowerScheme"="281b4222-f694-41f0-9685-ff5bb260df2e">>%A%
 echo.>>%A%
 
 
