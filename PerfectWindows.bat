@@ -62,22 +62,23 @@ set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
 set A=%P%\Core.reg
 set B=%P%\ClearSoftwareRestrictionPolicies.reg
-rd /s /q %P% 1>nul 2>nul
-rd /s /q %T% 1>nul 2>nul
+rd /s /q "%P%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
-md %P% 1>nul 2>nul
-md %T% 1>nul 2>nul
-md %LocalAppdata%\PerfectWindows 1>nul 2>nul
+md "%P%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%LocalAppdata%\PerfectWindows" 1>nul 2>nul
+md "%LocalAppdata%\PerfectWindows" 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
-rd /s /q %T% 1>nul 2>nul
-md %P% 1>nul 2>nul
-md %T% 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%P%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
@@ -314,6 +315,10 @@ sc config WSearch start= auto 1>nul 2>nul
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
 sc config "%%i" start= auto 1>nul 2>nul
 )
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 
@@ -1714,6 +1719,10 @@ powercfg /devicequery wake_armed >%T%\powercfg.txt
 for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 powercfg /devicequery wake_armed >%T%\powercfg.txt
 for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 
@@ -1735,6 +1744,10 @@ del %T%\find.txt 1>nul 2>nul
 del %T%\Reverse.txt 1>nul 2>nul
 del %T%\Reverse.reg 1>nul 2>nul
 del %T%\powercfg.txt 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 :reversemouse
@@ -1757,6 +1770,10 @@ del %T%\find.txt 1>nul 2>nul
 del %T%\Reverse.txt 1>nul 2>nul
 del %T%\Reverse.reg 1>nul 2>nul
 del %T%\powercfg.txt 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 :reversemouse
 echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
@@ -1778,6 +1795,10 @@ del %T%\find.txt 1>nul 2>nul
 del %T%\Reverse.txt 1>nul 2>nul
 del %T%\Reverse.reg 1>nul 2>nul
 del %T%\powercfg.txt 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 
@@ -1876,10 +1897,11 @@ schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 
 
 
-
 :restart
 rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
