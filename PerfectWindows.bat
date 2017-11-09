@@ -799,8 +799,13 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo.>>%A%
+echo [-%LM%\System\CurrentControlSet\Control\Power\PowerThrottling]>>%A%
+echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo "ActivePowerScheme"=->>%A%
+echo.>>%A%
+echo [%LM%\System\CurrentControlSet\Control\Power\PowerThrottling]>>%A%
+echo "PowerThrottlingOff"=dword:00000001>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%A%
 echo "DCSettingIndex"=dword:00000001>>%A%
