@@ -1737,30 +1737,7 @@ echo.
 echo OPTIMIZING SHEDULED TASKS . . .
 echo.
 echo.
-schtasks /query /fo csv >%T%\detailedschtasks.txt
-echo. >%T%\temp5.txt
-for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
-echo %%i>>%T%\temp5.txt
-)
-findstr /v PerfectWindows %T%\temp5.txt >%T%\disabledschtasks.txt
-for /f "tokens=* delims= " %%i in (%T%\disabledschtasks.txt) do (
-schtasks /end /tn %%i 1>nul 2>nul
-schtasks /change /tn %%i /disable 1>nul 2>nul
-)
-
-findstr UpdateOrchestrator %T%\disabledschtasks.txt >%T%\deletedschtasks.txt
-findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
-for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
-schtasks /end /tn %%i 1>nul 2>nul
-schtasks /delete /tn %%i /f 1>nul 2>nul
-)
-
-
-schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
-schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
-schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
-schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
-
+SCHTASKS /Delete /TN * /F 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
 echo   ^<RegistrationInfo^>>>%T%\1.xml
@@ -1824,6 +1801,7 @@ md "%T%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
+exit
 
 
 
@@ -1836,3 +1814,27 @@ shutdown /r /f /t 0 1>nul 2>nul
 
 
 :FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
+
+schtasks /query /fo csv >%T%\detailedschtasks.txt
+echo. >%T%\temp5.txt
+for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
+echo %%i>>%T%\temp5.txt
+)
+findstr /v PerfectWindows %T%\temp5.txt >%T%\disabledschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\disabledschtasks.txt) do (
+schtasks /end /tn %%i 1>nul 2>nul
+schtasks /change /tn %%i /disable 1>nul 2>nul
+)
+
+findstr UpdateOrchestrator %T%\disabledschtasks.txt >%T%\deletedschtasks.txt
+findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
+schtasks /end /tn %%i 1>nul 2>nul
+schtasks /delete /tn %%i /f 1>nul 2>nul
+)
+
+
+schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
+schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
+schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
+schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
