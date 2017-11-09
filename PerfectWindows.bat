@@ -192,7 +192,13 @@ echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%A%
 echo.>>%A%
 echo [-%CU%\SOFTWARE\Policies\Microsoft]>>%A%
 echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\MicrosoftBeta]>>%A%
+echo [-%LM%\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]>>%A%
+echo.>>%A%
+echo [-%CU%\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]>>%A%
+echo.>>%A%
+echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]>>%A%
+echo.>>%A%
+echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]>>%A%
 echo.>>%A%
 echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%A%
 echo.>>%A%
@@ -481,7 +487,7 @@ echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%A%
 echo "NoTrayContextMenu"=dword:00000001>>%A%
 echo "NoTaskGrouping"=dword:00000000>>%A%
 echo "DisableCurrentUserRun"=dword:00000001>>%A%
-echo "DisableCurrentUserRunOnce"=dword:00000001>>%A%
+echo "DisableCurrentUserRunOnce"=dword:00000000>>%A%
 echo "NoInternetIcon"=dword:00000001>>%A%
 echo "HideSCANetwork"=dword:00000001>>%A%
 echo "HideSCAHealth"=dword:00000001>>%A%
@@ -554,7 +560,6 @@ echo.>>%A%
 echo [%CU%\Control Panel\Desktop]>>%A%
 echo "MouseWheelRouting"=dword:00000002>>%A%
 echo.>>%A%
-
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
 echo "NoDispScrSavPage"=dword:00000001>>%A%
 echo.>>%A%
@@ -564,7 +569,7 @@ echo "NoAutorun"=dword:00000001>>%A%
 echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
 echo "DisableLocalMachineRun"=dword:00000001>>%A%
 echo "HidePowerOptions"=dword:00000001>>%A%
-echo "DisableLocalMachineRunOnce"=dword:00000001>>%A%
+echo "DisableLocalMachineRunOnce"=dword:00000000>>%A%
 echo "AllowOnlineTips"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%A%
