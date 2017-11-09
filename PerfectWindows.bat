@@ -15,9 +15,9 @@ mode con cols=45 lines=7
 color fc
 pushd "%~dp0"
 chcp 437 1>nul 2>nul
-(echo check>"%systemroot%"\check.check) 1>nul 2>nul
-if exist "%systemroot%"\check.check (
-del "%systemroot%"\check.check 1>nul 2>nul
+md "%systemroot%\checkadmin" 1>nul 2>nul
+if exist "%systemroot%\checkadmin" (
+rd /s /q "%systemroot%\checkadmin" 1>nul 2>nul
 goto main) else (
 title   ERROR !
 mode con cols=70 lines=7
@@ -93,7 +93,8 @@ attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\St
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-del %T%\startup 1>nul 2>nul
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
 ipconfig /flushdns 1>nul 2>nul
 md "%tmp%" 1>nul 2>nul
@@ -1424,9 +1425,9 @@ attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beperfect.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\beperfect.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beperfect.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo exit) else (>>%systemroot%\beperfect.bat
 echo goto main)>>%systemroot%\beperfect.bat
 echo :main>>%systemroot%\beperfect.bat
@@ -1440,9 +1441,9 @@ attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\besafe.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\besafe.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\besafe.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo exit) else (>>%systemroot%\besafe.bat
 echo goto main)>>%systemroot%\besafe.bat
 echo :main>>%systemroot%\besafe.bat
@@ -1505,9 +1506,9 @@ attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
 
 attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
 echo @echo off>%systemroot%\beindanger.bat
-echo (echo check^>"%systemroot%"\check.check) 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if exist "%systemroot%"\check.check (>>%systemroot%\beindanger.bat
-echo del "%systemroot%"\check.check 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beindanger.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo exit) else (>>%systemroot%\beindanger.bat
 echo goto main)>>%systemroot%\beindanger.bat
 echo :main>>%systemroot%\beindanger.bat
@@ -1590,10 +1591,6 @@ echo. >>%T%\Reverse.reg
 
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
-del %T%\find.txt 1>nul 2>nul
-del %T%\Reverse.txt 1>nul 2>nul
-del %T%\Reverse.reg 1>nul 2>nul
-del %T%\powercfg.txt 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
@@ -1624,10 +1621,6 @@ echo %%i>>%T%\services.txt
 for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
 sc config "%%i" start= demand 1>nul 2>nul
 )
-
-del %T%\tmp1.txt 1>nul 2>nul
-del %T%\tmp2.txt 1>nul 2>nul
-del %T%\tmp3.txt 1>nul 2>nul
 
 
 sc config etdservice start= auto 1>nul 2>nul
@@ -1818,14 +1811,13 @@ echo ^</Task^>>>%T%\1.xml
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
 SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
-del %T%\detailedschtasks.txt 1>nul 2>nul
-del %T%\1.xml 1>nul 2>nul
-
-
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
 schtasks /change /tn "%%i" /enable 1>nul 2>nul)
 )
 
+
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 :restart
