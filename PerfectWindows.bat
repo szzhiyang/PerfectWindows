@@ -1431,6 +1431,8 @@ echo.>>%A%
 attrib +h +s "%A%" 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
 attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 
 
@@ -1602,6 +1604,8 @@ echo. >>%T%\Reverse.reg
 
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
 reg import %T%\Reverse.reg /reg:32 1>nul 2>nul
+regedit /s %T%\Reverse.reg  1>nul 2>nul
+regedit /s %T%\Reverse.reg  1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
