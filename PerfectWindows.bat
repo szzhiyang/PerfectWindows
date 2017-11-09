@@ -102,7 +102,7 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 
 if exist whitelist.txt (
 goto hosts) else (
-echo You can exclude your needed services or scheduled tasks here.>whitelist.txt
+echo You can exclude your needed services here.>whitelist.txt
 goto hosts)
 
 :hosts
@@ -481,7 +481,7 @@ echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%A%
 echo "NoTrayContextMenu"=dword:00000001>>%A%
 echo "NoTaskGrouping"=dword:00000000>>%A%
 echo "DisableCurrentUserRun"=dword:00000001>>%A%
-echo "DisableCurrentUserRunOnce"=->>%A%
+echo "DisableCurrentUserRunOnce"=dword:00000001>>%A%
 echo "NoInternetIcon"=dword:00000001>>%A%
 echo "HideSCANetwork"=dword:00000001>>%A%
 echo "HideSCAHealth"=dword:00000001>>%A%
@@ -564,7 +564,7 @@ echo "NoAutorun"=dword:00000001>>%A%
 echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
 echo "DisableLocalMachineRun"=dword:00000001>>%A%
 echo "HidePowerOptions"=dword:00000001>>%A%
-echo "DisableLocalMachineRunOnce"=->>%A%
+echo "DisableLocalMachineRunOnce"=dword:00000001>>%A%
 echo "AllowOnlineTips"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%A%
@@ -1734,15 +1734,6 @@ md "%T%" 1>nul 2>nul
 
 
 :disableschtasks
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING SHEDULED TASKS . . .
-echo.
-echo.
 SCHTASKS /Delete /TN * /F 1>nul 2>nul
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
