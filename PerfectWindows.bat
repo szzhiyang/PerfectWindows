@@ -260,6 +260,12 @@ echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%A%
 echo.>>%A%
 echo [-%CU%\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]>>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
+echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
+echo.>>%A%
+echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
+echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
+echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%A%
 echo "SMBDeviceEnabled"=dword:00000000>>%A%
 echo "TransportBindName"=->>%A%
@@ -1805,15 +1811,15 @@ exit
 
 
 
-:backup
+BETA WORKS
 
-:[%LM%\SOFTWARE\Microsoft\Rpc]
-:"ConnectionOptionsFlag"=dword:00000001
-:"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+[%LM%\SOFTWARE\Microsoft\Rpc]
+"ConnectionOptionsFlag"=dword:00000001
+"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
   74,00,63,00,70,00,00,00,00,00
 
 
-:FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
+FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
 
 schtasks /query /fo csv >%T%\detailedschtasks.txt
 echo. >%T%\temp5.txt
