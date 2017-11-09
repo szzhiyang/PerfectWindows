@@ -1794,9 +1794,6 @@ echo ^</Task^>>>%T%\1.xml
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
 SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
-for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-schtasks /change /tn "%%i" /enable 1>nul 2>nul)
-)
 
 
 rd /s /q "%T%" 1>nul 2>nul
