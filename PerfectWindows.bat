@@ -1839,9 +1839,3 @@ for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
-
-
-schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
-schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
-schtasks /change /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" /enable 1>nul 2>nul
-schtasks /run /tn "\Microsoft\Windows\TextServicesFramework\MsCtfMonitor" 1>nul 2>nul
