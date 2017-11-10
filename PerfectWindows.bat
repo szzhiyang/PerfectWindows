@@ -204,12 +204,6 @@ echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPr
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%A%
 echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Userinit]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\VmApplet]>>%A%
-echo.>>%A%
-echo [-%LM%\SYSTEM\CurrentControlSet\Control\SafeBoot\AlternateShell]>>%A%
-echo.>>%A%
 echo [-%LM%\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]>>%A%
@@ -292,7 +286,9 @@ echo.>>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%A%
 echo "EnableFirstLogonAnimation"=dword:00000001>>%A%
 echo "WinStationsDisabled"="0">>%A%
+echo "Background"="0 0 0">>%A%
 echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
+echo "VMApplet"="SystemPropertiesPerformance.exe /pagefile">>%A%
 echo "Shell"="explorer.exe">>%A%
 echo "ShellCritical"=dword:00000000>>%A%
 echo "ShellInfrastructure"="sihost.exe">>%A%
@@ -306,9 +302,17 @@ echo "EnableSIHostIntegration"=dword:00000001>>%A%
 echo "ForceUnlockLogon"=dword:00000000>>%A%
 echo "LegalNoticeCaption"="">>%A%
 echo "LegalNoticeText"="">>%A%
+echo "PasswordExpiryWarning"=dword:00000005>>%A%
 echo "PowerdownAfterShutdown"="0">>%A%
 echo "ReportBootOk"="1">>%A%
+echo "ShutdownWithoutLogon"="0">>%A%
+echo "CachedLogonsCount"="10">>%A%
+echo "DebugServerCommand"="no">>%A%
+echo "System"="">>%A%
+echo "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}">>%A%
 echo.>>%A%
+echo [%LM%\SYSTEM\CurrentControlSet\Control\SafeBoot]>>%A%
+echo "AlternateShell"="cmd.exe">>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%A%
 echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%A%
 echo ".tiff"="PhotoViewer.FileAssoc.Tiff">>%A%
