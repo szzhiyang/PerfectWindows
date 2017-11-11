@@ -489,7 +489,7 @@ echo "NoRecentDocsMenu"=dword:00000001>>%A%
 echo "NoStartMenuMFUprogramsList"=dword:00000001>>%A%
 echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%A%
 echo "NoTrayContextMenu"=dword:00000001>>%A%
-echo "NoTaskGrouping"=dword:00000000>>%A%
+echo "NoTaskGrouping"=dword:00000001>>%A%
 echo "DisableCurrentUserRun"=dword:00000001>>%A%
 echo "DisableCurrentUserRunOnce"=dword:00000000>>%A%
 echo "NoInternetIcon"=dword:00000001>>%A%
@@ -1839,4 +1839,3 @@ for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
-
