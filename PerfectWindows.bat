@@ -1839,3 +1839,4 @@ for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
+
