@@ -53,7 +53,6 @@ echo.
 echo OPTIMIZING WINDOWS SETTINGS . . .
 echo.
 echo.
-taskkill /f /im explorer.exe 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
@@ -108,26 +107,22 @@ goto hosts)
 :hosts
 if exist hosts.txt (
 goto applyhosts) else (
-goto copy)
+goto copybat)
 
 :applyhosts
 ren hosts.txt hosts
 copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 ren hosts hosts.txt
 
-:copy
+:copybat
 if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
-goto core) else (
+goto createreg) else (
 copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
 )
-copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 
 
 
-:core
+:createreg
 echo Windows Registry Editor Version 5.00>%B%
 echo.>>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
@@ -1406,9 +1401,9 @@ echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%A%
 echo   00,00>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData Roaming">>%A%
+echo "Description"="Allow AppData Roaming">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%A%
 echo.>>%A%
@@ -1430,14 +1425,6 @@ echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
 echo.>>%A%)
 )
-
-echo.>>%A%
-attrib +h +s "%A%" 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 
 
 attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
@@ -1464,19 +1451,19 @@ echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo exit) else (>>%systemroot%\besafe.bat
 echo goto main)>>%systemroot%\besafe.bat
 echo :main>>%systemroot%\besafe.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo chcp 437>>%systemroot%\besafe.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
 echo title   WARNING ! ! !>>%systemroot%\besafe.bat
 echo color cf>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -1501,7 +1488,6 @@ echo exit) else (>>%systemroot%\besafe.bat
 echo title   WELL DONE !>>%systemroot%\besafe.bat
 echo color 2f>>%systemroot%\besafe.bat
 echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
 echo echo.>>%systemroot%\besafe.bat
@@ -1529,19 +1515,19 @@ echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.b
 echo exit) else (>>%systemroot%\beindanger.bat
 echo goto main)>>%systemroot%\beindanger.bat
 echo :main>>%systemroot%\beindanger.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo chcp 437>>%systemroot%\beindanger.bat
 echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
 echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
 echo color cf>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -1566,7 +1552,6 @@ echo exit) else (>>%systemroot%\beindanger.bat
 echo title   WELL DONE !>>%systemroot%\beindanger.bat
 echo color 2f>>%systemroot%\beindanger.bat
 echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
 echo echo.>>%systemroot%\beindanger.bat
@@ -1802,6 +1787,26 @@ SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signatur
 
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
+
+
+:copyconfig
+copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
+copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+
+
+
+:applyreg
+taskkill /f /im explorer.exe 1>nul 2>nul
+echo.>>%A%
+attrib +h +s "%A%" 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
+
 
 
 :restart
