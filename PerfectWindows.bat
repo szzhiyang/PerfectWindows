@@ -185,6 +185,11 @@ echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%A%
 echo.>>%A%
 echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%A%
 echo.>>%A%
+echo [-%LM%\SOFTWARE\Policies\Microsoft]>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]>>%A%
+echo @="DO NOT DELETE THIS KEY !">>%A%
+echo.>>%A%
 echo [-%CU%\SOFTWARE\Policies\Microsoft]>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]>>%A%
