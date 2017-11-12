@@ -647,6 +647,9 @@ echo.>>%A%
 echo [%CU%\Software\Microsoft\MobilePC\MobilityCenter]>>%A%
 echo "RunOnDesktop"=dword:00000001>>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]>>%A%
+echo "ImmersiveContextMenu"=->>%A%
+echo.>>%A%
 echo [%CU%\Software\Microsoft\Internet Explorer\Main]>>%A%
 echo "HideNewEdgeButton"=dword:00000001>>%A%
 echo.>>%A%
