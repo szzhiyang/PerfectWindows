@@ -165,7 +165,7 @@ echo "TaskbarGlomLevel"=dword:00000001>>%B%
 echo "TaskbarGlomming"=dword:00000000>>%B%
 echo "TaskbarSmallIcons"=dword:00000001>>%B%
 echo.>>%B%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "VerboseStatus"=dword:00000001>>%B%
 echo "DisableStartupSound"=dword:00000001>>%B%
 echo "ShutdownWithoutLogon"=dword:00000001>>%B%
