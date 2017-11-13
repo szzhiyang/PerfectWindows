@@ -67,7 +67,7 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%LocalAppdata%\PerfectWindows" 1>nul 2>nul
+md "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
 powercfg /hibernate /size 75 1>nul 2>nul
 powercfg /hibernate /type full 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -81,7 +81,8 @@ attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
 attrib +h +s "%LocalAppData%" 1>nul 2>nul
-attrib -h -s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\TrustedApps" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
 attrib +h +s "%AppData%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
@@ -115,9 +116,9 @@ copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 ren hosts hosts.txt
 
 :copybat
-if "%~0" equ "%LocalAppdata%\PerfectWindows\PerfectWindows.bat" (
+if "%~0" equ "%LocalAppData%\TrustedApps\PerfectWindows\PerfectWindows.bat" (
 goto createreg) else (
-copy "%~0" /Y %LocalAppdata%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
+copy "%~0" /Y %LocalAppData%\TrustedApps\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
 )
 
 
@@ -164,6 +165,22 @@ echo "TaskbarGlomLevel"=dword:00000001>>%B%
 echo "TaskbarGlomming"=dword:00000000>>%B%
 echo "TaskbarSmallIcons"=dword:00000001>>%B%
 echo.>>%B%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
+echo "VerboseStatus"=dword:00000001>>%B%
+echo "DisableStartupSound"=dword:00000001>>%B%
+echo "ShutdownWithoutLogon"=dword:00000001>>%B%
+echo "EnableLUA"=dword:00000001>>%B%
+echo "ValidateAdminCodeSignatures"=dword:00000000>>%B%
+echo "ConsentPromptBehaviorAdmin"=dword:0000001>>%B%
+echo "ConsentPromptBehaviorUser"=dword:00000003>>%B%
+echo "PromptOnSecureDesktop"=dword:00000001>>%B%
+echo "EnableUIADesktopToggle"=dword:00000000>>%B%
+echo "FilterAdministratorToken"=dword:00000001>>%B%
+echo "EnableSecureUIAPaths"=dword:00000001>>%B%
+echo "EnableInstallerDetection"=dword:00000001>>%B%
+echo "EnableVirtualization"=dword:00000001>>%B%
+echo "DSCAutomationHostEnabled"=dword:00000002>>%B%
+echo.>>%A%
 echo.>>%B%
 echo.>>%B%
 echo.>>%B%
@@ -1336,9 +1353,9 @@ echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%A%
 echo   74,00,61,00,25,00,00,00>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData Local">>%A%
+echo "Description"="Disallow AppData\\Local">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
 echo   61,00,74,00,61,00,25,00,00,00>>%A%
@@ -1351,7 +1368,7 @@ echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData Local Microsoft">>%A%
+echo "Description"="Disallow AppData\\Local\\Microsoft">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
 echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
@@ -1359,7 +1376,7 @@ echo   00,74,00,00,00>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData Local Packages">>%A%
+echo "Description"="Disallow AppData\\Local\\Packages">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
 echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%A%
@@ -1367,14 +1384,27 @@ echo   00,00,00>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData Local Microsoft OneDrive">>%A%
+echo "Description"="Allow AppData\\Local\\Microsoft\\OneDrive">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
 echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
 echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%A%
 echo   00,00>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8031c}]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local\\Google">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
+echo   61,00,74,00,61,00,25,00,5c,00,47,00,6f,00,6f,00,67,00,6c,00,65,00,00,00>>%A%
+echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{5d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local\\TrustedApps">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
+echo   61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\>>%A%
+echo   00,70,00,70,00,73,00,00,00>>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
@@ -1409,9 +1439,9 @@ echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%A%
 echo   00,00>>%A%
 echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData Roaming">>%A%
+echo "Description"="Disallow AppData\\Roaming">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%A%
 echo.>>%A%
@@ -1447,7 +1477,7 @@ echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo explorer %LocalAppdata%\PerfectWindows\>>%systemroot%\beperfect.bat
+echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%systemroot%\beperfect.bat
 attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
 
 
@@ -1801,10 +1831,10 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy whitelist.txt /Y %LocalAppdata%\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %LocalAppdata%\PerfectWindows\hosts.txt 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
+copy whitelist.txt /Y %LocalAppData%\TrustedApps\PerfectWindows\whitelist.txt 1>nul 2>nul
+copy hosts.txt /Y %LocalAppData%\TrustedApps\PerfectWindows\hosts.txt 1>nul 2>nul
+attrib +h +s "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
+attrib +h +s "%LocalAppData%\TrustedApps" 1>nul 2>nul
 
 
 
