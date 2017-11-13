@@ -1382,6 +1382,15 @@ echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,
 echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%A%
 echo   00,00,00>>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local\\Microsoft\\OneDrive">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
+echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
+echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%A%
+echo   00,00>>%A%
+echo.>>%A%
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow AppData\\Local\\Google">>%A%
@@ -1443,15 +1452,6 @@ if %%i equ onedrive (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
 echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData\\Local\\Microsoft\\OneDrive">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
-echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%A%
-echo   00,00>>%A%
 echo.>>%A%)
 
 if %%i equ cortana (
