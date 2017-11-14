@@ -425,6 +425,7 @@ echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
 echo "EnableAutoTray"=dword:00000000>>%A%
 echo "ShowFrequent"=dword:00000000>>%A%
 echo "ShowRecent"=dword:00000000>>%A%
+echo "ShowDriveLettersFirst"=dword:00000000>>%A%
 echo "ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%A%
 echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%A%
 echo "IconUnderline"=dword:00000001>>%A%
@@ -445,7 +446,19 @@ echo "PersistBrowsers"=dword:00000001>>%A%
 echo "TaskbarAnimations"=dword:00000000>>%A%
 echo "TaskbarGlomLevel"=dword:00000001>>%A%
 echo "TaskbarGlomming"=dword:00000000>>%A%
+echo "ShowDriveLettersFirst"=dword:00000000>>%A%
+echo "ShowInfoTip"=dword:00000000>>%A%
+echo "ShowTypeOverlay"=dword:00000001>>%A%
+echo "ShowStatusBar"=dword:00000001>>%A%
+echo "TaskbarSmallIcons"=dword:00000001>>%A%
+echo "HideDrivesWithNoMedia"=dword:00000001>>%A%
+echo "NavPaneExpandToCurrentFolder"=dword:00000001>>%A%
+echo "NavPaneShowAllFolders"=dword:00000000>>%A%
+echo "SharingWizardOn"=dword:00000001>>%A%
 echo "IconsOnly"=dword:00000000>>%A%
+echo "FolderContentsInfoTip"=dword:00000000>>%A%
+echo "HideMergeConflicts"=dword:00000001>>%A%
+echo "ShowPreviewHandlers"=dword:00000001>>%A%
 echo "ListviewShadow"=dword:00000001>>%A%
 echo "ListviewAlphaSelect"=dword:00000001>>%A%
 echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%A%
@@ -499,6 +512,11 @@ echo "ArchivedFiles"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoToolbarsOnTaskbar"=dword:00000001>>%A%
+echo "PreventItemCreationInUsersFilesFolder"=dword:00000001>>%A%
+echo "NoFolderOptions"=dword:00000001>>%A%
+echo "NoPreviewPane"=dword:00000001>>%A%
+echo "NoReadingPane"=dword:00000001>>%A%
+echo "ConfirmFileDelete"=dword:00000001>>%A%
 echo "ForceClassicControlPanel"=dword:00000001>>%A%
 echo "EnforceShellExtensionSecurity"=dword:00000001>>%A%
 echo "ClearRecentDocsOnExit"=dword:00000001>>%A%
@@ -1009,6 +1027,8 @@ echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "ShowSleepOption"=dword:00000001>>%A%
 echo "ShowHibernateOption"=dword:00000001>>%A%
 echo "ShowLockOption"=dword:00000001>>%A%
+echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%A%
+echo "NoNewAppAlert"=dword:00000001>>%A%
 echo.>>%A%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo.>>%A%
