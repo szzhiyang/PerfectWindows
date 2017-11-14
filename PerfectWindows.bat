@@ -11,9 +11,6 @@ GITHUB.COM/SZZHIYANG/PERFECTWINDOWS
 
 
 @echo off
-if "%~0" equ "%systemroot%\beindanger.bat" goto beindanger
-if "%~0" equ "%systemroot%\besafe.bat" goto besafe
-if "%~0" equ "%systemroot%\beperfect.bat" goto beperfect
 mode con cols=45 lines=7
 color fc
 pushd "%~dp0"
@@ -210,11 +207,147 @@ echo.>>%A%)
 )
 
 
-copy "%~0" /Y "%systemroot%\beperfect.bat" 1>nul 2>nul
-copy "%~0" /Y "%systemroot%\besafe.bat" 1>nul 2>nul
-copy "%~0" /Y "%systemroot%\beindanger.bat" 1>nul 2>nul
+attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\beperfect.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beperfect.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo exit) else (>>%systemroot%\beperfect.bat
+echo goto main)>>%systemroot%\beperfect.bat
+echo :main>>%systemroot%\beperfect.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
+echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%systemroot%\beperfect.bat
 attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
+
+
+attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\besafe.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\besafe.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo exit) else (>>%systemroot%\besafe.bat
+echo goto main)>>%systemroot%\besafe.bat
+echo :main>>%systemroot%\besafe.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo chcp 437>>%systemroot%\besafe.bat
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
+echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
+echo title   WARNING ! ! !>>%systemroot%\besafe.bat
+echo color cf>>%systemroot%\besafe.bat
+echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo pause>>%systemroot%\besafe.bat
+echo exit) else (>>%systemroot%\besafe.bat
+echo title   WELL DONE !>>%systemroot%\besafe.bat
+echo color 2f>>%systemroot%\besafe.bat
+echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo echo.>>%systemroot%\besafe.bat
+echo pause>>%systemroot%\besafe.bat
+echo exit)>>%systemroot%\besafe.bat
 attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
+
+
+attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
+echo @echo off>%systemroot%\beindanger.bat
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beindanger.bat
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo exit) else (>>%systemroot%\beindanger.bat
+echo goto main)>>%systemroot%\beindanger.bat
+echo :main>>%systemroot%\beindanger.bat
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo chcp 437>>%systemroot%\beindanger.bat
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
+echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
+echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
+echo color cf>>%systemroot%\beindanger.bat
+echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo pause>>%systemroot%\beindanger.bat
+echo exit) else (>>%systemroot%\beindanger.bat
+echo title   WELL DONE !>>%systemroot%\beindanger.bat
+echo color 2f>>%systemroot%\beindanger.bat
+echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo echo.>>%systemroot%\beindanger.bat
+echo pause>>%systemroot%\beindanger.bat
+echo exit)>>%systemroot%\beindanger.bat
 attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 
 
@@ -497,149 +630,6 @@ schtasks /delete /tn %%i /f 1>nul 2>nul
 )
 
 Archive Ends
-
-
-
-:beindanger
-md "C:\WINDOWS\checkadmin" 1>nul 2>nul
-if exist "C:\WINDOWS\checkadmin" (
-rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
-exit) else (
-goto beindangermain)
-:beindangermain
-rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
-md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-regedit /s C:\WINDOWS\PerfectWindowsZZY\ClearSoftwareRestrictionPolicies.reg 1>nul 2>nul
-taskkill /f /im explorer.exe 1>nul 2>nul
-start explorer.exe 1>nul 2>nul
-chcp 437
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1>nul 2>nul
-if ERRORLEVEL 1 (
-title   WARNING ! ! !
-color cf
-mode con cols=36 lines=23
-echo.
-echo.
-echo.
-echo YOUR PC IS IN DANGER NOW ! ! !
-echo.
-echo.
-echo.
-echo PLEASE DO REMEMBER TO RUN
-echo.
-echo.
-echo.
-echo "BESAFE" FROM START MENU TO
-echo.
-echo.
-echo.
-echo BRING YOUR PC BACK TO SAFETY ! ! !
-echo.
-echo.
-echo.
-pause
-exit) else (
-title   WELL DONE !
-color 2f
-mode con cols=36 lines=19
-echo.
-echo.
-echo.
-echo.
-echo YOUR PC IS SAFE NOW !
-echo.
-echo.
-echo.
-echo.
-echo HAVE A NICE DAY !
-echo.
-echo.
-echo.
-echo.
-pause
-exit)
-exit
-
-
-:besafe
-md "C:\WINDOWS\checkadmin" 1>nul 2>nul
-if exist "C:\WINDOWS\checkadmin" (
-rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
-exit) else (
-goto besafemain)
-:besafemain
-rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
-md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-regedit /s C:\WINDOWS\PerfectWindowsZZY\Core.reg 1>nul 2>nul
-taskkill /f /im explorer.exe 1>nul 2>nul
-start explorer.exe 1>nul 2>nul
-chcp 437
-reg query HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1>nul 2>nul
-if ERRORLEVEL 1 (
-title   WARNING ! ! !
-color cf
-mode con cols=36 lines=23
-echo.
-echo.
-echo.
-echo YOUR PC IS IN DANGER NOW ! ! !
-echo.
-echo.
-echo.
-echo PLEASE DO REMEMBER TO RUN
-echo.
-echo.
-echo.
-echo "BESAFE" FROM START MENU TO
-echo.
-echo.
-echo.
-echo BRING YOUR PC BACK TO SAFETY ! ! !
-echo.
-echo.
-echo.
-pause
-exit) else (
-title   WELL DONE !
-color 2f
-mode con cols=36 lines=19
-echo.
-echo.
-echo.
-echo.
-echo YOUR PC IS SAFE NOW !
-echo.
-echo.
-echo.
-echo.
-echo HAVE A NICE DAY !
-echo.
-echo.
-echo.
-echo.
-pause
-exit)
-exit
-
-
-
-:beperfect
-md "C:\WINDOWS\checkadmin" 1>nul 2>nul
-if exist "C:\WINDOWS\checkadmin" (
-rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
-exit) else (
-goto beperfectmain)
-:beperfectmain
-rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-ipconfig /flushdns 1>nul 2>nul
-md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
-explorer C:\Users\ZZY\AppData\Local\TrustedApps\PerfectWindows
-exit
 
 
 
