@@ -413,6 +413,8 @@ echo "Grid_backgroundPercent"=dword:00000000>>%A%
 echo "BackgroundDimmingLayer_percent"=dword:00000028>>%A%
 echo "wallpaper"=dword:00000001>>%A%
 echo.>>%A%
+echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket]>>%A%
+echo.>>%A%
 echo [%CU%\Control Panel\International]>>%A%
 echo "sShortTime"="H:m">>%A%
 echo "sLongTime"="H:m:s">>%A%
