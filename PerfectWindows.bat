@@ -190,7 +190,7 @@ attrib +h +s "%B%" 1>nul 2>nul
 echo Windows Registry Editor Version 5.00>%A%
 echo.>>%A%
 echo [%LM%\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
-echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,40,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%A%
+echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,00,00,53,E0,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]>>%A%
 echo "User Policies 2"="%CU%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%A%
@@ -512,7 +512,7 @@ echo "ArchivedFiles"=dword:00000000>>%A%
 echo.>>%A%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoToolbarsOnTaskbar"=dword:00000001>>%A%
-echo "NoRecycleFiles"=dword:00000001>>%A%
+echo "NoRecycleFiles"=dword:00000000>>%A%
 echo "PreventItemCreationInUsersFilesFolder"=dword:00000001>>%A%
 echo "NoFolderOptions"=dword:00000001>>%A%
 echo "NoPreviewPane"=dword:00000001>>%A%
