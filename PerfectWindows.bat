@@ -1,16 +1,19 @@
-:PLEASE DO NOT MODIFY THIS BATCH FILE UNLESS YOU KNOW WHAT YOU ARE DOING ! ! !
+Windows Registry Editor Version 5.00
 
 
 
-:YOU CAN FIND THE LATEST VERSION OF PERFECTWINDOWS.BAT AT THE FOLLOWING WEBSITE :
+! ! ! PLEASE DO NOT MODIFY THIS BATCH FILE UNLESS YOU KNOW WHAT YOU ARE DOING ! ! !
 
 
 
-:GITHUB.COM/SZZHIYANG/PERFECTWINDOWS
+GITHUB.COM/SZZHIYANG/PERFECTWINDOWS
 
 
 
 @echo off
+if "%~0" equ "%systemroot%\beindanger.bat" goto beindanger
+if "%~0" equ "%systemroot%\besafe.bat" goto besafe
+if "%~0" equ "%systemroot%\beperfect.bat" goto beperfect
 mode con cols=45 lines=7
 color fc
 pushd "%~dp0"
@@ -186,1293 +189,7 @@ echo.>>%B%
 echo.>>%B%
 attrib +h +s "%B%" 1>nul 2>nul
 
-
-echo Windows Registry Editor Version 5.00>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
-echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,00,00,53,E0,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]>>%A%
-echo "User Policies 2"="%CU%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%A%
-echo "Machine Policies 2"="%LM%\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies">>%A%
-echo "User Policies 1"="%CU%\\SOFTWARE\\Policies\\Microsoft">>%A%
-echo "Machine Policies 1"="%LM%\\SOFTWARE\\Policies\\Microsoft">>%A%
-echo.>>%A%
-echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]>>%A%
-echo @="DO NOT DELETE THIS KEY !">>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Policies\Microsoft]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%LM%\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]>>%A%
-echo.>>%A%
-echo [-%LM%\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Active Setup\Installed Components]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\System\Scripts]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Policies\Microsoft\Windows\System\Scripts]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
-echo.>>%A%
-echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]>>%A%
-echo "SMBDeviceEnabled"=dword:00000000>>%A%
-echo "TransportBindName"=->>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Ole]>>%A%
-echo "EnableDCOM"="N">>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Rpc]>>%A%
-echo "DCOM Protocols"=hex(7):00,00>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]>>%A%
-echo "AutoShareServer"=dword:00000000>>%A%
-echo "AutoShareWks"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\LSA]>>%A%
-echo "RestrictAnonymous"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%A%
-echo "EnableFirstLogonAnimation"=dword:00000001>>%A%
-echo "WinStationsDisabled"="0">>%A%
-echo "Background"="0 0 0">>%A%
-echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
-echo "VMApplet"="SystemPropertiesPerformance.exe /pagefile">>%A%
-echo "Shell"="explorer.exe">>%A%
-echo "ShellCritical"=dword:00000000>>%A%
-echo "ShellInfrastructure"="sihost.exe">>%A%
-echo "SiHostCritical"=dword:00000000>>%A%
-echo "SiHostReadyTimeOut"=dword:00000000>>%A%
-echo "SiHostRestartCountLimit"=dword:00000000>>%A%
-echo "SiHostRestartTimeGap"=dword:00000000>>%A%
-echo "AutoRestartShell"=dword:00000001>>%A%
-echo "DisableBackButton"=dword:00000001>>%A%
-echo "EnableSIHostIntegration"=dword:00000001>>%A%
-echo "ForceUnlockLogon"=dword:00000000>>%A%
-echo "LegalNoticeCaption"="">>%A%
-echo "LegalNoticeText"="">>%A%
-echo "PasswordExpiryWarning"=dword:00000005>>%A%
-echo "PowerdownAfterShutdown"="0">>%A%
-echo "ReportBootOk"="1">>%A%
-echo "ShutdownWithoutLogon"="0">>%A%
-echo "CachedLogonsCount"="10">>%A%
-echo "DebugServerCommand"="no">>%A%
-echo "System"="">>%A%
-echo "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}">>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\SafeBoot]>>%A%
-echo "AlternateShell"="cmd.exe">>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]>>%A%
-echo ".tif"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".tiff"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".jpg"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".jpeg"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".jpe"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".jfif"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".bmp"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".gif"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".png"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".ico"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".dib"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".wdp"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo ".jxr"="PhotoViewer.FileAssoc.Tiff">>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Remote Assistance]>>%A%
-echo "fAllowToGetHelp"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Terminal Server]>>%A%
-echo "fDenyTSConnections"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "DisableTaskMgr"=->>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager]>>%A%
-echo "BootExecute"=hex(7):00,00>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]>>%A%
-echo "DisableNotifications"=dword:00000000>>%A%
-echo "EnableFirewall"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Security Center]>>%A%
-echo "AntiVirusOverride"=->>%A%
-echo "FirewallDisableNotify"=->>%A%
-echo "UacDisableNotify"=->>%A%
-echo "UpdatesDisableNotify"=->>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Security Center\Svc]>>%A%
-echo "AntiVirusOverride"=->>%A%
-echo "FirewallDisableNotify"=->>%A%
-echo "UacDisableNotify"=->>%A%
-echo "UpdatesDisableNotify"=->>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]>>%A%
-echo "WakeUp"=dword:00000000>>%A%
-echo "MaintenanceDisabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\CrashControl]>>%A%
-echo "AutoReboot"=dword:00000000>>%A%
-echo "AlwaysKeepMemoryDump"=dword:00000000>>%A%
-echo "CrashDumpEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]>>%A%
-echo "EnableSuperfetch"=dword:00000000>>%A%
-echo.>>%A%
-
-echo [%CU%\Software\Microsoft\Windows\DWM]>>%A%
-echo "AnimationsShiftKey"=dword:00000001>>%A%
-echo.>>%A%
-
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]>>%A%
-echo "EnableTransparency"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]>>%A%
-echo "PeopleBand"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]>>%A%
-echo "ShoulderTap"=dword:00000000>>%A%
-echo "ShoulderTapAudio"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SYSTEM\CurrentControlSet\Control\Session Manager\Power]>>%A%
-echo "AwayModeEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "UseOLEDTaskbarTransparency"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]>>%A%
-echo "Grid_backgroundPercent"=dword:00000000>>%A%
-echo "BackgroundDimmingLayer_percent"=dword:00000028>>%A%
-echo "wallpaper"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket]>>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\International]>>%A%
-echo "sShortTime"="H:m">>%A%
-echo "sLongTime"="H:m:s">>%A%
-echo "sShortTime"="H:mm">>%A%
-echo "sLongTime"="H:mm:ss">>%A%
-echo "s1159"=->>%A%
-echo "s2359"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
-echo "EnableAutoTray"=dword:00000000>>%A%
-echo "ShowFrequent"=dword:00000000>>%A%
-echo "ShowRecent"=dword:00000000>>%A%
-echo "ShowDriveLettersFirst"=dword:00000000>>%A%
-echo "ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%A%
-echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%A%
-echo "IconUnderline"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "SeparateProcess"=dword:00000001>>%A%
-echo "ShowTypeOverlay"=dword:00000001>>%A%
-echo "DontUsePowerShellOnWinX"=dword:00000001>>%A%
-echo "ShowTaskViewButton"=dword:00000000>>%A%
-echo "Hidden"=dword:00000002>>%A%
-echo "ShowSuperHidden"=dword:00000000>>%A%
-echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
-echo "HideFileExt"=dword:00000001>>%A%
-echo "ExtendedUIHoverTime"=dword:11111111>>%A%
-echo "AutoCheckSelect"=dword:00000001>>%A%
-echo "TaskbarSizeMove"=dword:00000000>>%A%
-echo "PersistBrowsers"=dword:00000001>>%A%
-echo "TaskbarAnimations"=dword:00000000>>%A%
-echo "TaskbarGlomLevel"=dword:00000001>>%A%
-echo "TaskbarGlomming"=dword:00000000>>%A%
-echo "ShowDriveLettersFirst"=dword:00000000>>%A%
-echo "ShowInfoTip"=dword:00000000>>%A%
-echo "ShowTypeOverlay"=dword:00000001>>%A%
-echo "ShowStatusBar"=dword:00000001>>%A%
-echo "TaskbarSmallIcons"=dword:00000001>>%A%
-echo "HideDrivesWithNoMedia"=dword:00000001>>%A%
-echo "NavPaneExpandToCurrentFolder"=dword:00000001>>%A%
-echo "NavPaneShowAllFolders"=dword:00000000>>%A%
-echo "SharingWizardOn"=dword:00000001>>%A%
-echo "IconsOnly"=dword:00000000>>%A%
-echo "FolderContentsInfoTip"=dword:00000000>>%A%
-echo "HideMergeConflicts"=dword:00000001>>%A%
-echo "ShowPreviewHandlers"=dword:00000001>>%A%
-echo "ListviewShadow"=dword:00000001>>%A%
-echo "ListviewAlphaSelect"=dword:00000001>>%A%
-echo "TaskbarAppsVisibleInTabletMode"=dword:00000001>>%A%
-echo "TaskbarSmallIcons"=dword:00000001>>%A%
-echo "UseTabletModeNotificationIcons"=dword:00000000>>%A%
-echo "ShowSyncProviderNotifications"=dword:00000000>>%A%
-echo "LaunchTo"=dword:00000001>>%A%
-echo "JointResize"=dword:00000001>>%A%
-echo "SnapAssist"=dword:00000001>>%A%
-echo "SnapFill"=dword:00000001>>%A%
-echo "VirtualDesktopTaskbarFilter"=dword:00000001>>%A%
-echo "VirtualDesktopAltTabFilter"=dword:00000001>>%A%
-echo "ShowEncryptCompressedColor"=dword:00000001>>%A%
-echo "TypeAhead"=dword:00000001>>%A%
-echo "AlwaysShowMenus"=dword:00000000>>%A%
-echo "HideDrivesWithNoMedia"=dword:00000001>>%A%
-echo "Start_TrackDocs"=dword:00000000>>%A%
-echo "Start_ShowNetPlaces"=dword:00000000>>%A%
-echo "Start_NotifyNewApps"=dword:00000000>>%A%
-echo "Start_ShowDownloads"=dword:00000001>>%A%
-echo "Start_ShowVideos"=dword:00000001>>%A%
-echo "Start_AutoCascade"=dword:00000000>>%A%
-echo "Start_LargeMFUIcons"=dword:00000000>>%A%
-echo "Start_ShowPrinters"=dword:00000000>>%A%
-echo "Start_ShowSetProgramAccessAndDefaults"=dword:00000000>>%A%
-echo "Start_ShowUser"=dword:00000000>>%A%
-echo "Start_ShowHelp"=dword:00000000>>%A%
-echo "Start_MinMFU"=dword:00000000>>%A%
-echo "Start_ShowMyGames"=dword:00000000>>%A%
-echo "Start_ShowMyPics"=dword:00000001>>%A%
-echo "Start_ShowMyDocs"=dword:00000001>>%A%
-echo "Start_ShowMyMusic"=dword:00000001>>%A%
-echo "Start_ShowMyComputer"=dword:00000001>>%A%
-echo "Start_ShowControlPanel"=dword:00000001>>%A%
-echo "Start_SearchFiles"=dword:00000002>>%A%
-echo "Start_ShowHomeGroup"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]>>%A%
-echo "DetailsContainer"=hex:02,00,00,00,02,00,00,00>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]>>%A%
-echo "PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
-echo "NumThumbnails"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]>>%A%
-echo "WholeFileSystem"=dword:00000000>>%A%
-echo "SystemFolders"=dword:00000000>>%A%
-echo "ArchivedFiles"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoToolbarsOnTaskbar"=dword:00000001>>%A%
-echo "NoRecycleFiles"=dword:00000000>>%A%
-echo "PreventItemCreationInUsersFilesFolder"=dword:00000001>>%A%
-echo "NoFolderOptions"=dword:00000001>>%A%
-echo "NoPreviewPane"=dword:00000001>>%A%
-echo "NoReadingPane"=dword:00000001>>%A%
-echo "NoSecurityTab"=dword:00000001>>%A%
-echo "NoHardwareTab"=dword:00000001>>%A%
-echo "NoCDBurning"=dword:00000001>>%A%
-echo "NoDFSTab"=dword:00000001>>%A%
-echo "NoNetConnectDisconnect"=dword:00000000>>%A%
-echo "ConfirmFileDelete"=dword:00000001>>%A%
-echo "ForceClassicControlPanel"=dword:00000001>>%A%
-echo "EnforceShellExtensionSecurity"=dword:00000001>>%A%
-echo "ClearRecentDocsOnExit"=dword:00000001>>%A%
-echo "NoRecentDocsMenu"=dword:00000001>>%A%
-echo "NoStartMenuMFUprogramsList"=dword:00000001>>%A%
-echo "ClearRecentProgForNewUserInStartMenu"=dword:00000001>>%A%
-echo "NoTrayContextMenu"=dword:00000001>>%A%
-echo "NoTaskGrouping"=dword:00000001>>%A%
-echo "DisableCurrentUserRun"=dword:00000001>>%A%
-echo "DisableCurrentUserRunOnce"=dword:00000000>>%A%
-echo "NoInternetIcon"=dword:00000001>>%A%
-echo "HideSCANetwork"=dword:00000001>>%A%
-echo "HideSCAHealth"=dword:00000001>>%A%
-echo "HideSCAVolume"=dword:00000001>>%A%
-echo "NoAutoTrayNotify"=dword:00000001>>%A%
-echo "NoDesktop"=dword:00000001>>%A%
-echo "NoClose"=dword:00000001>>%A%
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
-echo "NoAutorun"=dword:00000001>>%A%
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]>>%A%
-echo "SearchOnly"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%A%
-echo "PenWorkspaceButtonDesiredVisibility"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Search]>>%A%
-echo "SearchboxTaskbarMode"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Touchpad]>>%A%
-echo "TouchpadDesiredVisibility"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\Desktop\WindowMetrics]>>%A%
-echo "MinAnimate"="1">>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]>>%A%
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%A%
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%A%
-echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%A%
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%A%
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]>>%A%
-echo "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001>>%A%
-echo "{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001>>%A%
-echo "{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000>>%A%
-echo "{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001>>%A%
-echo "{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]>>%A%
-echo @=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\>>%A%
-echo   00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6c,00,\>>%A%
-echo   65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,20,00,2f,00,44,\>>%A%
-echo   00,20,00,25,00,63,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\DefragPath]>>%A%
-echo @=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,00,25,\>>%A%
-echo   00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,66,00,\>>%A%
-echo   72,00,67,00,75,00,69,00,2e,00,65,00,78,00,65,00,00,00>>%A%
-echo.>>%A%
-echo [HKEY_CLASSES_ROOT\lnkfile]>>%A%
-echo @="Shortcut">>%A%
-echo "IsShortcut"="">>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Themes]>>%A%
-echo "ThemeChangesDesktopIcons"=dword:00000000>>%A%
-echo "ThemeChangesMousePointers"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\Mouse]>>%A%
-echo "MouseSensitivity"="10">>%A%
-echo "MouseSpeed"="2">>%A%
-echo "MouseThreshold1"="6">>%A%
-echo "MouseThreshold2"="10">>%A%
-echo "MouseTrails"="0">>%A%
-echo "MouseHoverTime"="2">>%A%
-echo "SnapToDefaultButton"="0">>%A%
-echo "DoubleClickSpeed"="500">>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\Desktop]>>%A%
-echo "MouseWheelRouting"=dword:00000002>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "NoDispScrSavPage"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDriveTypeAutoRun"=dword:000000ff>>%A%
-echo "NoAutorun"=dword:00000001>>%A%
-echo "DontSetAutoplayCheckbox"=dword:00000001>>%A%
-echo "DisableLocalMachineRun"=dword:00000001>>%A%
-echo "HidePowerOptions"=dword:00000001>>%A%
-echo "DisableLocalMachineRunOnce"=dword:00000000>>%A%
-echo "AllowOnlineTips"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]>>%A%
-echo "Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00>>%A%
-echo "FullPath"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\CTF\LangBar]>>%A%
-echo "ShowStatus"=dword:00000003>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]>>%A%
-echo "VisualFXSetting"=dword:00000003>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\DWM]>>%A%
-echo "AlwaysHibernateThumbnails"=dword:00000000>>%A%
-echo "EnableAeroPeek"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]>>%A%
-echo "PenWorkspaceAppSuggestionsEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\Desktop]>>%A%
-echo "WheelScrollLines"="9">>%A%
-echo "MenuShowDelay"="0">>%A%
-echo "DragFullWindows"="1">>%A%
-echo "FontSmoothing"="2">>%A%
-echo "UserPreferencesMask"=hex:98,52,07,80,12,01,00,00>>%A%
-echo "WindowArrangementActive"="1">>%A%
-echo "PaintDesktopVersion"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]>>%A%
-echo "DisplayVersion"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]>>%A%
-echo "SignInMode"=dword:00000002>>%A%
-echo "ConvertibleSlateModePromptPreference"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]>>%A%
-echo "DisableAutoplay"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]>>%A%
-echo "FeatureManagementEnabled"=dword:00000000>>%A%
-echo "OemPreInstalledAppsEnabled"=dword:00000000>>%A%
-echo "PreInstalledAppsEnabled"=dword:00000000>>%A%
-echo "SilentInstalledAppsEnabled"=dword:00000000>>%A%
-echo "SoftLandingEnabled"=dword:00000000>>%A%
-echo "SystemPaneSuggestionsEnabled"=dword:00000000>>%A%
-echo "ContentDeliveryAllowed"=dword:00000000>>%A%
-echo "PreInstalledAppsEverEnabled"=dword:00000000>>%A%
-echo "RotatingLockScreenEnabled"=dword:00000000>>%A%
-echo "RotatingLockScreenOverlayEnabled"=dword:00000000>>%A%
-echo "SubscribedContent-310093Enabled"=dword:00000000>>%A%
-echo.>>%A%
-
-echo [-%CU%\Software\Microsoft\TabletTip]>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]>>%A%
-echo "GlobalUserDisabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]>>%A%
-echo "ShowSleepOption"=dword:00000001>>%A%
-echo "ShowHibernateOption"=dword:00000001>>%A%
-echo "ShowLockOption"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]>>%A%
-echo "Enabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%CU%\Control Panel\International\User Profile]>>%A%
-echo "HttpAcceptLanguageOptOut"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\MobilePC\MobilityCenter]>>%A%
-echo "RunOnDesktop"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]>>%A%
-echo "ImmersiveContextMenu"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Internet Explorer\Main]>>%A%
-echo "HideNewEdgeButton"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Internet Explorer\TabbedBrowsing]>>%A%
-echo "NewTabPageShow"=dword:00000002>>%A%
-echo.>>%A%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
-echo "MaxConnectionsPerServer"=dword:00000008>>%A%
-echo "MaxConnectionsPer1_0Server"=dword:00000008>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]>>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Internet Explorer\Restrictions]>>%A%
-echo "NoHelpItemSendFeedback"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableCMD"=->>%A%
-echo.>>%A%
-echo [-%CU%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
-echo "NoToastApplicationNotification"=dword:00000001>>%A%
-echo "NoToastApplicationNotificationOnLockScreen"=dword:00000001>>%A%
-echo "NoTileApplicationNotification"=dword:00000001>>%A%
-echo "NoCloudApplicationNotification"=dword:00000001>>%A%
-echo "DisallowNotificationMirroring"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "EnableLegacyBalloonNotifications"=dword:00000001>>%A%
-echo "DisableNotificationCenter"=dword:00000001>>%A%
-echo "HidePeopleBar"=dword:00000001>>%A%
-echo "ClearTilesOnExit"=dword:00000001>>%A%
-echo "DisableSearchBoxSuggestions"=dword:00000001>>%A%
-echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%A%
-echo "PowerButtonAction"=dword:00000200>>%A%
-echo "DisableIndexedLibraryExperience"=dword:00000001>>%A%
-echo "DisableSearchHistory"=dword:00000001>>%A%
-echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000002>>%A%
-echo "NoPinningToTaskbar"=dword:00000001>>%A%
-echo "NoPinningStoreToTaskbar"=dword:00000001>>%A%
-echo "TaskbarNoPinnedList"=dword:00000001>>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Control Panel\Desktop]>>%A%
-echo "ScreenSaveTimeOut"="0">>%A%
-echo "ScreenSaverIsSecure"="1">>%A%
-echo "ScreenSaveActive"="0">>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\CloudContent]>>%A%
-echo "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001>>%A%
-echo "DisableThirdPartySuggestions"=dword:00000001>>%A%
-echo "DisableWindowsSpotlightOnActionCenter"=dword:00000001>>%A%
-echo "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001>>%A%
-echo "DisableWindowsSpotlightFeatures"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\RemovableStorageDevices]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]>>%A%
-echo "DisableNotifications"=dword:00000000>>%A%
-echo "EnableFirewall"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]>>%A%
-echo "EnableFirewall"=dword:00000001>>%A%
-echo "DisableNotifications"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\BITS]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\BITS]>>%A%
-echo "EnablePeercaching"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]>>%A%
-echo "DODownloadMode"=dword:00000003>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]>>%A%
-echo "NoActivities"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]>>%A%
-echo "CheckExeSignatures"="yes">>%A%
-echo "RunInvalidSignatures"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]>>%A%
-echo "Enabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]>>%A%
-echo "Enable Browser Extensions Beta"="no">>%A%
-echo "DoNotTrack"=dword:00000001>>%A%
-echo "Isolation"="PMEM">>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]>>%A%
-echo "PreventOverride"=dword:00000000>>%A%
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
-echo "EnabledV9"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]>>%A%
-echo "EnabledV9"=dword:00000001>>%A%
-echo "PreventOverride"=dword:00000000>>%A%
-echo "PreventOverrideAppRepUnknown"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]>>%A%
-echo "AllowWebContentOnNewTabPage"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]>>%A%
-echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
-echo "AuthenticodeEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]>>%A%
-echo "DisableRootAutoUpdate"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%A%
-echo "AuthenticodeFlags"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\PreviewBuilds]>>%A%
-echo "EnableConfigFlighting"=dword:00000000>>%A%
-echo "EnableExperimentation"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\DataCollection]>>%A%
-echo "AllowTelemetry"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\UEV]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\UEV\Agent]>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\UEV\Agent\Configuration]>>%A%
-echo "SyncOverMeteredNetwork"=dword:00000000>>%A%
-echo "SyncOverMeteredNetworkWhenRoaming"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\SettingSync]>>%A%
-echo "DisableWindowsSettingSync"=dword:00000002>>%A%
-echo "DisableWindowsSettingSyncUserOverride"=dword:00000001>>%A%
-echo "DisableSyncOnPaidNetwork"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]>>%A%
-echo "Persistent"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]>>%A%
-echo "PreventIgnoreCertErrors"=dword:00000001>>%A%
-echo "CertificateRevocation"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\FileHistory]>>%A%
-echo "Disabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Power]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo.>>%A%
-echo [-%LM%\System\CurrentControlSet\Control\Power\PowerThrottling]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo "ActivePowerScheme"=->>%A%
-echo.>>%A%
-echo [%LM%\System\CurrentControlSet\Control\Power\PowerThrottling]>>%A%
-echo "PowerThrottlingOff"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA]>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo "DCSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E]>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo "DCSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7bc4a2f9-d8fc-4469-b07b-33eb785aaca0]>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo "DCSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\90959D22-D6A1-49B9-AF93-BCE885AD335B]>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo "DCSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\5CA83367-6E45-459F-A27B-476B1D01C936]>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\637EA02F-BBCB-4015-8E2C-A1C7B9C0B546]>>%A%
-echo "DCSettingIndex"=dword:00000002>>%A%
-echo "ACSettingIndex"=dword:00000002>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\309dce9b-bef4-4119-9921-a851fb12f0f4]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A504-2B96CAD225A1]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bcded951-187b-4d05-bccc-f7e51960c258]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d4c1d4c8-d5cc-43d3-b83e-fc51215cb04d]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\4c793e7d-a264-42e1-87d3-7a0d2f523ccd]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\12bbebe6-58d6-4636-95bb-3217ef867c1a]>>%A%
-echo "DCSettingIndex"=dword:00000003>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\48e6b7a6-50f5-4782-a5d4-53bb8f07e226]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3619c3f2-afb2-4afc-b0e9-e7fef372de36]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000002>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94d3a615-a899-4ac5-ae2b-e4d8f634367f]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E]>>%A%
-echo "DCSettingIndex"=dword:0000012c>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7648EFA3-DD9C-4E3E-B566-50F929386280]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\8183ba9a-e910-48da-8769-14ae6dc1170a]>>%A%
-echo "DCSettingIndex"=dword:0000000a>>%A%
-echo "ACSettingIndex"=dword:0000000a>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e]>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\96996BC0-AD50-47EC-923B-6F41874DD9EB]>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9A66D8D7-4FF7-4EF9-B5A2-5A326CA2A469]>>%A%
-echo "DCSettingIndex"=dword:00000005>>%A%
-echo "ACSettingIndex"=dword:00000005>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364]>>%A%
-echo "DCSettingIndex"=dword:00002a30>>%A%
-echo "ACSettingIndex"=dword:00002a30>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]>>%A%
-echo "DCSettingIndex"=dword:00000064>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]>>%A%
-echo "DCSettingIndex"=dword:00000032>>%A%
-echo "ACSettingIndex"=dword:00000032>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\893dee8e-2bef-41e0-89c6-b55d0929964c]>>%A%
-echo "DCSettingIndex"=dword:00000005>>%A%
-echo "ACSettingIndex"=dword:00000064>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bc5038f7-23e0-4960-96da-33abaf5935ec]>>%A%
-echo "DCSettingIndex"=dword:00000064>>%A%
-echo "ACSettingIndex"=dword:00000064>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\fbd9aa66-9553-4097-ba44-ed6e9d65eab8]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\03680956-93bc-4294-bba6-4e0f09bb717f]>>%A%
-echo "DCSettingIndex"=dword:00000001>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\10778347-1370-4ee0-8bbd-33bdacaade49]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4]>>%A%
-echo "DCSettingIndex"=dword:00000002>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\ee12f906-d277-404b-b6da-e5fa1a576df5]>>%A%
-echo "DCSettingIndex"=dword:00000002>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\a1662ab2-9d34-4e53-ba8b-2639b9e20857]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000003>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA6B-90DB844A8F00]>>%A%
-echo "DCSettingIndex"=dword:00000007>>%A%
-echo "ACSettingIndex"=dword:00000007>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d8742dcb-3e6a-4b3c-b3fe-374623cdcf06]>>%A%
-echo "DCSettingIndex"=dword:00000000>>%A%
-echo "ACSettingIndex"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ShowSleepOption"=dword:00000001>>%A%
-echo "ShowHibernateOption"=dword:00000001>>%A%
-echo "ShowLockOption"=dword:00000001>>%A%
-echo "ExplorerRibbonStartsMinimized"=dword:00000001>>%A%
-echo "NoNewAppAlert"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=dword:00000000>>%A%
-echo "AllowCortanaAboveLock"=dword:00000000>>%A%
-echo "AutoIndexSharedFolders"=dword:00000001>>%A%
-echo "PreventIndexOnBattery"=dword:00000001>>%A%
-echo "AllowIndexingEncryptedStoresOrItems"=dword:00000000>>%A%
-echo "PreventIndexingOfflineFiles"=dword:00000001>>%A%
-echo "PreventIndexingPublicFolders"=dword:00000001>>%A%
-echo "PreventIndexingEmailAttachments"=dword:00000001>>%A%
-echo "PreventIndexingOutlook"=dword:00000001>>%A%
-echo "DisableRemovableDriveIndexing"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=dword:00000001>>%A%
-echo "DisableFileSync"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
-echo "NoAutoUpdate"=dword:00000001>>%A%
-echo "ExcludeWUDriversInQualityUpdate"=dword:00000000>>%A%
-echo "NoAutoRebootWithLoggedOnUsers"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\MRT]>>%A%
-echo "DontOfferThroughWUAU"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Maps]>>%A%
-echo "AutoDownloadAndUpdateMapData"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsStore]>>%A%
-echo "AutoDownload"=dword:00000002>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]>>%A%
-echo "DisableConfig"=dword:00000001>>%A%
-echo "DisableSR"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SQMClient\Windows]>>%A%
-echo "CEIPEnable"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]>>%A%
-echo "DontShowUI"=dword:00000001>>%A%
-echo "DontSendAdditionalData"=dword:00000001>>%A%
-echo "Disabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]>>%A%
-echo "DoReport"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\AppCompat]>>%A%
-echo "DisablePCA"=dword:00000001>>%A%
-echo "DisableEngine"=dword:00000001>>%A%
-echo "VDMDisallowed"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
-echo "DisableHomeGroup"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]>>%A%
-echo "NoGenTicket"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
-echo "NoLockScreen"=dword:00000001>>%A%
-echo "NoChangingLockScreen"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "EnableSmartScreen"=dword:00000001>>%A%
-echo "ShellSmartScreenLevel"="Warn">>%A%
-echo "DisableLockScreenAppNotifications"=dword:00000001>>%A%
-echo "DisableLogonBackgroundImage"=dword:00000001>>%A%
-echo "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001>>%A%
-echo "HiberbootEnabled"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\CloudContent]>>%A%
-echo "DisableSoftLanding"=dword:00000001>>%A%
-echo "DisableWindowsConsumerFeatures"=dword:00000001>>%A%
-echo.>>%A%
-echo [-%LM%\Software\Policies\Microsoft\Speech]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Speech]>>%A%
-echo "AllowSpeechModelUpdate"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]>>%A%
-echo "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center]>>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender]>>%A%
-echo "DisableRoutinelyTakingAction"=dword:00000000>>%A%
-echo "AllowFastServiceStartup"=dword:00000001>>%A%
-echo "ServiceKeepAlive"=dword:00000000>>%A%
-echo "DisableAntispyware"=->>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]>>%A%
-echo "PurgeItemsAfterDelay"=dword:00000001>>%A%
-echo "LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]>>%A%
-echo "MpEnablePus"=dword:00000001>>%A%
-echo "MpCloudBlockLevel"=dword:00000002>>%A%
-echo "MpBafsExtendedTimeout"=dword:00000032>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%A%
-echo "DisableIOAVProtection"=dword:00000000>>%A%
-echo "DisableRealtimeMonitoring"=dword:00000000>>%A%
-echo "DisableBehaviorMonitoring"=dword:00000000>>%A%
-echo "DisableOnAccessProtection"=dword:00000000>>%A%
-echo "DisableScanOnRealtimeEnable"=dword:00000000>>%A%
-echo "DisableRawWriteNotification"=dword:00000000>>%A%
-echo "IOAVMaxSize"=dword:0098967f>>%A%
-echo "RealtimeScanDirection"=dword:00000000>>%A%
-echo "LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000>>%A%
-echo "LocalSettingOverrideDisableOnAccessProtection"=dword:00000000>>%A%
-echo "LocalSettingOverrideDisableIOAVProtection"=dword:00000000>>%A%
-echo "LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000>>%A%
-echo "LocalSettingOverrideRealtimeScanDirection"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]>>%A%
-echo "LocalSettingOverrideScan_ScheduleTime"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]>>%A%
-echo "SpynetReporting"=dword:00000002>>%A%
-echo "LocalSettingOverrideSpynetReporting"=dword:00000000>>%A%
-echo "SubmitSamplesConsent"=dword:00000003>>%A%
-echo "DisableBlockAtFirstSeen"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]>>%A%
-echo "ArchieveMaxSize"=dword:00000000>>%A%
-echo "ArchieveMaxDepth"=dword:ffffffff>>%A%
-echo "AvgCPULoadFactor"=dword:00000032>>%A%
-echo "DisableEmailScanning"=dword:00000000>>%A%
-echo "DisableArchiveScanning"=dword:00000000>>%A%
-echo "DisableRemovableDriveScanning"=dword:00000000>>%A%
-echo "DisablePackedExeScanning"=dword:00000000>>%A%
-echo "DisableHeuristics"=dword:00000000>>%A%
-echo "DisableReparsePointScanning"=dword:00000001>>%A%
-echo "DisableRemovableDriveScanning"=dword:00000000>>%A%
-echo "DisableScanningNetworkFiles"=dword:00000000>>%A%
-echo "CheckForSignaturesBeforeRunningScan"=dword:00000001>>%A%
-echo "ScanOnlyIfIdle"=dword:00000001>>%A%
-echo "PurgeItemsAfterDelay"=dword:00000001>>%A%
-echo "LocalSettingOverrideScanParameters"=dword:00000000>>%A%
-echo "LocalSettingOverrideAvgCPULoadFactor"=dword:00000000>>%A%
-echo "LocalSettingOverrideScheduleDay"=dword:00000000>>%A%
-echo "LocalSettingOverrideScheduleQuickScanTime"=dword:00000000>>%A%
-echo "LocalSettingOverrideScheduleTime"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]>>%A%
-echo "UpdateOnStartUp"=dword:00000001>>%A%
-echo "DisableUpdateOnStartupWithoutEngine"=dword:00000000>>%A%
-echo "AVSignatureDue"=dword:00000001>>%A%
-echo "ASSignatureDue"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]>>%A%
-echo "Threats_ThreatSeverityDefaultAction"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]>>%A%
-echo "1"="2">>%A%
-echo "2"="2">>%A%
-echo "4"="3">>%A%
-echo "5"="3">>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]>>%A%
-echo "ExploitGuard_ASR_Rules"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]>>%A%
-echo "BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550"="1">>%A%
-echo "D4F940AB-401B-4EFC-AADC-AD5F3C50688A"="1">>%A%
-echo "3B576869-A4EC-4529-8536-B80A7769E899"="1">>%A%
-echo "75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84"="1">>%A%
-echo "D3E037E1-3EB8-44C8-A917-57927947596D"="1">>%A%
-echo "5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1">>%A%
-echo "92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1">>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]>>%A%
-echo "EnableControlledFolderAccess"=dword:00000000>>%A%
-echo "ExploitGuard_ControlledFolderAccess_ProtectedFolders"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access\ProtectedFolders]>>%A%
-echo.>>%A%
-echo [%LM%\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]>>%A%
-echo "EnableNetworkProtection"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]>>%A%
-echo "ExploitProtectionSettings"=->>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]>>%A%
-echo "UILockDown"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]>>%A%
-echo "UILockDown"=dword:00000001>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Firewall and network protection]>>%A%
-echo "UILockDown"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]>>%A%
-echo "UILockDown"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterprise Customization]>>%A%
-echo "Url"="microsoft.com/en-us/wdsi">>%A%
-echo "CompanyName"="Windows Defender Security Intelligence">>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]>>%A%
-echo "Model"="Optimized by Tom Zhu">>%A%
-echo "SupportHours"="Optimized by Tom Zhu">>%A%
-echo "SupportURL"="support.microsoft.com/windows">>%A%
-echo.>>%A%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "VerboseStatus"=dword:00000001>>%A%
-echo "DisableStartupSound"=dword:00000001>>%A%
-echo "ShutdownWithoutLogon"=dword:00000001>>%A%
-echo "EnableLUA"=dword:00000001>>%A%
-echo "ValidateAdminCodeSignatures"=dword:00000000>>%A%
-echo "ConsentPromptBehaviorAdmin"=dword:0000005>>%A%
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%A%
-echo "PromptOnSecureDesktop"=dword:00000001>>%A%
-echo "EnableUIADesktopToggle"=dword:00000000>>%A%
-echo "FilterAdministratorToken"=dword:00000001>>%A%
-echo "EnableSecureUIAPaths"=dword:00000001>>%A%
-echo "EnableInstallerDetection"=dword:00000001>>%A%
-echo "EnableVirtualization"=dword:00000001>>%A%
-echo "DSCAutomationHostEnabled"=dword:00000002>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]>>%A%
-echo "AuthenticodeFlags"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
-echo "DefaultLevel"=dword:00000000>>%A%
-echo "TransparentEnabled"=dword:00000001>>%A%
-echo "PolicyScope"=dword:00000000>>%A%
-echo "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\>>%A%
-echo   53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\>>%A%
-echo   00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\>>%A%
-echo   00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\>>%A%
-echo   00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\>>%A%
-echo   49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\>>%A%
-echo   00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\>>%A%
-echo   50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\>>%A%
-echo   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\>>%A%
-echo   50,00,00,00,41,00,44,00,45,00,00,00>>%A%
-echo "AuthenticodeEnabled"=dword:00000000>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
-echo "Description"="Allow Program Files (x86)">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%A%
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%A%
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%A%
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%A%
-echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%A%
-echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%A%
-echo   00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
-echo "Description"="Allow Windows">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%A%
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%A%
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%A%
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\>>%A%
-echo   00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\>>%A%
-echo   73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\>>%A%
-echo   00,6f,00,74,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
-echo "Description"="Allow Program Files">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\>>%A%
-echo   4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\>>%A%
-echo   00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\>>%A%
-echo   6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\>>%A%
-echo   00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\>>%A%
-echo   6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\>>%A%
-echo   00,73,00,44,00,69,00,72,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
-echo "Description"="Allow Program Files (x86)">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%A%
-echo   6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
-echo "Description"="Allow Windows">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\>>%A%
-echo   74,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
-echo "Description"="Allow Program Files">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\>>%A%
-echo   6c,00,65,00,73,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
-echo "Description"="Allow ProgramData">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\>>%A%
-echo   74,00,61,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData\\Local">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow Temp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData\\Local\\Microsoft">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
-echo   00,74,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData\\Local\\Packages">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\>>%A%
-echo   00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData\\Local\\Microsoft\\OneDrive">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\>>%A%
-echo   00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\>>%A%
-echo   00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData\\Local\\Google">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,47,00,6f,00,6f,00,67,00,6c,00,65,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{5d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Allow AppData\\Local\\TrustedApps">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\>>%A%
-echo   61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\>>%A%
-echo   00,70,00,70,00,73,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow 7 - Zip Temp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow Hao Zip Temp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow Windows Explorer Zip Temp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\>>%A%
-echo   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow 7z*.tmp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\>>%A%
-echo   74,00,6d,00,70,00,5c,00,2a,00,00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow WinRAR Temp">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\>>%A%
-echo   00,00>>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData\\Roaming">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00>>%A%
-echo.>>%A%
+copy "%~0" /Y %A% 1>nul 2>nul
 
 
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
@@ -1493,147 +210,11 @@ echo.>>%A%)
 )
 
 
-attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beperfect.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beperfect.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo exit) else (>>%systemroot%\beperfect.bat
-echo goto main)>>%systemroot%\beperfect.bat
-echo :main>>%systemroot%\beperfect.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%systemroot%\beperfect.bat
+copy "%~0" /Y "%systemroot%\beperfect.bat" 1>nul 2>nul
+copy "%~0" /Y "%systemroot%\besafe.bat" 1>nul 2>nul
+copy "%~0" /Y "%systemroot%\beindanger.bat" 1>nul 2>nul
 attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
-
-
-attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\besafe.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\besafe.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo goto main)>>%systemroot%\besafe.bat
-echo :main>>%systemroot%\besafe.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo chcp 437>>%systemroot%\besafe.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
-echo title   WARNING ! ! !>>%systemroot%\besafe.bat
-echo color cf>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo title   WELL DONE !>>%systemroot%\besafe.bat
-echo color 2f>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit)>>%systemroot%\besafe.bat
 attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
-
-
-attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beindanger.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beindanger.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo goto main)>>%systemroot%\beindanger.bat
-echo :main>>%systemroot%\beindanger.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo chcp 437>>%systemroot%\beindanger.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
-echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
-echo color cf>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo title   WELL DONE !>>%systemroot%\beindanger.bat
-echo color 2f>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit)>>%systemroot%\beindanger.bat
 attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
 
 
@@ -1886,11 +467,12 @@ exit
 
 
 
-BETA WORKS
+Archive Starts
 
-[%LM%\SOFTWARE\Microsoft\Rpc]
-"ConnectionOptionsFlag"=dword:00000001
-"DCOM Protocols"=hex(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+
+:[%LM%\SOFTWARE\Microsoft\Rpc]
+:"ConnectionOptionsFlag"=dword:00000001
+:"DCOM Protocols"=hex:(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
   74,00,63,00,70,00,00,00,00,00
 
 
@@ -1913,3 +495,1435 @@ for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
+
+Archive Ends
+
+
+
+:beindanger
+md "C:\WINDOWS\checkadmin" 1>nul 2>nul
+if exist "C:\WINDOWS\checkadmin" (
+rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
+exit) else (
+goto beindangermain)
+:beindangermain
+rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+regedit /s C:\WINDOWS\PerfectWindowsZZY\ClearSoftwareRestrictionPolicies.reg 1>nul 2>nul
+taskkill /f /im explorer.exe 1>nul 2>nul
+start explorer.exe 1>nul 2>nul
+chcp 437
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1>nul 2>nul
+if ERRORLEVEL 1 (
+title   WARNING ! ! !
+color cf
+mode con cols=36 lines=23
+echo.
+echo.
+echo.
+echo YOUR PC IS IN DANGER NOW ! ! !
+echo.
+echo.
+echo.
+echo PLEASE DO REMEMBER TO RUN
+echo.
+echo.
+echo.
+echo "BESAFE" FROM START MENU TO
+echo.
+echo.
+echo.
+echo BRING YOUR PC BACK TO SAFETY ! ! !
+echo.
+echo.
+echo.
+pause
+exit) else (
+title   WELL DONE !
+color 2f
+mode con cols=36 lines=19
+echo.
+echo.
+echo.
+echo.
+echo YOUR PC IS SAFE NOW !
+echo.
+echo.
+echo.
+echo.
+echo HAVE A NICE DAY !
+echo.
+echo.
+echo.
+echo.
+pause
+exit)
+exit
+
+
+:besafe
+md "C:\WINDOWS\checkadmin" 1>nul 2>nul
+if exist "C:\WINDOWS\checkadmin" (
+rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
+exit) else (
+goto besafemain)
+:besafemain
+rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+regedit /s C:\WINDOWS\PerfectWindowsZZY\Core.reg 1>nul 2>nul
+taskkill /f /im explorer.exe 1>nul 2>nul
+start explorer.exe 1>nul 2>nul
+chcp 437
+reg query HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1>nul 2>nul
+if ERRORLEVEL 1 (
+title   WARNING ! ! !
+color cf
+mode con cols=36 lines=23
+echo.
+echo.
+echo.
+echo YOUR PC IS IN DANGER NOW ! ! !
+echo.
+echo.
+echo.
+echo PLEASE DO REMEMBER TO RUN
+echo.
+echo.
+echo.
+echo "BESAFE" FROM START MENU TO
+echo.
+echo.
+echo.
+echo BRING YOUR PC BACK TO SAFETY ! ! !
+echo.
+echo.
+echo.
+pause
+exit) else (
+title   WELL DONE !
+color 2f
+mode con cols=36 lines=19
+echo.
+echo.
+echo.
+echo.
+echo YOUR PC IS SAFE NOW !
+echo.
+echo.
+echo.
+echo.
+echo HAVE A NICE DAY !
+echo.
+echo.
+echo.
+echo.
+pause
+exit)
+exit
+
+
+
+:beperfect
+md "C:\WINDOWS\checkadmin" 1>nul 2>nul
+if exist "C:\WINDOWS\checkadmin" (
+rd /s /q "C:\WINDOWS\checkadmin" 1>nul 2>nul
+exit) else (
+goto beperfectmain)
+:beperfectmain
+rd /s /q "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+ipconfig /flushdns 1>nul 2>nul
+md "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+attrib +h +s "C:\Users\ZZY\AppData\Local\Temp" 1>nul 2>nul
+explorer C:\Users\ZZY\AppData\Local\TrustedApps\PerfectWindows
+exit
+
+
+
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,00,00,53,E0,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]
+"User Policies 2"="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
+"Machine Policies 2"="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
+"User Policies 1"="HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft"
+"Machine Policies 1"="HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft"
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+@="DO NOT DELETE THIS KEY !"
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]
+
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System\Scripts]
+
+[-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System\Scripts]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]
+
+[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
+"SMBDeviceEnabled"=dword:00000000
+"TransportBindName"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Ole]
+"EnableDCOM"="N"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Rpc]
+"DCOM Protocols"=hex(7):00,00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lanmanserver\Parameters]
+"AutoShareServer"=dword:00000000
+"AutoShareWks"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA]
+"RestrictAnonymous"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"EnableFirstLogonAnimation"=dword:00000001
+"WinStationsDisabled"="0"
+"Background"="0 0 0"
+"Userinit"="C:\\WINDOWS\\system32\\userinit.exe,"
+"VMApplet"="SystemPropertiesPerformance.exe /pagefile"
+"Shell"="explorer.exe"
+"ShellCritical"=dword:00000000
+"ShellInfrastructure"="sihost.exe"
+"SiHostCritical"=dword:00000000
+"SiHostReadyTimeOut"=dword:00000000
+"SiHostRestartCountLimit"=dword:00000000
+"SiHostRestartTimeGap"=dword:00000000
+"AutoRestartShell"=dword:00000001
+"DisableBackButton"=dword:00000001
+"EnableSIHostIntegration"=dword:00000001
+"ForceUnlockLogon"=dword:00000000
+"LegalNoticeCaption"=""
+"LegalNoticeText"=""
+"PasswordExpiryWarning"=dword:00000005
+"PowerdownAfterShutdown"="0"
+"ReportBootOk"="1"
+"ShutdownWithoutLogon"="0"
+"CachedLogonsCount"="10"
+"DebugServerCommand"="no"
+"System"=""
+"PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot]
+"AlternateShell"="cmd.exe"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
+".tif"="PhotoViewer.FileAssoc.Tiff"
+".tiff"="PhotoViewer.FileAssoc.Tiff"
+".jpg"="PhotoViewer.FileAssoc.Tiff"
+".jpeg"="PhotoViewer.FileAssoc.Tiff"
+".jpe"="PhotoViewer.FileAssoc.Tiff"
+".jfif"="PhotoViewer.FileAssoc.Tiff"
+".bmp"="PhotoViewer.FileAssoc.Tiff"
+".gif"="PhotoViewer.FileAssoc.Tiff"
+".png"="PhotoViewer.FileAssoc.Tiff"
+".ico"="PhotoViewer.FileAssoc.Tiff"
+".dib"="PhotoViewer.FileAssoc.Tiff"
+".wdp"="PhotoViewer.FileAssoc.Tiff"
+".jxr"="PhotoViewer.FileAssoc.Tiff"
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Remote Assistance]
+"fAllowToGetHelp"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server]
+"fDenyTSConnections"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"DisableTaskMgr"=-
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager]
+"BootExecute"=hex(7):00,00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SharedAccess\Parameters\FirewallPolicy\StandardProfile]
+"DisableNotifications"=dword:00000000
+"EnableFirewall"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center]
+"AntiVirusOverride"=-
+"FirewallDisableNotify"=-
+"UacDisableNotify"=-
+"UpdatesDisableNotify"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Security Center\Svc]
+"AntiVirusOverride"=-
+"FirewallDisableNotify"=-
+"UacDisableNotify"=-
+"UpdatesDisableNotify"=-
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\DeliveryOptimization]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\Maintenance]
+"WakeUp"=dword:00000000
+"MaintenanceDisabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
+"AutoReboot"=dword:00000000
+"AlwaysKeepMemoryDump"=dword:00000000
+"CrashDumpEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters]
+"EnableSuperfetch"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
+"AnimationsShiftKey"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
+"EnableTransparency"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
+"PeopleBand"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]
+"ShoulderTap"=dword:00000000
+"ShoulderTapAudio"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
+"AwayModeEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"UseOLEDTaskbarTransparency"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\MultitaskingView\AltTabViewHost]
+"Grid_backgroundPercent"=dword:00000000
+"BackgroundDimmingLayer_percent"=dword:00000028
+"wallpaper"=dword:00000001
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket]
+
+[HKEY_CURRENT_USER\Control Panel\International]
+"sShortTime"="H:m"
+"sLongTime"="H:m:s"
+"sShortTime"="H:mm"
+"sLongTime"="H:mm:ss"
+"s1159"=-
+"s2359"=-
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
+"EnableAutoTray"=dword:00000000
+"ShowFrequent"=dword:00000000
+"ShowRecent"=dword:00000000
+"ShowDriveLettersFirst"=dword:00000000
+"ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+   01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00
+"IconUnderline"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"SeparateProcess"=dword:00000001
+"ShowTypeOverlay"=dword:00000001
+"DontUsePowerShellOnWinX"=dword:00000001
+"ShowTaskViewButton"=dword:00000000
+"Hidden"=dword:00000002
+"ShowSuperHidden"=dword:00000000
+"ShowEncryptCompressedColor"=dword:00000001
+"HideFileExt"=dword:00000001
+"ExtendedUIHoverTime"=dword:11111111
+"AutoCheckSelect"=dword:00000001
+"TaskbarSizeMove"=dword:00000000
+"PersistBrowsers"=dword:00000001
+"TaskbarAnimations"=dword:00000000
+"TaskbarGlomLevel"=dword:00000001
+"TaskbarGlomming"=dword:00000000
+"ShowDriveLettersFirst"=dword:00000000
+"ShowInfoTip"=dword:00000000
+"ShowTypeOverlay"=dword:00000001
+"ShowStatusBar"=dword:00000001
+"TaskbarSmallIcons"=dword:00000001
+"HideDrivesWithNoMedia"=dword:00000001
+"NavPaneExpandToCurrentFolder"=dword:00000001
+"NavPaneShowAllFolders"=dword:00000000
+"SharingWizardOn"=dword:00000001
+"IconsOnly"=dword:00000000
+"FolderContentsInfoTip"=dword:00000000
+"HideMergeConflicts"=dword:00000001
+"ShowPreviewHandlers"=dword:00000001
+"ListviewShadow"=dword:00000001
+"ListviewAlphaSelect"=dword:00000001
+"TaskbarAppsVisibleInTabletMode"=dword:00000001
+"TaskbarSmallIcons"=dword:00000001
+"UseTabletModeNotificationIcons"=dword:00000000
+"ShowSyncProviderNotifications"=dword:00000000
+"LaunchTo"=dword:00000001
+"JointResize"=dword:00000001
+"SnapAssist"=dword:00000001
+"SnapFill"=dword:00000001
+"VirtualDesktopTaskbarFilter"=dword:00000001
+"VirtualDesktopAltTabFilter"=dword:00000001
+"ShowEncryptCompressedColor"=dword:00000001
+"TypeAhead"=dword:00000001
+"AlwaysShowMenus"=dword:00000000
+"HideDrivesWithNoMedia"=dword:00000001
+"Start_TrackDocs"=dword:00000000
+"Start_ShowNetPlaces"=dword:00000000
+"Start_NotifyNewApps"=dword:00000000
+"Start_ShowDownloads"=dword:00000001
+"Start_ShowVideos"=dword:00000001
+"Start_AutoCascade"=dword:00000000
+"Start_LargeMFUIcons"=dword:00000000
+"Start_ShowPrinters"=dword:00000000
+"Start_ShowSetProgramAccessAndDefaults"=dword:00000000
+"Start_ShowUser"=dword:00000000
+"Start_ShowHelp"=dword:00000000
+"Start_MinMFU"=dword:00000000
+"Start_ShowMyGames"=dword:00000000
+"Start_ShowMyPics"=dword:00000001
+"Start_ShowMyDocs"=dword:00000001
+"Start_ShowMyMusic"=dword:00000001
+"Start_ShowMyComputer"=dword:00000001
+"Start_ShowControlPanel"=dword:00000001
+"Start_SearchFiles"=dword:00000002
+"Start_ShowHomeGroup"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]
+"DetailsContainer"=hex:02,00,00,00,02,00,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]
+"PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
+"NumThumbnails"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
+"WholeFileSystem"=dword:00000000
+"SystemFolders"=dword:00000000
+"ArchivedFiles"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoToolbarsOnTaskbar"=dword:00000001
+"NoRecycleFiles"=dword:00000000
+"PreventItemCreationInUsersFilesFolder"=dword:00000001
+"NoFolderOptions"=dword:00000001
+"NoPreviewPane"=dword:00000001
+"NoReadingPane"=dword:00000001
+"NoSecurityTab"=dword:00000001
+"NoHardwareTab"=dword:00000001
+"NoCDBurning"=dword:00000001
+"NoDFSTab"=dword:00000001
+"NoNetConnectDisconnect"=dword:00000000
+"ConfirmFileDelete"=dword:00000001
+"ForceClassicControlPanel"=dword:00000001
+"EnforceShellExtensionSecurity"=dword:00000001
+"ClearRecentDocsOnExit"=dword:00000001
+"NoRecentDocsMenu"=dword:00000001
+"NoStartMenuMFUprogramsList"=dword:00000001
+"ClearRecentProgForNewUserInStartMenu"=dword:00000001
+"NoTrayContextMenu"=dword:00000001
+"NoTaskGrouping"=dword:00000001
+"DisableCurrentUserRun"=dword:00000001
+"DisableCurrentUserRunOnce"=dword:00000000
+"NoInternetIcon"=dword:00000001
+"HideSCANetwork"=dword:00000001
+"HideSCAHealth"=dword:00000001
+"HideSCAVolume"=dword:00000001
+"NoAutoTrayNotify"=dword:00000001
+"NoDesktop"=dword:00000001
+"NoClose"=dword:00000001
+"NoDriveTypeAutoRun"=dword:000000ff
+"NoAutorun"=dword:00000001
+"DontSetAutoplayCheckbox"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]
+"SearchOnly"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
+"PenWorkspaceButtonDesiredVisibility"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
+"SearchboxTaskbarMode"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Touchpad]
+"TouchpadDesiredVisibility"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
+"MinAnimate"="1"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
+"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
+"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001
+"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
+"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
+"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001
+"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
+"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001
+"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]
+@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6c,00,\
+  65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,20,00,2f,00,44,\
+  00,20,00,25,00,63,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\DefragPath]
+@=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,00,25,\
+  00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,66,00,\
+  72,00,67,00,75,00,69,00,2e,00,65,00,78,00,65,00,00,00
+
+[HKEY_CLASSES_ROOT\lnkfile]
+@="Shortcut"
+"IsShortcut"=""
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes]
+"ThemeChangesDesktopIcons"=dword:00000000
+"ThemeChangesMousePointers"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseSensitivity"="10"
+"MouseSpeed"="2"
+"MouseThreshold1"="6"
+"MouseThreshold2"="10"
+"MouseTrails"="0"
+"MouseHoverTime"="2"
+"SnapToDefaultButton"="0"
+"DoubleClickSpeed"="500"
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MouseWheelRouting"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+"NoDispScrSavPage"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoDriveTypeAutoRun"=dword:000000ff
+"NoAutorun"=dword:00000001
+"DontSetAutoplayCheckbox"=dword:00000001
+"DisableLocalMachineRun"=dword:00000001
+"HidePowerOptions"=dword:00000001
+"DisableLocalMachineRunOnce"=dword:00000000
+"AllowOnlineTips"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]
+"Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00
+"FullPath"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\CTF\LangBar]
+"ShowStatus"=dword:00000003
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
+"VisualFXSetting"=dword:00000003
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
+"AlwaysHibernateThumbnails"=dword:00000000
+"EnableAeroPeek"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
+"PenWorkspaceAppSuggestionsEnabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"WheelScrollLines"="9"
+"MenuShowDelay"="0"
+"DragFullWindows"="1"
+"FontSmoothing"="2"
+"UserPreferencesMask"=hex:98,52,07,80,12,01,00,00
+"WindowArrangementActive"="1"
+"PaintDesktopVersion"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
+"DisplayVersion"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+"SignInMode"=dword:00000002
+"ConvertibleSlateModePromptPreference"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
+"DisableAutoplay"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"FeatureManagementEnabled"=dword:00000000
+"OemPreInstalledAppsEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+"SoftLandingEnabled"=dword:00000000
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"ContentDeliveryAllowed"=dword:00000000
+"PreInstalledAppsEverEnabled"=dword:00000000
+"RotatingLockScreenEnabled"=dword:00000000
+"RotatingLockScreenOverlayEnabled"=dword:00000000
+"SubscribedContent-310093Enabled"=dword:00000000
+
+[-HKEY_CURRENT_USER\Software\Microsoft\TabletTip]
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
+"GlobalUserDisabled"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings]
+"ShowSleepOption"=dword:00000001
+"ShowHibernateOption"=dword:00000001
+"ShowLockOption"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
+"Enabled"=dword:00000000
+
+[HKEY_CURRENT_USER\Control Panel\International\User Profile]
+"HttpAcceptLanguageOptOut"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]
+
+[HKEY_CURRENT_USER\Software\Microsoft\MobilePC\MobilityCenter]
+"RunOnDesktop"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
+"ImmersiveContextMenu"=-
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
+"HideNewEdgeButton"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\TabbedBrowsing]
+"NewTabPageShow"=dword:00000002
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
+"MaxConnectionsPerServer"=dword:00000008
+"MaxConnectionsPer1_0Server"=dword:00000008
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer]
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions]
+"NoHelpItemSendFeedback"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System]
+"DisableCMD"=-
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
+"NoToastApplicationNotification"=dword:00000001
+"NoToastApplicationNotificationOnLockScreen"=dword:00000001
+"NoTileApplicationNotification"=dword:00000001
+"NoCloudApplicationNotification"=dword:00000001
+"DisallowNotificationMirroring"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
+"EnableLegacyBalloonNotifications"=dword:00000001
+"DisableNotificationCenter"=dword:00000001
+"HidePeopleBar"=dword:00000001
+"ClearTilesOnExit"=dword:00000001
+"DisableSearchBoxSuggestions"=dword:00000001
+"ExplorerRibbonStartsMinimized"=dword:00000001
+"PowerButtonAction"=dword:00000200
+"DisableIndexedLibraryExperience"=dword:00000001
+"DisableSearchHistory"=dword:00000001
+"ShowWindowsStoreAppsOnTaskbar"=dword:00000002
+"NoPinningToTaskbar"=dword:00000001
+"NoPinningStoreToTaskbar"=dword:00000001
+"TaskbarNoPinnedList"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Control Panel\Desktop]
+"ScreenSaveTimeOut"="0"
+"ScreenSaverIsSecure"="1"
+"ScreenSaveActive"="0"
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableWindowsSpotlightOnActionCenter"=dword:00000001
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+"DisableWindowsSpotlightFeatures"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]
+"DisableNotifications"=dword:00000000
+"EnableFirewall"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile]
+"EnableFirewall"=dword:00000001
+"DisableNotifications"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\BITS]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\BITS]
+"EnablePeercaching"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
+"DODownloadMode"=dword:00000003
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]
+"NoActivities"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]
+"CheckExeSignatures"="yes"
+"RunInvalidSignatures"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]
+"Enabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
+"Enable Browser Extensions Beta"="no"
+"DoNotTrack"=dword:00000001
+"Isolation"="PMEM"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
+"PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000
+"EnabledV9"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
+"EnabledV9"=dword:00000001
+"PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
+"AllowWebContentOnNewTabPage"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
+"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
+"AuthenticodeEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\AuthRoot]
+"DisableRootAutoUpdate"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
+"AuthenticodeFlags"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\PreviewBuilds]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\PreviewBuilds]
+"EnableConfigFlighting"=dword:00000000
+"EnableExperimentation"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
+"AllowTelemetry"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV]
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent]
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]
+"SyncOverMeteredNetwork"=dword:00000000
+"SyncOverMeteredNetworkWhenRoaming"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+"DisableWindowsSettingSync"=dword:00000002
+"DisableWindowsSettingSyncUserOverride"=dword:00000001
+"DisableSyncOnPaidNetwork"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
+"Persistent"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
+"PreventIgnoreCertErrors"=dword:00000001
+"CertificateRevocation"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]
+"Disabled"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
+
+[-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Power\PowerThrottling]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
+"ActivePowerScheme"=-
+
+[HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Power\PowerThrottling]
+"PowerThrottlingOff"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\29F6C1DB-86DA-48C5-9FDB-F2B67B1F44DA]
+"ACSettingIndex"=dword:00002a30
+"DCSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3C0BC021-C8A8-4E07-A973-6B14CBCB2B7E]
+"ACSettingIndex"=dword:00002a30
+"DCSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7bc4a2f9-d8fc-4469-b07b-33eb785aaca0]
+"ACSettingIndex"=dword:00002a30
+"DCSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\90959D22-D6A1-49B9-AF93-BCE885AD335B]
+"ACSettingIndex"=dword:00002a30
+"DCSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\5CA83367-6E45-459F-A27B-476B1D01C936]
+"ACSettingIndex"=dword:00000001
+"DCSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\637EA02F-BBCB-4015-8E2C-A1C7B9C0B546]
+"DCSettingIndex"=dword:00000002
+"ACSettingIndex"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\309dce9b-bef4-4119-9921-a851fb12f0f4]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\B7A27025-E569-46c2-A504-2B96CAD225A1]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bcded951-187b-4d05-bccc-f7e51960c258]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d4c1d4c8-d5cc-43d3-b83e-fc51215cb04d]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\4c793e7d-a264-42e1-87d3-7a0d2f523ccd]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\12bbebe6-58d6-4636-95bb-3217ef867c1a]
+"DCSettingIndex"=dword:00000003
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\abfc2519-3608-4c2a-94ea-171b0ed546ab]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\48e6b7a6-50f5-4782-a5d4-53bb8f07e226]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\3619c3f2-afb2-4afc-b0e9-e7fef372de36]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94d3a615-a899-4ac5-ae2b-e4d8f634367f]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\6738E2C4-E8A5-4A42-B16A-E040E769756E]
+"DCSettingIndex"=dword:0000012c
+"ACSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\7648EFA3-DD9C-4E3E-B566-50F929386280]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\8183ba9a-e910-48da-8769-14ae6dc1170a]
+"DCSettingIndex"=dword:0000000a
+"ACSettingIndex"=dword:0000000a
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\94ac6d29-73ce-41a6-809f-6363ba21b47e]
+"ACSettingIndex"=dword:00000001
+"DCSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\96996BC0-AD50-47EC-923B-6F41874DD9EB]
+"ACSettingIndex"=dword:00000001
+"DCSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9A66D8D7-4FF7-4EF9-B5A2-5A326CA2A469]
+"DCSettingIndex"=dword:00000005
+"ACSettingIndex"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\9D7815A6-7EE4-497E-8888-515A05F02364]
+"DCSettingIndex"=dword:00002a30
+"ACSettingIndex"=dword:00002a30
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\A4B195F5-8225-47D8-8012-9D41369786E2]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\E69653CA-CF7F-4F05-AA73-CB833FA90AD4]
+"DCSettingIndex"=dword:00000064
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\17aaa29b-8b43-4b94-aafe-35f64daaf1ee]
+"DCSettingIndex"=dword:00000032
+"ACSettingIndex"=dword:00000032
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\893dee8e-2bef-41e0-89c6-b55d0929964c]
+"DCSettingIndex"=dword:00000005
+"ACSettingIndex"=dword:00000064
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bc5038f7-23e0-4960-96da-33abaf5935ec]
+"DCSettingIndex"=dword:00000064
+"ACSettingIndex"=dword:00000064
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\fbd9aa66-9553-4097-ba44-ed6e9d65eab8]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\03680956-93bc-4294-bba6-4e0f09bb717f]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\10778347-1370-4ee0-8bbd-33bdacaade49]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4]
+"DCSettingIndex"=dword:00000002
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\ee12f906-d277-404b-b6da-e5fa1a576df5]
+"DCSettingIndex"=dword:00000002
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\a1662ab2-9d34-4e53-ba8b-2639b9e20857]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\F3C5027D-CD16-4930-AA6B-90DB844A8F00]
+"DCSettingIndex"=dword:00000007
+"ACSettingIndex"=dword:00000007
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d8742dcb-3e6a-4b3c-b3fe-374623cdcf06]
+"DCSettingIndex"=dword:00000000
+"ACSettingIndex"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+"ShowSleepOption"=dword:00000001
+"ShowHibernateOption"=dword:00000001
+"ShowLockOption"=dword:00000001
+"ExplorerRibbonStartsMinimized"=dword:00000001
+"NoNewAppAlert"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
+"AllowCortana"=dword:00000000
+"AllowCortanaAboveLock"=dword:00000000
+"AutoIndexSharedFolders"=dword:00000001
+"PreventIndexOnBattery"=dword:00000001
+"AllowIndexingEncryptedStoresOrItems"=dword:00000000
+"PreventIndexingOfflineFiles"=dword:00000001
+"PreventIndexingPublicFolders"=dword:00000001
+"PreventIndexingEmailAttachments"=dword:00000001
+"PreventIndexingOutlook"=dword:00000001
+"DisableRemovableDriveIndexing"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableFileSyncNGSC"=dword:00000001
+"DisableFileSync"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoUpdate"=dword:00000001
+"ExcludeWUDriversInQualityUpdate"=dword:00000000
+"NoAutoRebootWithLoggedOnUsers"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
+"DontOfferThroughWUAU"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
+"AutoDownloadAndUpdateMapData"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
+"AutoDownload"=dword:00000002
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
+"DisableConfig"=dword:00000001
+"DisableSR"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
+"CEIPEnable"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
+"DontShowUI"=dword:00000001
+"DontSendAdditionalData"=dword:00000001
+"Disabled"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
+"DoReport"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
+"DisablePCA"=dword:00000001
+"DisableEngine"=dword:00000001
+"VDMDisallowed"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
+"DisableHomeGroup"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
+"NoGenTicket"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreen"=dword:00000001
+"NoChangingLockScreen"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"EnableSmartScreen"=dword:00000001
+"ShellSmartScreenLevel"="Warn"
+"DisableLockScreenAppNotifications"=dword:00000001
+"DisableLogonBackgroundImage"=dword:00000001
+"BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
+"HiberbootEnabled"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
+"DisableSoftLanding"=dword:00000001
+"DisableWindowsConsumerFeatures"=dword:00000001
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]
+"AllowSpeechModelUpdate"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+"AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
+"DisableRoutinelyTakingAction"=dword:00000000
+"AllowFastServiceStartup"=dword:00000001
+"ServiceKeepAlive"=dword:00000000
+"DisableAntispyware"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Quarantine]
+"PurgeItemsAfterDelay"=dword:00000001
+"LocalSettingOverridePurgeItemsAfterDelay"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\MpEngine]
+"MpEnablePus"=dword:00000001
+"MpCloudBlockLevel"=dword:00000002
+"MpBafsExtendedTimeout"=dword:00000032
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]
+"DisableIOAVProtection"=dword:00000000
+"DisableRealtimeMonitoring"=dword:00000000
+"DisableBehaviorMonitoring"=dword:00000000
+"DisableOnAccessProtection"=dword:00000000
+"DisableScanOnRealtimeEnable"=dword:00000000
+"DisableRawWriteNotification"=dword:00000000
+"IOAVMaxSize"=dword:0098967f
+"RealtimeScanDirection"=dword:00000000
+"LocalSettingOverrideDisableBehaviorMonitoring"=dword:00000000
+"LocalSettingOverrideDisableOnAccessProtection"=dword:00000000
+"LocalSettingOverrideDisableIOAVProtection"=dword:00000000
+"LocalSettingOverrideDisableRealtimeMonitoring"=dword:00000000
+"LocalSettingOverrideRealtimeScanDirection"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Remediation]
+"LocalSettingOverrideScan_ScheduleTime"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Spynet]
+"SpynetReporting"=dword:00000002
+"LocalSettingOverrideSpynetReporting"=dword:00000000
+"SubmitSamplesConsent"=dword:00000003
+"DisableBlockAtFirstSeen"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Scan]
+"ArchieveMaxSize"=dword:00000000
+"ArchieveMaxDepth"=dword:ffffffff
+"AvgCPULoadFactor"=dword:00000032
+"DisableEmailScanning"=dword:00000000
+"DisableArchiveScanning"=dword:00000000
+"DisableRemovableDriveScanning"=dword:00000000
+"DisablePackedExeScanning"=dword:00000000
+"DisableHeuristics"=dword:00000000
+"DisableReparsePointScanning"=dword:00000001
+"DisableRemovableDriveScanning"=dword:00000000
+"DisableScanningNetworkFiles"=dword:00000000
+"CheckForSignaturesBeforeRunningScan"=dword:00000001
+"ScanOnlyIfIdle"=dword:00000001
+"PurgeItemsAfterDelay"=dword:00000001
+"LocalSettingOverrideScanParameters"=dword:00000000
+"LocalSettingOverrideAvgCPULoadFactor"=dword:00000000
+"LocalSettingOverrideScheduleDay"=dword:00000000
+"LocalSettingOverrideScheduleQuickScanTime"=dword:00000000
+"LocalSettingOverrideScheduleTime"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Signature Updates]
+"UpdateOnStartUp"=dword:00000001
+"DisableUpdateOnStartupWithoutEngine"=dword:00000000
+"AVSignatureDue"=dword:00000001
+"ASSignatureDue"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats]
+"Threats_ThreatSeverityDefaultAction"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender\Threats\ThreatSeverityDefaultAction]
+"1"="2"
+"2"="2"
+"4"="3"
+"5"="3"
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR]
+"ExploitGuard_ASR_Rules"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\ASR\Rules]
+"BE9BA2D9-53EA-4CDC-84E5-9B1EEEE46550"="1"
+"D4F940AB-401B-4EFC-AADC-AD5F3C50688A"="1"
+"3B576869-A4EC-4529-8536-B80A7769E899"="1"
+"75668C1F-73B5-4CF0-BB93-3ECF5CB7CC84"="1"
+"D3E037E1-3EB8-44C8-A917-57927947596D"="1"
+"5BEB7EFE-FD9A-4556-801D-275E5FFC04CC"="1"
+"92E97FA1-2EDF-4476-BDD6-9DD0B4DDDC7B"="1"
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access]
+"EnableControlledFolderAccess"=dword:00000000
+"ExploitGuard_ControlledFolderAccess_ProtectedFolders"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Controlled Folder Access\ProtectedFolders]
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender\Windows Defender Exploit Guard\Network Protection]
+"EnableNetworkProtection"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard\Exploit Protection]
+"ExploitProtectionSettings"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Device performance and health]
+"UILockDown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Family options]
+"UILockDown"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Firewall and network protection]
+"UILockDown"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\App and Browser protection]
+"UILockDown"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center\Enterprise Customization]
+"Url"="microsoft.com/en-us/wdsi"
+"CompanyName"="Windows Defender Security Intelligence"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]
+"Model"="Optimized by Tom Zhu"
+"SupportHours"="Optimized by Tom Zhu"
+"SupportURL"="support.microsoft.com/windows"
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"VerboseStatus"=dword:00000001
+"DisableStartupSound"=dword:00000001
+"ShutdownWithoutLogon"=dword:00000001
+"EnableLUA"=dword:00000001
+"ValidateAdminCodeSignatures"=dword:00000000
+"ConsentPromptBehaviorAdmin"=dword:0000005
+"ConsentPromptBehaviorUser"=dword:00000003
+"PromptOnSecureDesktop"=dword:00000001
+"EnableUIADesktopToggle"=dword:00000000
+"FilterAdministratorToken"=dword:00000001
+"EnableSecureUIAPaths"=dword:00000001
+"EnableInstallerDetection"=dword:00000001
+"EnableVirtualization"=dword:00000001
+"DSCAutomationHostEnabled"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
+"AuthenticodeFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
+"DefaultLevel"=dword:00000000
+"TransparentEnabled"=dword:00000001
+"PolicyScope"=dword:00000000
+"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
+  53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
+  00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
+  00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\
+  00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\
+  49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\
+  00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\
+  50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\
+  00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
+  50,00,00,00,41,00,44,00,45,00,00,00
+"AuthenticodeEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]
+"LastModified"=hex(b):08,23,fb,5a,57,16,d3,01
+"Description"="Allow Program Files (x86)"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
+  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
+  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
+  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\
+  00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\
+  6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\
+  00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]
+"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
+"Description"="Allow Windows"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
+  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
+  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
+  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\
+  00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\
+  73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\
+  00,6f,00,74,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]
+"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
+"Description"="Allow Program Files"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
+  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
+  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
+  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\
+  00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\
+  6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\
+  00,73,00,44,00,69,00,72,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]
+"LastModified"=hex(b):08,23,fb,5a,57,16,d3,01
+"Description"="Allow Program Files (x86)"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\
+  6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]
+"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
+"Description"="Allow Windows"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\
+  74,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]
+"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
+"Description"="Allow Program Files"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\
+  6c,00,65,00,73,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]
+"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
+"Description"="Allow ProgramData"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\
+  74,00,61,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow AppData\\Local"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow Temp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow AppData\\Local\\Microsoft"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
+  00,74,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow AppData\\Local\\Packages"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\
+  00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Allow AppData\\Local\\Microsoft\\OneDrive"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
+  00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,2a,00,\
+  00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Allow AppData\\Local\\Google"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,47,00,6f,00,6f,00,67,00,6c,00,65,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{5d259436-c0ab-4186-b18d-0225eaa8034c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Allow AppData\\Local\\TrustedApps"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\
+  00,70,00,70,00,73,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow 7 - Zip Temp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow Hao Zip Temp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow Windows Explorer Zip Temp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\
+  2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow 7z*.tmp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\
+  74,00,6d,00,70,00,5c,00,2a,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow WinRAR Temp"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\
+  00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow AppData\\Roaming"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
+
+
+end
