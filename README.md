@@ -1,7 +1,7 @@
 # PerfectWindows
 The batch file that can make your Windows experience perfect.
 
-## After running PerfectWindows.bat :
+## After running PerfectWindows.bat as administrator :
 
 * Your working efficiency will boost dramatically.
 * Your Windows will rarely suffer from malware.
