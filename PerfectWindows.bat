@@ -64,8 +64,8 @@ rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 md "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
-powercfg /hibernate /size 75 1>nul 2>nul
-powercfg /hibernate /type full 1>nul 2>nul
+POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
+POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
