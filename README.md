@@ -16,7 +16,7 @@ The batch file that can make your Windows experience perfect.
 * You can increase or decrease the system volume easily by pressing PAGE UP or PAGE DOWN keys.
 * You can launch your default web browser easily by pressing F1 key.
 
-## CAUTIONS
+## Cautions
 * PerfectWindows.bat is not compatible with Windows XP.
 * PerfectWindows.bat disables your desktop, taskbar and toolbar in order to reduce clutter and encourage you to make full use of start menu. Try to get used to these changes, because these changes actually can make Windows tidy and boost your multi-tasking efficiency. Don't worry about these existing desktop files, they are still in the desktop folder.
 * PerfectWindows.bat disables power options in start menu in order to encourage you to sleep or hibernate your PC by closing the lid or pressing the power button, which is really beneficial for your working efficiency and your PC hardware health. 
