@@ -6,10 +6,6 @@ Windows Registry Editor Version 5.00
 
 
 
-GITHUB.COM/SZZHIYANG/PERFECTWINDOWS
-
-
-
 @echo off
 mode con cols=45 lines=7
 color fc
@@ -1692,9 +1688,9 @@ Archive Ends
 "CompanyName"="Windows Defender Security Intelligence"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]
-"Model"="Optimized by Tom Zhu"
-"SupportHours"="Optimized by Tom Zhu"
-"SupportURL"="support.microsoft.com/windows"
+"Model"="Optimized by PerfectWindows"
+"SupportHours"="Optimized by PerfectWindows"
+"SupportURL"="https://www.github.com/szzhiyang/perfectwindows"
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
 
