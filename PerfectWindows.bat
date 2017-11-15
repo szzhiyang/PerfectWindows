@@ -187,7 +187,13 @@ echo.>>%B%
 attrib +h +s "%B%" 1>nul 2>nul
 
 copy "%~0" /Y %A% 1>nul 2>nul
+echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
 echo.>>%A%
+echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
+echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
+echo.>>%A%
+echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
+echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
 echo.>>%A%
 
 
@@ -724,12 +730,6 @@ Archive Ends
 
 [-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
-"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
-"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
 "SMBDeviceEnabled"=dword:00000000
 "TransportBindName"=-
@@ -746,34 +746,6 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA]
 "RestrictAnonymous"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"EnableFirstLogonAnimation"=dword:00000001
-"WinStationsDisabled"="0"
-"Background"="0 0 0"
-"Userinit"="C:\\WINDOWS\\system32\\userinit.exe,"
-"VMApplet"="SystemPropertiesPerformance.exe /pagefile"
-"Shell"="explorer.exe"
-"ShellCritical"=dword:00000000
-"ShellInfrastructure"="sihost.exe"
-"SiHostCritical"=dword:00000000
-"SiHostReadyTimeOut"=dword:00000000
-"SiHostRestartCountLimit"=dword:00000000
-"SiHostRestartTimeGap"=dword:00000000
-"AutoRestartShell"=dword:00000001
-"DisableBackButton"=dword:00000001
-"EnableSIHostIntegration"=dword:00000001
-"ForceUnlockLogon"=dword:00000000
-"LegalNoticeCaption"=""
-"LegalNoticeText"=""
-"PasswordExpiryWarning"=dword:00000005
-"PowerdownAfterShutdown"="0"
-"ReportBootOk"="1"
-"ShutdownWithoutLogon"="0"
-"CachedLogonsCount"="10"
-"DebugServerCommand"="no"
-"System"=""
-"PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot]
 "AlternateShell"="cmd.exe"
@@ -1917,3 +1889,29 @@ Archive Ends
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
+"EnableFirstLogonAnimation"=dword:00000001
+"WinStationsDisabled"="0"
+"Background"="0 0 0"
+"VMApplet"="SystemPropertiesPerformance.exe /pagefile"
+"Shell"="explorer.exe"
+"ShellCritical"=dword:00000000
+"ShellInfrastructure"="sihost.exe"
+"SiHostCritical"=dword:00000000
+"SiHostReadyTimeOut"=dword:00000000
+"SiHostRestartCountLimit"=dword:00000000
+"SiHostRestartTimeGap"=dword:00000000
+"AutoRestartShell"=dword:00000001
+"DisableBackButton"=dword:00000001
+"EnableSIHostIntegration"=dword:00000001
+"ForceUnlockLogon"=dword:00000000
+"LegalNoticeCaption"=""
+"LegalNoticeText"=""
+"PasswordExpiryWarning"=dword:00000005
+"PowerdownAfterShutdown"="0"
+"ReportBootOk"="1"
+"ShutdownWithoutLogon"="0"
+"CachedLogonsCount"="10"
+"DebugServerCommand"="no"
+"System"=""
+"PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
