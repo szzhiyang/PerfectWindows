@@ -1,17 +1,9 @@
-# PerfectWindows.bat
-An easy-to-use batch file that can make your Windows swift, tidy, elegant, less cluttered and more secured.
-## Well, in a word, This batch file can make your Windows perfect.
+# After running PerfectWindows.bat :
 
-# Functions
-
-## Services optimization
-Enable vital services, disable redundant services and make any other services run demandly. Last but not least, disables SMB services to protect your PC against Wannacry and other similar ransomwares.
-
-## Windows settings optimization
-To be continued...
-
-## Scheduled tasks optimization
-To be continued...
-
-## Power options optimization
-To be continued...
+## * Your working efficiency will boost dramatically.
+## * Your Windows will never disturb or distract you.
+## * Your Windows will rarely suffer from malware.
+## * Your PC will run longer on battery and run faster when plugged in.
+## * Your Apps will never run automatically.
+## * Your favorite web browser will start up as soon as you click on F1 button.
+# Well, in a word, your Windows experience will be PERFECT !
