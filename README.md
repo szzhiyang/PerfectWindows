@@ -18,7 +18,7 @@ The batch file that can make your Windows experience perfect.
 
 ## Cautions
 * PerfectWindows.bat is not compatible with Windows XP.
-* PerfectWindows.bat disables your desktop, taskbar and toolbar in order to reduce clutter and encourage you to make full use of start menu. Try to get used to these changes, because these changes actually can make Windows tidy and boost your multi-tasking efficiency. Don't worry about these existing desktop files, they are still in the desktop folder.
+* PerfectWindows.bat disables your desktop, taskbar and toolbar in order to reduce clutter and encourage you to make full use of start menu. Try to get used to these changes, because these changes actually can make Windows tidy and boost your multi-tasking efficiency. Don't worry about those existing desktop files, they are still in the desktop folder.
 * PerfectWindows.bat disables power options in start menu in order to encourage you to sleep or hibernate your PC by closing the lid or pressing the power button, which is really beneficial for your working efficiency and your PC hardware health. 
 * PerfectWindows.bat disables the DELETE key in order to prevent you from permanently deleting your precious files mistakenly.
 * PerfectWindows.bat inevitably locks many PC settings in order to make your Windows experience perfect. Because of that, you may see notifications like "Please contact your system administrator".
