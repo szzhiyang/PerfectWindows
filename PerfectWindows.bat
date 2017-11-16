@@ -1921,6 +1921,8 @@ Archive Ends
 "Hilight"="0 120 215"
 "MenuHilight"="0 120 215"
 
+[-HKEY_CURRENT_USER\Control Panel\Colors]
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "EnableFirstLogonAnimation"=dword:00000001
 "WinStationsDisabled"="0"
