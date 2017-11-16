@@ -1888,6 +1888,39 @@ Archive Ends
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
 
+[HKEY_CURRENT_USER\Control Panel\Colors]
+"ActiveBorder"="180 180 180"
+"ActiveTitle"="153 180 209"
+"AppWorkspace"="171 171 171"
+"Background"="0 0 0"
+"ButtonAlternateFace"="0 0 0"
+"ButtonDkShadow"="105 105 105"
+"ButtonFace"="240 240 240"
+"ButtonHilight"="255 255 255"
+"ButtonLight"="227 227 227"
+"ButtonShadow"="160 160 160"
+"ButtonText"="0 0 0"
+"GradientActiveTitle"="185 209 234"
+"GradientInactiveTitle"="215 228 242"
+"GrayText"="109 109 109"
+"HilightText"="255 255 255"
+"HotTrackingColor"="0 102 204"
+"InactiveBorder"="244 247 252"
+"InactiveTitle"="191 205 219"
+"InactiveTitleText"="0 0 0"
+"InfoText"="0 0 0"
+"InfoWindow"="255 255 225"
+"Menu"="240 240 240"
+"MenuBar"="240 240 240"
+"MenuText"="0 0 0"
+"Scrollbar"="200 200 200"
+"TitleText"="0 0 0"
+"Window"="255 255 255"
+"WindowFrame"="100 100 100"
+"WindowText"="0 0 0"
+"Hilight"="0 120 215"
+"MenuHilight"="0 120 215"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "EnableFirstLogonAnimation"=dword:00000001
 "WinStationsDisabled"="0"
