@@ -56,6 +56,9 @@ set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
 set A=%P%\Core.reg
 set B=%P%\ClearSoftwareRestrictionPolicies.reg
+set C=%systemroot%\besafe.bat
+set D=%systemroot%\beindanger.bat
+set E=%systemroot%\beperfect.bat
 rd /s /q "%P%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
@@ -211,148 +214,148 @@ echo.>>%A%)
 )
 
 
-attrib -h -s "%systemroot%\beperfect.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beperfect.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beperfect.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo exit) else (>>%systemroot%\beperfect.bat
-echo goto main)>>%systemroot%\beperfect.bat
-echo :main>>%systemroot%\beperfect.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beperfect.bat
-echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%systemroot%\beperfect.bat
-attrib +h +s "%systemroot%\beperfect.bat" 1>nul 2>nul
+attrib -h -s "%E%" 1>nul 2>nul
+echo @echo off>%E%
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%E%
+echo if exist "%systemroot%\checkadmin" (>>%E%
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%E%
+echo exit) else (>>%E%
+echo goto main)>>%E%
+echo :main>>%E%
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
+echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
+echo md "%tmp%" 1^>nul 2^>nul>>%E%
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
+echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%E%
+attrib +h +s "%E%" 1>nul 2>nul
 
 
-attrib -h -s "%systemroot%\besafe.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\besafe.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\besafe.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo goto main)>>%systemroot%\besafe.bat
-echo :main>>%systemroot%\besafe.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo regedit /s %A% 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo chcp 437>>%systemroot%\besafe.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\besafe.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\besafe.bat
-echo title   WARNING ! ! !>>%systemroot%\besafe.bat
-echo color cf>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=23>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit) else (>>%systemroot%\besafe.bat
-echo title   WELL DONE !>>%systemroot%\besafe.bat
-echo color 2f>>%systemroot%\besafe.bat
-echo mode con cols=36 lines=19>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo echo.>>%systemroot%\besafe.bat
-echo pause>>%systemroot%\besafe.bat
-echo exit)>>%systemroot%\besafe.bat
-attrib +h +s "%systemroot%\besafe.bat" 1>nul 2>nul
+attrib -h -s "%C%" 1>nul 2>nul
+echo @echo off>%C%
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%C%
+echo if exist "%systemroot%\checkadmin" (>>%C%
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%C%
+echo exit) else (>>%C%
+echo goto main)>>%C%
+echo :main>>%C%
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%C%
+echo ipconfig /flushdns 1^>nul 2^>nul>>%C%
+echo md "%tmp%" 1^>nul 2^>nul>>%C%
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%C%
+echo regedit /s %A% 1^>nul 2^>nul>>%C%
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%C%
+echo start explorer.exe 1^>nul 2^>nul>>%C%
+echo chcp 437>>%C%
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%C%
+echo if ERRORLEVEL 1 (>>%C%
+echo title   WARNING ! ! !>>%C%
+echo color cf>>%C%
+echo mode con cols=36 lines=23>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo PLEASE DO REMEMBER TO RUN>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo "BESAFE" FROM START MENU TO>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo pause>>%C%
+echo exit) else (>>%C%
+echo title   WELL DONE !>>%C%
+echo color 2f>>%C%
+echo mode con cols=36 lines=19>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo YOUR PC IS SAFE NOW !>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo HAVE A NICE DAY !>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo echo.>>%C%
+echo pause>>%C%
+echo exit)>>%C%
+attrib +h +s "%C%" 1>nul 2>nul
 
 
-attrib -h -s "%systemroot%\beindanger.bat" 1>nul 2>nul
-echo @echo off>%systemroot%\beindanger.bat
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if exist "%systemroot%\checkadmin" (>>%systemroot%\beindanger.bat
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo goto main)>>%systemroot%\beindanger.bat
-echo :main>>%systemroot%\beindanger.bat
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo ipconfig /flushdns 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo md "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo regedit /s %B% 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo start explorer.exe 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo chcp 437>>%systemroot%\beindanger.bat
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%systemroot%\beindanger.bat
-echo if ERRORLEVEL 1 (>>%systemroot%\beindanger.bat
-echo title   WARNING ! ! !>>%systemroot%\beindanger.bat
-echo color cf>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=23>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo PLEASE DO REMEMBER TO RUN>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo "BESAFE" FROM START MENU TO>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit) else (>>%systemroot%\beindanger.bat
-echo title   WELL DONE !>>%systemroot%\beindanger.bat
-echo color 2f>>%systemroot%\beindanger.bat
-echo mode con cols=36 lines=19>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo YOUR PC IS SAFE NOW !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo HAVE A NICE DAY !>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo echo.>>%systemroot%\beindanger.bat
-echo pause>>%systemroot%\beindanger.bat
-echo exit)>>%systemroot%\beindanger.bat
-attrib +h +s "%systemroot%\beindanger.bat" 1>nul 2>nul
+attrib -h -s "%D%" 1>nul 2>nul
+echo @echo off>%D%
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%D%
+echo if exist "%systemroot%\checkadmin" (>>%D%
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%D%
+echo exit) else (>>%D%
+echo goto main)>>%D%
+echo :main>>%D%
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%D%
+echo ipconfig /flushdns 1^>nul 2^>nul>>%D%
+echo md "%tmp%" 1^>nul 2^>nul>>%D%
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%D%
+echo regedit /s %B% 1^>nul 2^>nul>>%D%
+echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%D%
+echo start explorer.exe 1^>nul 2^>nul>>%D%
+echo chcp 437>>%D%
+echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%D%
+echo if ERRORLEVEL 1 (>>%D%
+echo title   WARNING ! ! !>>%D%
+echo color cf>>%D%
+echo mode con cols=36 lines=23>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo YOUR PC IS IN DANGER NOW ! ! !>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo PLEASE DO REMEMBER TO RUN>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo "BESAFE" FROM START MENU TO>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo pause>>%D%
+echo exit) else (>>%D%
+echo title   WELL DONE !>>%D%
+echo color 2f>>%D%
+echo mode con cols=36 lines=19>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo YOUR PC IS SAFE NOW !>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo HAVE A NICE DAY !>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo echo.>>%D%
+echo pause>>%D%
+echo exit)>>%D%
+attrib +h +s "%D%" 1>nul 2>nul
 
 
 :devicedisablewake
