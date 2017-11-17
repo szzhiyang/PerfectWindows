@@ -161,7 +161,6 @@ echo "ShowSuperHidden"=dword:00000000>>%B%
 echo "HideFileExt"=dword:00000000>>%B%
 echo "TaskbarSizeMove"=dword:00000000>>%B%
 echo "TaskbarGlomLevel"=dword:00000001>>%B%
-echo "TaskbarGlomming"=dword:00000000>>%B%
 echo "TaskbarSmallIcons"=dword:00000001>>%B%
 echo.>>%B%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
@@ -875,7 +874,6 @@ Archive Ends
 "PersistBrowsers"=dword:00000001
 "TaskbarAnimations"=dword:00000000
 "TaskbarGlomLevel"=dword:00000001
-"TaskbarGlomming"=dword:00000000
 "ShowDriveLettersFirst"=dword:00000000
 "ShowInfoTip"=dword:00000000
 "ShowTypeOverlay"=dword:00000001
@@ -964,7 +962,7 @@ Archive Ends
 "NoStartMenuMFUprogramsList"=dword:00000001
 "ClearRecentProgForNewUserInStartMenu"=dword:00000001
 "NoTrayContextMenu"=dword:00000001
-"NoTaskGrouping"=dword:00000001
+"NoTaskGrouping"=dword:00000000
 "DisableCurrentUserRun"=dword:00000001
 "DisableCurrentUserRunOnce"=dword:00000000
 "NoInternetIcon"=dword:00000001
