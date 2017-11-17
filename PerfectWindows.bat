@@ -640,6 +640,15 @@ Archive Ends
 
 
 
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects2]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects4]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects5]
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,00,00,53,E0,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
@@ -929,6 +938,10 @@ Archive Ends
 "ArchivedFiles"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"LockTaskbar"=dword:00000001
+"TaskbarNoResize"=dword:00000001
+"TaskbarNoRedock"=dword:00000001
+"TaskbarLockAll"=dword:00000001
 "NoToolbarsOnTaskbar"=dword:00000001
 "NoRecycleFiles"=dword:00000000
 "PreventItemCreationInUsersFilesFolder"=dword:00000001
