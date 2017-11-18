@@ -1,5 +1,5 @@
 # PerfectWindows
-The batch file that can make your Windows experience perfect.
+> The batch file that can make your Windows experience perfect.
 
 ## After running PerfectWindows.bat as administrator :
 
@@ -20,13 +20,13 @@ The batch file that can make your Windows experience perfect.
 * The Conservative Mode only allows the installed Apps running.
 * With the Conservative Mode enabled, the executable files are only allowed to run from the following directory:
 ```
-1.%systemroot%
-2.%ProgramFiles%
-3.%ProgramFiles(x86)%
-4.%ProgramData%
-5.%LocalAppData%\TrustedApps
-6.%LocalAppData%\Microsoft\OneDrive
-7.%LocalAppData%\Google
+%systemroot%
+%ProgramFiles%
+%ProgramFiles(x86)%
+%ProgramData%
+%LocalAppData%\TrustedApps
+%LocalAppData%\Microsoft\OneDrive
+%LocalAppData%\Google
 ```
 
 ## Cautions
