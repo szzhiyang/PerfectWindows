@@ -4,7 +4,7 @@ The batch file that can make your Windows experience perfect.
 ## After running PerfectWindows.bat as administrator :
 
 * Your working efficiency will boost dramatically.
-* Your Windows will rarely suffer from malware.
+* Your Windows will rarely suffer from malware thanks to the Conservative Mode.
 * Your PC will run longer on battery and run faster when plugged in.
 * Your Apps will never run unless you run them.
 * Your favorite web browser will start up as soon as you press F1 key.
@@ -15,6 +15,17 @@ The batch file that can make your Windows experience perfect.
 * Make full use of start menu. This will dramatically boost your working efficiency. Pin or drag the frequently used folders, Apps or setting items to start menu. Try it now, I believe you will handle it and love it !
 * You can increase or decrease the system volume easily by pressing PAGE UP or PAGE DOWN keys.
 * You can launch your default web browser easily by pressing F1 key.
+
+## About the Conservative Mode
+* The Conservative Mode only allows the installed Apps running.
+* With the Conservative Mode enabled, the executable files are only allowed to run from the following directory:
+1.%systemroot%
+2.%ProgramFiles%
+3.%ProgramFiles(x86)%
+4.%ProgramData%
+5.%LocalAppData%\TrustedApps
+6.%LocalAppData%\Microsoft\OneDrive
+7.%LocalAppData%\Google
 
 ## Cautions
 * PerfectWindows.bat is licensed under the GNU General Public License v3.0 .
