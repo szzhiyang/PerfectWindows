@@ -59,6 +59,7 @@ set B=%P%\ClearSoftwareRestrictionPolicies.reg
 set C=%systemroot%\besafe.bat
 set D=%systemroot%\beindanger.bat
 set E=%systemroot%\beperfect.bat
+set F=%systemroot%\trustedapps.bat
 rd /s /q "%P%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
@@ -225,9 +226,23 @@ echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
 echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
 echo md "%tmp%" 1^>nul 2^>nul>>%E%
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
-echo explorer %LocalAppData%\TrustedApps\PerfectWindows\>>%E%
+echo explorer %LocalAppData%\TrustedApps\PerfectWindows>>%E%
 attrib +h +s "%E%" 1>nul 2>nul
 
+attrib -h -s "%F%" 1>nul 2>nul
+echo @echo off>%F%
+echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%F%
+echo if exist "%systemroot%\checkadmin" (>>%F%
+echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%F%
+echo exit) else (>>%F%
+echo goto main)>>%F%
+echo :main>>%F%
+echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%F%
+echo ipconfig /flushdns 1^>nul 2^>nul>>%F%
+echo md "%tmp%" 1^>nul 2^>nul>>%F%
+echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%F%
+echo explorer %LocalAppData%\TrustedApps>>%F%
+attrib +h +s "%F%" 1>nul 2>nul
 
 attrib -h -s "%C%" 1>nul 2>nul
 echo @echo off>%C%
