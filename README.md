@@ -18,21 +18,21 @@
 * Type BEPERFECT in start menu and run the command anytime you wanna restart your PC or make your Windows experience perfect again.
 
 ## About the Conservative Mode
-* The Conservative Mode only allows Windows Apps and third-party Apps installed in ***%ProgramFiles%*** or ***%ProgramFiles(x86)%*** running, which can greatly help you prevent running malware.
+* The Conservative Mode ***only allows Windows Apps and third-party Apps installed in C:\Program Files or C:\Program Files (x86) running***, which can greatly help you prevent running external malware or unwanted software.
 
-* Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are **really prepared to take potential risks** to do the following things:
+* Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are ***really prepared to take potential risks*** to do the following things:
 	1. Install, update or uninstall non-Microsoft Store Apps
 	2. Run the blocked executables
     
-* **Never move the blocked executables manually ! ! !**
+* ***Never move the blocked executables manually ! ! !***
     
 * Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
 
 
 
 ## Cautions
-* **PerfectWindows.bat is licensed under the GNU General Public License v3.0 .**
-* **PerfectWindows.bat is not compatible with Windows XP and Windows Vista.**
+* ***PerfectWindows.bat is licensed under the GNU General Public License v3.0 .***
+* ***PerfectWindows.bat is not compatible with Windows XP and Windows Vista.***
 * PerfectWindows.bat disables your desktop, taskbar and toolbar in order to reduce clutter and encourage you to make full use of start menu. Try to get used to these changes, because these changes actually can make Windows tidy and boost your multi-tasking efficiency. Don't worry about those existing desktop files, they are still in the desktop folder.
 * PerfectWindows.bat disables power options in start menu in order to encourage you to sleep or hibernate your PC by closing the lid or pressing the power button, which is really beneficial for your working efficiency and your PC hardware health. 
 * PerfectWindows.bat disables the DELETE key in order to prevent you from permanently deleting your precious files mistakenly.
