@@ -24,9 +24,9 @@
 %ProgramFiles%
 %ProgramFiles(x86)%
 %ProgramData%
-%LocalAppData%\TrustedApps
-%LocalAppData%\Microsoft\OneDrive
-%LocalAppData%\Google
+%LocalAppData%\PerfectWindows\PerfectWindows.bat
+%LocalAppData%\Microsoft\OneDrive\OneDrive.exe
+%LocalAppData%\Google\Chrome\Application\chrome.exe
 ```
 
 ## Cautions
