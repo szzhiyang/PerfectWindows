@@ -30,7 +30,7 @@
 %LocalAppData%\Google\Chrome\Application\chrome.exe
 ```
 * Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are really prepared to take potential risks to do the following things:
-	1. Install, update, modify or uninstall non-Microsoft Store Apps
+	1. Install, update or uninstall non-Microsoft Store Apps
 	2. Run executables which are not located in the following directory:
 		1. %systemroot%
 		2. %ProgramFiles%
