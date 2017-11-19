@@ -38,20 +38,21 @@
 		4. %ProgramData%
 	3. Program your own executables
     
-* Please do not move executables into the following directory manually ! ! !
+* **Please do not move executables into the following directory manually ! ! !**
 	1. %systemroot%
 	2. %ProgramFiles%
 	3. %ProgramFiles(x86)%
 	4. %ProgramData%
     
 * Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
+* **The Conservative Mode is currently not compatible with Apps whose default installation paths are not %ProgramFiles% or %ProgramFiles(x86)%. **
 
 
 
 
 ## Cautions
-* PerfectWindows.bat is licensed under the GNU General Public License v3.0 .
-* PerfectWindows.bat is not compatible with Windows XP and Windows Vista.
+* **PerfectWindows.bat is licensed under the GNU General Public License v3.0 .**
+* **PerfectWindows.bat is not compatible with Windows XP and Windows Vista.**
 * PerfectWindows.bat disables your desktop, taskbar and toolbar in order to reduce clutter and encourage you to make full use of start menu. Try to get used to these changes, because these changes actually can make Windows tidy and boost your multi-tasking efficiency. Don't worry about those existing desktop files, they are still in the desktop folder.
 * PerfectWindows.bat disables power options in start menu in order to encourage you to sleep or hibernate your PC by closing the lid or pressing the power button, which is really beneficial for your working efficiency and your PC hardware health. 
 * PerfectWindows.bat disables the DELETE key in order to prevent you from permanently deleting your precious files mistakenly.
