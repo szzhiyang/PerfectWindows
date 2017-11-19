@@ -131,7 +131,7 @@ echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%B%
 echo "AuthenticodeEnabled"=dword:00000000>>%B%
 echo.>>%B%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
-echo "NoTrayItemsDisplay"=dword:00000001>>%B%
+echo "NoTrayItemsDisplay"=dword:00000000>>%B%
 echo.>>%B%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%B%
 echo "ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%B%
@@ -149,8 +149,8 @@ echo "sShortTime"="tt H:mm">>%B%
 echo "sLongTime"="H:mm:ss">>%B%
 echo "s1159"=->>%B%
 echo "s2359"=->>%B%
-echo "s1159"="IN DANGER!  ">>%B%
-echo "s2359"="IN DANGER!  ">>%B%
+echo "s1159"=" IN DANGER! ">>%B%
+echo "s2359"=" IN DANGER! ">>%B%
 echo.>>%B%
 echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%B%
 echo.>>%B%
