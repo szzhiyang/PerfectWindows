@@ -18,7 +18,7 @@
 * Type BEPERFECT in start menu and run the command anytime you wanna restart your PC or make your Windows experience perfect again.
 
 ## About the Conservative Mode
-* The Conservative Mode ***only allows Windows Apps, OneDrive, Google Chrome and other Apps installed in C:\Program Files or C:\Program Files (x86) running***, which can greatly help you prevent running external malware or unwanted software.
+* With the Conservative Mode enabled, Windows ***only allows Windows Apps, OneDrive, Google Chrome and other Apps installed in C:\Program Files or C:\Program Files (x86) running***, which can greatly help you prevent running external malware or unwanted software.
 
 * Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are ***really prepared to take potential risks*** to do the following things:
 	1. Install, update or uninstall non-Microsoft Store Apps
