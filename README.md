@@ -38,7 +38,7 @@
 		4. %ProgramData%
 	3. Program your own executables
     
-* Please do not move executables into the following directory manually ! ！!
+* Please do not move executables into the following directory manually ! ! !
 	1. %systemroot%
 	2. %ProgramFiles%
 	3. %ProgramFiles(x86)%
