@@ -1,10 +1,10 @@
 # PerfectWindows
-> The batch file that can make your Windows experience perfect.
+> **The batch file that can make your Windows experience perfect.**
 
 ## After running PerfectWindows.bat as administrator :
 
 * Your working efficiency will boost dramatically.
-* Your Windows will rarely suffer from malware thanks to the Conservative Mode.
+* Your Windows will rarely suffer from malware thanks to **the Conservative Mode**.
 * Your PC will run longer on battery and run faster when plugged in.
 * Your Apps will never run unless you run them.
 * Your favorite web browser will start up as soon as you press F1 key.
@@ -18,35 +18,15 @@
 * Type BEPERFECT in start menu and run the command anytime you wanna restart your PC or make your Windows experience perfect again.
 
 ## About the Conservative Mode
-* The Conservative Mode only allows the installed Apps running, which can greatly help you prevent running malware.
-* With the Conservative Mode enabled, the executables are only allowed to run from the following directory:
-```
-%systemroot%
-%ProgramFiles%
-%ProgramFiles(x86)%
-%ProgramData%
-%LocalAppData%\PerfectWindows\PerfectWindows.bat
-%LocalAppData%\Microsoft\OneDrive\OneDrive.exe
-%LocalAppData%\Google\Chrome\Application\chrome.exe
-```
-* Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are really prepared to take potential risks to do the following things:
+* The Conservative Mode only allows Windows Apps and third-party Apps installed in ***%ProgramFiles%*** or ***%ProgramFiles(x86)%*** running, which can greatly help you prevent running malware.
+
+* Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are **really prepared to take potential risks** to do the following things:
 	1. Install, update or uninstall non-Microsoft Store Apps
-	2. Run executables which are not located in the following directory:
-		1. %systemroot%
-		2. %ProgramFiles%
-		3. %ProgramFiles(x86)%
-		4. %ProgramData%
-	3. Program your own executables
+	2. Run the blocked executables
     
-* **Please do not move executables into the following directory manually ! ! !**
-	1. %systemroot%
-	2. %ProgramFiles%
-	3. %ProgramFiles(x86)%
-	4. %ProgramData%
+* **Never move the blocked executables manually ! ! !**
     
 * Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
-* **The Conservative Mode is currently not compatible with Apps whose default installation paths are not %ProgramFiles% or %ProgramFiles(x86)%.**
-
 
 
 
