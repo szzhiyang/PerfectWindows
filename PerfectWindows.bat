@@ -67,7 +67,7 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
+md "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -81,8 +81,7 @@ attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
 attrib +h +s "%LocalAppData%" 1>nul 2>nul
-attrib -h -s "%LocalAppData%\TrustedApps" 1>nul 2>nul
-attrib -h -s "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
 attrib +h +s "%AppData%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
@@ -116,9 +115,9 @@ copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 ren hosts hosts.txt
 
 :copybat
-if "%~0" equ "%LocalAppData%\TrustedApps\PerfectWindows\PerfectWindows.bat" (
+if "%~0" equ "%LocalAppData%\PerfectWindows\PerfectWindows.bat" (
 goto createreg) else (
-copy "%~0" /Y %LocalAppData%\TrustedApps\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
+copy "%~0" /Y %LocalAppData%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
 )
 
 
@@ -226,23 +225,11 @@ echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
 echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
 echo md "%tmp%" 1^>nul 2^>nul>>%E%
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
-echo explorer %LocalAppData%\TrustedApps\PerfectWindows>>%E%
+echo explorer %LocalAppData%\PerfectWindows>>%E%
 attrib +h +s "%E%" 1>nul 2>nul
 
 attrib -h -s "%F%" 1>nul 2>nul
-echo @echo off>%F%
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%F%
-echo if exist "%systemroot%\checkadmin" (>>%F%
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%F%
-echo exit) else (>>%F%
-echo goto main)>>%F%
-echo :main>>%F%
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%F%
-echo ipconfig /flushdns 1^>nul 2^>nul>>%F%
-echo md "%tmp%" 1^>nul 2^>nul>>%F%
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%F%
-echo explorer %LocalAppData%\TrustedApps>>%F%
-attrib +h +s "%F%" 1>nul 2>nul
+del "%F%" 1>nul 2>nul
 
 attrib -h -s "%C%" 1>nul 2>nul
 echo @echo off>%C%
@@ -594,10 +581,9 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy whitelist.txt /Y %LocalAppData%\TrustedApps\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %LocalAppData%\TrustedApps\PerfectWindows\hosts.txt 1>nul 2>nul
-attrib +h +s "%LocalAppData%\TrustedApps\PerfectWindows" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\TrustedApps" 1>nul 2>nul
+copy whitelist.txt /Y %LocalAppData%\PerfectWindows\whitelist.txt 1>nul 2>nul
+copy hosts.txt /Y %LocalAppData%\PerfectWindows\hosts.txt 1>nul 2>nul
+attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 
 
 
@@ -1872,11 +1858,14 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{5d259436-c0ab-4186-b18d-0225eaa8034c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow AppData\\Local\\TrustedApps"
+"Description"="Allow PerfectWindows"
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\
-  00,70,00,70,00,73,00,00,00
+  61,00,74,00,61,00,25,00,5c,00,50,00,65,00,72,00,66,00,65,00,63,00,74,00,57,\
+  00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,50,00,65,00,72,00,66,00,65,00,\
+  63,00,74,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,2e,00,62,00,61,00,74,\
+  00,00,00
+
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
