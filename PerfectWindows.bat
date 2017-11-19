@@ -117,7 +117,7 @@ ren hosts hosts.txt
 :copybat
 if "%~0" equ "%LocalAppData%\PerfectWindows\PerfectWindows.bat" (
 goto createreg) else (
-copy "%~0" /Y %LocalAppData%\PerfectWindows\PerfectWindows.bat 1>nul 2>nul
+copy "%~0" /Y "%LocalAppData%\PerfectWindows\PerfectWindows.bat" 1>nul 2>nul
 )
 
 
@@ -235,7 +235,7 @@ echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
 echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
 echo md "%tmp%" 1^>nul 2^>nul>>%E%
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
-echo explorer %LocalAppData%\PerfectWindows>>%E%
+echo explorer "%LocalAppData%\PerfectWindows">>%E%
 attrib +h +s "%E%" 1>nul 2>nul
 
 attrib -h -s "%F%" 1>nul 2>nul
@@ -591,8 +591,8 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy whitelist.txt /Y %LocalAppData%\PerfectWindows\whitelist.txt 1>nul 2>nul
-copy hosts.txt /Y %LocalAppData%\PerfectWindows\hosts.txt 1>nul 2>nul
+copy whitelist.txt /Y "%LocalAppData%\PerfectWindows\whitelist.txt" 1>nul 2>nul
+copy hosts.txt /Y "%LocalAppData%\PerfectWindows\hosts.txt" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\PerfectWindows" 1>nul 2>nul
 
 
