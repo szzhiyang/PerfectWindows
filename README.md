@@ -26,7 +26,7 @@
     
 * ***Never move the blocked executables manually ! ! !***
     
-* Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
+* ***Never forget to type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety ! ! !***
 
 
 
