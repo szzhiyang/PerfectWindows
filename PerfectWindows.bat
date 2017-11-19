@@ -101,7 +101,7 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 
 if exist whitelist.txt (
 goto hosts) else (
-echo You can exclude your needed services here.>whitelist.txt
+echo You can exclude your needed services and registry items here.>whitelist.txt
 goto hosts)
 
 :hosts
@@ -185,6 +185,9 @@ echo.>>%B%
 attrib +h +s "%B%" 1>nul 2>nul
 
 copy "%~0" /Y %A% 1>nul 2>nul
+echo.>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%A%
 echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
 echo.>>%A%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
@@ -193,9 +196,16 @@ echo.>>%A%
 echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
 echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
 echo.>>%A%
+echo.>>%A%
 
 
 for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+echo %%i>>%A%
+)
+echo.>>%A%
+echo.>>%A%
+
+for /f "tokens=1 delims= " %%i in (whitelist.txt) do (
 if %%i equ onedrive (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
 echo "DisableFileSyncNGSC"=->>%A%
