@@ -15,10 +15,11 @@
 * Make full use of start menu. This will dramatically boost your working efficiency. Pin or drag the frequently used folders, Apps or setting items to start menu. Try it now, I believe you will handle it and love it !
 * You can increase or decrease the system volume easily by pressing PAGE UP or PAGE DOWN keys.
 * You can launch your default web browser easily by pressing F1 key.
+* Type BEPERFECT in start menu and run the command anytime you wanna restart your PC or make your Windows experience perfect again.
 
 ## About the Conservative Mode
-* The Conservative Mode only allows the installed Apps running.
-* With the Conservative Mode enabled, the executable files are only allowed to run from the following directory:
+* The Conservative Mode only allows the installed Apps running, which can greatly help you prevent running malware.
+* With the Conservative Mode enabled, the executables are only allowed to run from the following directory:
 ```
 %systemroot%
 %ProgramFiles%
@@ -28,6 +29,25 @@
 %LocalAppData%\Microsoft\OneDrive\OneDrive.exe
 %LocalAppData%\Google\Chrome\Application\chrome.exe
 ```
+* Please type BEINDANGER in start menu and run the command to disable the Conservative Mode if you are really prepared to take potential risks to do the following things:
+    1. Install, update, modify or uninstall non-Microsoft Store Apps
+    2. Run executables which are not located in the following directory:
+      1. %systemroot%
+      2. %ProgramFiles%
+      3. %ProgramFiles(x86)%
+      4. %ProgramData%
+    3. Program your own executables
+    
+* Please do not move executables into the following directory manually ! ！!
+     1. %systemroot%
+     2. %ProgramFiles%
+     3. %ProgramFiles(x86)%
+     4. %ProgramData%
+    
+* Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
+
+
+
 
 ## Cautions
 * PerfectWindows.bat is licensed under the GNU General Public License v3.0 .
