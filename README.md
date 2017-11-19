@@ -45,7 +45,7 @@
 	4. %ProgramData%
     
 * Type BESAFE in start menu and run the command to enable the Conservative Mode to bring your PC back to safety.
-* **The Conservative Mode is currently not compatible with Apps whose default installation paths are not %ProgramFiles% or %ProgramFiles(x86)%. **
+* **The Conservative Mode is currently not compatible with Apps whose default installation paths are not %ProgramFiles% or %ProgramFiles(x86)%.**
 
 
 
