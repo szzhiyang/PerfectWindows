@@ -1814,9 +1814,9 @@ Archive Ends
 "ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\
   6c,00,65,00,73,00,25,00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]
 "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Allow ProgramData"
+"Description"="Disallow ProgramData"
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\
   74,00,61,00,25,00,00,00
