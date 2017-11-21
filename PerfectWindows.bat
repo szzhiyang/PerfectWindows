@@ -1082,7 +1082,7 @@ Archive Ends
 "MenuShowDelay"="0"
 "DragFullWindows"="1"
 "FontSmoothing"="2"
-"UserPreferencesMask"=hex:98,52,07,80,12,01,00,00
+"UserPreferencesMask"=hex:98,12,07,80,12,01,00,00
 "WindowArrangementActive"="1"
 "PaintDesktopVersion"=dword:00000000
 
