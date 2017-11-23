@@ -205,14 +205,9 @@ echo %%i>>%A%
 echo.>>%A%
 echo.>>%A%
 
-for /f "tokens=1 delims= " %%i in (whitelist.txt) do (
-if %%i equ onedrive (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
+:excludeneededfunctions
 
-if %%i equ cortana (
+if exist cortana.txt (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo "AllowCortana"=->>%A%
 echo "AllowCortanaAboveLock"=->>%A%
@@ -220,7 +215,15 @@ echo.>>%A%
 echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
 echo.>>%A%)
-)
+
+if exist onedrive.txt (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=->>%A%
+echo "DisableFileSync"=->>%A%
+echo.>>%A%)
+
+echo.>>%A%
+echo.>>%A%
 
 
 attrib -h -s "%E%" 1>nul 2>nul
@@ -593,6 +596,8 @@ md "%T%" 1>nul 2>nul
 :copyconfig
 copy whitelist.txt /Y "%systemdrive%\PerfectWindows\whitelist.txt" 1>nul 2>nul
 copy hosts.txt /Y "%systemdrive%\PerfectWindows\hosts.txt" 1>nul 2>nul
+copy onedrive.txt /Y "%systemdrive%\PerfectWindows\onedrive.txt" 1>nul 2>nul
+copy cortana.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 
 
@@ -644,6 +649,23 @@ findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
 for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
 schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
+)
+
+for /f "tokens=1 delims= " %%i in (whitelist.txt) do (
+if %%i equ onedrive (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=->>%A%
+echo "DisableFileSync"=->>%A%
+echo.>>%A%)
+
+if %%i equ cortana (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
+echo "AllowCortana"=->>%A%
+echo "AllowCortanaAboveLock"=->>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "DisableSearchBoxSuggestions"=->>%A%
+echo.>>%A%)
 )
 
 Archive Ends
