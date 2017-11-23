@@ -1589,7 +1589,9 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
 "NoLockScreen"=dword:00000001
-"NoChangingLockScreen"=dword:00000001
+"NoChangingLockScreen"=dword:00000000
+"NoLockScreenSlideshow"=dword:00000001
+"NoLockScreenCamera"=dword:00000001
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 
