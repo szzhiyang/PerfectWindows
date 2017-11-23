@@ -101,7 +101,8 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 
 if exist whitelist.txt (
 goto hosts) else (
-echo You can exclude your needed services and registry items here.>whitelist.txt
+echo You can type your needed services' service name here.>whitelist.txt
+echo Each row must only contain ONE service name !>>whitelist.txt
 goto hosts)
 
 :hosts
