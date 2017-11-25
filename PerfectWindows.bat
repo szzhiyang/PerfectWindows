@@ -602,7 +602,6 @@ copy cortana.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 
 
-
 :applyreg
 taskkill /f /im explorer.exe 1>nul 2>nul
 echo.>>%A%
@@ -611,11 +610,10 @@ reg import %A% /reg:32 1>nul 2>nul
 reg import %A% /reg:32 1>nul 2>nul
 regedit /s %A%  1>nul 2>nul
 regedit /s %A%  1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
-
 
 
 :restart
+attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
