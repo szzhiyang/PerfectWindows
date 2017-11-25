@@ -223,6 +223,21 @@ echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
+if exist cortana.txt.txt (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
+echo "AllowCortana"=->>%A%
+echo "AllowCortanaAboveLock"=->>%A%
+echo.>>%A%
+echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "DisableSearchBoxSuggestions"=->>%A%
+echo.>>%A%)
+
+if exist onedrive.txt.txt (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=->>%A%
+echo "DisableFileSync"=->>%A%
+echo.>>%A%)
+
 echo.>>%A%
 echo.>>%A%
 
