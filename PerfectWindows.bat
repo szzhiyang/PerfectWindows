@@ -240,6 +240,48 @@ echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
+if exist desktop.txt (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoDesktop"=dword:00000000>>%A%
+echo.>>%A%)
+
+if exist desktop.txt.txt (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoDesktop"=dword:00000000>>%A%
+echo.>>%A%)
+
+if exist taskbar.txt (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
+echo "TaskbarAnimations"=dword:00000001>>%A%
+echo "TaskbarGlomLevel"=dword:00000000>>%A%
+echo "TaskbarSmallIcons"=dword:00000000>>%A%
+echo "ExtendedUIHoverTime"=->>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
+echo "NumThumbnails"=->>%A%
+echo.>>%A%
+echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo.>>%A%
+echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo.>>%A%
+echo.>>%A%)
+
+if exist taskbar.txt.txt (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
+echo "TaskbarAnimations"=dword:00000001>>%A%
+echo "TaskbarGlomLevel"=dword:00000000>>%A%
+echo "TaskbarSmallIcons"=dword:00000000>>%A%
+echo "ExtendedUIHoverTime"=->>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
+echo "NumThumbnails"=->>%A%
+echo.>>%A%
+echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo.>>%A%
+echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo.>>%A%
+echo.>>%A%)
+
 echo.>>%A%
 echo.>>%A%
 
@@ -616,6 +658,14 @@ copy whitelist.txt /Y "%systemdrive%\PerfectWindows\whitelist.txt" 1>nul 2>nul
 copy hosts.txt /Y "%systemdrive%\PerfectWindows\hosts.txt" 1>nul 2>nul
 copy onedrive.txt /Y "%systemdrive%\PerfectWindows\onedrive.txt" 1>nul 2>nul
 copy cortana.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
+copy taskbar.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
+copy desktop.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
+copy whitelist.txt.txt /Y "%systemdrive%\PerfectWindows\whitelist.txt.txt" 1>nul 2>nul
+copy hosts.txt.txt /Y "%systemdrive%\PerfectWindows\hosts.txt.txt" 1>nul 2>nul
+copy onedrive.txt.txt /Y "%systemdrive%\PerfectWindows\onedrive.txt.txt" 1>nul 2>nul
+copy cortana.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
+copy taskbar.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
+copy desktop.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 
 
