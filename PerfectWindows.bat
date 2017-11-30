@@ -157,12 +157,9 @@ echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>
 echo.>>%B%
 echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%B%
 echo "SeparateProcess"=dword:00000001>>%B%
-echo "Hidden"=dword:00000002>>%B%
-echo "ShowSuperHidden"=dword:00000000>>%B%
+echo "Hidden"=dword:00000001>>%B%
+echo "ShowSuperHidden"=dword:00000001>>%B%
 echo "HideFileExt"=dword:00000000>>%B%
-echo "TaskbarSizeMove"=dword:00000000>>%B%
-echo "TaskbarGlomLevel"=dword:00000001>>%B%
-echo "TaskbarSmallIcons"=dword:00000001>>%B%
 echo.>>%B%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "VerboseStatus"=dword:00000001>>%B%
@@ -179,8 +176,10 @@ echo "EnableSecureUIAPaths"=dword:00000001>>%B%
 echo "EnableInstallerDetection"=dword:00000001>>%B%
 echo "EnableVirtualization"=dword:00000001>>%B%
 echo "DSCAutomationHostEnabled"=dword:00000002>>%B%
-echo.>>%A%
 echo.>>%B%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
+echo "NoSecurityTab"=dword:00000000>>%B%
+echo "NoHardwareTab"=dword:00000000>>%B%
 echo.>>%B%
 echo.>>%B%
 attrib +h +s "%B%" 1>nul 2>nul
