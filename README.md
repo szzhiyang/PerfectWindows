@@ -15,6 +15,7 @@
 * Make full use of start menu. This will dramatically boost your working efficiency. Pin or drag the frequently used folders, Apps or setting items to start menu. Try it now, I believe you will handle it and love it !
 * You can increase or decrease the system volume easily by pressing PAGE UP or PAGE DOWN keys.
 * You can launch your default web browser easily by pressing F1 key.
+* You can launch file explorer ("This PC" or "Computer") easily by pressing Home key.
 * Type BEPERFECT in start menu and run the command anytime you wanna restart your PC or make your Windows experience perfect again.
 
 ## About the Conservative Mode
