@@ -749,7 +749,7 @@ Archive Ends
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects5]
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,6B,E0,01,00,32,E0,3A,00,2E,E0,51,E0,30,E0,49,E0,01,00,53,E0,00,00,00,00
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,32,E0,01,00,2E,E0,51,E0,30,E0,49,E0,01,00,53,E0,00,00,00,00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
 "Win32PrioritySeparation"=dword:00000002
