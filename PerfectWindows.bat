@@ -1836,7 +1836,7 @@ Archive Ends
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
 "DisableStartupSound"=dword:00000001
-"ShutdownWithoutLogon"=dword:00000001
+"ShutdownWithoutLogon"=dword:00000000
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
 "ConsentPromptBehaviorAdmin"=dword:0000005
