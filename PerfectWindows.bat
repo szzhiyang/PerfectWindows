@@ -164,7 +164,7 @@ echo.>>%B%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "VerboseStatus"=dword:00000001>>%B%
 echo "DisableStartupSound"=dword:00000001>>%B%
-echo "ShutdownWithoutLogon"=dword:00000001>>%B%
+echo "ShutdownWithoutLogon"=dword:00000000>>%B%
 echo "EnableLUA"=dword:00000001>>%B%
 echo "ValidateAdminCodeSignatures"=dword:00000000>>%B%
 echo "ConsentPromptBehaviorAdmin"=dword:0000001>>%B%
