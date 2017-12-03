@@ -181,25 +181,28 @@ echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\o* (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
-
-if exist whitelist\k* (
-echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
-echo "Scancode Map"=->>%A%
-echo.>>%A%)
-
 if exist whitelist\n* (
 echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableNotificationCenter"=dword:00000000>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
+echo "DisableLockScreenAppNotifications"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist whitelist\t* (
+if exist whitelist\u* (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoDesktop"=dword:00000000>>%A%
+echo.>>%A%
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
+echo "Scancode Map"=->>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
+echo "DisableLogonBackgroundImage"=dword:00000000>>%A%
+echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
 echo "EnableAutoTray"=dword:00000001>>%A%
 echo.>>%A%
@@ -396,7 +399,7 @@ md "%T%" 1>nul 2>nul
 
 
 :reversemouse
-if exist whitelist\r* (
+if exist whitelist\m* (
 set rev=00000000
 ) else (
 set rev=00000001
