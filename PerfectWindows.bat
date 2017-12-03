@@ -10,7 +10,7 @@ Windows Registry Editor Version 5.00
 chcp 437 1>nul 2>nul
 title  
 color fc
-mode con cols=20 lines=1
+mode con cols=30 lines=3
 pushd "%~dp0"
 md "%systemroot%\checkadmin" 1>nul 2>nul
 if exist "%systemroot%\checkadmin" (
@@ -24,7 +24,9 @@ exit
 chcp 437 1>nul 2>nul
 title  
 color fc
-mode con cols=20 lines=1
+mode con cols=30 lines=3
+echo.
+echo PLESAE WAIT !
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
