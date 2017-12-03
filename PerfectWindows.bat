@@ -181,9 +181,15 @@ echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\d* (
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=dword:00000000>>%A%
+if exist whitelist\o* (
+echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
+echo "DisableFileSyncNGSC"=->>%A%
+echo "DisableFileSync"=->>%A%
+echo.>>%A%)
+
+if exist whitelist\k* (
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
+echo "Scancode Map"=->>%A%
 echo.>>%A%)
 
 if exist whitelist\n* (
