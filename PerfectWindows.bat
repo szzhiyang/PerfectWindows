@@ -7,48 +7,24 @@ Windows Registry Editor Version 5.00
 
 
 @echo off
-mode con cols=45 lines=7
-color fc
-pushd "%~dp0"
 chcp 437 1>nul 2>nul
+title  
+color fc
+mode con cols=20 lines=1
+pushd "%~dp0"
 md "%systemroot%\checkadmin" 1>nul 2>nul
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin" 1>nul 2>nul
 goto main) else (
-title   ERROR !
-mode con cols=70 lines=7
-color fc
-echo.
-echo Elevated privileges are required to optimize Windows !
-echo.
-echo Please right click on me and click on "Run as administrator".
-echo.
-pause
 exit
 )
 
 
 :main
-mode con cols=45 lines=7
-title READY ?
-color fc
-pushd "%~dp0"
 chcp 437 1>nul 2>nul
-echo.
-echo To ensure the optimization works,
-echo your PC will be restarted automatically.
-echo.
-echo If you are ready to restart your PC,
-pause
-title OPTIMIZING . . .
-mode con cols=45 lines=7
+title  
 color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING WINDOWS SETTINGS . . .
-echo.
-echo.
+mode con cols=20 lines=1
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
@@ -67,7 +43,7 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%systemdrive%\PerfectWindows" 1>nul 2>nul
+md "%systemdrive%\PerfectWindows\whitelist" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -99,23 +75,10 @@ ipconfig /flushdns 1>nul 2>nul
 md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
-if exist whitelist.txt (
-goto hosts) else (
-echo You can type your needed services' service name here.>whitelist.txt
-echo Each row must only contain ONE service name !>>whitelist.txt
-goto hosts)
 
-:hosts
-if exist hosts.txt (
-goto applyhosts) else (
-goto copybat)
+copy whitelist\host* /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 
-:applyhosts
-ren hosts.txt hosts
-copy hosts /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
-ren hosts hosts.txt
 
-:copybat
 if "%~0" equ "%systemdrive%\PerfectWindows\PerfectWindows.bat" (
 goto createreg) else (
 copy "%~0" /Y "%systemdrive%\PerfectWindows\PerfectWindows.bat" 1>nul 2>nul
@@ -201,16 +164,9 @@ echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
 echo.>>%A%
 echo.>>%A%
 
-
-for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-echo %%i>>%A%
-)
-echo.>>%A%
-echo.>>%A%
-
 :excludeneededfunctions
 
-if exist cortana.txt (
+if exist whitelist\cor* (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo "AllowCortana"=->>%A%
 echo "AllowCortanaAboveLock"=->>%A%
@@ -219,38 +175,31 @@ echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
 echo.>>%A%)
 
-if exist onedrive.txt (
+if exist whitelist\one* (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
 echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
-if exist cortana.txt.txt (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=->>%A%
-echo "AllowCortanaAboveLock"=->>%A%
+if exist whitelist\des* (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoDesktop"=dword:00000000>>%A%
+echo.>>%A%)
+
+if exist whitelist\not* (
+echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
 echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableSearchBoxSuggestions"=->>%A%
+echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "DisableNotificationCenter"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist onedrive.txt.txt (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
-
-if exist desktop.txt (
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=dword:00000000>>%A%
-echo.>>%A%)
-
-if exist desktop.txt.txt (
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=dword:00000000>>%A%
-echo.>>%A%)
-
-if exist taskbar.txt (
+if exist whitelist\tas* (
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
+echo "EnableAutoTray"=dword:00000001>>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]>>%A%
+echo "SearchboxTaskbarMode"=dword:00000001>>%A%
+echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "TaskbarAnimations"=dword:00000001>>%A%
 echo "TaskbarGlomLevel"=dword:00000000>>%A%
@@ -260,27 +209,27 @@ echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
 echo "NumThumbnails"=->>%A%
 echo.>>%A%
-echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "HidePeopleBar"=dword:00000000>>%A%
+echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000000>>%A%
+echo "NoPinningToTaskbar"=dword:00000000>>%A%
+echo "NoPinningStoreToTaskbar"=dword:00000000>>%A%
+echo "TaskbarNoPinnedList"=dword:00000000>>%A%
 echo.>>%A%
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "LockTaskbar"=dword:00000000>>%A%
+echo "TaskbarNoResize"=dword:00000000>>%A%
+echo "TaskbarNoRedock"=dword:00000000>>%A%
+echo "TaskbarLockAll"=dword:00000000>>%A%
+echo "NoToolbarsOnTaskbar"=dword:00000000>>%A%
+echo "NoTrayContextMenu"=dword:00000000>>%A%
+echo "NoTaskGrouping"=dword:00000000>>%A%
+echo "HideSCANetwork"=dword:00000000>>%A%
+echo "HideSCAHealth"=dword:00000000>>%A%
+echo "HideSCAVolume"=dword:00000000>>%A%
+echo "NoAutoTrayNotify"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist taskbar.txt.txt (
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "TaskbarAnimations"=dword:00000001>>%A%
-echo "TaskbarGlomLevel"=dword:00000000>>%A%
-echo "TaskbarSmallIcons"=dword:00000000>>%A%
-echo "ExtendedUIHoverTime"=->>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
-echo "NumThumbnails"=->>%A%
-echo.>>%A%
-echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo.>>%A%
-echo [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo.>>%A%
-echo.>>%A%)
 
 echo.>>%A%
 echo.>>%A%
@@ -441,6 +390,11 @@ md "%T%" 1>nul 2>nul
 
 
 :reversemouse
+if exist whitelist\rev* (
+set rev=00000000
+) else (
+set rev=00000001
+)
 echo Windows Registry Editor Version 5.00>%T%\Reverse.reg
 echo. >>%T%\Reverse.reg
 reg query %LM%\SYSTEM\CurrentControlSet\Enum\HID /s >%T%\Reverse.txt
@@ -448,7 +402,7 @@ findstr Parameter %T%\Reverse.txt > %T%\find.txt
 
 for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
 echo [%%i] >>%T%\Reverse.reg
-echo "FlipFlopWheel"=dword:00000001 >>%T%\Reverse.reg
+echo "FlipFlopWheel"=dword:%rev%>>%T%\Reverse.reg
 echo. >>%T%\Reverse.reg
 )
 
@@ -463,35 +417,6 @@ md "%T%" 1>nul 2>nul
 
 
 :services
-title OPTIMIZING . . .
-mode con cols=45 lines=7
-color fc
-echo.
-echo.
-echo.
-echo OPTIMIZING WINDOWS SERVICES . . .
-echo.
-echo.
-sc query state= all >%T%\tmp1.txt
-findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
-
-for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
-echo %%i>>%T%\tmp3.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
-echo %%i>>%T%\services.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
-sc config "%%i" start= demand 1>nul 2>nul
-)
-
-
-sc config etdservice start= auto 1>nul 2>nul
-sc config ClickToRunSvc start= auto 1>nul 2>nul
-
-
 sc config WbioSrvc start= auto 1>nul 2>nul
 sc config UserManager start= auto 1>nul 2>nul
 sc config SystemEventsBroker start= auto 1>nul 2>nul
@@ -561,19 +486,16 @@ sc config ShellHWDetection start= auto 1>nul 2>nul
 sc config RpcEptMapper start= auto 1>nul 2>nul
 sc config RpcSs start= auto 1>nul 2>nul
 sc config Spooler start= auto 1>nul 2>nul
-sc config LanmanWorkstation depend= bowser/nsi 1>nul 2>nul
+sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 sc config mrxsmb10 start= disabled 1>nul 2>nul
-sc config mrxsmb20 start= disabled 1>nul 2>nul
+sc config mrxsmb20 start= auto 1>nul 2>nul
 sc config DiagTrack start= disabled 1>nul 2>nul
 sc config HomeGroupListener start= disabled 1>nul 2>nul
 sc config HomeGroupProvider start= disabled 1>nul 2>nul
-sc config iphlpsvc start= disabled 1>nul 2>nul
 sc config PcaSvc start= disabled 1>nul 2>nul
 sc config RemoteRegistry start= disabled 1>nul 2>nul
 sc config SysMain start= disabled 1>nul 2>nul
 sc config WerSvc start= disabled 1>nul 2>nul
-sc config LanmanWorkstation start= disabled 1>nul 2>nul
-sc config LanmanServer start= disabled 1>nul 2>nul
 sc config SDRSVC start= disabled 1>nul 2>nul
 sc config lmhosts start= disabled 1>nul 2>nul
 sc config NetBIOS start= disabled 1>nul 2>nul
@@ -584,15 +506,6 @@ sc config UmRdpService start= disabled 1>nul 2>nul
 sc config winmgmt start= auto 1>nul 2>nul
 sc config wmiApSrv start= auto 1>nul 2>nul
 sc config WSearch start= auto 1>nul 2>nul
-
-for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-sc config "%%i" start= auto 1>nul 2>nul
-)
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-
 
 
 :disableschtasks
@@ -654,18 +567,7 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy whitelist.txt /Y "%systemdrive%\PerfectWindows\whitelist.txt" 1>nul 2>nul
-copy hosts.txt /Y "%systemdrive%\PerfectWindows\hosts.txt" 1>nul 2>nul
-copy onedrive.txt /Y "%systemdrive%\PerfectWindows\onedrive.txt" 1>nul 2>nul
-copy cortana.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
-copy taskbar.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
-copy desktop.txt /Y "%systemdrive%\PerfectWindows\cortana.txt" 1>nul 2>nul
-copy whitelist.txt.txt /Y "%systemdrive%\PerfectWindows\whitelist.txt.txt" 1>nul 2>nul
-copy hosts.txt.txt /Y "%systemdrive%\PerfectWindows\hosts.txt.txt" 1>nul 2>nul
-copy onedrive.txt.txt /Y "%systemdrive%\PerfectWindows\onedrive.txt.txt" 1>nul 2>nul
-copy cortana.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
-copy taskbar.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
-copy desktop.txt.txt /Y "%systemdrive%\PerfectWindows\cortana.txt.txt" 1>nul 2>nul
+copy whitelist\* /Y "%systemdrive%\PerfectWindows\whitelist" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 
 
@@ -699,6 +601,9 @@ Archive Starts
 
 FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
 
+disable all schtasks:
+
+
 schtasks /query /fo csv >%T%\detailedschtasks.txt
 echo. >%T%\temp5.txt
 for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
@@ -717,22 +622,33 @@ schtasks /end /tn %%i 1>nul 2>nul
 schtasks /delete /tn %%i /f 1>nul 2>nul
 )
 
-for /f "tokens=1 delims= " %%i in (whitelist.txt) do (
-if %%i equ onedrive (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
 
-if %%i equ cortana (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=->>%A%
-echo "AllowCortanaAboveLock"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableSearchBoxSuggestions"=->>%A%
-echo.>>%A%)
+
+make all services start demandly:
+
+sc query state= all >%T%\tmp1.txt
+findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
+
+for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
+echo %%i>>%T%\tmp3.txt
 )
+
+for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
+echo %%i>>%T%\services.txt
+)
+
+for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
+sc config "%%i" start= demand 1>nul 2>nul
+)
+
+for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+sc config "%%i" start= auto 1>nul 2>nul
+)
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+
+
+
 
 Archive Ends
 
