@@ -127,7 +127,6 @@ echo.>>%B%
 echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
 echo "VerboseStatus"=dword:00000001>>%B%
 echo "DisableStartupSound"=dword:00000001>>%B%
-echo "ShutdownWithoutLogon"=dword:00000000>>%B%
 echo "EnableLUA"=dword:00000001>>%B%
 echo "ValidateAdminCodeSignatures"=dword:00000000>>%B%
 echo "ConsentPromptBehaviorAdmin"=dword:0000001>>%B%
@@ -181,6 +180,32 @@ echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
+if exist whitelist\p* (
+echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "HidePowerOptions"=dword:00000000>>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "PowerButtonAction"=->>%A%
+echo.>>%A%
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power]>>%A%
+echo.>>%A%
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
+echo "NoClose"=dword:00000000>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
+echo "HiberbootEnabled"=->>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
+echo "ShutdownWithoutLogon"=dword:00000001>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "ShowSleepOption"=->>%A%
+echo "ShowHibernateOption"=->>%A%
+echo "ShowLockOption"=->>%A%
+echo.>>%A%)
+
 if exist whitelist\n* (
 echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
 echo.>>%A%
@@ -213,7 +238,7 @@ echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advan
 echo "TaskbarAnimations"=dword:00000001>>%A%
 echo "TaskbarGlomLevel"=dword:00000000>>%A%
 echo "TaskbarSmallIcons"=dword:00000000>>%A%
-echo "ExtendedUIHoverTime"=->>%A%
+echo "ExtendedUIHoverTime"=dword:00000001>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
 echo "NumThumbnails"=->>%A%
