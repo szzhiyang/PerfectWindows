@@ -76,7 +76,7 @@ md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
 
-copy whitelist\host* /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+copy whitelist\h* /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 
 
 if "%~0" equ "%systemdrive%\PerfectWindows\PerfectWindows.bat" (
@@ -166,7 +166,7 @@ echo.>>%A%
 
 :excludeneededfunctions
 
-if exist whitelist\cor* (
+if exist whitelist\c* (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo "AllowCortana"=->>%A%
 echo "AllowCortanaAboveLock"=->>%A%
@@ -175,25 +175,25 @@ echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\one* (
+if exist whitelist\o* (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
 echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\des* (
+if exist whitelist\d* (
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoDesktop"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist whitelist\not* (
+if exist whitelist\n* (
 echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableNotificationCenter"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist whitelist\tas* (
+if exist whitelist\t* (
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
 echo "EnableAutoTray"=dword:00000001>>%A%
 echo.>>%A%
@@ -390,7 +390,7 @@ md "%T%" 1>nul 2>nul
 
 
 :reversemouse
-if exist whitelist\rev* (
+if exist whitelist\r* (
 set rev=00000000
 ) else (
 set rev=00000001
