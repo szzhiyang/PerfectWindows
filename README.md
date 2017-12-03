@@ -1,7 +1,6 @@
 # 完美的 Windows 体验，从 PerfectWindows 开始！
 ---
-> 想要获得完美的 Windows 体验，只需右击 PerfectWindows.bat ，选择 “以管理员身份运行” 即可。  
-由于优化结束后电脑将会自动重启，当你准备好重启电脑后，按下任意键即可。  
+> 想要获得完美的 Windows 体验，只需在退出所有应用后，右击 PerfectWindows.bat ，选择 “以管理员身份运行” 即可。    
 电脑重启后，你就能迎接完美的 Windows 体验！ 
 ---
 * ***PerfectWindows 不支持 Windows XP 和 Windows Vista。***
