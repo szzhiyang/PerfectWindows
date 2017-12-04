@@ -45,7 +45,7 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%systemdrive%\PerfectWindows\whitelist" 1>nul 2>nul
+md "%systemdrive%\PerfectWindows" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -78,12 +78,12 @@ md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
 
-copy whitelist\h* /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
+copy hos*.txt /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 
 
-if "%~0" equ "%systemdrive%\PerfectWindows\PerfectWindows.bat" (
+if exist %systemdrive%\PerfectWindows\PerfectWindows{*}.bat (
 goto createreg) else (
-copy "%~0" /Y "%systemdrive%\PerfectWindows\PerfectWindows.bat" 1>nul 2>nul
+copy "%~0" /Y "%systemdrive%\PerfectWindows\PerfectWindows{}.bat" 1>nul 2>nul
 )
 
 
@@ -167,7 +167,7 @@ echo.>>%A%
 
 :excludeneededfunctions
 
-if exist whitelist\c* (
+if exist PerfectWindows{*c*}.bat (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
 echo "AllowCortana"=->>%A%
 echo "AllowCortanaAboveLock"=->>%A%
@@ -176,13 +176,13 @@ echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\o* (
+if exist PerfectWindows{*o*}.bat (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
 echo "DisableFileSyncNGSC"=->>%A%
 echo "DisableFileSync"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\p* (
+if exist PerfectWindows{*p*}.bat (
 echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "HidePowerOptions"=dword:00000000>>%A%
 echo.>>%A%
@@ -208,7 +208,7 @@ echo "ShowHibernateOption"=->>%A%
 echo "ShowLockOption"=->>%A%
 echo.>>%A%)
 
-if exist whitelist\n* (
+if exist PerfectWindows{*n*}.bat (
 echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
@@ -218,7 +218,7 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
 echo "DisableLockScreenAppNotifications"=dword:00000000>>%A%
 echo.>>%A%)
 
-if exist whitelist\u* (
+if exist PerfectWindows{*u*}.bat (
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoDesktop"=dword:00000000>>%A%
 echo.>>%A%
@@ -426,7 +426,7 @@ md "%T%" 1>nul 2>nul
 
 
 :reversemouse
-if exist whitelist\m* (
+if exist PerfectWindows{*m*}.bat (
 set rev=00000000
 ) else (
 set rev=00000001
@@ -603,7 +603,7 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy whitelist\* /Y "%systemdrive%\PerfectWindows\whitelist" 1>nul 2>nul
+copy hos*.txt /Y "%systemdrive%\PerfectWindows\hosts.txt" 1>nul 2>nul
 attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 
 
@@ -1935,9 +1935,8 @@ Archive Ends
 "ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,64,00,72,00,69,00,\
   76,00,65,00,25,00,5c,00,50,00,65,00,72,00,66,00,65,00,63,00,74,00,57,00,69,\
   00,6e,00,64,00,6f,00,77,00,73,00,5c,00,50,00,65,00,72,00,66,00,65,00,63,00,\
-  74,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,2e,00,62,00,61,00,74,00,00,\
-  00
-
+  74,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,7b,00,2a,00,7d,00,2e,00,62,\
+  00,61,00,74,00,00,00
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
