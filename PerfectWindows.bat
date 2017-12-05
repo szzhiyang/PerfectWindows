@@ -174,6 +174,9 @@ echo "AllowCortanaAboveLock"=->>%A%
 echo.>>%A%
 echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
 echo "DisableSearchBoxSuggestions"=->>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]>>%A%
+echo "SearchboxTaskbarMode"=dword:00000001>>%A%
 echo.>>%A%)
 
 if exist PerfectWindows{*o*}.bat (
