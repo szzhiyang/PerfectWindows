@@ -28,7 +28,7 @@ mode con cols=30 lines=3
 echo.
 echo PLESAE WAIT !
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
-set P=%systemroot%\PerfectWindowsZZY
+set P=%systemroot%\PerfectWindowsCore
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
@@ -45,7 +45,7 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%systemdrive%\PerfectWindows" 1>nul 2>nul
+md "%systemroot%\PerfectWindows" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -81,9 +81,9 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 copy hos*.txt /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 
 
-if exist %systemdrive%\PerfectWindows\PerfectWindows{*}.bat (
+if exist %systemroot%\PerfectWindows\PerfectWindows{*}.bat (
 goto createreg) else (
-copy "%~0" /Y "%systemdrive%\PerfectWindows\PerfectWindows{}.bat" 1>nul 2>nul
+copy "%~0" /Y "%systemroot%\PerfectWindows\PerfectWindows{}.bat" 1>nul 2>nul
 )
 
 
@@ -156,12 +156,6 @@ echo.>>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%A%
 echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
-echo.>>%A%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
-echo.>>%A%
-echo [%CU%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]>>%A%
-echo "CTFMON"="%systemdrive%\\Windows\\system32\\ctfmon.exe">>%A%
 echo.>>%A%
 echo.>>%A%
 
@@ -286,7 +280,7 @@ echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
 echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
 echo md "%tmp%" 1^>nul 2^>nul>>%E%
 echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
-echo explorer "%systemdrive%\PerfectWindows">>%E%
+echo explorer "%systemroot%\PerfectWindows">>%E%
 attrib +h +s "%E%" 1>nul 2>nul
 
 attrib -h -s "%F%" 1>nul 2>nul
@@ -606,8 +600,7 @@ md "%T%" 1>nul 2>nul
 
 
 :copyconfig
-copy hos*.txt /Y "%systemdrive%\PerfectWindows\hosts.txt" 1>nul 2>nul
-attrib +h +s "%systemdrive%\PerfectWindows" 1>nul 2>nul
+copy hos*.txt /Y "%systemroot%\PerfectWindows\hosts.txt" 1>nul 2>nul
 
 
 :applyreg
@@ -621,7 +614,8 @@ regedit /s %A%  1>nul 2>nul
 
 
 :restart
-attrib +h +s "%systemroot%\PerfectWindowsZZY" 1>nul 2>nul
+attrib +h +s "%P%" 1>nul 2>nul
+attrib +h +s "%systemroot%\PerfectWindows" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
@@ -1931,16 +1925,6 @@ Archive Ends
   61,00,74,00,69,00,6f,00,6e,00,5c,00,63,00,68,00,72,00,6f,00,6d,00,65,00,2e,\
   00,65,00,78,00,65,00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{5d259436-c0ab-4186-b18d-0225eaa8034c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow PerfectWindows"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,64,00,72,00,69,00,\
-  76,00,65,00,25,00,5c,00,50,00,65,00,72,00,66,00,65,00,63,00,74,00,57,00,69,\
-  00,6e,00,64,00,6f,00,77,00,73,00,5c,00,50,00,65,00,72,00,66,00,65,00,63,00,\
-  74,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,7b,00,2a,00,7d,00,2e,00,62,\
-  00,61,00,74,00,00,00
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
 "Description"="Disallow 7 - Zip Temp"
@@ -1982,6 +1966,23 @@ Archive Ends
 
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Window"="255 255 255"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"ctfmon"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,\
+  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
+  74,00,66,00,6d,00,6f,00,6e,00,2e,00,65,00,78,00,65,00,00,00
+"OneDrive"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,64,00,\
+  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
+  00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,4f,00,\
+  6e,00,65,00,44,00,72,00,69,00,76,00,65,00,2e,00,65,00,78,00,65,00,20,00,2f,\
+  00,62,00,61,00,63,00,6b,00,67,00,72,00,6f,00,75,00,6e,00,64,00,00,00
+
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"ctfmon"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,\
+  00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
+  74,00,66,00,6d,00,6f,00,6e,00,2e,00,65,00,78,00,65,00,00,00
+
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
 "EnableFirstLogonAnimation"=dword:00000001
