@@ -28,6 +28,9 @@ mode con cols=30 lines=3
 echo.
 echo PLESAE WAIT !
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
+icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsCore
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
