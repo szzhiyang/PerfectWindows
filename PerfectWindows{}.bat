@@ -48,7 +48,6 @@ sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
-md "%systemroot%\PerfectWindows" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -82,12 +81,6 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 
 
 copy hos*.txt /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
-
-
-if exist %systemroot%\PerfectWindows\PerfectWindows{*}.bat (
-goto createreg) else (
-copy "%~0" /Y "%systemroot%\PerfectWindows\PerfectWindows{}.bat" 1>nul 2>nul
-)
 
 
 
@@ -272,19 +265,7 @@ echo.>>%A%
 
 
 attrib -h -s "%E%" 1>nul 2>nul
-echo @echo off>%E%
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%E%
-echo if exist "%systemroot%\checkadmin" (>>%E%
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%E%
-echo exit) else (>>%E%
-echo goto main)>>%E%
-echo :main>>%E%
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%E%
-echo ipconfig /flushdns 1^>nul 2^>nul>>%E%
-echo md "%tmp%" 1^>nul 2^>nul>>%E%
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%E%
-echo explorer "%systemroot%\PerfectWindows">>%E%
-attrib +h +s "%E%" 1>nul 2>nul
+del "%E%" 1>nul 2>nul
 
 attrib -h -s "%F%" 1>nul 2>nul
 del "%F%" 1>nul 2>nul
@@ -602,10 +583,6 @@ rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
 
-:copyconfig
-copy hos*.txt /Y "%systemroot%\PerfectWindows\hosts.txt" 1>nul 2>nul
-
-
 :applyreg
 taskkill /f /im explorer.exe 1>nul 2>nul
 echo.>>%A%
@@ -618,7 +595,6 @@ regedit /s %A%  1>nul 2>nul
 
 :restart
 attrib +h +s "%P%" 1>nul 2>nul
-attrib +h +s "%systemroot%\PerfectWindows" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
@@ -1931,6 +1907,12 @@ Archive Ends
   00,68,00,72,00,6f,00,6d,00,65,00,5c,00,41,00,70,00,70,00,6c,00,69,00,63,00,\
   61,00,74,00,69,00,6f,00,6e,00,5c,00,63,00,68,00,72,00,6f,00,6d,00,65,00,2e,\
   00,65,00,78,00,65,00,00,00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0235eaa8034c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Allow PerfectWindows.bat"
+"SaferFlags"=dword:00000000
+"ItemData"="PerfectWindows{*}.bat"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
