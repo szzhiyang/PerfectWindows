@@ -1320,7 +1320,7 @@ Archive Ends
 [-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
-"AllowTelemetry"=dword:00000000
+"AllowTelemetry"=dword:00000001
 
 [-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV]
 
@@ -1556,8 +1556,12 @@ Archive Ends
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
+"DisableWindowsUpdateAccess"=dword:00000001
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
 "NoAutoUpdate"=dword:00000001
+"AUOptions"=dword:00000002
 "ExcludeWUDriversInQualityUpdate"=dword:00000000
 "NoAutoRebootWithLoggedOnUsers"=dword:00000001
 
