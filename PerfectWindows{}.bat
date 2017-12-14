@@ -928,7 +928,7 @@ Archive Ends
 "VirtualDesktopTaskbarFilter"=dword:00000001
 "VirtualDesktopAltTabFilter"=dword:00000001
 "ShowEncryptCompressedColor"=dword:00000001
-"TypeAhead"=dword:00000001
+"TypeAhead"=dword:00000000
 "AlwaysShowMenus"=dword:00000000
 "HideDrivesWithNoMedia"=dword:00000001
 "Start_TrackDocs"=dword:00000000
