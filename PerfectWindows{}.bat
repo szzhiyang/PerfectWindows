@@ -1530,7 +1530,7 @@ Archive Ends
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-"DisableWindowsUpdateAccess"=dword:00000001
+"DisableWindowsUpdateAccess"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
 "NoAutoUpdate"=dword:00000001
