@@ -239,11 +239,12 @@ echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskb
 echo "NumThumbnails"=->>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "HidePeopleBar"=dword:00000000>>%A%
-echo "ShowWindowsStoreAppsOnTaskbar"=dword:00000000>>%A%
-echo "NoPinningToTaskbar"=dword:00000000>>%A%
-echo "NoPinningStoreToTaskbar"=dword:00000000>>%A%
-echo "TaskbarNoPinnedList"=dword:00000000>>%A%
+echo "HidePeopleBar"=->>%A%
+echo "ShowWindowsStoreAppsOnTaskbar"=->>%A%
+echo "NoPinningToTaskbar"=->>%A%
+echo "NoPinningStoreToTaskbar"=->>%A%
+echo "TaskbarNoPinnedList"=->>%A%
+echo "ForceStartSize"=->>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "LockTaskbar"=dword:00000000>>%A%
@@ -1197,6 +1198,7 @@ Archive Ends
 "EnableLegacyBalloonNotifications"=dword:00000001
 "DisableNotificationCenter"=dword:00000001
 "HidePeopleBar"=dword:00000001
+"ForceStartSize"=dword:00000001
 "ClearTilesOnExit"=dword:00000001
 "DisableSearchBoxSuggestions"=dword:00000001
 "ExplorerRibbonStartsMinimized"=dword:00000001
