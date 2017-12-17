@@ -1,5 +1,4 @@
-# 完美的 Windows 体验
-# 来自 PerfectWindows !
+# 完美的 Windows 体验来自 PerfectWindows !
 ---
 # 我们对你的 Windows 体验的重新定义有助于你更加【高效】【优雅】【简约】【心无旁骛】地做好任何你想做的事。
 > * 想要获得完美的 Windows 体验，只需在 ***退出所有应用后***，右击 PerfectWindows{}.bat ，选择 ***“以管理员身份运行”*** 即可。    
