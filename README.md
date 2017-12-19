@@ -1,6 +1,7 @@
 # 完美的 Windows 体验，来自 PerfectWindows !
 ---
-# 我们对你的 Windows 体验的重新定义有助于你更加
+# 我们对你的 Windows 体验的改进
+# 有助于你更加
 # 高效
 # 优雅
 # 简约
