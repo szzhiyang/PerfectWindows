@@ -74,6 +74,10 @@
 
 * 不适用于 Windows 7。
 ---
+# 想让你的工作效率提升更多？
+# [请跟着 Microsoft 虚心学习 Windows 的快捷键！](http://support.microsoft.com/zh-cn/help/12445/windows-keyboard-shortcuts)
+
+---
 
 # 系统运行卡慢？
 # 应用偷偷自启？
