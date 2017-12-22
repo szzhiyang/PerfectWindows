@@ -1199,7 +1199,7 @@ Archive Ends
 "EnableLegacyBalloonNotifications"=dword:00000001
 "DisableNotificationCenter"=dword:00000001
 "HidePeopleBar"=dword:00000001
-"ForceStartSize"=dword:00000001
+"ForceStartSize"=dword:00000002
 "ClearTilesOnExit"=dword:00000001
 "DisableSearchBoxSuggestions"=dword:00000001
 "ExplorerRibbonStartsMinimized"=dword:00000001
