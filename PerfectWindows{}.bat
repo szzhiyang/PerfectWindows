@@ -81,7 +81,8 @@ attrib +h +s "%tmp%" 1>nul 2>nul
 
 
 copy hos*.txt /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
-
+echo.>>%systemroot%\system32\drivers\etc\hosts
+echo 203.208.51.70 dl.google.com>>%systemroot%\system32\drivers\etc\hosts
 
 
 :createreg
