@@ -93,7 +93,7 @@
 * 我们调整了你的电脑的电源配置，使得你的电脑在使用电池时耗电更加缓慢，在连接电源时性能更加强劲。 
 * 为了防止你在工作与娱乐中遭到不必要的干扰，我们禁用了 Cortana 、OneDrive、推送通知以及通知中心。
 * 为了增强电脑的安全系数，我们做了以下工作：
-1. 启用、增强并防止你禁用 Windows Defender 防病毒。除非你安装了第三方防病毒软件，否则 Windows Defender 将永远运行。
+1. 启用、增强、不停更新并防止你禁用 Windows Defender 防病毒。除非你安装了第三方防病毒软件，否则 Windows Defender 将永远运行。
 2. 启用并防止你禁用 Windows Defender 防火墙。
 3. 启用并防止你禁用 Windows Defender SmartScreen。
 4. 启用并防止你禁用或调整用户账户控制功能。
