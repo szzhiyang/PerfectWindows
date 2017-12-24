@@ -31,7 +31,7 @@ bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
 takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
 icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
-set P=%systemroot%\PerfectWindowsCore
+set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
 set CU=HKEY_CURRENT_USER
@@ -41,13 +41,13 @@ set C=%systemroot%\besafe.bat
 set D=%systemroot%\beindanger.bat
 set E=%systemroot%\beperfect.bat
 set F=%systemroot%\trustedapps.bat
-rd /s /q "%P%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%P%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
-md "%P%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
+md "%P%" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -80,13 +80,13 @@ md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
 attrib -h -s "%B%" 1>nul 2>nul
-del "%E%" 1>nul 2>nul
+del "%B%" 1>nul 2>nul
 
 attrib -h -s "%C%" 1>nul 2>nul
-del "%F%" 1>nul 2>nul
+del "%C%" 1>nul 2>nul
 
 attrib -h -s "%D%" 1>nul 2>nul
-del "%F%" 1>nul 2>nul
+del "%D%" 1>nul 2>nul
 
 attrib -h -s "%E%" 1>nul 2>nul
 del "%E%" 1>nul 2>nul
@@ -197,7 +197,6 @@ echo "ShowWindowsStoreAppsOnTaskbar"=->>%A%
 echo "NoPinningToTaskbar"=->>%A%
 echo "NoPinningStoreToTaskbar"=->>%A%
 echo "TaskbarNoPinnedList"=->>%A%
-echo "ForceStartSize"=->>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "LockTaskbar"=dword:00000000>>%A%
@@ -414,8 +413,8 @@ regedit /s %A%  1>nul 2>nul
 
 
 :restart
-attrib +h +s "%P%" 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%P%" 1>nul 2>nul
 shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
 exit
@@ -705,6 +704,7 @@ Archive Ends
 "ShowDriveLettersFirst"=dword:00000000
 "ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00
+"ShellState"=-
 "IconUnderline"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -818,7 +818,7 @@ Archive Ends
 "HideSCAHealth"=dword:00000001
 "HideSCAVolume"=dword:00000001
 "NoAutoTrayNotify"=dword:00000001
-"NoDesktop"=dword:00000001
+"nodesktop"=dword:00000001
 "NoClose"=dword:00000001
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
@@ -1017,7 +1017,7 @@ Archive Ends
 "EnableLegacyBalloonNotifications"=dword:00000001
 "DisableNotificationCenter"=dword:00000001
 "HidePeopleBar"=dword:00000001
-"ForceStartSize"=dword:00000002
+"ForceStartSize"=-
 "ClearTilesOnExit"=dword:00000001
 "DisableSearchBoxSuggestions"=dword:00000001
 "ExplorerRibbonStartsMinimized"=dword:00000001
