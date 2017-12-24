@@ -79,74 +79,26 @@ ipconfig /flushdns 1>nul 2>nul
 md "%tmp%" 1>nul 2>nul
 attrib +h +s "%tmp%" 1>nul 2>nul
 
+attrib -h -s "%B%" 1>nul 2>nul
+del "%E%" 1>nul 2>nul
+
+attrib -h -s "%C%" 1>nul 2>nul
+del "%F%" 1>nul 2>nul
+
+attrib -h -s "%D%" 1>nul 2>nul
+del "%F%" 1>nul 2>nul
+
+attrib -h -s "%E%" 1>nul 2>nul
+del "%E%" 1>nul 2>nul
+
+attrib -h -s "%F%" 1>nul 2>nul
+del "%F%" 1>nul 2>nul
 
 copy hos*.txt /Y %systemroot%\system32\drivers\etc\hosts 1>nul 2>nul
 echo.>>%systemroot%\system32\drivers\etc\hosts
 echo 203.208.51.70 dl.google.com>>%systemroot%\system32\drivers\etc\hosts
 
 
-:createreg
-echo Windows Registry Editor Version 5.00>%B%
-echo.>>%B%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%B%
-echo.>>%B%
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%B%
-echo "AuthenticodeEnabled"=dword:00000000>>%B%
-echo.>>%B%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
-echo "NoTrayItemsDisplay"=dword:00000000>>%B%
-echo.>>%B%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%B%
-echo "ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\>>%B%
-echo    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00>>%B%
-echo "IconUnderline"=dword:00000001>>%B%
-echo.>>%B%
-echo [%LM%\Software\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
-echo "LegalNoticeCaption"="YOUR PC IS IN DANGER NOW ! ! !">>%B%
-echo "LegalNoticeText"="PLEASE DO REMEMBER TO RUN [ BESAFE ] FROM START MENU TO BRING YOUR PC BACK TO SAFETY ! ! !">>%B%
-echo.>>%B%
-echo [%CU%\Control Panel\International]>>%B%
-echo "sShortTime"="H:m">>%B%
-echo "sLongTime"="H:m:s">>%B%
-echo "sShortTime"="tt H:mm">>%B%
-echo "sLongTime"="H:mm:ss">>%B%
-echo "s1159"=->>%B%
-echo "s2359"=->>%B%
-echo "s1159"=" IN DANGER! ">>%B%
-echo "s2359"=" IN DANGER! ">>%B%
-echo.>>%B%
-echo [-%LM%\SOFTWARE\Policies\Microsoft\Windows Defender\Real-Time Protection]>>%B%
-echo.>>%B%
-echo [%CU%\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%B%
-echo "SeparateProcess"=dword:00000001>>%B%
-echo "Hidden"=dword:00000001>>%B%
-echo "ShowSuperHidden"=dword:00000001>>%B%
-echo "HideFileExt"=dword:00000000>>%B%
-echo.>>%B%
-echo [%LM%\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%B%
-echo "VerboseStatus"=dword:00000001>>%B%
-echo "DisableStartupSound"=dword:00000001>>%B%
-echo "EnableLUA"=dword:00000001>>%B%
-echo "ValidateAdminCodeSignatures"=dword:00000000>>%B%
-echo "ConsentPromptBehaviorAdmin"=dword:0000001>>%B%
-echo "ConsentPromptBehaviorUser"=dword:00000003>>%B%
-echo "PromptOnSecureDesktop"=dword:00000001>>%B%
-echo "EnableUIADesktopToggle"=dword:00000000>>%B%
-echo "FilterAdministratorToken"=dword:00000001>>%B%
-echo "EnableSecureUIAPaths"=dword:00000001>>%B%
-echo "EnableInstallerDetection"=dword:00000001>>%B%
-echo "EnableVirtualization"=dword:00000001>>%B%
-echo "DSCAutomationHostEnabled"=dword:00000002>>%B%
-echo.>>%B%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%B%
-echo "NoSecurityTab"=dword:00000000>>%B%
-echo "NoHardwareTab"=dword:00000000>>%B%
-echo.>>%B%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7b81be6a-ce2b-4676-a29e-eb907a5126c5}]>>%B%
-echo "Programs and Features"="">>%B%
-echo.>>%B%
-echo.>>%B%
-attrib +h +s "%B%" 1>nul 2>nul
 
 copy "%~0" /Y %A% 1>nul 2>nul
 echo.>>%A%
@@ -264,140 +216,6 @@ echo.>>%A%)
 
 echo.>>%A%
 echo.>>%A%
-
-
-attrib -h -s "%E%" 1>nul 2>nul
-del "%E%" 1>nul 2>nul
-
-attrib -h -s "%F%" 1>nul 2>nul
-del "%F%" 1>nul 2>nul
-
-attrib -h -s "%C%" 1>nul 2>nul
-echo @echo off>%C%
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%C%
-echo if exist "%systemroot%\checkadmin" (>>%C%
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%C%
-echo exit) else (>>%C%
-echo goto main)>>%C%
-echo :main>>%C%
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%C%
-echo ipconfig /flushdns 1^>nul 2^>nul>>%C%
-echo md "%tmp%" 1^>nul 2^>nul>>%C%
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%C%
-echo regedit /s %A% 1^>nul 2^>nul>>%C%
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%C%
-echo start explorer.exe 1^>nul 2^>nul>>%C%
-echo chcp 437>>%C%
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%C%
-echo if ERRORLEVEL 1 (>>%C%
-echo title   WARNING ! ! !>>%C%
-echo color cf>>%C%
-echo mode con cols=36 lines=23>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo PLEASE DO REMEMBER TO RUN>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo "BESAFE" FROM START MENU TO>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo pause>>%C%
-echo exit) else (>>%C%
-echo title   WELL DONE !>>%C%
-echo color 2f>>%C%
-echo mode con cols=36 lines=19>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo YOUR PC IS SAFE NOW !>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo HAVE A NICE DAY !>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo echo.>>%C%
-echo pause>>%C%
-echo exit)>>%C%
-attrib +h +s "%C%" 1>nul 2>nul
-
-
-attrib -h -s "%D%" 1>nul 2>nul
-echo @echo off>%D%
-echo md "%systemroot%\checkadmin" 1^>nul 2^>nul>>%D%
-echo if exist "%systemroot%\checkadmin" (>>%D%
-echo rd /s /q "%systemroot%\checkadmin" 1^>nul 2^>nul>>%D%
-echo exit) else (>>%D%
-echo goto main)>>%D%
-echo :main>>%D%
-echo rd /s /q "%tmp%" 1^>nul 2^>nul>>%D%
-echo ipconfig /flushdns 1^>nul 2^>nul>>%D%
-echo md "%tmp%" 1^>nul 2^>nul>>%D%
-echo attrib +h +s "%tmp%" 1^>nul 2^>nul>>%D%
-echo regedit /s %B% 1^>nul 2^>nul>>%D%
-echo taskkill /f /im explorer.exe 1^>nul 2^>nul>>%D%
-echo start explorer.exe 1^>nul 2^>nul>>%D%
-echo chcp 437>>%D%
-echo reg query %LM%\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c} 1^>nul 2^>nul>>%D%
-echo if ERRORLEVEL 1 (>>%D%
-echo title   WARNING ! ! !>>%D%
-echo color cf>>%D%
-echo mode con cols=36 lines=23>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo YOUR PC IS IN DANGER NOW ! ! !>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo PLEASE DO REMEMBER TO RUN>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo "BESAFE" FROM START MENU TO>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo BRING YOUR PC BACK TO SAFETY ! ! !>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo pause>>%D%
-echo exit) else (>>%D%
-echo title   WELL DONE !>>%D%
-echo color 2f>>%D%
-echo mode con cols=36 lines=19>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo YOUR PC IS SAFE NOW !>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo HAVE A NICE DAY !>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo echo.>>%D%
-echo pause>>%D%
-echo exit)>>%D%
-attrib +h +s "%D%" 1>nul 2>nul
 
 
 :devicedisablewake
@@ -885,7 +703,7 @@ Archive Ends
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
 "ShowDriveLettersFirst"=dword:00000000
-"ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+"ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00
 "IconUnderline"=dword:00000001
 
@@ -897,7 +715,7 @@ Archive Ends
 "Hidden"=dword:00000002
 "ShowSuperHidden"=dword:00000000
 "ShowEncryptCompressedColor"=dword:00000001
-"HideFileExt"=dword:00000001
+"HideFileExt"=dword:00000000
 "ExtendedUIHoverTime"=dword:11111111
 "AutoCheckSelect"=dword:00000001
 "TaskbarSizeMove"=dword:00000000
@@ -1780,7 +1598,7 @@ Archive Ends
 "AuthenticodeFlags"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
-"DefaultLevel"=dword:00000000
+"DefaultLevel"=dword:00040000
 "TransparentEnabled"=dword:00000001
 "PolicyScope"=dword:00000000
 "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
@@ -1795,124 +1613,6 @@ Archive Ends
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]
-"LastModified"=hex(b):08,23,fb,5a,57,16,d3,01
-"Description"="Allow Program Files (x86)"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
-  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
-  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
-  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\
-  00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\
-  6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\
-  00,73,00,44,00,69,00,72,00,20,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]
-"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Allow Windows"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
-  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
-  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
-  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,20,00,4e,\
-  00,54,00,5c,00,43,00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,\
-  73,00,69,00,6f,00,6e,00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,\
-  00,6f,00,74,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]
-"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Allow Program Files"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,48,00,4b,00,45,00,59,00,5f,00,4c,00,4f,00,43,00,41,00,\
-  4c,00,5f,00,4d,00,41,00,43,00,48,00,49,00,4e,00,45,00,5c,00,53,00,4f,00,46,\
-  00,54,00,57,00,41,00,52,00,45,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,\
-  6f,00,66,00,74,00,5c,00,57,00,69,00,6e,00,64,00,6f,00,77,00,73,00,5c,00,43,\
-  00,75,00,72,00,72,00,65,00,6e,00,74,00,56,00,65,00,72,00,73,00,69,00,6f,00,\
-  6e,00,5c,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,46,00,69,00,6c,00,65,\
-  00,73,00,44,00,69,00,72,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{2333c194-73f8-4766-a6af-e2ad4c391626}]
-"LastModified"=hex(b):08,23,fb,5a,57,16,d3,01
-"Description"="Allow Program Files (x86)"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\
-  6c,00,65,00,73,00,28,00,78,00,38,00,36,00,29,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{291cd7fa-f240-4a17-8986-94d480a6c8ca}]
-"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Allow Windows"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,\
-  74,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d3c34ab2-529a-46b2-b293-fc853fce72ea}]
-"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Allow Program Files"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,70,00,72,00,6f,00,67,00,72,00,61,00,6d,00,66,00,69,00,\
-  6c,00,65,00,73,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{d2c34ab2-529a-46b2-b293-fc853fce73ea}]
-"LastModified"=hex(b):9f,37,4f,42,57,16,d3,01
-"Description"="Disallow ProgramData"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,50,00,72,00,6f,00,67,00,72,00,61,00,6d,00,44,00,61,00,\
-  74,00,61,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow AppData\\Local"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow Temp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow AppData\\Local\\Microsoft"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
-  00,74,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow AppData\\Local\\Packages"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,50,00,61,00,63,00,6b,00,61,00,67,00,65,00,73,\
-  00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow OneDrive"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
-  00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,4f,00,\
-  6e,00,65,00,44,00,72,00,69,00,76,00,65,00,2e,00,65,00,78,00,65,00,00,00
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow Google Chrome"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,47,00,6f,00,6f,00,67,00,6c,00,65,00,5c,00,43,\
-  00,68,00,72,00,6f,00,6d,00,65,00,5c,00,41,00,70,00,70,00,6c,00,69,00,63,00,\
-  61,00,74,00,69,00,6f,00,6e,00,5c,00,63,00,68,00,72,00,6f,00,6d,00,65,00,2e,\
-  00,65,00,78,00,65,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0235eaa8034c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow PerfectWindows.bat"
-"SaferFlags"=dword:00000000
-"ItemData"="PerfectWindows{*}.bat"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
@@ -1933,9 +1633,9 @@ Archive Ends
 "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\
   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow 7z*.tmp"
+"Description"="Allow 7z*.tmp"
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\
   74,00,6d,00,70,00,5c,00,2a,00,00,00
@@ -1947,19 +1647,6 @@ Archive Ends
 "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\
   00,00
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8038c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow AppData\\Roaming"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{7d259436-c0ab-4186-b18d-0225eaa8034c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow LocalAppData\\TrustedApps"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
-  61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\
-  00,70,00,70,00,73,00,00,00
 
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Window"="255 255 255"
