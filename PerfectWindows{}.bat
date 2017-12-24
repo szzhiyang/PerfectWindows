@@ -1953,6 +1953,14 @@ Archive Ends
 "SaferFlags"=dword:00000000
 "ItemData"=hex(2):25,00,41,00,70,00,70,00,44,00,61,00,74,00,61,00,25,00,00,00
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{7d259436-c0ab-4186-b18d-0225eaa8034c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Allow LocalAppData\\TrustedApps"
+"SaferFlags"=dword:00000000
+"ItemData"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,44,00,\
+  61,00,74,00,61,00,25,00,5c,00,54,00,72,00,75,00,73,00,74,00,65,00,64,00,41,\
+  00,70,00,70,00,73,00,00,00
+
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Window"="255 255 255"
 
