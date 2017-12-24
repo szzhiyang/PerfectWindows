@@ -1633,6 +1633,12 @@ Archive Ends
 "ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\
   2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-4186-b18d-0225eaa8037c}]
+"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
+"Description"="Disallow UserAccountControlSettings.exe"
+"SaferFlags"=dword:00000000
+"ItemData"="UserAccountControlSettings.exe"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]
 "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
 "Description"="Allow 7z*.tmp"
