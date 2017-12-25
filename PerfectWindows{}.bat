@@ -41,13 +41,16 @@ set C=%systemroot%\besafe.bat
 set D=%systemroot%\beindanger.bat
 set E=%systemroot%\beperfect.bat
 set F=%systemroot%\trustedapps.bat
+set DNS=%systemroot%\PerfectWindowsDNS
 rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%P%" 1>nul 2>nul
+rd /s /q "%DNS%" 1>nul 2>nul
 sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 md "%P%" 1>nul 2>nul
+md "%DNS%" 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
@@ -249,7 +252,35 @@ regedit /s %T%\Reverse.reg  1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
+:DNS
+echo Windows Registry Editor Version 5.00>%DNS%\CNDNS.reg
+echo. >>%DNS%\CNDNS.reg
+echo regedit /s %DNS%\CNDNS.reg>%systemroot%\CNDNS.bat
+echo ipconfig /flushdns>>%systemroot%\CNDNS.bat
 
+echo Windows Registry Editor Version 5.00>%DNS%\USDNS.reg
+echo. >>%DNS%\USDNS.reg
+echo regedit /s %DNS%\USDNS.reg>%systemroot%\USDNS.bat
+echo ipconfig /flushdns>>%systemroot%\USDNS.bat
+
+reg query %LM%\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces /s >%T%\DNS.txt
+findstr Interfaces %T%\DNS.txt > %T%\find.txt
+
+for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
+echo [%%i] >>%DNS%\CNDNS.reg
+echo "NameServer"="119.29.29.29">>%DNS%\CNDNS.reg
+echo. >>%DNS%\CNDNS.reg
+)
+
+for /f "tokens=* delims= " %%i in (%T%\find.txt) do (
+echo [%%i] >>%DNS%\USDNS.reg
+echo "NameServer"="4.2.2.2,4.2.2.1">>%DNS%\USDNS.reg
+echo. >>%DNS%\USDNS.reg
+)
+
+
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
 
 
 :services
