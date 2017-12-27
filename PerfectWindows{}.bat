@@ -30,6 +30,7 @@ echo PLESAE WAIT !
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
 takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
+md "%systemdrive%\TrustedApps" 1>nul 2>nul
 icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
@@ -111,7 +112,137 @@ echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
 echo.>>%A%
 echo.>>%A%
 
-:excludeneededfunctions
+:SoftwareRestrictionPolicies
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
+echo "Description"="Allow Program Files (x86)">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
+echo "Description"="Allow Windows">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Windows">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
+echo "Description"="Allow Program Files">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Program Files">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow 7 - Zip Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow Hao Zip Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\HZ*">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow Windows Explorer Zip Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\*.zip">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow UserAccountControlSettings.exe">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="UserAccountControlSettings.exe">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow 7z*.tmp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*.tmp\\*">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow WinRAR Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\Rar*">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259536-c0ab-4186-b18d-0225eaa8055c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow WinZip Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\wz*">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow AppData\\Local\\Microsoft">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow AppData\\Local\\Packages">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Packages">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow OneDrive">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0325eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow UserProfile">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8140c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow Temp">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Tmp">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local\\Google">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{7d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow *\\TrustedApps">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="*\\TrustedApps">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{8d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow *\\WindowsApps">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="*\\WindowsApps">>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
+echo "DefaultLevel"=dword:00000000>>%A%
+echo.>>%A%
+
+:ExcludeNeededFunctions
 
 if exist PerfectWindows{*c*}.bat (
 echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
@@ -255,12 +386,16 @@ md "%T%" 1>nul 2>nul
 :DNS
 echo Windows Registry Editor Version 5.00>%DNS%\CNDNS.reg
 echo. >>%DNS%\CNDNS.reg
-echo regedit /s %DNS%\CNDNS.reg>%systemroot%\CNDNS.bat
+echo :start>%systemroot%\CNDNS.bat
+echo regedit /s %DNS%\CNDNS.reg>>%systemroot%\CNDNS.bat
+echo IF ERRORLEVEL 1 GOTO start>>%systemroot%\CNDNS.bat
 echo ipconfig /flushdns>>%systemroot%\CNDNS.bat
 
 echo Windows Registry Editor Version 5.00>%DNS%\USDNS.reg
 echo. >>%DNS%\USDNS.reg
-echo regedit /s %DNS%\USDNS.reg>%systemroot%\USDNS.bat
+echo :start>%systemroot%\USDNS.bat
+echo regedit /s %DNS%\USDNS.reg>>%systemroot%\USDNS.bat
+echo IF ERRORLEVEL 1 GOTO start>>%systemroot%\USDNS.bat
 echo ipconfig /flushdns>>%systemroot%\USDNS.bat
 
 reg query %LM%\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces /s >%T%\DNS.txt
@@ -733,9 +868,8 @@ Archive Ends
 "ShowFrequent"=dword:00000000
 "ShowRecent"=dword:00000000
 "ShowDriveLettersFirst"=dword:00000000
-"ShellState"=hex:24,00,00,00,3e,38,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+"ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
    01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00
-"ShellState"=-
 "IconUnderline"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
@@ -746,7 +880,7 @@ Archive Ends
 "Hidden"=dword:00000002
 "ShowSuperHidden"=dword:00000000
 "ShowEncryptCompressedColor"=dword:00000001
-"HideFileExt"=dword:00000000
+"HideFileExt"=dword:00000001
 "ExtendedUIHoverTime"=dword:11111111
 "AutoCheckSelect"=dword:00000001
 "TaskbarSizeMove"=dword:00000000
@@ -841,7 +975,7 @@ Archive Ends
 "NoStartMenuMFUprogramsList"=dword:00000001
 "ClearRecentProgForNewUserInStartMenu"=dword:00000001
 "NoTrayContextMenu"=dword:00000001
-"NoTaskGrouping"=dword:00000000
+"NoTaskGrouping"=dword:00000001
 "DisableCurrentUserRun"=dword:00000001
 "DisableCurrentUserRunOnce"=dword:00000000
 "NoInternetIcon"=dword:00000001
@@ -886,6 +1020,18 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7007ACC7-3202-11D1-AAD2-00805FC1270E}]
 "Network Connections"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7b81be6a-ce2b-4676-a29e-eb907a5126c5}]
+"Programs and Features"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{BB06C0E4-D293-4f75-8A90-CB05B6477EEE}]
+"System"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}]
+"Personalization"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D20EA4E1-3957-11d2-A40B-0C5020524153}]
+"Administrative Tools"=""
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
 "{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
@@ -1607,83 +1753,6 @@ Archive Ends
 "SupportHours"="Optimized by PerfectWindows"
 "SupportURL"="https://www.github.com/szzhiyang/perfectwindows"
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
-"VerboseStatus"=dword:00000001
-"DisableStartupSound"=dword:00000001
-"ShutdownWithoutLogon"=dword:00000000
-"EnableLUA"=dword:00000001
-"ValidateAdminCodeSignatures"=dword:00000000
-"ConsentPromptBehaviorAdmin"=dword:0000005
-"ConsentPromptBehaviorUser"=dword:00000003
-"PromptOnSecureDesktop"=dword:00000001
-"EnableUIADesktopToggle"=dword:00000000
-"FilterAdministratorToken"=dword:00000001
-"EnableSecureUIAPaths"=dword:00000001
-"EnableInstallerDetection"=dword:00000001
-"EnableVirtualization"=dword:00000001
-"DSCAutomationHostEnabled"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
-"AuthenticodeFlags"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
-"DefaultLevel"=dword:00040000
-"TransparentEnabled"=dword:00000001
-"PolicyScope"=dword:00000000
-"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
-  53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
-  00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
-  00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\
-  00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\
-  49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\
-  00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\
-  50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\
-  00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
-  50,00,00,00,41,00,44,00,45,00,00,00
-"AuthenticodeEnabled"=dword:00000000
-
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow 7 - Zip Temp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow Hao Zip Temp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,48,00,5a,00,2a,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow Windows Explorer Zip Temp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,54,00,65,00,6d,00,70,00,\
-  2a,00,2e,00,7a,00,69,00,70,00,5c,00,2a,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-4186-b18d-0225eaa8037c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow UserAccountControlSettings.exe"
-"SaferFlags"=dword:00000000
-"ItemData"="UserAccountControlSettings.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Allow 7z*.tmp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,37,00,7a,00,2a,00,2e,00,\
-  74,00,6d,00,70,00,5c,00,2a,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]
-"LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01
-"Description"="Disallow WinRAR Temp"
-"SaferFlags"=dword:00000000
-"ItemData"=hex(2):25,00,74,00,6d,00,70,00,25,00,5c,00,52,00,61,00,72,00,2a,00,\
-  00,00
-
 
 [HKEY_CURRENT_USER\Control Panel\Colors]
 "Window"="255 255 255"
@@ -1731,3 +1800,41 @@ Archive Ends
 "DebugServerCommand"="no"
 "System"=""
 "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
+"VerboseStatus"=dword:00000001
+"DisableStartupSound"=dword:00000001
+"ShutdownWithoutLogon"=dword:00000000
+"EnableLUA"=dword:00000001
+"ValidateAdminCodeSignatures"=dword:00000000
+"ConsentPromptBehaviorAdmin"=dword:0000005
+"ConsentPromptBehaviorUser"=dword:00000003
+"PromptOnSecureDesktop"=dword:00000001
+"EnableUIADesktopToggle"=dword:00000000
+"FilterAdministratorToken"=dword:00000001
+"EnableSecureUIAPaths"=dword:00000001
+"EnableInstallerDetection"=dword:00000001
+"EnableVirtualization"=dword:00000001
+"DSCAutomationHostEnabled"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
+"AuthenticodeFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
+"DefaultLevel"=dword:00040000
+"TransparentEnabled"=dword:00000001
+"PolicyScope"=dword:00000000
+"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
+  53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
+  00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
+  00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\
+  00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\
+  49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\
+  00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\
+  50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\
+  00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
+  50,00,00,00,41,00,44,00,45,00,00,00
+"AuthenticodeEnabled"=dword:00000000
+
