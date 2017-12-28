@@ -181,9 +181,15 @@ echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\wz*">>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow AppData\\Local\\Microsoft">>%A%
+echo "Description"="Disallow AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft">>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
