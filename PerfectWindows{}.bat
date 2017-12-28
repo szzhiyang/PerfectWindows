@@ -113,23 +113,29 @@ echo.>>%A%
 echo.>>%A%
 
 :SoftwareRestrictionPolicies
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
-echo "Description"="Allow Program Files (x86)">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
-echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow Windows">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Windows">>%A%
 echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
+echo "Description"="Allow Program Files (x86)">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
+echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow Program Files">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
+echo "Description"="Allow ProgramData">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\ProgramData">>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
@@ -1826,15 +1832,16 @@ Archive Ends
 "DefaultLevel"=dword:00040000
 "TransparentEnabled"=dword:00000001
 "PolicyScope"=dword:00000000
-"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
-  53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
-  00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
-  00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\
-  00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\
-  49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\
-  00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\
-  50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\
-  00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
-  50,00,00,00,41,00,44,00,45,00,00,00
+"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,55,00,52,00,\
+  4c,00,00,00,53,00,48,00,53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,\
+  00,00,00,50,00,53,00,31,00,00,00,50,00,49,00,46,00,00,00,50,00,43,00,44,00,\
+  00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,00,00,4d,00,53,00,50,00,00,\
+  00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,00,4d,00,44,00,45,00,00,00,\
+  4d,00,44,00,42,00,00,00,4c,00,4e,00,4b,00,00,00,49,00,53,00,50,00,00,00,49,\
+  00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,00,\
+  4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,50,\
+  00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,00,\
+  4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,50,\
+  00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
 
