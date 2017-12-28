@@ -131,7 +131,7 @@ echo "Description"="Allow Program Files">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a28-8986-94d480a6c8ca}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow ProgramData">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
