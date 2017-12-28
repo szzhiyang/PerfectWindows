@@ -1268,16 +1268,16 @@ Archive Ends
 "Isolation"="PMEM"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
-"PreventOverride"=dword:00000001
-"PreventOverrideAppRepUnknown"=dword:00000001
+"PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000
 "EnabledV9"=dword:00000001
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
 "EnabledV9"=dword:00000001
-"PreventOverride"=dword:00000001
-"PreventOverrideAppRepUnknown"=dword:00000001
+"PreventOverride"=dword:00000000
+"PreventOverrideAppRepUnknown"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
 "AllowWebContentOnNewTabPage"=dword:00000000
@@ -1617,7 +1617,7 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "EnableSmartScreen"=dword:00000001
-"ShellSmartScreenLevel"="Block"
+"ShellSmartScreenLevel"="Warn"
 "DisableLockScreenAppNotifications"=dword:00000001
 "DisableLogonBackgroundImage"=dword:00000001
 "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
