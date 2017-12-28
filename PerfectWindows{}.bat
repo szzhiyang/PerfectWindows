@@ -438,6 +438,145 @@ md "%T%" 1>nul 2>nul
 
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
+
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+
+
+:applyreg
+taskkill /f /im explorer.exe 1>nul 2>nul
+echo.>>%A%
+attrib +h +s "%A%" 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+
+
+:restart
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%P%" 1>nul 2>nul
+shutdown /r /o /f /t 0 1>nul 2>nul
+shutdown /r /f /t 0 1>nul 2>nul
+exit
+
+
+
+Archive Starts
+
+
+:[%LM%\SOFTWARE\Microsoft\Rpc]
+:"ConnectionOptionsFlag"=dword:00000001
+:"DCOM Protocols"=hex:(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+  74,00,63,00,70,00,00,00,00,00
+
+:disableschtasks
+SCHTASKS /Delete /TN * /F 1>nul 2>nul
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
+echo   ^<RegistrationInfo^>>>%T%\1.xml
+echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%T%\1.xml
+echo   ^</RegistrationInfo^>>>%T%\1.xml
+echo   ^<Triggers^>>>%T%\1.xml
+echo     ^<TimeTrigger^>>>%T%\1.xml
+echo       ^<Repetition^>>>%T%\1.xml
+echo         ^<Interval^>PT5M^</Interval^>>>%T%\1.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%T%\1.xml
+echo       ^</Repetition^>>>%T%\1.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%T%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^</TimeTrigger^>>>%T%\1.xml
+echo   ^</Triggers^>>>%T%\1.xml
+echo   ^<Principals^>>>%T%\1.xml
+echo     ^<Principal id="Author"^>>>%T%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%T%\1.xml
+echo     ^</Principal^>>>%T%\1.xml
+echo   ^</Principals^>>>%T%\1.xml
+echo   ^<Settings^>>>%T%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%T%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%T%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%T%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%T%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%T%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%T%\1.xml
+echo     ^<IdleSettings^>>>%T%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%T%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%T%\1.xml
+echo     ^</IdleSettings^>>>%T%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%T%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%T%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%T%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%T%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%T%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%T%\1.xml
+echo   ^</Settings^>>>%T%\1.xml
+echo   ^<Actions Context="Author"^>>>%T%\1.xml
+echo     ^<Exec^>>>%T%\1.xml
+echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%T%\1.xml
+echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%T%\1.xml
+echo     ^</Exec^>>>%T%\1.xml
+echo   ^</Actions^>>>%T%\1.xml
+echo ^</Task^>>>%T%\1.xml
+
+SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
+
+
+FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
+
+disable all schtasks:
+
+
+schtasks /query /fo csv >%T%\detailedschtasks.txt
+echo. >%T%\temp5.txt
+for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
+echo %%i>>%T%\temp5.txt
+)
+findstr /v PerfectWindows %T%\temp5.txt >%T%\disabledschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\disabledschtasks.txt) do (
+schtasks /end /tn %%i 1>nul 2>nul
+schtasks /change /tn %%i /disable 1>nul 2>nul
+)
+
+findstr UpdateOrchestrator %T%\disabledschtasks.txt >%T%\deletedschtasks.txt
+findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
+for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
+schtasks /end /tn %%i 1>nul 2>nul
+schtasks /delete /tn %%i /f 1>nul 2>nul
+)
+
+
+
+make all services start demandly:
+
+sc query state= all >%T%\tmp1.txt
+findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
+
+for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
+echo %%i>>%T%\tmp3.txt
+)
+
+for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
+echo %%i>>%T%\services.txt
+)
+
+for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
+sc config "%%i" start= demand 1>nul 2>nul
+)
+
+for /f "tokens=* delims= " %%i in (whitelist.txt) do (
+sc config "%%i" start= auto 1>nul 2>nul
+)
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+
+
+
+
+Archive Ends
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc]
 "Start"=dword:00000002
 
@@ -716,147 +855,6 @@ sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\fhsvc]
 "Start"=dword:00000004
-
-
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-:applyreg
-taskkill /f /im explorer.exe 1>nul 2>nul
-echo.>>%A%
-attrib +h +s "%A%" 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-
-
-:restart
-rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%P%" 1>nul 2>nul
-shutdown /r /o /f /t 0 1>nul 2>nul
-shutdown /r /f /t 0 1>nul 2>nul
-exit
-
-
-
-Archive Starts
-
-
-:[%LM%\SOFTWARE\Microsoft\Rpc]
-:"ConnectionOptionsFlag"=dword:00000001
-:"DCOM Protocols"=hex:(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
-  74,00,63,00,70,00,00,00,00,00
-
-:disableschtasks
-SCHTASKS /Delete /TN * /F 1>nul 2>nul
-echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
-echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
-echo   ^<RegistrationInfo^>>>%T%\1.xml
-echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%T%\1.xml
-echo   ^</RegistrationInfo^>>>%T%\1.xml
-echo   ^<Triggers^>>>%T%\1.xml
-echo     ^<TimeTrigger^>>>%T%\1.xml
-echo       ^<Repetition^>>>%T%\1.xml
-echo         ^<Interval^>PT5M^</Interval^>>>%T%\1.xml
-echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%T%\1.xml
-echo       ^</Repetition^>>>%T%\1.xml
-echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%T%\1.xml
-echo       ^<Enabled^>true^</Enabled^>>>%T%\1.xml
-echo     ^</TimeTrigger^>>>%T%\1.xml
-echo   ^</Triggers^>>>%T%\1.xml
-echo   ^<Principals^>>>%T%\1.xml
-echo     ^<Principal id="Author"^>>>%T%\1.xml
-echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%T%\1.xml
-echo     ^</Principal^>>>%T%\1.xml
-echo   ^</Principals^>>>%T%\1.xml
-echo   ^<Settings^>>>%T%\1.xml
-echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%T%\1.xml
-echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%T%\1.xml
-echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%T%\1.xml
-echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%T%\1.xml
-echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%T%\1.xml
-echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%T%\1.xml
-echo     ^<IdleSettings^>>>%T%\1.xml
-echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%T%\1.xml
-echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%T%\1.xml
-echo     ^</IdleSettings^>>>%T%\1.xml
-echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%T%\1.xml
-echo     ^<Enabled^>true^</Enabled^>>>%T%\1.xml
-echo     ^<Hidden^>true^</Hidden^>>>%T%\1.xml
-echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%T%\1.xml
-echo     ^<WakeToRun^>false^</WakeToRun^>>>%T%\1.xml
-echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%T%\1.xml
-echo     ^<Priority^>7^</Priority^>>>%T%\1.xml
-echo   ^</Settings^>>>%T%\1.xml
-echo   ^<Actions Context="Author"^>>>%T%\1.xml
-echo     ^<Exec^>>>%T%\1.xml
-echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%T%\1.xml
-echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%T%\1.xml
-echo     ^</Exec^>>>%T%\1.xml
-echo   ^</Actions^>>>%T%\1.xml
-echo ^</Task^>>>%T%\1.xml
-
-SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
-SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
-SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
-
-
-FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
-
-disable all schtasks:
-
-
-schtasks /query /fo csv >%T%\detailedschtasks.txt
-echo. >%T%\temp5.txt
-for /f "tokens=1 delims=," %%i in (%T%\detailedschtasks.txt) do (
-echo %%i>>%T%\temp5.txt
-)
-findstr /v PerfectWindows %T%\temp5.txt >%T%\disabledschtasks.txt
-for /f "tokens=* delims= " %%i in (%T%\disabledschtasks.txt) do (
-schtasks /end /tn %%i 1>nul 2>nul
-schtasks /change /tn %%i /disable 1>nul 2>nul
-)
-
-findstr UpdateOrchestrator %T%\disabledschtasks.txt >%T%\deletedschtasks.txt
-findstr WindowsUpdate %T%\disabledschtasks.txt >>%T%\deletedschtasks.txt
-for /f "tokens=* delims= " %%i in (%T%\deletedschtasks.txt) do (
-schtasks /end /tn %%i 1>nul 2>nul
-schtasks /delete /tn %%i /f 1>nul 2>nul
-)
-
-
-
-make all services start demandly:
-
-sc query state= all >%T%\tmp1.txt
-findstr SERVICE_NAME %T%\tmp1.txt >> %T%\tmp2.txt
-
-for /f "tokens=2 delims=:" %%i in (%T%\tmp2.txt) do (
-echo %%i>>%T%\tmp3.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\tmp3.txt) do (
-echo %%i>>%T%\services.txt
-)
-
-for /f "tokens=* delims= " %%i in (%T%\services.txt) do (
-sc config "%%i" start= demand 1>nul 2>nul
-)
-
-for /f "tokens=* delims= " %%i in (whitelist.txt) do (
-sc config "%%i" start= auto 1>nul 2>nul
-)
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-
-
-Archive Ends
-
-
 
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects]
 
