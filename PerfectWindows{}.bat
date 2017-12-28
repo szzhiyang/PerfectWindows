@@ -29,9 +29,7 @@ echo.
 echo PLESAE WAIT !
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
-takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
 md "%systemdrive%\TrustedApps" 1>nul 2>nul
-icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
@@ -160,6 +158,12 @@ echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow UserAccountControlSettings.exe">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="UserAccountControlSettings.exe">>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-5186-b19d-0225eaa8037c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Disallow UsoClient.exe">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="UsoClient.exe">>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
@@ -431,96 +435,319 @@ md "%T%" 1>nul 2>nul
 
 
 :services
-sc config WbioSrvc start= auto 1>nul 2>nul
-sc config UserManager start= auto 1>nul 2>nul
-sc config SystemEventsBroker start= auto 1>nul 2>nul
-sc config PolicyAgent start= auto 1>nul 2>nul
-sc config gpsvc start= auto 1>nul 2>nul
-sc config AppIDSvc start= disabled 1>nul 2>nul
-sc config Dnscache start= auto 1>nul 2>nul
-sc config DusmSvc start= auto 1>nul 2>nul
-sc config WlanSvc start= auto 1>nul 2>nul
-sc config Winmgmt start= auto 1>nul 2>nul
-sc config stisvc start= auto 1>nul 2>nul
-sc config FontCache start= auto 1>nul 2>nul
-sc config MpsSvc start= auto 1>nul 2>nul
-sc config EventLog start= auto 1>nul 2>nul
-sc config SecurityHealthService start= auto 1>nul 2>nul
-sc config AudioEndpointBuilder start= auto 1>nul 2>nul
-sc config Audiosrv start= auto 1>nul 2>nul
-sc config ProfSvc start= auto 1>nul 2>nul
-sc config Themes start= auto 1>nul 2>nul
-sc config Schedule start= auto 1>nul 2>nul
-sc config wscsvc start= auto 1>nul 2>nul
-sc config Power start= auto 1>nul 2>nul
-sc config PlugPlay start= auto 1>nul 2>nul
-sc config nsi start= auto 1>nul 2>nul
-sc config NlaSvc start= auto 1>nul 2>nul
-sc config LSM start= auto 1>nul 2>nul
-sc config luafv start= auto 1>nul 2>nul
-sc config clr_optimization_v2.0.50727_32 start= auto 1>nul 2>nul
-sc config UxSms start= auto 1>nul 2>nul
-sc config lltdio start= auto 1>nul 2>nul
-sc config rspndr start= auto 1>nul 2>nul
-sc config MMCSS start= auto 1>nul 2>nul
-sc config PEAUTH start= auto 1>nul 2>nul
-sc config secdrv start= auto 1>nul 2>nul
-sc config ShellHWDetection start= auto 1>nul 2>nul
-sc config NlaSvc start= auto 1>nul 2>nul
-sc config TrkWks start= auto 1>nul 2>nul
-sc config SENS start= auto 1>nul 2>nul
-sc config tcpipreg start= auto 1>nul 2>nul
-sc config Parvdm start= auto 1>nul 2>nul
-sc config TrustedInstaller start= auto 1>nul 2>nul
-sc config TrkWks start= auto 1>nul 2>nul
-sc config Dhcp start= auto 1>nul 2>nul
-sc config DoSvc start= auto 1>nul 2>nul
-sc config DcomLaunch start= auto 1>nul 2>nul
-sc config CryptSvc start= auto 1>nul 2>nul
-sc config wuauserv start= demand 1>nul 2>nul
-sc config sppsvc start= auto 1>nul 2>nul
-sc config CoreMessagingRegistrar start= auto 1>nul 2>nul
-sc config EventSystem start= auto 1>nul 2>nul
-sc config BFE start= auto 1>nul 2>nul
-sc config BrokerInfrastructure start= auto 1>nul 2>nul
-sc config BITS start= auto 1>nul 2>nul
-sc config W32Time start= auto 1>nul 2>nul
-sc config Wcmsvc start= auto 1>nul 2>nul
-sc config lfsvc start= auto 1>nul 2>nul
-sc config DsmSvc start= auto 1>nul 2>nul
-sc config DeviceInstall start= auto 1>nul 2>nul
-sc config DeviceAssociationService start= auto 1>nul 2>nul
-sc config CDPUserSvc_420c0 start= auto 1>nul 2>nul
-sc config LanmanWorkstation start= auto 1>nul 2>nul
-sc config WpnUserService_420c0 start= auto 1>nul 2>nul
-sc config WpnService start= auto 1>nul 2>nul
-sc config tiledatamodelsvc start= auto 1>nul 2>nul
-sc config LanmanServer start= auto 1>nul 2>nul
-sc config ShellHWDetection start= auto 1>nul 2>nul
-sc config RpcEptMapper start= auto 1>nul 2>nul
-sc config RpcSs start= auto 1>nul 2>nul
-sc config Spooler start= auto 1>nul 2>nul
-sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
-sc config mrxsmb10 start= disabled 1>nul 2>nul
-sc config mrxsmb20 start= auto 1>nul 2>nul
-sc config DiagTrack start= disabled 1>nul 2>nul
-sc config HomeGroupListener start= disabled 1>nul 2>nul
-sc config HomeGroupProvider start= disabled 1>nul 2>nul
-sc config PcaSvc start= disabled 1>nul 2>nul
-sc config RemoteRegistry start= disabled 1>nul 2>nul
-sc config SysMain start= disabled 1>nul 2>nul
-sc config WerSvc start= disabled 1>nul 2>nul
-sc config SDRSVC start= disabled 1>nul 2>nul
-sc config lmhosts start= disabled 1>nul 2>nul
-sc config NetBIOS start= disabled 1>nul 2>nul
-sc config NetBT start= disabled 1>nul 2>nul
-sc config SessionEnv start= disabled 1>nul 2>nul
-sc config TermService start= disabled 1>nul 2>nul
-sc config UmRdpService start= disabled 1>nul 2>nul
-sc config winmgmt start= auto 1>nul 2>nul
-sc config wmiApSrv start= auto 1>nul 2>nul
-sc config WSearch start= auto 1>nul 2>nul
 
+sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserManager]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SystemEventsBroker]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gpsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppIDSvc]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DusmSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WlanSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Winmgmt]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stisvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FontCache]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MpsSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AudioEndpointBuilder]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Audiosrv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ProfSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Themes]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PlugPlay]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nsi]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LSM]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\luafv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UxSms]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdio]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rspndr]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MMCSS]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PEAUTH]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\secdrv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ShellHWDetection]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SENS]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tcpipreg]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Parvdm]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrustedInstaller]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DcomLaunch]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CryptSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sppsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CoreMessagingRegistrar]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventSystem]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BFE]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BrokerInfrastructure]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BITS]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wcmsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DsmSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceInstall]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationService]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc_420c0]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnUserService_420c0]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnService]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tiledatamodelsvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ShellHWDetection]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcEptMapper]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcSs]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PcaSvc]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RemoteRegistry]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SysMain]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SDRSVC]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lmhosts]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBIOS]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\winmgmt]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wmiApSrv]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
+"Start"=dword:00000002
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DnsCache]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem]
+"Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\fhsvc]
+"Start"=dword:00000004
+
+
+rd /s /q "%T%" 1>nul 2>nul
+md "%T%" 1>nul 2>nul
+
+
+:applyreg
+taskkill /f /im explorer.exe 1>nul 2>nul
+echo.>>%A%
+attrib +h +s "%A%" 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+reg import %A% /reg:32 1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+regedit /s %A%  1>nul 2>nul
+
+
+:restart
+rd /s /q "%T%" 1>nul 2>nul
+rd /s /q "%P%" 1>nul 2>nul
+shutdown /r /o /f /t 0 1>nul 2>nul
+shutdown /r /f /t 0 1>nul 2>nul
+exit
+
+
+
+Archive Starts
+
+
+:[%LM%\SOFTWARE\Microsoft\Rpc]
+:"ConnectionOptionsFlag"=dword:00000001
+:"DCOM Protocols"=hex:(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
+  74,00,63,00,70,00,00,00,00,00
 
 :disableschtasks
 SCHTASKS /Delete /TN * /F 1>nul 2>nul
@@ -574,38 +801,6 @@ echo ^</Task^>>>%T%\1.xml
 SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
 SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
-
-
-rd /s /q "%T%" 1>nul 2>nul
-md "%T%" 1>nul 2>nul
-
-
-:applyreg
-taskkill /f /im explorer.exe 1>nul 2>nul
-echo.>>%A%
-attrib +h +s "%A%" 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-reg import %A% /reg:32 1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-regedit /s %A%  1>nul 2>nul
-
-
-:restart
-rd /s /q "%T%" 1>nul 2>nul
-rd /s /q "%P%" 1>nul 2>nul
-shutdown /r /o /f /t 0 1>nul 2>nul
-shutdown /r /f /t 0 1>nul 2>nul
-exit
-
-
-
-Archive Starts
-
-
-:[%LM%\SOFTWARE\Microsoft\Rpc]
-:"ConnectionOptionsFlag"=dword:00000001
-:"DCOM Protocols"=hex:(7):6e,00,63,00,61,00,63,00,6e,00,5f,00,69,00,70,00,5f,00,\
-  74,00,63,00,70,00,00,00,00,00
 
 
 FOR /F "delims=" %%I IN ('WEVTUTIL EL') DO (WEVTUTIL CL "%%I") 1>nul 2>nul
@@ -676,6 +871,7 @@ Archive Ends
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,04,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
 
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
 "Win32PrioritySeparation"=dword:00000002
 
@@ -697,13 +893,13 @@ Archive Ends
 
 [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft]
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
 
-[-HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
+[HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
 
 [-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]
 
