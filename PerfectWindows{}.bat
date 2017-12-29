@@ -27,9 +27,39 @@ color fc
 mode con cols=30 lines=3
 echo.
 echo PLESAE WAIT !
+
+
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
+
+
 icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
+icacls "%WINDIR%\System32\at.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\at.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\at.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
+icacls "%WINDIR%\System32\schtasks.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\schtasks.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\schtasks.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
+icacls "%WINDIR%\System32\dfrgui.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\dfrgui.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\dfrgui.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
+icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\UserAccountControlSettings.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
 md "%systemdrive%\TrustedApps" 1>nul 2>nul
+
+
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
@@ -41,17 +71,29 @@ set D=%systemroot%\beindanger.bat
 set E=%systemroot%\beperfect.bat
 set F=%systemroot%\trustedapps.bat
 set DNS=%systemroot%\PerfectWindowsDNS
+
+
 rd /s /q "%T%" 1>nul 2>nul
 rd /s /q "%P%" 1>nul 2>nul
 rd /s /q "%DNS%" 1>nul 2>nul
+
+
 sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
+
+
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
+
+
 md "%T%" 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%DNS%" 1>nul 2>nul
+
+
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
+
+
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
@@ -67,13 +109,19 @@ attrib -h -s "%systemdrive%\PerfectWindows" 1>nul 2>nul
 attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
 attrib +h +s "%AppData%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
+
+
 echo.>%T%\startup
 rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+
+
 rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+
+
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 rd /s /q "%tmp%" 1>nul 2>nul
@@ -111,144 +159,175 @@ echo.>>%A%
 echo.>>%A%
 
 :SoftwareRestrictionPolicies
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow Windows">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Windows">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
 echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
 echo "Description"="Allow Program Files (x86)">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow Program Files">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a28-8986-94d480a6c8ca}]>>%A%
 echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "Description"="Allow ProgramData">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\ProgramData">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow 7 - Zip Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow Hao Zip Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\HZ*">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow Windows Explorer Zip Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\*.zip">>%A%
 echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow UserAccountControlSettings.exe">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="UserAccountControlSettings.exe">>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{7d259436-c0ab-5186-b19d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
-echo "Description"="Disallow UsoClient.exe">>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="UsoClient.exe">>%A%
-echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow 7z*.tmp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*.tmp\\*">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow WinRAR Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\Rar*">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259536-c0ab-4186-b18d-0225eaa8055c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow WinZip Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\wz*">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow AppData\\Local\\Packages">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Packages">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow OneDrive">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0325eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Disallow UserProfile">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8140c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow Temp">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Tmp">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow AppData\\Local">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow AppData\\Roaming">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow AppData\\Local\\Google">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{7d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow *\\TrustedApps">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="*\\TrustedApps">>%A%
 echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{8d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow *\\WindowsApps">>%A%
@@ -843,6 +922,9 @@ Archive Ends
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
 "Start"=dword:00000004
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\defragsvc]
+"Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DnsCache]
 "Start"=dword:00000004
