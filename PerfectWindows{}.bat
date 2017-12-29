@@ -57,6 +57,11 @@ takeown /f "%WINDIR%\System32\UserAccountControlSettings.exe" /a 1>nul 2>nul
 icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 
 
+icacls "%WINDIR%\System32\regini.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\regini.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\regini.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
+
+
 md "%systemdrive%\TrustedApps" 1>nul 2>nul
 
 
