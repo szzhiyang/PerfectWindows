@@ -1,7 +1,14 @@
+* ***PerfectWindows 尚处于开发阶段，其功能及其说明文档（本页面）可能会随时发生改动。***
+* ***PerfectWindows 的理念已经定型，并已经体现在了本页面中。***
+* ***PerfectWindows 不支持 Windows XP 和 Windows Vista。***
+* ***如果您在试用 PerfectWindows 后遇到了疑惑，请先阅读本页面。如果仍然无法解决，请提交 Issue。***
+* ***PerfectWindows 非常感谢您的光临。***
+---
 # 完美的 Windows 体验
 # 来自 PerfectWindows !
 ---
-# 我们对你的 Windows 体验的改进
+# 这个体积不足 100 KB 的 DOS 批处理文件
+# 对你的 Windows 体验的显著改善
 # 有助于你更加
 # 高效
 # 优雅
