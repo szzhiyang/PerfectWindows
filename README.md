@@ -7,7 +7,7 @@
 # 完美的 Windows 体验
 # 来自 PerfectWindows !
 ---
-# 这个体积不足 100 KB 的 DOS 批处理文件
+# 这个体积不足 0.1 MB 的 DOS 批处理文件
 # 对您的 Windows 体验的显著改善
 # 有助于您更加
 # 高效
