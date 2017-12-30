@@ -76,6 +76,7 @@ set D=%systemroot%\beindanger.bat
 set E=%systemroot%\beperfect.bat
 set F=%systemroot%\trustedapps.bat
 set DNS=%systemroot%\PerfectWindowsDNS
+set PF=Program Files (x86)
 
 
 rd /s /q "%T%" 1>nul 2>nul
@@ -167,154 +168,132 @@ echo.>>%A%
 
 if exist PerfectWindows{*s*}.bat (
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Windows">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
+echo "ItemData"="%systemdrive%\\%PF%">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a28-8986-94d480a6c8ca}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\ProgramData">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-1226eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\HZ*">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{5d259436-c0ab-4186-b18d-0225eaa8037c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\*.zip">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8066c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\7z*.tmp\\*">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8055c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\Rar*">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259536-c0ab-4186-b18d-0225eaa8055c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp\\wz*">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8032c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\INetCache">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0225eaa8033c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Packages">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{4d259436-c0ab-4186-b18d-0325eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8040c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8140c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Tmp">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{7d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="*\\TrustedApps">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{8d369436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="*\\WindowsApps">>%A%
 
@@ -327,70 +306,60 @@ echo.>>%A%
 
 if exist PerfectWindows{*a*}.bat (
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Windows">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
-echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
+echo "ItemData"="%systemdrive%\\%PF%">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
-echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4321-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-7896-b18d-0225eaa8039c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4321-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-2048-b18d-0225eaa8034c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4399-b18d-0225eaa8039c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-5234-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-1234-b18d-0225eaa8039c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\WinX\\*\\*.lnk">>%A%
 echo.>>%A%
 
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
 echo.>>%A%
