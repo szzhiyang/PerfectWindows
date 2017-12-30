@@ -1862,7 +1862,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
 "DefaultLevel"=dword:00040000
 "TransparentEnabled"=dword:00000001
-"PolicyScope"=dword:00000000
+"PolicyScope"=dword:00000001
 "ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
   53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
   00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
@@ -1874,4 +1874,20 @@ exit
   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-2333-94d480a6c8ca}]
+"SaferFlags"=dword:00000000
+"ItemData"="cmd.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-2345-94d480a6c8ca}]
+"SaferFlags"=dword:00000000
+"ItemData"="cscript.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-1234-94d480a6c8ca}]
+"SaferFlags"=dword:00000000
+"ItemData"="powershell.exe"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-4321-94d480a6c8ca}]
+"SaferFlags"=dword:00000000
+"ItemData"="regedit.exe"
 
