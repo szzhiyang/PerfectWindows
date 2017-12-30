@@ -62,9 +62,6 @@ takeown /f "%WINDIR%\System32\regini.exe" /a 1>nul 2>nul
 icacls "%WINDIR%\System32\regini.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 
 
-md "%systemdrive%\TrustedApps" 1>nul 2>nul
-
-
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
 set LM=HKEY_LOCAL_MACHINE
@@ -1846,7 +1843,7 @@ exit
 "ShutdownWithoutLogon"=dword:00000000
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
-"ConsentPromptBehaviorAdmin"=dword:0000001
+"ConsentPromptBehaviorAdmin"=dword:0000005
 "ConsentPromptBehaviorUser"=dword:00000003
 "PromptOnSecureDesktop"=dword:00000001
 "EnableUIADesktopToggle"=dword:00000000
