@@ -339,11 +339,111 @@ echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
 echo "Description"="Allow *\\WindowsApps">>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="*\\WindowsApps">>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
 echo "DefaultLevel"=dword:00000000>>%A%
 echo "PolicyScope"=dword:00000000>>%A%
 echo.>>%A%
 )
+
+if exist PerfectWindows{*a*}.bat (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{191cd7fa-f240-4a17-8986-94d480a6c8ca}]>>%A%
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
+echo "Description"="Allow Windows">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Windows">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-4766-a6af-e2ad4c391626}]>>%A%
+echo "LastModified"=hex(b):08,23,fb,5a,57,16,d3,01>>%A%
+echo "Description"="Allow Program Files (x86)">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Program Files (x86)">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{d2c34ab2-529a-46b2-b293-fc853fce72ea}]>>%A%
+echo "LastModified"=hex(b):9f,37,4f,42,57,16,d3,01>>%A%
+echo "Description"="Allow Program Files">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Program Files">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4321-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4321-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow OneDrive">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4186-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-5234-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-1234-b18d-0225eaa8039c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Roaming">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\WinX\\*\\*.lnk">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
+echo "LastModified"=hex(b):ae,d3,b3,13,69,16,d3,01>>%A%
+echo "Description"="Allow AppData\\Local\\Google">>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
+echo "DefaultLevel"=dword:00000000>>%A%
+echo "PolicyScope"=dword:00000001>>%A%
+echo.>>%A%
+)
+
+if exist PerfectWindows{*a*s*}.bat (
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%A%
+echo.>>%A%
+)
+
+if exist PerfectWindows{*s*a*}.bat (
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]>>%A%
+echo.>>%A%
+)
+
 
 :ExcludeNeededFunctions
 
