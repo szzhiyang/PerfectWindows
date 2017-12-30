@@ -323,39 +323,9 @@ echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-7896-b18d-0225eaa8039c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4321-b18d-0225eaa8039c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
-echo.>>%A%
-
-
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-2048-b18d-0225eaa8034c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-4399-b18d-0225eaa8039c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*.lnk">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-5234-b18d-0225eaa8039c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\*\\*.lnk">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d250436-c0ab-1234-b18d-0225eaa8039c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows\\WinX\\*\\*.lnk">>%A%
 echo.>>%A%
 
 
@@ -2159,16 +2129,15 @@ Archive Ends
 "DefaultLevel"=dword:00040000
 "TransparentEnabled"=dword:00000001
 "PolicyScope"=dword:00000000
-"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,55,00,52,00,\
-  4c,00,00,00,53,00,48,00,53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,\
-  00,00,00,50,00,53,00,31,00,00,00,50,00,49,00,46,00,00,00,50,00,43,00,44,00,\
-  00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,00,00,4d,00,53,00,50,00,00,\
-  00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,00,4d,00,44,00,45,00,00,00,\
-  4d,00,44,00,42,00,00,00,4c,00,4e,00,4b,00,00,00,49,00,53,00,50,00,00,00,49,\
-  00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,00,\
-  4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,50,\
-  00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,00,\
-  4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,50,\
-  00,00,00,41,00,44,00,45,00,00,00
+"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,53,00,48,00,\
+  53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,00,00,00,50,00,53,00,31,\
+  00,00,00,50,00,43,00,44,00,00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,\
+  00,00,4d,00,53,00,50,00,00,00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,\
+  00,4d,00,44,00,45,00,00,00,4d,00,44,00,42,00,00,00,49,00,53,00,50,00,00,00,\
+  49,00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,\
+  00,4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,\
+  50,00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,\
+  00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
+  50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
 
