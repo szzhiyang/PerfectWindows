@@ -1641,8 +1641,8 @@ exit
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-"EnableSmartScreen"=dword:00000001
-"ShellSmartScreenLevel"="Warn"
+"EnableSmartScreen"=dword:00000000
+"ShellSmartScreenLevel"=-
 "DisableLockScreenAppNotifications"=dword:00000001
 "DisableLogonBackgroundImage"=dword:00000001
 "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
