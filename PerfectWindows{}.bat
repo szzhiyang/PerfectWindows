@@ -1872,3 +1872,6 @@ exit
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-8888-a6af-e2ad4c391626}]
+"SaferFlags"=dword:00000000
+"ItemData"="PerfectWindows{*}.bat"
