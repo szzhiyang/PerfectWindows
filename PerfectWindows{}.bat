@@ -1875,19 +1875,3 @@ exit
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-2333-94d480a6c8ca}]
-"SaferFlags"=dword:00000000
-"ItemData"="cmd.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-2345-94d480a6c8ca}]
-"SaferFlags"=dword:00000000
-"ItemData"="cscript.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-1234-94d480a6c8ca}]
-"SaferFlags"=dword:00000000
-"ItemData"="powershell.exe"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{191cd7fa-f240-4a17-4321-94d480a6c8ca}]
-"SaferFlags"=dword:00000000
-"ItemData"="regedit.exe"
-
