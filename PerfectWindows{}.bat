@@ -219,7 +219,7 @@ echo.>>%A%
 
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{1333c194-73f8-8888-a6af-e2ad4c391626}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="ItemData"="PerfectWindows{*}.bat">>%A%
+echo "ItemData"="PerfectWindows{*}.bat">>%A%
 echo.>>%A%
 
 
