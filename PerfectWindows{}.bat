@@ -1017,7 +1017,7 @@ exit
 "HideSCAHealth"=dword:00000001
 "HideSCAVolume"=dword:00000001
 "NoAutoTrayNotify"=dword:00000001
-"nodesktop"=dword:00000001
+"nodesktop"=dword:00000000
 "NoClose"=dword:00000001
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
