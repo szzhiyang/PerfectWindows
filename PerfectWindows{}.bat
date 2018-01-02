@@ -181,39 +181,15 @@ echo "ItemData"="%systemdrive%\\Program Files">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-5432-b18d-0225eaa8034c}]>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{4d259436-c0ab-2048-b18d-0225eaa8034c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\ProgramData">>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\OneDrive">>%A%
 echo.>>%A%
 
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4321-b18d-0225eaa8034c}]>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{6d259436-c0ab-4186-b18d-0225eaa8034c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Temp">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{6d259436-c0ab-4286-b18d-0225eaa8034c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Tmp">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{6d259436-c0ab-8765-b18d-0225eaa8034c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Packages">>%A%
-echo.>>%A%
-
-
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{6d259436-c0ab-9876-b18d-0225eaa8034c}]>>%A%
-echo "SaferFlags"=dword:00000000>>%A%
-echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Microsoft\\Windows">>%A%
+echo "ItemData"="%systemdrive%\\users\\*\\AppData\\Local\\Google">>%A%
 echo.>>%A%
 
 
