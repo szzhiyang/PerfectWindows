@@ -28,7 +28,8 @@ mode con cols=30 lines=3
 echo.
 echo PLESAE WAIT !
 
-
+net user Administrator /active:no 1>nul 2>nul
+net user Guest /active:no 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 
 
@@ -1864,4 +1865,3 @@ exit
   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
-
