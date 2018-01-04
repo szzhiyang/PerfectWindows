@@ -1833,13 +1833,15 @@ exit
 
 [HKEY_CLASSES_ROOT\exefile\shell\runas]
 "HasLUAShield"=""
-"Extended"=""
 
 [HKEY_CLASSES_ROOT\exefile\shell\runas\command]
 @="\"%1\" %*"
 "IsolatedCommand"="\"%1\" %*"
 
 [-HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
+"Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command]
 @="notepad"
@@ -1848,6 +1850,7 @@ exit
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
 "HasLUAShield"=""
+"Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
 @="cmd.exe /s /k pushd \"%V\"&&echo on&&color 0f&&title &&echo.&&echo.&&dir /a-d /b /ON&&echo."
