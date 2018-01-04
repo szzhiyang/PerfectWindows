@@ -1829,40 +1829,6 @@ exit
 "System"=""
 "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
 
-[HKEY_CLASSES_ROOT\exefile\shell\runas]
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\exefile\shell\runas\command]
-@="\"%1\" %*"
-"IsolatedCommand"="\"%1\" %*"
-
-[-HKEY_CLASSES_ROOT\exefile\shell\runas]
-
-[HKEY_CLASSES_ROOT\cplfile\shell\runas]
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\cplfile\shell\runas\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,72,00,75,00,\
-  6e,00,64,00,6c,00,6c,00,33,00,32,00,2e,00,65,00,78,00,65,00,20,00,73,00,68,\
-  00,65,00,6c,00,6c,00,33,00,32,00,2e,00,64,00,6c,00,6c,00,2c,00,43,00,6f,00,\
-  6e,00,74,00,72,00,6f,00,6c,00,5f,00,52,00,75,00,6e,00,44,00,4c,00,4c,00,41,\
-  00,73,00,55,00,73,00,65,00,72,00,20,00,22,00,25,00,31,00,22,00,2c,00,25,00,\
-  2a,00,00,00
-
-[-HKEY_CLASSES_ROOT\cplfile\shell\runas]
-
-[HKEY_CLASSES_ROOT\mscfile\shell\RunAs]
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\mscfile\shell\RunAs\command]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,6d,00,6d,00,\
-  63,00,2e,00,65,00,78,00,65,00,20,00,22,00,25,00,31,00,22,00,20,00,25,00,2a,\
-  00,00,00
-
-[-HKEY_CLASSES_ROOT\mscfile\shell\RunAs]
-
 [-HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command]
