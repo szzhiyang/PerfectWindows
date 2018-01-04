@@ -1829,7 +1829,18 @@ exit
 "System"=""
 "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command]
+@="notepad"
+
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
+@="cmd.exe /s /k pushd \"%V\"&&echo on&&color 0f&&title &&echo.&&echo.&&dir /a-d /b /ON&&echo."
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
@@ -1850,6 +1861,8 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
 "AuthenticodeFlags"=dword:00000000
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
 "DefaultLevel"=dword:00040000
 "TransparentEnabled"=dword:00000001
@@ -1865,3 +1878,4 @@ exit
   00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,\
   50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
+
