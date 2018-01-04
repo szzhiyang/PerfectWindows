@@ -1829,6 +1829,16 @@ exit
 "System"=""
 "PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
 
+[-HKEY_CLASSES_ROOT\exefile\shell\runas]
+
+[HKEY_CLASSES_ROOT\exefile\shell\runas]
+"HasLUAShield"=""
+"Extended"=""
+
+[HKEY_CLASSES_ROOT\exefile\shell\runas\command]
+@="\"%1\" %*"
+"IsolatedCommand"="\"%1\" %*"
+
 [-HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command]
