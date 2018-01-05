@@ -85,21 +85,18 @@ sc pause sysmain 1>nul 2>nul
 sc stop sysmain 1>nul 2>nul
 
 
-rd /s /q "%systemdrive%\PerfectWindowsTemp" 1>nul 2>nul
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 
 
 md "%T%" 1>nul 2>nul
 md "%P%" 1>nul 2>nul
 md "%DNS%" 1>nul 2>nul
-md "%systemdrive%\PerfectWindowsTemp" 1>nul 2>nul
 
 
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 
 
-attrib +h +s "%systemdrive%\PerfectWindowsTemp" 1>nul 2>nul
 attrib +h +s "%systemroot%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles%" 1>nul 2>nul
 attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
@@ -1857,6 +1854,8 @@ exit
 
 [-HKEY_CLASSES_ROOT\mscfile\shell\RunAs]
 
+[-HKEY_CLASSES_ROOT\exefile\shell\runas]
+
 [HKEY_CLASSES_ROOT\exefile\shell\runas]
 "HasLUAShield"=""
 
@@ -1864,15 +1863,10 @@ exit
 @="\"%1\" %*"
 "IsolatedCommand"="\"%1\" %*"
 
-[-HKEY_CLASSES_ROOT\exefile\shell\runas]
-
-[HKEY_CLASSES_ROOT\exefile\shell\runas]
-"HasLUAShield"=""
-
-[HKEY_CLASSES_ROOT\exefile\shell\runas\command]
-@="cmd.exe /s /k echo off&&pushd \"..\"&&pushd \"..\"&&pushd \"PerfectWindowsTemp\"&&color 0c&&title &&echo.&&echo Elevating:&&echo.&&echo \"%1\" %* &&echo.&&echo Confirm:&&echo."
-
 [-HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\edit]
+"Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\edit\command]
 @="notepad"
@@ -1881,6 +1875,7 @@ exit
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
 "HasLUAShield"=""
+"Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
 @="cmd.exe /s /k pushd \"%V\"&&echo on&&color 0c&&title &&echo.&&dir /a-d /b /ON"
@@ -1891,7 +1886,7 @@ exit
 "ShutdownWithoutLogon"=dword:00000000
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
-"ConsentPromptBehaviorAdmin"=dword:0000000
+"ConsentPromptBehaviorAdmin"=dword:0000005
 "ConsentPromptBehaviorUser"=dword:00000003
 "PromptOnSecureDesktop"=dword:00000001
 "EnableUIADesktopToggle"=dword:00000000
