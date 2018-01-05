@@ -1878,7 +1878,7 @@ exit
 "Extended"=""
 
 [HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
-@="cmd.exe /s /k pushd \"%V\"&&echo on&&color 0c&&title &&echo.&&dir /a-d /b /ON"
+@="cmd.exe /s /k pushd \"%V\"&&echo on&&color 0f&&title &&echo.&&dir /a-d /b /ON"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
