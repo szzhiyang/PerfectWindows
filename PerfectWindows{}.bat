@@ -44,13 +44,9 @@ icacls "%WINDIR%\System32\at.exe" /inheritance:r /remove "Administrators" "Authe
 
 
 icacls "%WINDIR%\System32\schtasks.exe" /reset 1>nul 2>nul
-takeown /f "%WINDIR%\System32\schtasks.exe" /a 1>nul 2>nul
-icacls "%WINDIR%\System32\schtasks.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 
 
 icacls "%WINDIR%\System32\dfrgui.exe" /reset 1>nul 2>nul
-takeown /f "%WINDIR%\System32\dfrgui.exe" /a 1>nul 2>nul
-icacls "%WINDIR%\System32\dfrgui.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 
 
 icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /reset 1>nul 2>nul
@@ -389,6 +385,64 @@ sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 rd /s /q "%T%" 1>nul 2>nul
 md "%T%" 1>nul 2>nul
 
+:schtasks
+echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
+echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
+echo   ^<RegistrationInfo^>>>%T%\1.xml
+echo     ^<URI^>\Microsoft\Windows\Windows Defender\Windows Defender Signature Update^</URI^>>>%T%\1.xml
+echo   ^</RegistrationInfo^>>>%T%\1.xml
+echo   ^<Triggers^>>>%T%\1.xml
+echo     ^<TimeTrigger^>>>%T%\1.xml
+echo       ^<Repetition^>>>%T%\1.xml
+echo         ^<Interval^>PT5M^</Interval^>>>%T%\1.xml
+echo         ^<StopAtDurationEnd^>false^</StopAtDurationEnd^>>>%T%\1.xml
+echo       ^</Repetition^>>>%T%\1.xml
+echo       ^<StartBoundary^>1999-11-30T00:00:00^</StartBoundary^>>>%T%\1.xml
+echo       ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^</TimeTrigger^>>>%T%\1.xml
+echo   ^</Triggers^>>>%T%\1.xml
+echo   ^<Principals^>>>%T%\1.xml
+echo     ^<Principal id="Author"^>>>%T%\1.xml
+echo       ^<RunLevel^>HighestAvailable^</RunLevel^>>>%T%\1.xml
+echo     ^</Principal^>>>%T%\1.xml
+echo   ^</Principals^>>>%T%\1.xml
+echo   ^<Settings^>>>%T%\1.xml
+echo     ^<MultipleInstancesPolicy^>IgnoreNew^</MultipleInstancesPolicy^>>>%T%\1.xml
+echo     ^<DisallowStartIfOnBatteries^>false^</DisallowStartIfOnBatteries^>>>%T%\1.xml
+echo     ^<StopIfGoingOnBatteries^>false^</StopIfGoingOnBatteries^>>>%T%\1.xml
+echo     ^<AllowHardTerminate^>true^</AllowHardTerminate^>>>%T%\1.xml
+echo     ^<StartWhenAvailable^>true^</StartWhenAvailable^>>>%T%\1.xml
+echo     ^<RunOnlyIfNetworkAvailable^>false^</RunOnlyIfNetworkAvailable^>>>%T%\1.xml
+echo     ^<IdleSettings^>>>%T%\1.xml
+echo       ^<StopOnIdleEnd^>false^</StopOnIdleEnd^>>>%T%\1.xml
+echo       ^<RestartOnIdle^>true^</RestartOnIdle^>>>%T%\1.xml
+echo     ^</IdleSettings^>>>%T%\1.xml
+echo     ^<AllowStartOnDemand^>true^</AllowStartOnDemand^>>>%T%\1.xml
+echo     ^<Enabled^>true^</Enabled^>>>%T%\1.xml
+echo     ^<Hidden^>true^</Hidden^>>>%T%\1.xml
+echo     ^<RunOnlyIfIdle^>false^</RunOnlyIfIdle^>>>%T%\1.xml
+echo     ^<WakeToRun^>false^</WakeToRun^>>>%T%\1.xml
+echo     ^<ExecutionTimeLimit^>PT72H^</ExecutionTimeLimit^>>>%T%\1.xml
+echo     ^<Priority^>7^</Priority^>>>%T%\1.xml
+echo   ^</Settings^>>>%T%\1.xml
+echo   ^<Actions Context="Author"^>>>%T%\1.xml
+echo     ^<Exec^>>>%T%\1.xml
+echo       ^<Command^>"%programfiles%\Windows Defender\MpCmdRun.exe"^</Command^>>>%T%\1.xml
+echo       ^<Arguments^>-SignatureUpdate -MMPC^</Arguments^>>>%T%\1.xml
+echo     ^</Exec^>>>%T%\1.xml
+echo   ^</Actions^>>>%T%\1.xml
+echo ^</Task^>>>%T%\1.xml
+
+SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
+
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /DISABLE 1>nul 2>nul
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /DISABLE 1>nul 2>nul
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /DISABLE 1>nul 2>nul
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\sih" /DISABLE 1>nul 2>nul
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\sihboot" /DISABLE 1>nul 2>nul
+
 
 :applyreg
 taskkill /f /im explorer.exe 1>nul 2>nul
@@ -411,18 +465,23 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UserManager]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SystemEventsBroker]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PolicyAgent]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gpsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppIDSvc]
 "Start"=dword:00000004
@@ -432,195 +491,254 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DusmSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WlanSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Winmgmt]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\stisvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\FontCache]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MpsSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SecurityHealthService]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AudioEndpointBuilder]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Audiosrv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ProfSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Themes]
 "Start"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
-"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wscsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PlugPlay]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\nsi]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LSM]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\luafv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\clr_optimization_v2.0.50727_32]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UxSms]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lltdio]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\rspndr]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MMCSS]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PEAUTH]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\secdrv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ShellHWDetection]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NlaSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SENS]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tcpipreg]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Parvdm]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrustedInstaller]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TrkWks]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dhcp]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DoSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DcomLaunch]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CryptSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wuauserv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\sppsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CoreMessagingRegistrar]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventSystem]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BFE]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BrokerInfrastructure]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\BITS]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\W32Time]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Wcmsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lfsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DsmSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceInstall]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DeviceAssociationService]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\CDPUserSvc_420c0]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanWorkstation]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnUserService_420c0]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WpnService]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\tiledatamodelsvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\ShellHWDetection]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcEptMapper]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RpcSs]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Spooler]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10]
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DiagTrack]
 "Start"=dword:00000004
@@ -642,9 +760,11 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WerSvc]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SDRSVC]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\lmhosts]
 "Start"=dword:00000004
@@ -657,27 +777,36 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\SessionEnv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\TermService]
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\UmRdpService]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\winmgmt]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\wmiApSrv]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WSearch]
 "Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Schedule]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\defragsvc]
 "Start"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iphlpsvc]
+"Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DnsCache]
 "Start"=dword:00000004
