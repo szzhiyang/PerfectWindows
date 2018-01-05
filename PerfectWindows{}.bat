@@ -1858,6 +1858,7 @@ exit
 
 [HKEY_CLASSES_ROOT\exefile\shell\runas]
 "HasLUAShield"=""
+"Extended"=""
 
 [HKEY_CLASSES_ROOT\exefile\shell\runas\command]
 @="\"%1\" %*"
