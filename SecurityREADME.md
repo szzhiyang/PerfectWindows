@@ -42,8 +42,9 @@
 ## 禁用 SMB v1 协议
 ---
 ## 增强 Windows Defender 防病毒
-* 除非您安装了第三方防病毒软件，否则 Windows Defender 将永远运行。
-* 提高了 Windows Defender 的防护级别。
+* 除非您安装了第三方防病毒软件，否则 Windows Defender 防病毒将永远运行。
+* 提高了 Windows Defender 防病毒的防护级别。
+* 增大了 Windows Defender 防病毒的更新频率。
 ---
 ## 强制启用 Windows 内置的安全功能
 * 启用并防止禁用：
