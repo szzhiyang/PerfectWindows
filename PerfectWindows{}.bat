@@ -1972,6 +1972,60 @@ exit
 
 [-HKEY_CLASSES_ROOT\cplfile\shell\runas]
 
+[-HKEY_CLASSES_ROOT\Msi.Package\shell\runas]
+
+[HKEY_CLASSES_ROOT\Msi.Package\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Msi.Package\shell\runas\command]
+@="msiexec.exe /i \"%1\" %*"
+
+[-HKEY_CLASSES_ROOT\Msi.Patch\shell\runas]
+
+[HKEY_CLASSES_ROOT\Msi.Patch\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Msi.Patch\shell\runas\command]
+@="msiexec.exe /p \"%1\" %*"
+
+[-HKEY_CLASSES_ROOT\JSEFile\shell\runas]
+
+[HKEY_CLASSES_ROOT\JSEFile\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\JSEFile\shell\runas\command]
+@="wscript.exe \"%1\" %*"
+
+[-HKEY_CLASSES_ROOT\JSFile\shell\runas]
+
+[HKEY_CLASSES_ROOT\JSFile\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\JSFile\shell\runas\command]
+@="wscript.exe \"%1\" %*"
+
+[-HKEY_CLASSES_ROOT\VBEFile\shell\runas]
+
+[HKEY_CLASSES_ROOT\VBEFile\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\VBEFile\shell\runas\command]
+@="wscript.exe \"%1\" %*"
+
+[-HKEY_CLASSES_ROOT\VBSFile\shell\runas]
+
+[HKEY_CLASSES_ROOT\VBSFile\shell\runas]
+"Extended"=""
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\VBSFile\shell\runas\command]
+@="wscript.exe \"%1\" %*"
+
 [HKEY_CLASSES_ROOT\mscfile\shell\RunAs]
 "HasLUAShield"=""
 
@@ -2045,4 +2099,3 @@ exit
   4d,00,44,00,00,00,43,00,48,00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,\
   00,53,00,00,00,41,00,44,00,50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
-
