@@ -1,9 +1,3 @@
-# 由于想法幼稚、偏执且不切实际，本项目已取消。
-# 仓库中的文件仅用于留作纪念，请勿下载
-
-
-
-
 * ***PerfectWindows 尚处于开发阶段，其功能及其说明文档（本页面）可能会随时发生改动。***
 * ***PerfectWindows 的理念已经定型，并已经体现在了本页面中。***
 * ***PerfectWindows 不支持 Windows XP 和 Windows Vista。***
