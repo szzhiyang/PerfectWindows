@@ -4,8 +4,7 @@
 * ***如果您在试用 PerfectWindows 后遇到了疑惑，请先阅读本页面。如果仍然无法解决，请提交 Issue。***
 * ***PerfectWindows 非常感谢您的光临。***
 ---
-# 完美的 Windows 体验
-# 来自 PerfectWindows !
+# Windows 本该如此完美！
 ---
 # 这个体积仅 0.07 MB 的 DOS 批处理文件
 # 对您的 Windows 体验的显著改善
