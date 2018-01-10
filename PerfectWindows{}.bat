@@ -1145,7 +1145,7 @@ exit
 "ClearRecentProgForNewUserInStartMenu"=dword:00000001
 "NoTrayContextMenu"=dword:00000001
 "NoTaskGrouping"=dword:00000001
-"DisableCurrentUserRun"=dword:00000001
+"DisableCurrentUserRun"=dword:00000000
 "DisableCurrentUserRunOnce"=dword:00000000
 "NoInternetIcon"=dword:00000001
 "HideSCANetwork"=dword:00000001
@@ -1243,7 +1243,7 @@ exit
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
 "DontSetAutoplayCheckbox"=dword:00000001
-"DisableLocalMachineRun"=dword:00000001
+"DisableLocalMachineRun"=dword:0000000
 "HidePowerOptions"=dword:00000001
 "DisableLocalMachineRunOnce"=dword:00000000
 "AllowOnlineTips"=dword:00000000
