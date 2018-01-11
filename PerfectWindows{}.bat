@@ -831,7 +831,7 @@ exit
 [-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects5]
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=hex:00,00,00,00,00,00,00,00,04,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,10,E0,47,E0,19,E0,4F,E0,00,00,00,00
 
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
@@ -941,6 +941,7 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot]
 "AlternateShell"="cmd.exe"
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
 ".tif"="PhotoViewer.FileAssoc.Tiff"
 ".tiff"="PhotoViewer.FileAssoc.Tiff"
