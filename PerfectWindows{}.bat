@@ -851,10 +851,13 @@ exit
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "SeparateProcess"=dword:00000001
-"ExtendedUIHoverTime"=dword:11111111
+"ExtendedUIHoverTime"=dword:00000400
+
+[HKEY_CURRENT_USER\Control Panel\Desktop]
+"MenuShowDelay"="0"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
-"NumThumbnails"=dword:00000000
+"NumThumbnails"=-
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace]
 
