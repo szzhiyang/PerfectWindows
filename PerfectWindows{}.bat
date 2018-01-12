@@ -736,7 +736,7 @@ exit
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,10,E0,47,E0,19,E0,4F,E0,00,00,00,00
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,2E,E0,51,E0,30,E0,49,E0,32,E0,47,E0,19,E0,4F,E0,00,00,00,00
 
 [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies]
 
@@ -851,10 +851,14 @@ exit
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
 "SeparateProcess"=dword:00000001
-"ExtendedUIHoverTime"=dword:00000400
+"ExtendedUIHoverTime"=dword:000001f4
 
 [HKEY_CURRENT_USER\Control Panel\Desktop]
 "MenuShowDelay"="0"
+
+[HKEY_CURRENT_USER\Control Panel\Mouse]
+"MouseHoverTime"="1"
+"MouseSpeed"="2"
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
 "NumThumbnails"=-
@@ -1482,7 +1486,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
 "DisableStartupSound"=dword:00000001
-"ShutdownWithoutLogon"=dword:00000000
+"ShutdownWithoutLogon"=dword:00000001
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
 "ConsentPromptBehaviorAdmin"=dword:0000005
