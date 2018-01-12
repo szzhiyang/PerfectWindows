@@ -194,45 +194,16 @@ echo.>>%A%
 :ExcludeNeededFunctions
 
 if exist PerfectWindows{*p*}.bat (
-echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "HidePowerOptions"=dword:00000000>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "PowerButtonAction"=->>%A%
-echo.>>%A%
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power]>>%A%
 echo.>>%A%
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoClose"=dword:00000000>>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "HiberbootEnabled"=->>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]>>%A%
-echo "ShutdownWithoutLogon"=dword:00000001>>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "ShowSleepOption"=->>%A%
-echo "ShowHibernateOption"=->>%A%
-echo "ShowLockOption"=->>%A%
 echo.>>%A%)
 
 if exist PerfectWindows{*n*}.bat (
 echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableNotificationCenter"=dword:00000000>>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableLockScreenAppNotifications"=dword:00000000>>%A%
 echo.>>%A%)
 
 if exist PerfectWindows{*u*}.bat (
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "NoDesktop"=dword:00000000>>%A%
-echo.>>%A%
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]>>%A%
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
@@ -241,37 +212,8 @@ echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
 echo "DisableLogonBackgroundImage"=dword:00000000>>%A%
 echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
-echo "EnableAutoTray"=dword:00000001>>%A%
-echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
-echo "TaskbarAnimations"=dword:00000001>>%A%
-echo "TaskbarGlomLevel"=dword:00000000>>%A%
-echo "TaskbarSmallIcons"=dword:00000000>>%A%
 echo "ExtendedUIHoverTime"=dword:00000001>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]>>%A%
-echo "NumThumbnails"=->>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "HidePeopleBar"=->>%A%
-echo "ShowWindowsStoreAppsOnTaskbar"=->>%A%
-echo "NoPinningToTaskbar"=->>%A%
-echo "NoPinningStoreToTaskbar"=->>%A%
-echo "TaskbarNoPinnedList"=->>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
-echo "LockTaskbar"=dword:00000000>>%A%
-echo "TaskbarNoResize"=dword:00000000>>%A%
-echo "TaskbarNoRedock"=dword:00000000>>%A%
-echo "TaskbarLockAll"=dword:00000000>>%A%
-echo "NoToolbarsOnTaskbar"=dword:00000000>>%A%
-echo "NoTrayContextMenu"=dword:00000000>>%A%
-echo "NoTaskGrouping"=dword:00000000>>%A%
-echo "HideSCANetwork"=dword:00000000>>%A%
-echo "HideSCAHealth"=dword:00000000>>%A%
-echo "HideSCAVolume"=dword:00000000>>%A%
-echo "NoAutoTrayNotify"=dword:00000000>>%A%
 echo.>>%A%)
 
 
@@ -903,7 +845,6 @@ exit
 "EnforceShellExtensionSecurity"=dword:00000001
 "ClearRecentDocsOnExit"=dword:00000001
 "NoRecentDocsMenu"=dword:00000001
-"NoAutoTrayNotify"=dword:00000001
 "NoDesktop"=dword:00000000
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
