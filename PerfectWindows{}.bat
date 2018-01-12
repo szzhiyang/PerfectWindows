@@ -229,6 +229,16 @@ echo "ShowHibernateOption"=->>%A%
 echo "ShowLockOption"=->>%A%
 echo.>>%A%)
 
+if exist PerfectWindows{*n*}.bat (
+echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
+echo.>>%A%
+echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
+echo "DisableNotificationCenter"=dword:00000000>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
+echo "DisableLockScreenAppNotifications"=dword:00000000>>%A%
+echo.>>%A%)
+
 if exist PerfectWindows{*u*}.bat (
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoDesktop"=dword:00000000>>%A%
@@ -1292,7 +1302,7 @@ exit
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
-"DisableNotificationCenter"=dword:00000000
+"DisableNotificationCenter"=dword:00000001
 "HidePeopleBar"=dword:00000001
 "ForceStartSize"=-
 "ClearTilesOnExit"=dword:00000001
@@ -1310,6 +1320,10 @@ exit
 "ScreenSaveTimeOut"="0"
 "ScreenSaverIsSecure"="1"
 "ScreenSaveActive"="0"
+
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
+"SignInMode"=dword:00000002
+"ConvertibleSlateModePromptPreference"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
