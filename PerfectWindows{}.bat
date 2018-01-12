@@ -1294,11 +1294,11 @@ exit
 [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoToastApplicationNotification"=dword:00000000
-"NoToastApplicationNotificationOnLockScreen"=dword:00000000
-"NoTileApplicationNotification"=dword:00000000
-"NoCloudApplicationNotification"=dword:00000000
-"DisallowNotificationMirroring"=dword:00000000
+"NoToastApplicationNotification"=dword:00000001
+"NoToastApplicationNotificationOnLockScreen"=dword:00000001
+"NoTileApplicationNotification"=dword:00000001
+"NoCloudApplicationNotification"=dword:00000001
+"DisallowNotificationMirroring"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
@@ -1720,7 +1720,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "EnableSmartScreen"=dword:00000000
 "ShellSmartScreenLevel"=-
-"DisableLockScreenAppNotifications"=dword:00000000
+"DisableLockScreenAppNotifications"=dword:00000001
 "DisableLogonBackgroundImage"=dword:00000001
 "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
 "HiberbootEnabled"=dword:00000001
