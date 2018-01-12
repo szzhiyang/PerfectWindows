@@ -1,7 +1,6 @@
 Windows Registry Editor Version 5.00
 
 
-
 ! ! ! PLEASE DO NOT MODIFY THIS BATCH FILE UNLESS YOU KNOW WHAT YOU ARE DOING ! ! !
 
 
@@ -39,25 +38,18 @@ icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators"
 
 
 icacls "%WINDIR%\System32\at.exe" /reset 1>nul 2>nul
-takeown /f "%WINDIR%\System32\at.exe" /a 1>nul 2>nul
-icacls "%WINDIR%\System32\at.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
-
 
 icacls "%WINDIR%\System32\schtasks.exe" /reset 1>nul 2>nul
 
-
 icacls "%WINDIR%\System32\dfrgui.exe" /reset 1>nul 2>nul
-
 
 icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /reset 1>nul 2>nul
 takeown /f "%WINDIR%\System32\UserAccountControlSettings.exe" /a 1>nul 2>nul
 icacls "%WINDIR%\System32\UserAccountControlSettings.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 
-
 icacls "%WINDIR%\System32\regini.exe" /reset 1>nul 2>nul
 takeown /f "%WINDIR%\System32\regini.exe" /a 1>nul 2>nul
 icacls "%WINDIR%\System32\regini.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
-
 
 set P=%systemroot%\PerfectWindowsZZY
 set T=%systemroot%\PerfectWindowsTemp
@@ -110,15 +102,13 @@ attrib +h +s "%AppData%" 1>nul 2>nul
 attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 
 
-echo.>%T%\startup
-rd /s /q "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %T%\startup "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-attrib +h +s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+
+attrib -h -s "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+del "%systemdrive%\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 
 
-rd /s /q "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-copy %T%\startup "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
-attrib +h +s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+attrib -h -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
+del "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 
 
 rd /s /q "%T%" 1>nul 2>nul
@@ -440,7 +430,11 @@ shutdown /r /o /f /t 0 1>nul 2>nul
 shutdown /r /f /t 0 1>nul 2>nul
 exit
 
-
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]
+"User Policies 2"="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
+"Machine Policies 2"="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
+"User Policies 1"="HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft"
+"Machine Policies 1"="HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft"
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WbioSrvc]
 "Start"=dword:00000002
@@ -799,28 +793,8 @@ exit
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\fhsvc]
 "Start"=dword:00000004
 
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects2]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects3]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects4]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\StuckRects5]
-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,32,E0,3B,00,2E,E0,51,E0,30,E0,49,E0,10,E0,47,E0,19,E0,4F,E0,00,00,00,00
-
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl]
-"Win32PrioritySeparation"=dword:00000002
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Applets\Regedit\Favorites]
-"User Policies 2"="HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
-"Machine Policies 2"="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies"
-"User Policies 1"="HKEY_CURRENT_USER\\SOFTWARE\\Policies\\Microsoft"
-"Machine Policies 1"="HKEY_LOCAL_MACHINE\\SOFTWARE\\Policies\\Microsoft"
 
 [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies]
 
@@ -832,74 +806,6 @@ exit
 @="DO NOT DELETE THIS KEY !"
 
 [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
-
-[HKEY_CURRENT_USER\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Run]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-
-[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run]
-
-[-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\StartupPrograms]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\AppSetup]
-
-[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\AlternateShells\AvailableShells]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Taskman]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Runonce]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\RunonceEx]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Terminal Server\Install\Software\Microsoft\Windows\CurrentVersion\Run]
-
-[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp\InitialProgram]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Installed Components]
-
-[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Windows\IconServiceLib]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnConnect]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnConnect]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows CE Services\AutoStartOnDisconnect]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows CE Services\AutoStartOnDisconnect]
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\System\Scripts]
-
-[-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System\Scripts]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Load]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\Windows\Run]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Shell]
-
-[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]
-
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System\Shell]
-
-[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts]
-
-[-HKEY_CURRENT_USER\Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\TrayNotify]
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters]
 "SMBDeviceEnabled"=dword:00000000
@@ -917,9 +823,6 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\LSA]
 "RestrictAnonymous"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SafeBoot]
-"AlternateShell"="cmd.exe"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
 ".tif"="PhotoViewer.FileAssoc.Tiff"
@@ -970,6 +873,10 @@ exit
 "WakeUp"=dword:00000000
 "MaintenanceDisabled"=dword:00000001
 
+[HKEY_CLASSES_ROOT\lnkfile]
+@="Shortcut"
+"IsShortcut"=""
+
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\CrashControl]
 "AutoReboot"=dword:00000000
 "AlwaysKeepMemoryDump"=dword:00000000
@@ -992,146 +899,21 @@ exit
 "BackgroundDimmingLayer_percent"=dword:00000028
 "wallpaper"=dword:00000001
 
-[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\BitBucket]
-
-[HKEY_CURRENT_USER\Control Panel\International]
-"sShortTime"="H:m"
-"sLongTime"="H:m:s"
-"sShortTime"="H:mm"
-"sLongTime"="H:mm:ss"
-"s1159"=-
-"s2359"=-
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]
-"EnableAutoTray"=dword:00000000
-"ShowFrequent"=dword:00000000
-"ShowRecent"=dword:00000000
-"ShowDriveLettersFirst"=dword:00000000
-"ShellState"=hex:24,00,00,00,1c,08,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
-   01,00,00,00,13,00,00,00,00,00,00,00,6b,00,00,00
-"IconUnderline"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
-"SeparateProcess"=dword:00000001
-"ShowTypeOverlay"=dword:00000001
-"DontUsePowerShellOnWinX"=dword:00000001
-"Hidden"=dword:00000002
-"ShowSuperHidden"=dword:00000000
-"ShowEncryptCompressedColor"=dword:00000001
-"HideFileExt"=dword:00000001
-"ExtendedUIHoverTime"=dword:11111111
-"AutoCheckSelect"=dword:00000001
-"TaskbarSizeMove"=dword:00000000
-"PersistBrowsers"=dword:00000001
-"TaskbarAnimations"=dword:00000000
-"TaskbarGlomLevel"=dword:00000001
-"ShowDriveLettersFirst"=dword:00000000
-"ShowInfoTip"=dword:00000000
-"ShowTypeOverlay"=dword:00000001
-"ShowStatusBar"=dword:00000001
-"TaskbarSmallIcons"=dword:00000001
-"HideDrivesWithNoMedia"=dword:00000001
-"NavPaneExpandToCurrentFolder"=dword:00000001
-"NavPaneShowAllFolders"=dword:00000000
-"SharingWizardOn"=dword:00000001
-"IconsOnly"=dword:00000000
-"FolderContentsInfoTip"=dword:00000000
-"HideMergeConflicts"=dword:00000001
-"ShowPreviewHandlers"=dword:00000001
-"ListviewShadow"=dword:00000001
-"ListviewAlphaSelect"=dword:00000001
-"TaskbarAppsVisibleInTabletMode"=dword:00000001
-"TaskbarSmallIcons"=dword:00000001
-"UseTabletModeNotificationIcons"=dword:00000000
-"ShowSyncProviderNotifications"=dword:00000000
-"LaunchTo"=dword:00000001
-"JointResize"=dword:00000001
-"SnapAssist"=dword:00000001
-"SnapFill"=dword:00000001
-"VirtualDesktopTaskbarFilter"=dword:00000001
-"VirtualDesktopAltTabFilter"=dword:00000001
-"ShowEncryptCompressedColor"=dword:00000001
-"TypeAhead"=dword:00000001
-"AlwaysShowMenus"=dword:00000000
-"HideDrivesWithNoMedia"=dword:00000001
-"Start_TrackDocs"=dword:00000000
-"Start_ShowNetPlaces"=dword:00000000
-"Start_NotifyNewApps"=dword:00000000
-"Start_ShowDownloads"=dword:00000001
-"Start_ShowVideos"=dword:00000001
-"Start_AutoCascade"=dword:00000000
-"Start_LargeMFUIcons"=dword:00000000
-"Start_ShowPrinters"=dword:00000000
-"Start_ShowSetProgramAccessAndDefaults"=dword:00000000
-"Start_ShowUser"=dword:00000000
-"Start_ShowHelp"=dword:00000000
-"Start_MinMFU"=dword:00000000
-"Start_ShowMyGames"=dword:00000000
-"Start_ShowMyPics"=dword:00000001
-"Start_ShowMyDocs"=dword:00000001
-"Start_ShowMyMusic"=dword:00000001
-"Start_ShowMyComputer"=dword:00000001
-"Start_ShowControlPanel"=dword:00000001
-"Start_SearchFiles"=dword:00000002
-"Start_ShowHomeGroup"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\DetailsContainer]
-"DetailsContainer"=hex:02,00,00,00,02,00,00,00
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Modules\GlobalSettings\Sizer]
-"PageSpaceControlSizer"=hex:a0,00,00,00,00,00,00,00,00,00,00,00,56,03,00,00
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
-"NumThumbnails"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences]
-"WholeFileSystem"=dword:00000000
-"SystemFolders"=dword:00000000
-"ArchivedFiles"=dword:00000000
-
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"LockTaskbar"=dword:00000001
-"TaskbarNoResize"=dword:00000001
-"TaskbarNoRedock"=dword:00000001
-"TaskbarLockAll"=dword:00000001
-"NoToolbarsOnTaskbar"=dword:00000001
-"NoRecycleFiles"=dword:00000000
-"PreventItemCreationInUsersFilesFolder"=dword:00000001
-"NoFolderOptions"=dword:00000001
-"NoPreviewPane"=dword:00000001
-"NoReadingPane"=dword:00000001
-"NoSecurityTab"=dword:00000000
-"NoHardwareTab"=dword:00000001
-"NoCDBurning"=dword:00000001
-"NoDFSTab"=dword:00000001
-"NoNetConnectDisconnect"=dword:00000000
-"ConfirmFileDelete"=dword:00000001
-"ForceClassicControlPanel"=dword:00000001
 "EnforceShellExtensionSecurity"=dword:00000001
 "ClearRecentDocsOnExit"=dword:00000001
 "NoRecentDocsMenu"=dword:00000001
-"NoStartMenuMFUprogramsList"=dword:00000001
-"ClearRecentProgForNewUserInStartMenu"=dword:00000001
-"NoTrayContextMenu"=dword:00000000
-"NoTaskGrouping"=dword:00000001
-"DisableCurrentUserRun"=dword:00000000
-"DisableCurrentUserRunOnce"=dword:00000000
-"NoInternetIcon"=dword:00000001
-"HideSCANetwork"=dword:00000001
-"HideSCAHealth"=dword:00000001
-"HideSCAVolume"=dword:00000001
 "NoAutoTrayNotify"=dword:00000001
 "NoDesktop"=dword:00000000
-"NoClose"=dword:00000001
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
-"DontSetAutoplayCheckbox"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]
-"SearchOnly"=dword:00000001
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]
+"SeparateProcess"=dword:00000001
+"ExtendedUIHoverTime"=dword:11111111
 
-[HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
-"MinAnimate"="1"
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Taskband]
+"NumThumbnails"=dword:00000000
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace]
 
@@ -1150,95 +932,13 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7007ACC7-3202-11D1-AAD2-00805FC1270E}]
 "Network Connections"=""
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\ClassicStartMenu]
-"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
-"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001
-"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
-"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001
-"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel]
-"{645FF040-5081-101B-9F08-00AA002F954E}"=dword:00000001
-"{59031a47-3f72-44a7-89c5-5595fe6b30ee}"=dword:00000001
-"{20D04FE0-3AEA-1069-A2D8-08002B30309D}"=dword:00000000
-"{F02C1A0D-BE21-4350-88B0-7367FC96EF3C}"=dword:00000001
-"{5399E694-6CE5-4D6C-8FCE-1D8870FDCBA0}"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\cleanuppath]
-@=hex(2):25,00,53,00,79,00,73,00,74,00,65,00,6d,00,52,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,53,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,6c,00,\
-  65,00,61,00,6e,00,6d,00,67,00,72,00,2e,00,65,00,78,00,65,00,20,00,2f,00,44,\
-  00,20,00,25,00,63,00,00,00
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\DefragPath]
-@=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,00,25,\
-  00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,64,00,66,00,\
-  72,00,67,00,75,00,69,00,2e,00,65,00,78,00,65,00,00,00
-
-[HKEY_CLASSES_ROOT\lnkfile]
-@="Shortcut"
-"IsShortcut"=""
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes]
-"ThemeChangesDesktopIcons"=dword:00000000
-"ThemeChangesMousePointers"=dword:00000000
-
-[HKEY_CURRENT_USER\Control Panel\Mouse]
-"MouseSensitivity"="10"
-"MouseSpeed"="2"
-"MouseThreshold1"="6"
-"MouseThreshold2"="10"
-"MouseTrails"="0"
-"MouseHoverTime"="2"
-"SnapToDefaultButton"="0"
-"DoubleClickSpeed"="500"
-
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"MouseWheelRouting"=dword:00000002
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\System]
-"NoDispScrSavPage"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
-"DontSetAutoplayCheckbox"=dword:00000001
-"DisableLocalMachineRun"=dword:0000000
-"HidePowerOptions"=dword:00000001
-"DisableLocalMachineRunOnce"=dword:00000000
 "AllowOnlineTips"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState]
-"Settings"=hex:0c,00,02,00,0a,01,00,00,60,00,00,00
-"FullPath"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\CTF\LangBar]
-"ShowStatus"=dword:00000003
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects]
-"VisualFXSetting"=dword:00000003
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
-"AlwaysHibernateThumbnails"=dword:00000000
-"EnableAeroPeek"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
 "PenWorkspaceAppSuggestionsEnabled"=dword:00000000
-
-[HKEY_CURRENT_USER\Control Panel\Desktop]
-"WheelScrollLines"="9"
-"MenuShowDelay"="0"
-"DragFullWindows"="1"
-"FontSmoothing"="2"
-"UserPreferencesMask"=hex:98,12,07,80,12,01,00,00
-"WindowArrangementActive"="1"
-"PaintDesktopVersion"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
-"DisplayVersion"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
-"DisableAutoplay"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 "FeatureManagementEnabled"=dword:00000000
@@ -1253,21 +953,11 @@ exit
 "RotatingLockScreenOverlayEnabled"=dword:00000000
 "SubscribedContent-310093Enabled"=dword:00000000
 
-[-HKEY_CURRENT_USER\Software\Microsoft\TabletTip]
-
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
 
-[HKEY_CURRENT_USER\Control Panel\International\User Profile]
-"HttpAcceptLanguageOptOut"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\MobilityCenter]
-
 [HKEY_CURRENT_USER\Software\Microsoft\MobilePC\MobilityCenter]
 "RunOnDesktop"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\FlightedFeatures]
-"ImmersiveContextMenu"=-
 
 [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main]
 "HideNewEdgeButton"=dword:00000001
@@ -1279,51 +969,19 @@ exit
 "MaxConnectionsPerServer"=dword:00000008
 "MaxConnectionsPer1_0Server"=dword:00000008
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Icons]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer]
-
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Internet Explorer\Restrictions]
 "NoHelpItemSendFeedback"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\System]
-"DisableCMD"=-
-
-[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
-
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoToastApplicationNotification"=dword:00000001
-"NoToastApplicationNotificationOnLockScreen"=dword:00000001
 "NoTileApplicationNotification"=dword:00000001
-"NoCloudApplicationNotification"=dword:00000001
-"DisallowNotificationMirroring"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
-"DisableNotificationCenter"=dword:00000001
-"HidePeopleBar"=dword:00000001
-"ForceStartSize"=-
 "ClearTilesOnExit"=dword:00000001
 "DisableSearchBoxSuggestions"=dword:00000000
 "ExplorerRibbonStartsMinimized"=dword:00000001
-"PowerButtonAction"=dword:00000200
 "DisableIndexedLibraryExperience"=dword:00000001
 "DisableSearchHistory"=dword:00000001
-"ShowWindowsStoreAppsOnTaskbar"=dword:00000002
-"NoPinningToTaskbar"=dword:00000001
-"NoPinningStoreToTaskbar"=dword:00000001
-"TaskbarNoPinnedList"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Control Panel\Desktop]
-"ScreenSaveTimeOut"="0"
-"ScreenSaverIsSecure"="1"
-"ScreenSaveActive"="0"
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
-"SignInMode"=dword:00000002
-"ConvertibleSlateModePromptPreference"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
@@ -1331,8 +989,6 @@ exit
 "DisableWindowsSpotlightOnActionCenter"=dword:00000001
 "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
 "DisableWindowsSpotlightFeatures"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile]
 "DisableNotifications"=dword:00000000
@@ -1342,17 +998,11 @@ exit
 "EnableFirewall"=dword:00000001
 "DisableNotifications"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\BITS]
-
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\BITS]
 "EnablePeercaching"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
 "DODownloadMode"=dword:00000003
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]
 "NoActivities"=dword:00000001
@@ -1374,8 +1024,6 @@ exit
 "PreventOverrideAppRepUnknown"=dword:00000000
 "EnabledV9"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
 "EnabledV9"=dword:00000001
 "PreventOverride"=dword:00000000
@@ -1396,35 +1044,17 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
 "AuthenticodeFlags"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\PreviewBuilds]
-
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\PreviewBuilds]
-"EnableConfigFlighting"=dword:00000000
-"EnableExperimentation"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
-
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
-"AllowTelemetry"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV]
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent]
-
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]
+"AllowTelemetry"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]
 "SyncOverMeteredNetwork"=dword:00000000
 "SyncOverMeteredNetworkWhenRoaming"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
 "DisableWindowsSettingSync"=dword:00000002
 "DisableWindowsSettingSyncUserOverride"=dword:00000001
 "DisableSyncOnPaidNetwork"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
 "Persistent"=dword:00000000
@@ -1432,17 +1062,6 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
 "PreventIgnoreCertErrors"=dword:00000001
 "CertificateRevocation"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\FileHistory]
-"Disabled"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
-
-[-HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\Power\PowerThrottling]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
 "ActivePowerScheme"=-
@@ -1610,16 +1229,8 @@ exit
 "DCSettingIndex"=dword:00000000
 "ACSettingIndex"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
-
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
-"ShowSleepOption"=dword:00000001
-"ShowHibernateOption"=dword:00000001
-"ShowLockOption"=dword:00000001
-"ExplorerRibbonStartsMinimized"=dword:00000001
 "NoNewAppAlert"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AllowCortana"=dword:00000001
@@ -1633,119 +1244,62 @@ exit
 "PreventIndexingOutlook"=dword:00000001
 "DisableRemovableDriveIndexing"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 "DisableFileSyncNGSC"=dword:00000000
 "DisableFileSync"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
-"DisableWindowsUpdateAccess"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
-"NoAutoUpdate"=dword:00000001
+"NoAutoUpdate"=-
 "AUOptions"=dword:00000002
 "ExcludeWUDriversInQualityUpdate"=dword:00000000
 "NoAutoRebootWithLoggedOnUsers"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
 "AutoDownloadAndUpdateMapData"=dword:00000000
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=dword:00000002
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\SystemRestore]
-"DisableConfig"=dword:00000001
-"DisableSR"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
 "CEIPEnable"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting]
 "DontShowUI"=dword:00000001
 "DontSendAdditionalData"=dword:00000001
 "Disabled"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting]
 "DoReport"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 "DisablePCA"=dword:00000001
 "DisableEngine"=dword:00000001
 "VDMDisallowed"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
 "DisableHomeGroup"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 "NoGenTicket"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
 "NoLockScreen"=dword:00000001
-"NoChangingLockScreen"=dword:00000000
 "NoLockScreenSlideshow"=dword:00000001
 "NoLockScreenCamera"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-"EnableSmartScreen"=dword:00000000
-"ShellSmartScreenLevel"=-
 "DisableLockScreenAppNotifications"=dword:00000001
 "DisableLogonBackgroundImage"=dword:00000001
-"BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
-"HiberbootEnabled"=dword:00000001
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableSoftLanding"=dword:00000001
 "DisableWindowsConsumerFeatures"=dword:00000001
 
-[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]
-
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Speech]
-"AllowSpeechModelUpdate"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
 "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender Security Center]
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender ExploitGuard]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableRoutinelyTakingAction"=dword:00000000
@@ -1862,24 +1416,11 @@ exit
 "Url"="microsoft.com/en-us/wdsi"
 "CompanyName"="Windows Defender Security Intelligence"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation]
-"Model"="Optimized by PerfectWindows"
-"SupportHours"="Optimized by PerfectWindows"
-"SupportURL"="https://www.github.com/szzhiyang/perfectwindows"
-
-
-[HKEY_CURRENT_USER\Control Panel\Colors]
-"Window"="255 255 255"
-
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
 "ctfmon"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,00,74,\
   00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
   74,00,66,00,6d,00,6f,00,6e,00,2e,00,65,00,78,00,65,00,00,00
-"OneDrive"=hex(2):25,00,4c,00,6f,00,63,00,61,00,6c,00,41,00,70,00,70,00,64,00,\
-  61,00,74,00,61,00,25,00,5c,00,4d,00,69,00,63,00,72,00,6f,00,73,00,6f,00,66,\
-  00,74,00,5c,00,4f,00,6e,00,65,00,44,00,72,00,69,00,76,00,65,00,5c,00,4f,00,\
-  6e,00,65,00,44,00,72,00,69,00,76,00,65,00,2e,00,65,00,78,00,65,00,20,00,2f,\
-  00,62,00,61,00,63,00,6b,00,67,00,72,00,6f,00,75,00,6e,00,64,00,00,00
+
 
 
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
@@ -1887,33 +1428,6 @@ exit
   00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
   74,00,66,00,6d,00,6f,00,6e,00,2e,00,65,00,78,00,65,00,00,00
 
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]
-"EnableFirstLogonAnimation"=dword:00000001
-"WinStationsDisabled"="0"
-"Background"="0 0 0"
-"VMApplet"="SystemPropertiesPerformance.exe /pagefile"
-"Shell"="explorer.exe"
-"ShellCritical"=dword:00000000
-"ShellInfrastructure"="sihost.exe"
-"SiHostCritical"=dword:00000000
-"SiHostReadyTimeOut"=dword:00000000
-"SiHostRestartCountLimit"=dword:00000000
-"SiHostRestartTimeGap"=dword:00000000
-"AutoRestartShell"=dword:00000001
-"DisableBackButton"=dword:00000001
-"EnableSIHostIntegration"=dword:00000001
-"ForceUnlockLogon"=dword:00000000
-"LegalNoticeCaption"=""
-"LegalNoticeText"=""
-"PasswordExpiryWarning"=dword:00000005
-"PowerdownAfterShutdown"="0"
-"ReportBootOk"="1"
-"ShutdownWithoutLogon"="0"
-"CachedLogonsCount"="10"
-"DebugServerCommand"="no"
-"System"=""
-"PreCreateKnownFolders"="{A520A1A4-1780-4FF6-BD18-167343C5AF16}"
 
 [HKEY_CLASSES_ROOT\cplfile\shell\runas]
 "HasLUAShield"=""
@@ -2056,3 +1570,4 @@ exit
   4d,00,44,00,00,00,43,00,48,00,4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,\
   00,53,00,00,00,41,00,44,00,50,00,00,00,41,00,44,00,45,00,00,00
 "AuthenticodeEnabled"=dword:00000000
+
