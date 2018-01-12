@@ -203,24 +203,6 @@ echo.>>%A%
 
 :ExcludeNeededFunctions
 
-if exist PerfectWindows{*c*}.bat (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\Windows Search]>>%A%
-echo "AllowCortana"=->>%A%
-echo "AllowCortanaAboveLock"=->>%A%
-echo.>>%A%
-echo [%CU%\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableSearchBoxSuggestions"=->>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]>>%A%
-echo "SearchboxTaskbarMode"=dword:00000001>>%A%
-echo.>>%A%)
-
-if exist PerfectWindows{*o*}.bat (
-echo [%LM%\SOFTWARE\Policies\Microsoft\Windows\OneDrive]>>%A%
-echo "DisableFileSyncNGSC"=->>%A%
-echo "DisableFileSync"=->>%A%
-echo.>>%A%)
-
 if exist PerfectWindows{*p*}.bat (
 echo [HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "HidePowerOptions"=dword:00000000>>%A%
@@ -247,16 +229,6 @@ echo "ShowHibernateOption"=->>%A%
 echo "ShowLockOption"=->>%A%
 echo.>>%A%)
 
-if exist PerfectWindows{*n*}.bat (
-echo [-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]>>%A%
-echo "DisableNotificationCenter"=dword:00000000>>%A%
-echo.>>%A%
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableLockScreenAppNotifications"=dword:00000000>>%A%
-echo.>>%A%)
-
 if exist PerfectWindows{*u*}.bat (
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]>>%A%
 echo "NoDesktop"=dword:00000000>>%A%
@@ -271,9 +243,6 @@ echo "DisableLogonBackgroundImage"=dword:00000000>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer]>>%A%
 echo "EnableAutoTray"=dword:00000001>>%A%
-echo.>>%A%
-echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]>>%A%
-echo "SearchboxTaskbarMode"=dword:00000001>>%A%
 echo.>>%A%
 echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced]>>%A%
 echo "TaskbarAnimations"=dword:00000001>>%A%
@@ -1002,16 +971,6 @@ exit
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\DWM]
 "AnimationsShiftKey"=dword:00000001
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize]
-"EnableTransparency"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People]
-"PeopleBand"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People\ShoulderTap]
-"ShoulderTap"=dword:00000000
-"ShoulderTapAudio"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Power]
 "AwayModeEnabled"=dword:00000000
 
@@ -1046,7 +1005,6 @@ exit
 "SeparateProcess"=dword:00000001
 "ShowTypeOverlay"=dword:00000001
 "DontUsePowerShellOnWinX"=dword:00000001
-"ShowTaskViewButton"=dword:00000000
 "Hidden"=dword:00000002
 "ShowSuperHidden"=dword:00000000
 "ShowEncryptCompressedColor"=dword:00000001
@@ -1132,7 +1090,7 @@ exit
 "NoFolderOptions"=dword:00000001
 "NoPreviewPane"=dword:00000001
 "NoReadingPane"=dword:00000001
-"NoSecurityTab"=dword:00000001
+"NoSecurityTab"=dword:00000000
 "NoHardwareTab"=dword:00000001
 "NoCDBurning"=dword:00000001
 "NoDFSTab"=dword:00000001
@@ -1144,7 +1102,7 @@ exit
 "NoRecentDocsMenu"=dword:00000001
 "NoStartMenuMFUprogramsList"=dword:00000001
 "ClearRecentProgForNewUserInStartMenu"=dword:00000001
-"NoTrayContextMenu"=dword:00000001
+"NoTrayContextMenu"=dword:00000000
 "NoTaskGrouping"=dword:00000001
 "DisableCurrentUserRun"=dword:00000000
 "DisableCurrentUserRunOnce"=dword:00000000
@@ -1153,7 +1111,7 @@ exit
 "HideSCAHealth"=dword:00000001
 "HideSCAVolume"=dword:00000001
 "NoAutoTrayNotify"=dword:00000001
-"nodesktop"=dword:00000000
+"NoDesktop"=dword:00000000
 "NoClose"=dword:00000001
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
@@ -1161,15 +1119,6 @@ exit
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\PrimaryProperties\UnindexedLocations]
 "SearchOnly"=dword:00000001
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\PenWorkspace]
-"PenWorkspaceButtonDesiredVisibility"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Search]
-"SearchboxTaskbarMode"=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Touchpad]
-"TouchpadDesiredVisibility"=dword:00000000
 
 [HKEY_CURRENT_USER\Control Panel\Desktop\WindowMetrics]
 "MinAnimate"="1"
@@ -1278,10 +1227,6 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Windows]
 "DisplayVersion"=dword:00000000
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ImmersiveShell]
-"SignInMode"=dword:00000002
-"ConvertibleSlateModePromptPreference"=dword:00000001
-
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers]
 "DisableAutoplay"=dword:00000001
 
@@ -1299,9 +1244,6 @@ exit
 "SubscribedContent-310093Enabled"=dword:00000000
 
 [-HKEY_CURRENT_USER\Software\Microsoft\TabletTip]
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications]
-"GlobalUserDisabled"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
@@ -1342,19 +1284,19 @@ exit
 [-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\PassportForWork\PINComplexity]
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoToastApplicationNotification"=dword:00000001
-"NoToastApplicationNotificationOnLockScreen"=dword:00000001
-"NoTileApplicationNotification"=dword:00000001
-"NoCloudApplicationNotification"=dword:00000001
-"DisallowNotificationMirroring"=dword:00000001
+"NoToastApplicationNotification"=dword:00000000
+"NoToastApplicationNotificationOnLockScreen"=dword:00000000
+"NoTileApplicationNotification"=dword:00000000
+"NoCloudApplicationNotification"=dword:00000000
+"DisallowNotificationMirroring"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
-"DisableNotificationCenter"=dword:00000001
+"DisableNotificationCenter"=dword:00000000
 "HidePeopleBar"=dword:00000001
 "ForceStartSize"=-
 "ClearTilesOnExit"=dword:00000001
-"DisableSearchBoxSuggestions"=dword:00000001
+"DisableSearchBoxSuggestions"=dword:00000000
 "ExplorerRibbonStartsMinimized"=dword:00000001
 "PowerButtonAction"=dword:00000200
 "DisableIndexedLibraryExperience"=dword:00000001
@@ -1666,8 +1608,8 @@ exit
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"AllowCortana"=dword:00000000
-"AllowCortanaAboveLock"=dword:00000000
+"AllowCortana"=dword:00000001
+"AllowCortanaAboveLock"=dword:00000001
 "AutoIndexSharedFolders"=dword:00000001
 "PreventIndexOnBattery"=dword:00000001
 "AllowIndexingEncryptedStoresOrItems"=dword:00000000
@@ -1680,8 +1622,8 @@ exit
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
-"DisableFileSyncNGSC"=dword:00000001
-"DisableFileSync"=dword:00000001
+"DisableFileSyncNGSC"=dword:00000000
+"DisableFileSync"=dword:00000000
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate]
 
@@ -1764,7 +1706,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "EnableSmartScreen"=dword:00000000
 "ShellSmartScreenLevel"=-
-"DisableLockScreenAppNotifications"=dword:00000001
+"DisableLockScreenAppNotifications"=dword:00000000
 "DisableLogonBackgroundImage"=dword:00000001
 "BlockUserFromShowingAccountDetailsOnSignin"=dword:00000001
 "HiberbootEnabled"=dword:00000001
