@@ -1,0 +1,4 @@
+1:Disable desktop
+2:Disable taskbar pin
+3:Disable taskbar thumbnails
+4:Disable taskbar toolbars

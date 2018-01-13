@@ -1,0 +1,29 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=-
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies]
+
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services]
+@="DO NOT DELETE THIS KEY !"
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
+
+[HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer\Run]
+"CTFMON"="C:\\Windows\\system32\\ctfmon.exe"
+
+[HKEY_CURRENT_USER\Control Panel\International]
+"sShortTime"="H:m"
+"sLongTime"="H:m:s"
+"sShortTime"="H:mm"
+"sLongTime"="H:mm:ss"
+"s1159"=-
+"s2359"=-
