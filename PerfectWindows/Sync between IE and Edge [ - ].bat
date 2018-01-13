@@ -17,10 +17,12 @@ exit
 if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
-echo.>>%A%
-(echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Main] &echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=-)>>%A%
-(echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Main] &echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=-)>>%A%
 
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Main]
+"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Main]
+"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001
 
 regedit /s %A%  1>nul 2>nul
 rd /s /q "Temp"
@@ -29,11 +31,10 @@ ren %0 "%name% [ON].bat"
 md Temp
 copy %0 %A%
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Main]
-"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001
+echo.>>%A%
+(echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\MicrosoftEdge\Main] &echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=-)>>%A%
+(echo [HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Main] &echo "SyncFavoritesBetweenIEAndMicrosoftEdge"=-)>>%A%
 
-[HKEY_CURRENT_USER\Software\Policies\Microsoft\MicrosoftEdge\Main]
-"SyncFavoritesBetweenIEAndMicrosoftEdge"=dword:00000001
 
 
 regedit /s %A%  1>nul 2>nul
