@@ -1,8 +1,8 @@
 Windows Registry Editor Version 5.00
 
-set name=Logon Background
+set name=Taskbar Toolbars
 
-set admin=1
+set admin=0
 
 
 
@@ -18,25 +18,24 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0Disable%name%.bat" goto disable
+if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
 
-echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]>>%A%
-echo "DisableLogonBackgroundImage"=->>%A%
+(echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer] &echo "NoToolbarsOnTaskbar"=-)>>%A%
 
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Disable %name%.bat"
+ren %0 "%name% [ON].bat"
 :disable
 md Temp
 copy %0 %A%
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
-"DisableLogonBackgroundImage"=dword:00000001
+[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+"NoToolbarsOnTaskbar"=dword:00000001
 
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Enable %name%.bat"
+ren %0 "%name% [OFF].bat"

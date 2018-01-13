@@ -17,7 +17,7 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0Disable%name%.bat" goto disable
+if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 Temp\temp.reg
 
@@ -27,7 +27,7 @@ echo "NoLockScreen"=dword:00000000>>Temp\temp.reg
 
 reg import Temp\temp.reg /reg:32
 rd /s /q "Temp"
-ren %0 "Disable %name%.bat"
+ren %0 "%name% [ON].bat"
 :disable
 md Temp
 copy %0 Temp\temp.reg
@@ -38,4 +38,4 @@ copy %0 Temp\temp.reg
 
 reg import Temp\temp.reg /reg:32
 rd /s /q "Temp"
-ren %0 "Enable %name%.bat"
+ren %0 "%name% [OFF].bat"

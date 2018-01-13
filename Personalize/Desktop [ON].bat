@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Taskbar Toolbars
+set name=Desktop
 
 set admin=0
 
@@ -18,24 +18,24 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0Disable%name%.bat" goto disable
+if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
 
-(echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer] &echo "NoToolbarsOnTaskbar"=-)>>%A%
+(echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer] &echo "NoDesktop"=-)>>%A%
 
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Disable %name%.bat"
+ren %0 "%name% [ON].bat"
 :disable
 md Temp
 copy %0 %A%
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"NoToolbarsOnTaskbar"=dword:00000001
+"NoDesktop"=dword:00000001
 
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Enable %name%.bat"
+ren %0 "%name% [OFF].bat"

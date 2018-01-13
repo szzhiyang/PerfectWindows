@@ -16,7 +16,7 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0Disable%name%.bat" goto disable
+if /i %0 == "%~dp0%name% [ON].bat" goto disable
 
 md Temp
 
@@ -35,7 +35,7 @@ reg import Temp\Reverse.reg /reg:32
 regedit /s Temp\Reverse.reg 
 rd /s /q "Temp"
 
-ren %0 "Disable %name%.bat"
+ren %0 "%name% [ON].bat"
 
 
 
@@ -61,4 +61,4 @@ reg import Temp\Reverse.reg /reg:32
 regedit /s Temp\Reverse.reg 
 rd /s /q "Temp"
 
-ren %0 "Enable %name%.bat"
+ren %0 "%name% [OFF].bat"

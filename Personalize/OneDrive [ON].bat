@@ -18,7 +18,7 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0Disable%name%.bat" goto disable
+if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
 
@@ -27,7 +27,7 @@ copy %0 %A%
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Disable %name%.bat"
+ren %0 "%name% [ON].bat"
 :disable
 md Temp
 copy %0 %A%
@@ -39,4 +39,4 @@ copy %0 %A%
 
 reg import %A% /reg:32
 rd /s /q "Temp"
-ren %0 "Enable %name%.bat"
+ren %0 "%name% [OFF].bat"
