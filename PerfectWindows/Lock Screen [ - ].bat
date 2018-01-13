@@ -1,15 +1,11 @@
 Windows Registry Editor Version 5.00
 
-set name=Cortana
-
-set admin=1
-
+set name=Lock Screen
 
 
 @echo off
 pushd "%~dp0"
 set A=Temp\Temp.reg
-if %admin% equ 0 goto main
 md "%systemroot%\checkadmin"
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin"
@@ -22,21 +18,25 @@ if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
 
-(echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search] &echo "AllowCortana"=- &echo "AllowCortanaAboveLock"=- )>>%A%
+echo.>>%A%
+
+(echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization] &echo "NoLockScreen"=- )>>%A%
 
 
-reg import %A% /reg:32
+regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
 ren %0 "%name% [ON].bat"
 :disable
 md Temp
 copy %0 %A%
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
-"AllowCortana"=dword:00000000
-"AllowCortanaAboveLock"=dword:00000000
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
+"DisableLogonBackgroundImage"=-
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+"NoLockScreen"=dword:00000001
 
 
-reg import %A% /reg:32
+regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
 ren %0 "%name% [OFF].bat"

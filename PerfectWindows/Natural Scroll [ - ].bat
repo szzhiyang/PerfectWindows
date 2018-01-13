@@ -1,13 +1,9 @@
 Windows Registry Editor Version 5.00
 
 set name=Natural Scroll
-set admin=1
-
-
 
 @echo off
 pushd "%~dp0"
-if %admin% equ 0 goto main
 md "%systemroot%\checkadmin"
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin"
