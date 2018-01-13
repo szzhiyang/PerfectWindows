@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Volume Control Keys
+set name=Multimedia Keys
 
 @echo off
 pushd "%~dp0"
@@ -18,7 +18,7 @@ md Temp
 copy %0 %A%
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
-"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,2E,E0,51,E0,30,E0,49,E0,22,E0,47,E0,19,E0,4F,E0,00,00,00,00
 
 
 regedit /s %A%  1>nul 2>nul
