@@ -921,7 +921,7 @@ exit
 "NoHelpItemSendFeedback"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications]
-"NoTileApplicationNotification"=dword:00000001
+"NoTileApplicationNotification"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
@@ -929,7 +929,7 @@ exit
 "DisableSearchBoxSuggestions"=dword:00000000
 "ExplorerRibbonStartsMinimized"=dword:00000001
 "DisableIndexedLibraryExperience"=dword:00000001
-"DisableSearchHistory"=dword:00000001
+"DisableSearchHistory"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
@@ -977,7 +977,7 @@ exit
 "PreventOverride"=dword:00000000
 "PreventOverrideAppRepUnknown"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\ServiceUI]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdgeBeta\ServiceUI]
 "AllowWebContentOnNewTabPage"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\Main]
@@ -992,14 +992,14 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
 "AuthenticodeFlags"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollection]
-"AllowTelemetry"=dword:00000000
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\DataCollectionBeta]
+"AllowTelemetry"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\UEV\Agent\Configuration]
 "SyncOverMeteredNetwork"=dword:00000000
 "SyncOverMeteredNetworkWhenRoaming"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSyncBeta]
 "DisableWindowsSettingSync"=dword:00000002
 "DisableWindowsSettingSyncUserOverride"=dword:00000001
 "DisableSyncOnPaidNetwork"=dword:00000001
@@ -1192,7 +1192,7 @@ exit
 "PreventIndexingOutlook"=dword:00000001
 "DisableRemovableDriveIndexing"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDriveBeta]
 "DisableFileSyncNGSC"=dword:00000000
 "DisableFileSync"=dword:00000000
 
@@ -1233,14 +1233,14 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 "NoGenTicket"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization]
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PersonalizationBeta]
 "NoLockScreen"=dword:00000001
 "NoLockScreenSlideshow"=dword:00000001
 "NoLockScreenCamera"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System]
 "DisableLockScreenAppNotifications"=dword:00000001
-"DisableLogonBackgroundImage"=dword:00000001
+"DisableLogonBackgroundImage"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 "DisableSoftLanding"=dword:00000001
@@ -1248,6 +1248,8 @@ exit
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
 "AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender]
 "DisableRoutinelyTakingAction"=dword:00000000
