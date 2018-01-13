@@ -14,7 +14,7 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0%name% [ON].bat" goto disable
+if /i %0 == "%~dp0%name% [ O ].bat" goto disable
 md Temp
 copy %0 %A%
 
@@ -26,7 +26,7 @@ copy %0 %A%
 
 regedit /s %A%  1>nul 2>nul
 rd /s /q "Temp"
-ren %0 "%name% [ON].bat"
+ren %0 "%name% [ O ].bat"
 :disable
 md Temp
 copy %0 %A%
@@ -39,4 +39,4 @@ echo.>>%A%
 
 regedit /s %A%  1>nul 2>nul
 rd /s /q "Temp"
-ren %0 "%name% [OFF].bat"
+ren %0 "%name% [ X ].bat"

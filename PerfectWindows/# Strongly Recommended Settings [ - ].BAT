@@ -1,8 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Strongly Recommended Settings
-
-set admin=1
+set name=# Strongly Recommended Settings
 
 
 
@@ -11,7 +9,6 @@ set admin=1
 pushd "%~dp0"
 set A=Temp\Temp.reg
 set T=Temp
-if %admin% equ 0 goto main
 md "%systemroot%\checkadmin"
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin"
@@ -133,7 +130,7 @@ attrib -h -s "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>n
 del "%appdata%\Microsoft\Windows\Start Menu\Programs\Startup" 1>nul 2>nul
 
 rd /s /q "Temp"
-ren %0 "%name% [Applied].bat"
+ren %0 "%name% [ O ].bat"
 EXIT
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]

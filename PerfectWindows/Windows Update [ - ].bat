@@ -14,7 +14,7 @@ exit
 )
 
 :main
-if /i %0 == "%~dp0%name% [AUTO].bat" goto disable
+if /i %0 == "%~dp0%name% [ O ].bat" goto disable
 md Temp
 copy %0 %A%
 
@@ -25,7 +25,7 @@ echo.>>%A%
 
 regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
-ren %0 "%name% [AUTO].bat"
+ren %0 "%name% [ O ].bat"
 :disable
 md Temp
 copy %0 %A%
@@ -41,4 +41,4 @@ icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators"
 
 regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
-ren %0 "%name% [MANUAL].bat"
+ren %0 "%name% [ X ].bat"
