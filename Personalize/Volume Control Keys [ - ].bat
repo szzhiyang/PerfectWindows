@@ -1,8 +1,8 @@
 Windows Registry Editor Version 5.00
 
-set name=Desktop
+set name=Volume Control Keys
 
-set admin=0
+set admin=1
 
 
 
@@ -22,7 +22,8 @@ if /i %0 == "%~dp0%name% [ON].bat" goto disable
 md Temp
 copy %0 %A%
 
-(echo [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer] &echo "NoDesktop"=-)>>%A%
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,2E,E0,51,E0,30,E0,49,E0,00,00,00,00
 
 
 reg import %A% /reg:32
@@ -32,8 +33,8 @@ ren %0 "%name% [ON].bat"
 md Temp
 copy %0 %A%
 
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"NoDesktop"=dword:00000001
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
+echo "Scancode Map"=->>%A%
 
 
 reg import %A% /reg:32
