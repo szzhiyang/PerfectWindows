@@ -20,5 +20,5 @@
 > Strongly Recommended Settings 不仅会增强 Windows Defender 的防护能力，还会禁用 SMB v1 协议、NetBIOS、文件共享与 U 盘自动播放，帮助您防范利用漏洞发起攻击的勒索软件和通过 U 盘传播的病毒。
 ## 效果图
 
-![pic](https://raw.githubusercontent.com/szzhiyang/PerfectWindows/master/Pics/1.PNG)
+![pic](Pics/2.gif)
 
