@@ -36,6 +36,13 @@ echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
 echo.>>%A%
 regedit /s %A%  1>nul 2>nul
 
+:services
+
+sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
+
+:devicedisablewake
+powercfg /devicequery wake_armed >%T%\powercfg.txt
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 
 :schtasks
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
