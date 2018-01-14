@@ -927,3 +927,11 @@ EXIT
   00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,63,00,\
   74,00,66,00,6d,00,6f,00,6e,00,2e,00,65,00,78,00,65,00,00,00
 
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
+"ACSettingIndex"=dword:00000000
+"DCSettingIndex"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
+"DCSettingIndex"=dword:00000001
+"ACSettingIndex"=dword:00000001
+

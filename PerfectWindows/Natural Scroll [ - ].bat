@@ -27,7 +27,6 @@ echo "FlipFlopWheel"=dword:00000001>>Temp\Reverse.reg
 echo. >>Temp\Reverse.reg
 )
 
-reg import Temp\Reverse.reg /reg:32
 regedit /s Temp\Reverse.reg 
 rd /s /q "Temp"
 
@@ -53,7 +52,6 @@ echo "FlipFlopWheel"=dword:00000000>>Temp\Reverse.reg
 echo. >>Temp\Reverse.reg
 )
 
-reg import Temp\Reverse.reg /reg:32
 regedit /s Temp\Reverse.reg 
 rd /s /q "Temp"
 

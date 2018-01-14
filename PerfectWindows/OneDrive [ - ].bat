@@ -28,11 +28,12 @@ ren %0 "%name% [ O ].bat"
 md Temp
 copy %0 %A%
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
-"DisableFileSyncNGSC"=dword:00000001
-"DisableFileSync"=dword:00000001
-
 
 regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
 ren %0 "%name% [ X ].bat"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\OneDrive]
+"DisableFileSyncNGSC"=dword:00000001
+"DisableFileSync"=dword:00000001
+

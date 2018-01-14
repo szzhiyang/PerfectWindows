@@ -34,11 +34,13 @@ icacls "%WINDIR%\System32\UsoClient.exe" /reset
 takeown /f "%WINDIR%\System32\UsoClient.exe" /a
 icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System"
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
-"NoAutoUpdate"=-
-"AUOptions"=dword:00000002
 
 
 regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
 ren %0 "%name% [ X ].bat"
+
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]
+"NoAutoUpdate"=-
+"AUOptions"=dword:00000002
