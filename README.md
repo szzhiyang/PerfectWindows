@@ -8,12 +8,16 @@
 ### 2. 消灭您不喜欢的 Windows 功能
 > 您可以按需禁用 Cortana、OneDrive、锁屏以及 Windows 自动更新。
 ### 3. 添加多媒体控制键
-> 您可以按需启用该功能。  
-#### 键盘对照表
-* Home        - 暂停 \ 播放
-* End         - 切歌（下一首）
-* Page Up     - 增大音量
-* Page Down   - 减小音量
+> 您可以按需启用该功能。  
+
+
+|按键|功能|
+|:---:|:------:|
+|<kbd>Page Up</kbd>|增大音量
+|<kbd>Page Down</kbd>|减小音量
+|<kbd>End</kbd>|跳转到当前歌曲或视频的结尾，即播放下一首歌曲或下一段视频
+|<kbd>Home</kbd>|跳转到当前歌曲或视频的开头，或播放上一首歌曲或上一段视频
+
 ### 4. 加速 Windows
 > Strongly Recommended Settings 会禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
 ### 5. 加固 Windows
