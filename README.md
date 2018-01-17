@@ -13,8 +13,8 @@
 
 |按键|功能|
 |:-|:-|
-|<kbd>Page Up</kbd>|增大音量
-|<kbd>Page Down</kbd>|减小音量（按住即可静音）
+|<kbd>Page Up</kbd>|增大系统音量
+|<kbd>Page Down</kbd>|减小系统音量（直到静音）
 |<kbd>End</kbd>|下一个（跳转至结尾）
 |<kbd>Home</kbd>|上一个（跳转至开头）
 ### 4. 加速 Windows
