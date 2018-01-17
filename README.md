@@ -12,12 +12,11 @@
 
 
 |按键|功能|
-|:---:|:------:|
+|:-|:-|
 |<kbd>Page Up</kbd>|增大音量
-|<kbd>Page Down</kbd>|减小音量
-|<kbd>End</kbd>|跳转到当前歌曲或视频的结尾，即播放下一首歌曲或下一段视频
-|<kbd>Home</kbd>|跳转到当前歌曲或视频的开头，或播放上一首歌曲或上一段视频
-
+|<kbd>Page Down</kbd>|减小音量（按住即可静音）
+|<kbd>End</kbd>|下一个（跳转至结尾）
+|<kbd>Home</kbd>|上一个（跳转至开头）
 ### 4. 加速 Windows
 > Strongly Recommended Settings 会禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
 ### 5. 加固 Windows
