@@ -6,7 +6,7 @@
 # 1. 消灭 Windows 中的广告
 * 还您一个清静的 Windows 。
 * 仅需启用【Strongly Recommended Settings】后重启电脑即可生效。
-# 2. 消灭您不喜欢的 Windows 功能
+# 2. 消灭您厌烦的 Windows 功能
 * 您可以**按需**禁用 Cortana、OneDrive、锁屏（Lock Screen）以及**Windows 自动更新（Windows Update）**。
 * **禁用 Windows 自动更新并不影响您手动检查、下载和安装更新。**
 * 仅需运行各功能对应的批处理后注销即可生效。
@@ -33,7 +33,7 @@
 * 禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
 * 仅需启用【Strongly Recommended Settings】后重启电脑即可生效。
 # 7. 加固 Windows
-* **增强 Windows Defender 的防护能力**
+* **增强 Windows Defender 的防护能力。**
 * **禁用 SMB v1 协议、NetBIOS、文件共享与 U 盘自动播放，帮助您防范利用漏洞发起攻击的勒索软件和通过 U 盘传播的病毒。**
 * 仅需启用【Strongly Recommended Settings】后重启电脑即可生效。
 ## 效果图
