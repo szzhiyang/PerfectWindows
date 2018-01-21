@@ -7,7 +7,7 @@
 ### 1. 消灭 Windows 中的广告
 * 还您一个清静的 Windows 。
 ### 2. 消灭令您厌烦的 Windows 功能
-* 您可以**按需**禁用 Cortana、OneDrive、锁屏（Lock Screen）以及**Windows 自动更新（Windows Update）**。
+* 您可以**按需**禁用 Cortana、OneDrive、锁屏以及 **Windows 自动更新**。
 * **禁用 Windows 自动更新并不影响您手动检查、下载和安装更新。**
 ### 3. 添加音视频播放控制键
 |按键|功能|
