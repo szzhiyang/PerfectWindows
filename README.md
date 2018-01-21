@@ -1,11 +1,12 @@
 # PerfectWindows
 
-## 助您打造心目中最完美的 Windows
+## 助您打造心目中最完美的 Windows ！
 
 ## 功能
+> 您可以依您的喜好启用或禁用功能。
 ### 1. 消灭 Windows 中的广告
 * 还您一个清静的 Windows 。
-### 2. 消灭您厌烦的 Windows 功能
+### 2. 消灭令您厌烦的 Windows 功能
 * 您可以**按需**禁用 Cortana、OneDrive、锁屏（Lock Screen）以及**Windows 自动更新（Windows Update）**。
 * **禁用 Windows 自动更新并不影响您手动检查、下载和安装更新。**
 ### 3. 添加音视频播放控制键
@@ -30,6 +31,8 @@
 * **禁用 SMB v1 协议与 U 盘自动播放，帮助您防范利用漏洞发起攻击的勒索软件和通过 U 盘传播的病毒。**
 ### 8. 找回 Windows 10 照片查看器
 ### 9. 让 Windows 10 的任务栏更透明
+### 10. 添加鼠标自然滚动功能
+* 就像 Mac 那样。
 ## 使用方法
 1. 点击绿色按钮，并选择 “Download Zip”。
 2. 打开压缩包，将 PerfectWindows 文件夹拖到你易于访问的位置，比如桌面。
