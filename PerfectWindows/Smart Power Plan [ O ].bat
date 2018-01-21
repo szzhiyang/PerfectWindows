@@ -1,45 +1,15 @@
 Windows Registry Editor Version 5.00
 
 set name=Smart Power Plan
-
-
 @echo off
 pushd "%~dp0"
-set A=Temp\Temp.reg
-md "%systemroot%\checkadmin"
-if exist "%systemroot%\checkadmin" (
-rd /s /q "%systemroot%\checkadmin"
-goto main) else (
-exit
-)
 
-:main
+ren "[*]*" "[ Restart to be perfect ].bat"
 if /i %0 == "%~dp0%name% [ O ].bat" goto disable
-md Temp
-copy %0 %A%
-
-
-
-regedit /s %A% 1>nul 2>nul
-rd /s /q "Temp"
 ren %0 "%name% [ O ].bat"
 :disable
-md Temp
-copy %0 %A%
-
-echo.>>%A%
-echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
-
-echo.>>%A%
-(echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d] &echo "ACSettingIndex"=dword:00000000 &echo "DCSettingIndex"=dword:00000000)>>%A%
-
-echo.>>%A%
-(echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51] &echo "DCSettingIndex"=dword:00000001 &echo "ACSettingIndex"=dword:00000001)>>%A%
-
-
-regedit /s %A% 1>nul 2>nul
-rd /s /q "Temp"
 ren %0 "%name% [ X ].bat"
+
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]
 "Start"=dword:00000002
