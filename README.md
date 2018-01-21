@@ -23,7 +23,6 @@
 |电池|节能
 |外接|高性能
 ### 5. 使 Edge 与 IE 的书签保持一致
-* 仅需启用【Sync between IE and Edge】即可生效。
 ### 6. 加速 Windows
 * 禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
 ### 7. 加固 Windows
