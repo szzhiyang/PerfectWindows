@@ -41,6 +41,10 @@ regedit /s %A% 1>nul 2>nul
 rd /s /q "Temp"
 ren %0 "%name% [ X ].bat"
 
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
+
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
