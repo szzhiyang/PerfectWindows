@@ -36,3 +36,16 @@
 3. 将每一项的设置调整为适合你的选项，其中【X】代表禁用，【O】代表启用，双击对应的批处理文件即可让【X】与【O】相互切换。
 4. 确认你的设置无误后，**以管理员身份运行**【Logoff to be perfect】或者【Restart to be perfect】以使所有设置生效，**您的电脑将自动注销或重启**。
 5. 好了，您已经拥有了完美的 Windows。
+
+## 中英文对照表
+* 为了避免编码错误，我不得不以英文命名批处理文件。
+|英文|中文|
+|:-|:-|
+|Restart to be perfect|重启以优化 Windows|
+|Logoff to be perfect|注销以优化 Windows|
+|Hosts Editor|Hosts 编辑器|
+|Multimedia Keys|音视频播放控制键|
+|Natural Scrolling|鼠标自然滚动|
+|Smart Power Plan|智能电源选项|
+|Sync between IE and Edge|使 Edge 与 IE 的书签保持一致|
+|Windows Update|Windows 自动更新|
