@@ -33,6 +33,9 @@
 ### 9. 让 Windows 10 的任务栏更透明
 ### 10. 添加鼠标自然滚动功能
 * 就像 Mac 那样。
+### 11. 隐藏系统文件夹
+* 眼不见，心不烦。
+* 如需访问被隐藏的系统文件夹，请使用 ***%LocalAppData%、%systemroot%、%ProgramFiles%、%ProgramFiles(x86)%、%ProgramData%、%tmp%*** 等环境变量。您也可以为这些文件夹建立快捷方式以便访问。
 ## 使用方法
 1. 点击绿色按钮，并选择 “Download Zip”。
 2. 打开压缩包，将 PerfectWindows 文件夹拖到你易于访问的位置，比如桌面。
