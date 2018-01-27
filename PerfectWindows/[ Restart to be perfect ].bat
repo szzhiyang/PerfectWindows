@@ -5,7 +5,7 @@ Windows Registry Editor Version 5.00
 pushd "%~dp0"
 set A=Temp\Temp.reg
 set T=Temp
-@md "%systemroot%\checkadmin"
+md "%systemroot%\checkadmin" 1>nul 2>nul
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin"
 goto main) else (
@@ -20,16 +20,16 @@ mode con cols=30 lines=3
 echo.
 echo PLESAE WAIT !
 
-@rd /s /q Temp
-@md Temp
-@net user Administrator /active:no
-@net user Guest /active:no
-@bcdedit /set {default} bootmenupolicy legacy
-@sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi
+rd /s /q Temp 1>nul 2>nul
+md Temp 1>nul 2>nul
+net user Administrator /active:no 1>nul 2>nul
+net user Guest /active:no 1>nul 2>nul
+bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
+sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
 :devicedisablewake
 powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do @powercfg /devicedisablewake "%%i"
+for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
 
 :schtasks
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
@@ -79,12 +79,12 @@ echo     ^</Exec^>>>%T%\1.xml
 echo   ^</Actions^>>>%T%\1.xml
 echo ^</Task^>>>%T%\1.xml
 
-@SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F
-@SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F
-@SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update"
+SCHTASKS /DELETE /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%T%\1.xml" /F 1>nul 2>nul
+SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 
-@SCHTASKS /CHANGE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /DISABLE
-@SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /DISABLE
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /DISABLE 1>nul 2>nul
+SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /DISABLE 1>nul 2>nul
 
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
 POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
@@ -108,7 +108,7 @@ attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 
 
 
-copy %0 %A%
+copy %0 %A% 1>nul 2>nul
 echo.>>%A%
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>>%A%
 echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
@@ -148,16 +148,16 @@ if exist "Smart Power Plan [ X ].bat" (
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo.>>%A%
 ) else (
-@copy "Smart Power Plan [ O ].bat" Temp\Power.reg
-@regedit /s Temp\Power.reg
+copy "Smart Power Plan [ O ].bat" Temp\Power.reg 1>nul 2>nul
+regedit /s Temp\Power.reg 1>nul 2>nul
 )
 
-if exist "Multimedia Keys [ X ].bat" (
+if exist "Power Keys [ X ].bat" (
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
 echo "Scancode Map"=->>%A%
 ) else (
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
-echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,05,00,00,00,2E,E0,51,E0,30,E0,49,E0,10,E0,47,E0,19,E0,4F,E0,00,00,00,00>>%A%
+echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,2E,E0,51,E0,30,E0,49,E0,10,E0,47,E0,19,E0,4F,E0,21,E0,46,00,00,00,00,00>>%A%
 )
 
 
@@ -166,14 +166,14 @@ if exist "Windows Update [ O ].bat" (
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
 echo "NoAutoUpdate"=->>%A%
 echo "AUOptions"=->>%A%
-@icacls "%WINDIR%\System32\UsoClient.exe" /reset
+icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
 ) else (
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
 echo "NoAutoUpdate"=->>%A%
 echo "AUOptions"=dword:00000002>>%A%
-@icacls "%WINDIR%\System32\UsoClient.exe" /reset
-@takeown /f "%WINDIR%\System32\UsoClient.exe" /a
-@icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System"
+icacls "%WINDIR%\System32\UsoClient.exe" /reset 1>nul 2>nul
+takeown /f "%WINDIR%\System32\UsoClient.exe" /a 1>nul 2>nul
+icacls "%WINDIR%\System32\UsoClient.exe" /inheritance:r /remove "Administrators" "Authenticated Users" "Users" "System" 1>nul 2>nul
 )
 
 
@@ -211,11 +211,11 @@ echo "FlipFlopWheel"=dword:0000000%Reverse%>>Temp\Reverse.reg
 echo. >>Temp\Reverse.reg
 )
 
-@regedit /s Temp\Reverse.reg
+regedit /s Temp\Reverse.reg 1>nul 2>nul
 
-@regedit /s %A%
+regedit /s %A% 1>nul 2>nul
 
-@rd /s /q Temp
+rd /s /q Temp 1>nul 2>nul
 
 if exist "[ Logoff to be perfect ].bat" (
 shutdown /l
@@ -225,7 +225,8 @@ if exist "[ Restart to be perfect ].bat" (
 shutdown /r /t 0
 )
 
-@ren %0 "[ Perfect ]."
+ren %0 "[ Perfect ]." 1>nul 2>nul
+exit
 
 
 :reg
