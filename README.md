@@ -9,13 +9,14 @@
 ### 2. 消灭令您厌烦的 Windows 功能
 * 您可以**按需**禁用 Cortana、OneDrive、锁屏以及 **Windows 自动更新**。
 * **禁用 Windows 自动更新并不影响您手动检查、下载和安装更新。**
-### 3. 添加音视频播放控制键
+### 3. 添加音视频播放控制键和计算器键
 |按键|功能|
 |:-|:-|
 |<kbd>Page Up</kbd>|增大系统音量
 |<kbd>Page Down</kbd>|减小系统音量（直到静音）
 |<kbd>End</kbd>|下一个（跳转至结尾）
 |<kbd>Home</kbd>|上一个（跳转至开头）
+|<kbd>Scroll Lock</kbd>|启动 Windows 计算器
 ### 4. 添加智能电源计划
 * **自动**根据电脑供电模式切换电源计划，无需您操劳。
 
@@ -69,8 +70,8 @@
 |Restart to be perfect|重启以优化 Windows|
 |Logoff to be perfect|注销以优化 Windows|
 |Hosts Editor|Hosts 编辑器|
-|Multimedia Keys|音视频播放控制键|
 |Natural Scrolling|鼠标自然滚动|
+|Power Keys|键盘增强|
 |Smart Power Plan|智能电源选项|
 |Sync between IE and Edge|使 Edge 与 IE 的书签保持一致|
 |Windows Update|Windows 自动更新|
