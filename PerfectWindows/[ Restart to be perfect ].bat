@@ -776,7 +776,8 @@ exit
 "DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb20]
 "Start"=dword:00000002
