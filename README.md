@@ -17,14 +17,13 @@
 |<kbd>End</kbd>|下一个（跳转至结尾）
 |<kbd>Home</kbd>|上一个（跳转至开头）
 |<kbd>Scroll Lock</kbd>|启动 Windows 计算器
-### 4. 添加智能电源计划
-* **自动**根据电脑供电模式切换电源计划，无需您操劳。
+### 4. 让 Windows 自动根据电脑供电模式切换电源计划
 
-|供电来源|电源计划|
+|电源|电源计划|
 |:-|:-|
 |电池|节能
 |外接|高性能
-### 5. 使 Edge 与 IE 的书签保持一致
+### 5. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 ### 6. 加速 Windows
 * 禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
 ### 7. 加固 Windows
