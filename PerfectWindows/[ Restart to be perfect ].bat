@@ -22,8 +22,8 @@ echo PLESAE WAIT !
 
 rd /s /q Temp 1>nul 2>nul
 md Temp 1>nul 2>nul
-net user Administrator /active:no 1>nul 2>nul
-net user Guest /active:no 1>nul 2>nul
+:net user Administrator /active:no 1>nul 2>nul
+:net user Guest /active:no 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
@@ -529,7 +529,7 @@ exit
 "DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache]
-"Start"=dword:00000004
+"StartBeta"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DusmSvc]
 "Start"=dword:00000002
