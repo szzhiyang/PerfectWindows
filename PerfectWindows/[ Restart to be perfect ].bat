@@ -528,9 +528,6 @@ exit
 "Start"=dword:00000002
 "DelayedAutoStart"=dword:00000000
 
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Dnscache]
-"StartBeta"=dword:00000004
-
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DusmSvc]
 "Start"=dword:00000002
 "DelayedAutoStart"=dword:00000000
@@ -836,10 +833,12 @@ exit
 "Start"=dword:00000003
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\iphlpsvc]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DnsCache]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
 "Start"=dword:00000004
