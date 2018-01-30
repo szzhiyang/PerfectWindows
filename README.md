@@ -1,3 +1,9 @@
+###### 如果在使用本工具后遇到了任何问题，请及时在知乎私聊我或者提交 issue。
+
+###### 另外，我诚挚地向所有使用本工具后遇到麻烦的朋友们道声对不起！
+
+---
+
 # PerfectWindows
 
 ## 助您打造心目中最完美的 Windows ！
@@ -76,6 +82,3 @@
 |Smart Power Plan|智能电源选项|
 |Sync between IE and Edge|使 Edge 与 IE 的书签保持一致|
 |Windows Update|Windows 自动更新|
-
-## 声明
- * **PerfectWindows 目前暂不存在任何问题。**
