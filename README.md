@@ -31,7 +31,7 @@
 |外接|高性能
 ### 5. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 ### 6. 加速 Windows
-* 禁用无用且会拖慢电脑的 Windows 后台服务，比如 Superfetch、家庭组、程序兼容性助手和 IP Helper 。
+* 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
 ### 7. 加固 Windows
 * **增强 Windows Defender 的防护能力。**
 * **禁用 SMB v1 协议与 U 盘自动播放，帮助您防范利用漏洞发起攻击的勒索软件和通过 U 盘传播的病毒。**
