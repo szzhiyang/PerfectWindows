@@ -437,11 +437,9 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MRT]
 "DontOfferThroughWUAU"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
-"AutoDownloadAndUpdateMapData"=dword:00000000
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Maps]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-"AutoDownload"=dword:00000002
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows]
 "CEIPEnable"=dword:00000000
@@ -456,8 +454,7 @@ exit
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppCompat]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
-"NoGenTicket"=dword:00000001
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\CurrentVersion\Software Protection Platform]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Search]
 "AutoIndexSharedFolders"=dword:00000001
@@ -522,11 +519,11 @@ exit
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
-"ClearTilesOnExit"=dword:00000001
-"DisableSearchBoxSuggestions"=dword:00000000
-"ExplorerRibbonStartsMinimized"=dword:00000001
-"DisableIndexedLibraryExperience"=dword:00000001
-"DisableSearchHistory"=dword:00000000
+"ClearTilesOnExit"=-
+"DisableSearchBoxSuggestions"=-
+"ExplorerRibbonStartsMinimized"=-
+"DisableIndexedLibraryExperience"=-
+"DisableSearchHistory"=-
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings]
 "MaxConnectionsPerServer"=dword:00000008
@@ -547,9 +544,9 @@ exit
 "AllowOnlineTips"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
-"EnforceShellExtensionSecurity"=dword:00000001
-"ClearRecentDocsOnExit"=dword:00000001
-"NoRecentDocsMenu"=dword:00000001
+"EnforceShellExtensionSecurity"=-
+"ClearRecentDocsOnExit"=-
+"NoRecentDocsMenu"=-
 "NoDriveTypeAutoRun"=dword:000000ff
 "NoAutorun"=dword:00000001
 
