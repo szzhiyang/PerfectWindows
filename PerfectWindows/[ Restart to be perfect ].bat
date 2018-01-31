@@ -3,8 +3,10 @@ Windows Registry Editor Version 5.00
 @echo off
 
 pushd "%~dp0"
+setlocal enabledelayedexpansion
 set A=Temp\Temp.reg
 set T=Temp
+set num=11
 md "%systemroot%\checkadmin" 1>nul 2>nul
 if exist "%systemroot%\checkadmin" (
 rd /s /q "%systemroot%\checkadmin"
@@ -27,9 +29,11 @@ md Temp 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
+
 :devicedisablewake
 powercfg /devicequery wake_armed >%T%\powercfg.txt
 for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
+
 
 :schtasks
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
@@ -132,6 +136,16 @@ set disableOnedrive=1
 set disableOnedrive=0
 )
 
+if exist "Windows Defender [ X ].bat" (
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender]>>%A%
+echo "DisableAntiSpyware"=dword:00000001>>%A%
+echo.>>%A%
+) else (
+echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender]>>%A%
+echo "DisableAntiSpyware"=->>%A%
+echo.>>%A%
+)
+
 if exist "Natural Scrolling [ X ].bat" (
 set Reverse=0
 ) else (
@@ -213,6 +227,98 @@ echo. >>Temp\Reverse.reg
 
 regedit /s Temp\Reverse.reg 1>nul 2>nul
 
+
+:Software Restriction Policies
+
+md "%systemroot%\\Checkpoint" 1>nul 2>nul
+
+
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c000}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c007}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="X:\\">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c008}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="Y:\\">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c009}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="Z:\\">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c002}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Microsoft\\Windows\\I*\\*">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c003}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Packages\\*">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c201}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Temp\\7zO*">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c202}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Temp\\7z*.tmp\\*">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c203}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Temp\\Temp1*.zip\\*">>%A%
+echo.>>%A%
+
+
+wmic logicaldisk where "drivetype=3" get name>%T%\wmicdrive.txt
+type %T%\wmicdrive.txt>%T%\drive.txt
+
+
+for /f "skip=1 tokens=1 delims=:" %%i in (%T%\drive.txt) do (
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\262144\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c0!num!}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%%i:\\">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c1!num!}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="%%i:\\Checkpoint">>%A%
+echo.>>%A%
+
+
+set /A num+=1
+
+
+)
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]>>%A%
+echo "DefaultLevel"=dword:00000000>>%A%
+echo.>>%A%
+
+
 regedit /s %A% 1>nul 2>nul
 
 rd /s /q Temp 1>nul 2>nul
@@ -230,6 +336,30 @@ exit
 
 
 :reg
+
+[-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
+
+[-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
+"AuthenticodeEnabled"=dword:00000000
+"DefaultLevel"=dword:00040000
+"TransparentEnabled"=dword:00000001
+"PolicyScope"=dword:00000000
+"ExecutableTypes"=hex(7):57,00,53,00,43,00,00,00,56,00,42,00,00,00,55,00,52,00,\
+  4c,00,00,00,53,00,48,00,53,00,00,00,53,00,43,00,52,00,00,00,52,00,45,00,47,\
+  00,00,00,50,00,53,00,31,00,00,00,50,00,49,00,46,00,00,00,50,00,43,00,44,00,\
+  00,00,4f,00,43,00,58,00,00,00,4d,00,53,00,54,00,00,00,4d,00,53,00,50,00,00,\
+  00,4d,00,53,00,49,00,00,00,4d,00,53,00,43,00,00,00,4d,00,44,00,45,00,00,00,\
+  4d,00,44,00,42,00,00,00,4c,00,4e,00,4b,00,00,00,49,00,53,00,50,00,00,00,49,\
+  00,4e,00,53,00,00,00,49,00,4e,00,46,00,00,00,48,00,54,00,41,00,00,00,48,00,\
+  4c,00,50,00,00,00,45,00,58,00,45,00,00,00,43,00,52,00,54,00,00,00,43,00,50,\
+  00,4c,00,00,00,43,00,4f,00,4d,00,00,00,43,00,4d,00,44,00,00,00,43,00,48,00,\
+  4d,00,00,00,42,00,41,00,54,00,00,00,42,00,41,00,53,00,00,00,41,00,44,00,50,\
+  00,00,00,41,00,44,00,45,00,00,00
+
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Photo Viewer\Capabilities\FileAssociations]
 ".tif"="PhotoViewer.FileAssoc.Tiff"
