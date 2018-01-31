@@ -230,7 +230,7 @@ regedit /s Temp\Reverse.reg 1>nul 2>nul
 
 :Software Restriction Policies
 
-md "%systemroot%\\Checkpoint" 1>nul 2>nul
+md "%systemdrive%\Checkpoint" 1>nul 2>nul
 
 
 echo.>>%A%
