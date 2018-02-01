@@ -67,7 +67,7 @@
 4. **确认您的设置无误后，以管理员身份运行【Logoff to be perfect】或者【Restart to be perfect】以使所有设置生效，您的电脑将自动注销或重启。**
 5. 好了，您已经拥有了完美的 Windows。
 
-## 请杯咖啡：
+## 请杯咖啡
 #### 如果 PerfectWindows 可以解决你在使用 Windows 时的痛点，不妨请我喝杯咖啡，想必也是非常愉悦的事情。 :smile:
 
 ![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
