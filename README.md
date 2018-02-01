@@ -1,7 +1,4 @@
-###### 如果您在使用本工具后遇到了任何问题，请更新并重新运行本工具；
-###### 如果问题仍然没有得到解决，请及时在知乎私聊我或者提交 issue，谢谢。
 
----
 
 # PerfectWindows
 
@@ -71,7 +68,7 @@
 5. 好了，您已经拥有了完美的 Windows。
 
 ## 请杯咖啡：
-如果 PerfectWindows 可以解决你在使用 Windows 时的痛点，不妨请我喝杯咖啡，想必也是非常愉悦的事情。 :smile:
+#### 如果 PerfectWindows 可以解决你在使用 Windows 时的痛点，不妨请我喝杯咖啡，想必也是非常愉悦的事情。 :smile:
 
 ![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
 
@@ -88,3 +85,7 @@
 |Smart Power Plan|智能电源选项|
 |Sync between IE and Edge|使 Edge 与 IE 的书签保持一致|
 |Windows Update|Windows 自动更新|
+
+## 技术支持
+#### 如果您在使用本工具后遇到了任何问题，请更新并重新运行本工具。
+#### 如果问题仍然没有得到解决，请及时在知乎私聊我或者提交 issue，谢谢。
