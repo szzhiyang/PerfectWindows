@@ -61,8 +61,20 @@
 ```
 * 如需访问被隐藏的系统文件夹，请使用环境变量或快捷方式。
 
-## 软件截图
-![](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/1.gif)
+
+
+## 使用方法
+1. 点击绿色按钮，并选择 “Download Zip”。
+2. 打开压缩包，将 PerfectWindows 文件夹拖到你易于访问的位置，比如桌面。
+3. 将每一项的设置调整为适合你的选项，**其中【X】代表禁用，【O】代表启用。如需切换【X】与【O】，请双击对应的批处理文件，而不要自行重命名批处理文件。**
+4. **确认您的设置无误后，以管理员身份运行【Logoff to be perfect】或者【Restart to be perfect】以使所有设置生效，您的电脑将自动注销或重启。**
+5. 好了，您已经拥有了完美的 Windows。
+
+## 请杯咖啡：
+如果 PerfectWindows 可以解决你在使用 Windows 时的痛点，不妨请我喝杯咖啡，想必也是非常愉悦的事情。 :smile:
+
+![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
+
 ## 中英文对照表
 * 为了避免编码错误，我不得不以英文命名批处理文件。
 
@@ -76,15 +88,3 @@
 |Smart Power Plan|智能电源选项|
 |Sync between IE and Edge|使 Edge 与 IE 的书签保持一致|
 |Windows Update|Windows 自动更新|
-
-## 使用方法
-1. 点击绿色按钮，并选择 “Download Zip”。
-2. 打开压缩包，将 PerfectWindows 文件夹拖到你易于访问的位置，比如桌面。
-3. 将每一项的设置调整为适合你的选项，**其中【X】代表禁用，【O】代表启用。如需切换【X】与【O】，请双击对应的批处理文件，而不要自行重命名批处理文件。**
-4. **确认您的设置无误后，以管理员身份运行【Logoff to be perfect】或者【Restart to be perfect】以使所有设置生效，您的电脑将自动注销或重启。**
-5. 好了，您已经拥有了完美的 Windows。
-
-## 请杯咖啡：
-如果 PerfectWindows 可以解决你在使用 Windows 时的痛点，不妨请我喝杯咖啡，想必也是非常愉悦的事情。 :smile:
-
-![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
