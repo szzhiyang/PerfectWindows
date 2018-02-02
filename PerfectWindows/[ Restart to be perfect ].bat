@@ -260,6 +260,18 @@ echo "ItemData"="Z:\\">>%A%
 echo.>>%A%
 
 
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c991}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="QyKernel.exe">>%A%
+echo.>>%A%
+
+
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c992}]>>%A%
+echo "SaferFlags"=dword:00000000>>%A%
+echo "ItemData"="QyProxy.exe">>%A%
+echo.>>%A%
+
+
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers\0\Paths\{91fc058a-3015-4608-b3a6-4a8ba079c002}]>>%A%
 echo "SaferFlags"=dword:00000000>>%A%
 echo "ItemData"="%systemdrive%\\Users\\*\\AppData\\Local\\Microsoft\\Windows\\I*\\*">>%A%
