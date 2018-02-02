@@ -69,7 +69,11 @@
 %userprofile%\AppData\LocalLow
 ```
 * 如需访问被隐藏的系统文件夹，请使用环境变量或快捷方式。
-
+## 软件截图
+###### 图中设置仅是出于我个人的喜好，与软件的默认设置正好相反。
+###### 【X】代表禁用；【O】代表启用。
+###### 您只需双击批处理文件即可切换【X】和【O】以使设置贴合您的喜好。
+![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo.png)
 
 
 ## 使用方法
