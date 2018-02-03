@@ -33,6 +33,7 @@
 ### 7. 添加鼠标自然滚动功能
 * 就像 Mac 那样。
 ### 8. 帮助您轻松自如地修改 hosts 文件
+* 只需以管理员身份运行 `Hosts Editor` 即可，我们将在您保存 hosts 文件后自动刷新 DNS 缓存。
 ### 9. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 ### 10. 加速 Windows
 * 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
