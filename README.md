@@ -31,7 +31,6 @@
 ### 6. 加速 Windows
 * 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
 ### 7. 加固 Windows
-* **Windows 唤醒后必须输入密码。**
 * **增强 Windows Defender 的防护能力。**
   ###### 如果您能够充分利用以下安全措施，并时刻保持 Windows 和应用程序最新，您甚至可以不在 Windows 上运行任何防病毒软件！
 * **禁用 SMB v1 协议以帮助您防范利用漏洞传播的勒索软件。**
@@ -49,28 +48,7 @@
 ### 9. 让 Windows 10 的任务栏更透明
 ### 10. 添加鼠标自然滚动功能
 * 就像 Mac 那样。
-### 11. 防止电脑自动唤醒
-### 12. 帮助您轻松自如地修改 hosts 文件
-### 13. 在文件资源管理器中隐藏系统文件夹
-* 眼不见，心不烦。
-* 以下系统文件夹将不会显示在文件资源管理器中：
-```
-%systemroot%
-%ProgramFiles%
-%ProgramFiles(x86)%
-%ProgramData%
-%systemdrive%\Users
-%systemdrive%\PerfLogs
-%systemdrive%\Windows.old
-%userprofile%\ntuser.dat
-%userprofile%\ntuser.ini
-%userprofile%\AppData
-%LocalAppData%
-%LocalAppData%\Packages
-%AppData%
-%userprofile%\AppData\LocalLow
-```
-* 如需访问被隐藏的系统文件夹，请使用环境变量或快捷方式，望您谅解。:smile:
+### 11. 帮助您轻松自如地修改 hosts 文件
 ## 软件截图
 ###### 图中设置仅是出于我个人的喜好，与软件的默认设置正好相反。
 ###### 【X】代表禁用；【O】代表启用。
