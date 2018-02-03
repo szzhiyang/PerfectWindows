@@ -30,11 +30,6 @@ bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
 
-:devicedisablewake
-powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-
-
 :schtasks
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
@@ -1104,10 +1099,6 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
 "ACSettingIndex"=dword:00000000
 "DCSettingIndex"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
-"DCSettingIndex"=dword:00000001
-"ACSettingIndex"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
 "DisableHomeGroup"=dword:00000001
