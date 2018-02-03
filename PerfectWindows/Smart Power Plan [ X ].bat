@@ -17,10 +17,6 @@ ren %0 "%name% [ X ].bat" 1>nul 2>nul
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
-"DCSettingIndex"=dword:00000001
-"ACSettingIndex"=dword:00000001
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
 "ACSettingIndex"=dword:00000000
 "DCSettingIndex"=dword:00000000
