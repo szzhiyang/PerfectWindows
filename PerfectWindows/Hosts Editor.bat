@@ -9,5 +9,5 @@ exit
 
 :main
 notepad %systemroot%\system32\drivers\etc\hosts
-flushdns
+ipconfig /flushdns
 exit
