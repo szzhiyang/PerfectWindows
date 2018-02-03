@@ -90,20 +90,20 @@ POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
 POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 
 
-attrib +h +s "%systemroot%" 1>nul 2>nul
-attrib +h +s "%ProgramFiles%" 1>nul 2>nul
-attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
-attrib +h +s "%ProgramData%" 1>nul 2>nul
-attrib +h +s "%systemdrive%\Users" 1>nul 2>nul
-attrib +h +s "%systemdrive%\PerfLogs" 1>nul 2>nul
-attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
+attrib -h -s "%systemroot%" 1>nul 2>nul
+attrib -h -s "%ProgramFiles%" 1>nul 2>nul
+attrib -h -s "%ProgramFiles(x86)%" 1>nul 2>nul
+attrib +h -s "%ProgramData%" 1>nul 2>nul
+attrib -h -s "%systemdrive%\Users" 1>nul 2>nul
+attrib +h -s "%systemdrive%\PerfLogs" 1>nul 2>nul
+attrib -h -s "%systemdrive%\Windows.old" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
-attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
-attrib +h +s "%LocalAppData%" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
-attrib +h +s "%AppData%" 1>nul 2>nul
-attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
+attrib +h -s "%userprofile%\AppData" 1>nul 2>nul
+attrib -h -s "%LocalAppData%" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\Packages" 1>nul 2>nul
+attrib -h -s "%AppData%" 1>nul 2>nul
+attrib -h -s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 
 
 
