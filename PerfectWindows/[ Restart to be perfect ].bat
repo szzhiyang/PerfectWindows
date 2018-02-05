@@ -30,11 +30,6 @@ bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
 
-:devicedisablewake
-powercfg /devicequery wake_armed >%T%\powercfg.txt
-for /f "tokens=* delims= " %%i in (%T%\powercfg.txt) do powercfg /devicedisablewake "%%i" 1>nul 2>nul
-
-
 :schtasks
 echo ^<?xml version="1.0" encoding="UTF-16"?^>>%T%\1.xml
 echo ^<Task version="1.2" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task"^>>>%T%\1.xml
@@ -91,24 +86,22 @@ SCHTASKS /CHANGE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /DISABLE 1>nul 
 SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /DISABLE 1>nul 2>nul
 
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
-POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
-POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 
 
-attrib +h +s "%systemroot%" 1>nul 2>nul
-attrib +h +s "%ProgramFiles%" 1>nul 2>nul
-attrib +h +s "%ProgramFiles(x86)%" 1>nul 2>nul
-attrib +h +s "%ProgramData%" 1>nul 2>nul
-attrib +h +s "%systemdrive%\Users" 1>nul 2>nul
-attrib +h +s "%systemdrive%\PerfLogs" 1>nul 2>nul
-attrib +h +s "%systemdrive%\Windows.old" 1>nul 2>nul
+attrib -h -s "%systemroot%" 1>nul 2>nul
+attrib -h -s "%ProgramFiles%" 1>nul 2>nul
+attrib -h -s "%ProgramFiles(x86)%" 1>nul 2>nul
+attrib +h -s "%ProgramData%" 1>nul 2>nul
+attrib -h -s "%systemdrive%\Users" 1>nul 2>nul
+attrib +h -s "%systemdrive%\PerfLogs" 1>nul 2>nul
+attrib -h -s "%systemdrive%\Windows.old" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.dat" 1>nul 2>nul
 attrib +h +s "%userprofile%\ntuser.ini" 1>nul 2>nul
-attrib +h +s "%userprofile%\AppData" 1>nul 2>nul
-attrib +h +s "%LocalAppData%" 1>nul 2>nul
-attrib +h +s "%LocalAppData%\Packages" 1>nul 2>nul
-attrib +h +s "%AppData%" 1>nul 2>nul
-attrib +h +s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
+attrib +h -s "%userprofile%\AppData" 1>nul 2>nul
+attrib -h -s "%LocalAppData%" 1>nul 2>nul
+attrib -h -s "%LocalAppData%\Packages" 1>nul 2>nul
+attrib -h -s "%AppData%" 1>nul 2>nul
+attrib -h -s "%userprofile%\AppData\LocalLow" 1>nul 2>nul
 
 
 
@@ -595,7 +588,6 @@ exit
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
-"DisableStartupSound"=dword:00000001
 "ShutdownWithoutLogon"=dword:00000001
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
@@ -1104,10 +1096,6 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
 "ACSettingIndex"=dword:00000000
 "DCSettingIndex"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51]
-"DCSettingIndex"=dword:00000001
-"ACSettingIndex"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
 "DisableHomeGroup"=dword:00000001
