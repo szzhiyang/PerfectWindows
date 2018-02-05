@@ -86,8 +86,6 @@ SCHTASKS /CHANGE /TN "\Microsoft\Windows\Defrag\ScheduledDefrag" /DISABLE 1>nul 
 SCHTASKS /CHANGE /TN "\Microsoft\Windows\WindowsUpdate\Automatic App Update" /DISABLE 1>nul 2>nul
 
 rd /s /q %systemroot%\Prefetch 1>nul 2>nul
-POWERCFG /HIBERNATE /SIZE 75 1>nul 2>nul
-POWERCFG /HIBERNATE /TYPE FULL 1>nul 2>nul
 
 
 attrib -h -s "%systemroot%" 1>nul 2>nul
@@ -590,7 +588,6 @@ exit
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]
 "VerboseStatus"=dword:00000001
-"DisableStartupSound"=dword:00000001
 "ShutdownWithoutLogon"=dword:00000001
 "EnableLUA"=dword:00000001
 "ValidateAdminCodeSignatures"=dword:00000000
