@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Natural Scrolling
+set name=鼠标自然滚动
 
 
 @echo off
