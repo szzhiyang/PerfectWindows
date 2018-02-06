@@ -24,8 +24,6 @@ echo PLESAE WAIT !
 
 rd /s /q Temp 1>nul 2>nul
 md Temp 1>nul 2>nul
-:net user Administrator /active:no 1>nul 2>nul
-:net user Guest /active:no 1>nul 2>nul
 bcdedit /set {default} bootmenupolicy legacy 1>nul 2>nul
 sc config LanmanWorkstation depend= bowser/mrxsmb20/nsi 1>nul 2>nul
 
@@ -336,6 +334,14 @@ exit
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer]
 
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\Internet Explorer]
+
+[-HKEY_CURRENT_USER\SOFTWARE\Policies\Microsoft\MicrosoftEdge]
+
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
 "AuthenticodeEnabled"=dword:00000000
 "DefaultLevel"=dword:00040000
@@ -380,14 +386,13 @@ exit
 "NumThumbnails"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
-"DisableSoftLanding"=dword:00000001
-"DisableWindowsConsumerFeatures"=dword:00000001
+"DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
+"DisableThirdPartySuggestions"=dword:00000001
+"DisableWindowsSpotlightOnActionCenter"=dword:00000001
+"DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
+"DisableWindowsSpotlightFeatures"=dword:00000001
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
-"AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
-"NoNewAppAlert"=dword:00000001
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent]
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
 "DisableWindowsSpotlightWindowsWelcomeExperience"=dword:00000001
@@ -395,6 +400,14 @@ exit
 "DisableWindowsSpotlightOnActionCenter"=dword:00000001
 "DisableTailoredExperiencesWithDiagnosticData"=dword:00000001
 "DisableWindowsSpotlightFeatures"=dword:00000001
+
+[-HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\CloudContent]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsInkWorkspace]
+"AllowSuggestedAppsInWindowsInkWorkspace"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\Explorer]
+"NoNewAppAlert"=dword:00000001
 
 [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Internet Explorer\Restrictions]
 "NoHelpItemSendFeedback"=dword:00000001
@@ -405,8 +418,9 @@ exit
 [HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main]
 "HideNewEdgeButton"=dword:00000001
 
+[-HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
-"FeatureManagementEnabled"=dword:00000000
 "OemPreInstalledAppsEnabled"=dword:00000000
 "PreInstalledAppsEnabled"=dword:00000000
 "SilentInstalledAppsEnabled"=dword:00000000
@@ -414,8 +428,18 @@ exit
 "SystemPaneSuggestionsEnabled"=dword:00000000
 "ContentDeliveryAllowed"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
-"RotatingLockScreenEnabled"=dword:00000000
-"RotatingLockScreenOverlayEnabled"=dword:00000000
+"SubscribedContent-310093Enabled"=dword:00000000
+
+[-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
+"OemPreInstalledAppsEnabled"=dword:00000000
+"PreInstalledAppsEnabled"=dword:00000000
+"SilentInstalledAppsEnabled"=dword:00000000
+"SoftLandingEnabled"=dword:00000000
+"SystemPaneSuggestionsEnabled"=dword:00000000
+"ContentDeliveryAllowed"=dword:00000000
+"PreInstalledAppsEverEnabled"=dword:00000000
 "SubscribedContent-310093Enabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
@@ -465,31 +489,6 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
 "DODownloadMode"=dword:00000003
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Activities]
-"NoActivities"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Download]
-"CheckExeSignatures"="yes"
-"RunInvalidSignatures"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\FlipAhead]
-"Enabled"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\Main]
-"Enable Browser Extensions Beta"="no"
-"DoNotTrack"=dword:00000001
-"Isolation"="PMEM"
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Internet Explorer\PhishingFilter]
-"PreventOverride"=dword:00000000
-"PreventOverrideAppRepUnknown"=dword:00000000
-"EnabledV9"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftEdge\PhishingFilter]
-"EnabledV9"=dword:00000001
-"PreventOverride"=dword:00000000
-"PreventOverrideAppRepUnknown"=dword:00000000
-
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Safer\CodeIdentifiers]
 "AuthenticodeEnabled"=dword:00000000
 
@@ -502,13 +501,6 @@ exit
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\SettingSync]
 "DisableSyncOnPaidNetwork"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings\Cache]
-"Persistent"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\Internet Settings]
-"PreventIgnoreCertErrors"=dword:00000001
-"CertificateRevocation"=dword:00000001
 
 [HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer]
 "EnableLegacyBalloonNotifications"=dword:00000001
