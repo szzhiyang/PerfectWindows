@@ -44,7 +44,7 @@
 * 您可以自由定制 **“此电脑”** 中的图标。:smile:
 
 
-![此电脑](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/ThisPC2.png)
+![此电脑](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/ThisPC3.png)
 
 
 ### 6. 添加鼠标自然滚动功能
