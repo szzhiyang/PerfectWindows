@@ -71,9 +71,8 @@
 ## 软件截图
 
 ###### 【X】代表禁用；【O】代表启用。
-###### 您只需双击批处理文件即可切换【X】和【O】以使设置贴合您的喜好。:smile:
-![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo.png)
-###### 图中设置仅是出于我个人的喜好，绝大多数与软件的默认设置正好相反。
+###### 您只需双击批处理文件即可切换【X】和【O】以使设置贴合您的喜好，超简单的哦。:smile:
+![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo2.png)
 
 
 ## 使用方法
