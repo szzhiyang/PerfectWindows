@@ -210,7 +210,7 @@ if exist "Bonus - Smart Power Plan [ X ].bat" (
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo.>>%A%
 ) else (
-copy "Smart Power Plan [ O ].bat" Temp\Power.reg 1>nul 2>nul
+copy "Bonus - Smart Power Plan [ O ].bat" Temp\Power.reg 1>nul 2>nul
 regedit /s Temp\Power.reg 1>nul 2>nul
 )
 
