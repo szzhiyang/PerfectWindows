@@ -11,10 +11,10 @@
 
 ## 功能
 ### 1. 消灭 Windows 10 中的广告
-> 目前暂时不能撤销该操作。
+> 目前暂时不能撤销该操作，因为尚未有用户表示他们喜爱 Windows 10 中的广告。:joy:
 * 还您一个清静的 Windows 10。
 ### 2. 消灭令您厌烦的 Windows 功能
-* 您可以**按需**禁用 Cortana、OneDrive、锁屏、Windows Defender 以及 **Windows 自动更新**。
+* **您可以按需禁用 Cortana、OneDrive、锁屏、Windows Defender 以及 Windows 自动更新**。
 * **禁用 Windows 自动更新并不影响您手动检查、下载和安装更新。**
 ### 3. 添加音视频播放控制热键和计算器热键
 * 得益于这项功能，您可以轻松地执行计算，更可以在打游戏时随心所欲地切换背景音乐或调整音量！
@@ -42,15 +42,15 @@
 ### 7. 添加鼠标自然滚动功能
 * 就像 macOS 那样。
 ### 8. 帮助您轻松自如地修改 hosts 文件
-* 只需以管理员身份运行 `Hosts Editor` 即可。我们将在您保存 hosts 文件后自动刷新 DNS 缓存，无需您操劳。
+* 只需以管理员身份运行 `Hosts Editor` 即可。我们将在您保存 hosts 文件后自动刷新 DNS 缓存，无需您操劳。:smile:
 ### 9. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 * 如果您配合 Windows 版 iCloud 应用程序使用该功能，您甚至可以让 Microsoft Edge 的书签与 Safari 的书签保持同步！
 ### 10. 加速 Windows
-> 目前暂时不能撤销该操作。
+> 目前暂时不能撤销该操作，因为我暂时还没能找到这背后涉及到的最佳交互逻辑。如果您对此有更好的主意，欢迎与我交流！:smile:
 * 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
 * 通过启用 Delivery Optimization 服务和 Background Intelligent Transfer Service 服务的 P2P 下载功能来帮助您更快速地下载 Windows 补丁。
 ### 11. 加固 Windows
-> 目前暂时不能撤销该操作。
+> 目前暂时不能撤销该操作，因为我坚信每个人的 Windows 都应该受到以下安全保护。如果您对此有更好的主意，欢迎与我交流！:smile:
 * **将用户账户控制设置调整为默认状态。**
 * **增强 Windows Defender 的防护能力。**
 * **重新启用被各类卫士、管家所禁用的关键系统服务。**
