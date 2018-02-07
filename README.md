@@ -10,8 +10,8 @@
 ###### 受限于个人的能力与水平，本工具可能还会存在或多或少不尽如人意的地方，望您谅解及指正，谢谢！:smile:
 
 ## 功能
-> 您可以依您的喜好启用或禁用某些功能。
 ### 1. 消灭 Windows 10 中的广告
+> 目前暂时不能撤销该操作。
 * 还您一个清静的 Windows 10。
 ### 2. 消灭令您厌烦的 Windows 功能
 * 您可以**按需**禁用 Cortana、OneDrive、锁屏、Windows Defender 以及 **Windows 自动更新**。
@@ -46,9 +46,14 @@
 ### 9. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 * 如果您配合 Windows 版 iCloud 应用程序使用该功能，您甚至可以让 Microsoft Edge 的书签与 Safari 的书签保持同步！
 ### 10. 加速 Windows
+> 目前暂时不能撤销该操作。
 * 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
+* 通过启用 Delivery Optimization 服务和 Background Intelligent Transfer Service 服务的 P2P 下载功能来帮助您更快速地下载 Windows 补丁。
 ### 11. 加固 Windows
+> 目前暂时不能撤销该操作。
+* **将用户账户控制设置调整为默认状态。**
 * **增强 Windows Defender 的防护能力。**
+* **重新启用被各类卫士、管家所禁用的关键系统服务。**
   ###### 如果您能够充分利用以下安全措施，并时刻保持 Windows 和应用程序最新，您甚至可以不在 Windows 上运行任何防病毒软件！
 * **禁用 SMB v1 协议以帮助您防范利用漏洞传播的勒索软件。**
 * **禁止从 U 盘运行可执行文件以彻底防死 U 盘病毒。**
