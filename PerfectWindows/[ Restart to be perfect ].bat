@@ -109,25 +109,25 @@ echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]>
 echo "Userinit"="%systemdrive%\\WINDOWS\\system32\\userinit.exe,">>%A%
 echo.>>%A%
 
-if exist "Cortana [ X ].bat" (
+if exist "Windows Function - Cortana [ X ].bat" (
 set cortana=0
 ) else (
 set cortana=1
 )
 
-if exist "Lock Screen [ X ].bat" (
+if exist "Windows Function - Lock Screen [ X ].bat" (
 set NoLockScreen=1
 ) else (
 set NoLockScreen=0
 )
 
-if exist "OneDrive [ X ].bat" (
+if exist "Windows Function - OneDrive [ X ].bat" (
 set disableOnedrive=1
 ) else (
 set disableOnedrive=0
 )
 
-if exist "Windows Defender [ X ].bat" (
+if exist "Windows Function - Windows Defender [ X ].bat" (
 echo [HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows Defender]>>%A%
 echo "DisableAntiSpyware"=dword:00000001>>%A%
 echo.>>%A%
@@ -137,19 +137,31 @@ echo "DisableAntiSpyware"=->>%A%
 echo.>>%A%
 )
 
-if exist "Natural Scrolling [ X ].bat" (
+if exist "Windows Function - HomeGroup [ X ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]>>%A%
+echo "DisableHomeGroup"=dword:00000001>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]>>%A%
+echo "Start"=dword:00000004>>%A%
+echo.>>%A%
+echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]>>%A%
+echo "Start"=dword:00000004>>%A%
+echo.>>%A%
+)
+
+if exist "Bonus - Natural Scrolling [ X ].bat" (
 set Reverse=0
 ) else (
 set Reverse=1
 )
 
-if exist "Sync between IE and Edge [ X ].bat" (
+if exist "Bonus - Sync between IE and Edge [ X ].bat" (
 set sync=0
 ) else (
 set sync=1
 )
 
-if exist "Smart Power Plan [ X ].bat" (
+if exist "Bonus - Smart Power Plan [ X ].bat" (
 echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
 echo.>>%A%
 ) else (
@@ -157,7 +169,7 @@ copy "Smart Power Plan [ O ].bat" Temp\Power.reg 1>nul 2>nul
 regedit /s Temp\Power.reg 1>nul 2>nul
 )
 
-if exist "Power Keys [ X ].bat" (
+if exist "Bonus - Power Keys [ X ].bat" (
 echo [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]>>%A%
 echo "Scancode Map"=->>%A%
 ) else (
@@ -167,7 +179,7 @@ echo "Scancode Map"=hex:00,00,00,00,00,00,00,00,06,00,00,00,2E,E0,51,E0,30,E0,49
 
 
 echo.>>%A%
-if exist "Windows Update [ O ].bat" (
+if exist "Windows Function - Windows Update [ O ].bat" (
 echo [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU]>>%A%
 echo "NoAutoUpdate"=->>%A%
 echo "AUOptions"=->>%A%
@@ -890,10 +902,12 @@ exit
 "Start"=dword:00000004
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupListener]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HomeGroupProvider]
-"Start"=dword:00000004
+"Start"=dword:00000002
+"DelayedAutoStart"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PcaSvc]
 "Start"=dword:00000004
@@ -1086,7 +1100,7 @@ exit
 "DCSettingIndex"=dword:00000000
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\HomeGroup]
-"DisableHomeGroup"=dword:00000001
+"DisableHomeGroup"=-
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates\TrustedPublisher\Safer]
 "AuthenticodeFlags"=dword:00000000

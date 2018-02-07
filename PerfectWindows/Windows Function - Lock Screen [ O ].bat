@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Windows Update
+set name=Windows Function - Lock Screen
 
 
 @echo off

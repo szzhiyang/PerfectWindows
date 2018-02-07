@@ -1,6 +1,7 @@
 Windows Registry Editor Version 5.00
 
-set name=Cortana
+set name=Windows Function - OneDrive
+
 
 @echo off
 pushd "%~dp0"

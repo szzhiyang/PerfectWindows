@@ -1,6 +1,6 @@
 Windows Registry Editor Version 5.00
 
-set name=Smart Power Plan
+set name=Bonus - Smart Power Plan
 @echo off
 pushd "%~dp0"
 
