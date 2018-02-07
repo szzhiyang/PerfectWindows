@@ -426,9 +426,7 @@ exit
 "SilentInstalledAppsEnabled"=dword:00000000
 "SoftLandingEnabled"=dword:00000000
 "SystemPaneSuggestionsEnabled"=dword:00000000
-"ContentDeliveryAllowed"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
-"SubscribedContent-310093Enabled"=dword:00000000
 
 [-HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager]
 
@@ -438,9 +436,7 @@ exit
 "SilentInstalledAppsEnabled"=dword:00000000
 "SoftLandingEnabled"=dword:00000000
 "SystemPaneSuggestionsEnabled"=dword:00000000
-"ContentDeliveryAllowed"=dword:00000000
 "PreInstalledAppsEverEnabled"=dword:00000000
-"SubscribedContent-310093Enabled"=dword:00000000
 
 [HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo]
 "Enabled"=dword:00000000
