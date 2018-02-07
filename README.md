@@ -2,7 +2,11 @@
 
 # PerfectWindows
 
-## 助您打造心目中最完美的 Windows ！
+## 助您轻松自如地打造心目中最完美的 Windows ！
+
+
+![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo3.png)
+
 
 ###### 使用前，请务必耐心阅读完本页，谢谢！:smile:
 ###### 如果您在使用本工具后遇到了任何问题，请先更新并重新运行本工具。
@@ -12,7 +16,6 @@
 ## 功能
 > 请您尽情地在 issues 中建议新功能，因为我现在急需灵感！:joy:
 ### 1. 消灭 Windows 10 中的广告
-> 目前暂时不能撤销该操作，因为尚未有用户表示他们喜爱 Windows 10 中的广告。:joy:
 * 还您一个清静的 Windows 10。
 ### 2. 消灭令您厌烦的 Windows 功能
 * **您可以按需禁用 Cortana、OneDrive、锁屏、Windows Defender 以及 Windows 自动更新**。
@@ -36,21 +39,29 @@
 |电池|节能
 |外接|高性能
 
-### 5. 为 Windows 10 找回传统版本的照片查看器
-* 如果您觉得 Windows 10 预装的 **照片** 应用启动与运行太慢，您可以将 **Windows 照片查看器** 设置为默认照片查看程序。
-### 6. 让 Windows 10 的任务栏更透明
-* 如果您不喜欢使用透明的 Windows 10 任务栏，只需前往 **设置 - 个性化 - 颜色** 中关闭 **透明效果** 即可。
-### 7. 添加鼠标自然滚动功能
+### 5. 将 “此电脑” 发扬广大
+* 常用设置，尽在咫尺！
+* 您可以自由定制 **“此电脑”** 中的图标。:smile:
+
+
+![此电脑](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/ThisPC2.png)
+
+
+### 6. 添加鼠标自然滚动功能
 * 就像 macOS 那样。
-### 8. 帮助您轻松自如地修改 hosts 文件
+### 7. 为 Windows 10 找回传统版本的照片查看器
+* 如果您觉得 Windows 10 预装的 **照片** 应用启动与运行太慢，您可以将 **Windows 照片查看器** 设置为默认照片查看程序。
+### 8. 让 Windows 10 的任务栏更透明
+* 如果您不喜欢使用透明的 Windows 10 任务栏，只需前往 **设置 - 个性化 - 颜色** 中关闭 **透明效果** 即可。
+### 9. 帮助您轻松自如地修改 hosts 文件
 * 只需以管理员身份运行 `Hosts Editor` 即可。我们将在您保存 hosts 文件后自动刷新 DNS 缓存，无需您操劳。:smile:
-### 9. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
+### 10. 使 Microsoft Edge 与 Internet Explorer 的书签保持一致
 * 如果您配合 Windows 版 iCloud 应用程序使用该功能，您甚至可以让 Microsoft Edge 的书签与 Safari 的书签保持同步！
-### 10. 加速 Windows
-> 目前暂时不能撤销该操作，因为我暂时还没能找到这背后涉及到的最佳交互逻辑。如果您对此有更好的主意，欢迎与我交流！:smile:
+### 11. 加速 Windows
+> 是否禁用家庭组由您决定。
 * 通过禁用 Superfetch、家庭组、程序兼容性助手服务、磁盘碎片整理计划任务和自动维护计划任务来加速 Windows。
 * 通过启用 Delivery Optimization 服务和 Background Intelligent Transfer Service 服务的 P2P 下载功能来帮助您更快速地下载 Windows 补丁。
-### 11. 加固 Windows
+### 12. 加固 Windows
 > 目前暂时不能撤销该操作，因为我坚信每个人的 Windows 都应该受到以下安全保护。如果您对此有更好的主意，欢迎与我交流！:smile:
 * **将用户账户控制设置调整为默认状态。**
 * **（如果您正在使用 Windows Defender，）增强 Windows Defender 的防护能力。**
@@ -72,8 +83,8 @@
 
 ###### 【X】代表禁用；【O】代表启用。
 ###### 您只需双击批处理文件即可切换【X】和【O】以使设置贴合您的喜好，超简单的哦。:smile:
-![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo2.png)
-
+![软件截图](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo3.png)
+###### 您甚至还可以使用右上角的搜索框快速定位到您所需要调整的选项，自由灵活！:smile:
 
 ## 使用方法
 1. 点击绿色按钮，并选择 “Download Zip”。
