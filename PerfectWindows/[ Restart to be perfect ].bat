@@ -149,6 +149,51 @@ echo "Start"=dword:00000004>>%A%
 echo.>>%A%
 )
 
+if exist "This PC - Control Panel [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{21EC2020-3AEA-1069-A2DD-08002B30309D}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Recycle Bin [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{645FF040-5081-101B-9F08-00AA002F954E}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - User [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Libraries [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Programs [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7b81be6a-ce2b-4676-a29e-eb907a5126c5}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - System [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{BB06C0E4-D293-4f75-8A90-CB05B6477EEE}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Network [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7007ACC7-3202-11D1-AAD2-00805FC1270E}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Admin Tools [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D20EA4E1-3957-11d2-A40B-0C5020524153}]>>%A%
+echo.>>%A%
+)
+
+if exist "This PC - Personalization [ O ].bat" (
+echo [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}]>>%A%
+echo.>>%A%
+)
+
 if exist "Bonus - Natural Scrolling [ X ].bat" (
 set Reverse=0
 ) else (
@@ -339,6 +384,24 @@ exit
 
 
 :reg
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{21EC2020-3AEA-1069-A2DD-08002B30309D}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{645FF040-5081-101B-9F08-00AA002F954E}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{59031a47-3f72-44a7-89c5-5595fe6b30ee}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{031E4825-7B94-4dc3-B131-E946B44C8DD5}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7b81be6a-ce2b-4676-a29e-eb907a5126c5}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{BB06C0E4-D293-4f75-8A90-CB05B6477EEE}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{7007ACC7-3202-11D1-AAD2-00805FC1270E}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{D20EA4E1-3957-11d2-A40B-0C5020524153}]
+
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{ED834ED6-4B5A-4bfe-8F11-A626DCB6A921}]
 
 [-HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Windows\RemovableStorageDevices]
 
