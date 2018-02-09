@@ -61,3 +61,5 @@ exit
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
 "Scancode Map"=hex:00,00,00,00,00,00,00,00,07,00,00,00,2e,e0,51,e0,30,e0,49,e0,10,e0,47,e0,19,e0,4f,e0,22,e0,52,e0,21,e0,46,00,00,00,00,00
+
+

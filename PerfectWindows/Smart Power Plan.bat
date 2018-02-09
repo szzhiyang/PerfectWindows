@@ -199,3 +199,5 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\d8742dcb-3e6a-4b3c-b3fe-374623cdcf06]
 "DCSettingIndex"=dword:00000000
 "ACSettingIndex"=dword:00000000
+
+

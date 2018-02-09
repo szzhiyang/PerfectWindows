@@ -46,7 +46,7 @@ copy %0 %A% /Y 1>nul 2>nul
 regedit /s %A% 1>nul 2>nul
 rd /s /q Temp 1>nul 2>nul
 copy %0 main.bat /Y 1>nul 2>nul
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\softwarename by Tom Zhu" /v DisplayIcon /d "iconpath" /f 1>nul 2>nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\softwarename by Tom Zhu" /v DisplayIcon /d "%systemroot%\system32\" /f 1>nul 2>nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\softwarename by Tom Zhu" /v UninstallString /d "\"%programfiles%\Tom Zhu\softwarename\main.bat\" uninstall" /f 1>nul 2>nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\softwarename by Tom Zhu" /v ModifyPath /d "\"%programfiles%\Tom Zhu\softwarename\main.bat\"" /f 1>nul 2>nul
 exit
