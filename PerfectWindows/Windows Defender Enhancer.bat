@@ -83,7 +83,7 @@ echo   ^</Actions^>>>Temp\1.xml
 echo ^</Task^>>>Temp\1.xml
 
 
-SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "Temp\1.xml" /F 1>nul 2>nul
+SCHTASKS /CREATE /RU SYSTEM /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" /XML "%programfiles%\Tom Zhu\Windows Defender Enhancer\Temp\1.xml" /F 1>nul 2>nul
 SCHTASKS /RUN /TN "\Microsoft\Windows\Windows Defender\Windows Defender Signature Update" 1>nul 2>nul
 
 
