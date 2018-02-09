@@ -56,13 +56,13 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu]
 "NoModify"=dword:00000000
 "DisplayName"=" Smart Power Plan"
-"DisplayVersion"=-
+"DisplayVersion"="1.0.0"
 "Publisher"=" Tom Zhu"
-"URLInfoAbout"="https://www.github.com/szzhiyang"
-"HelpLink"="https://www.github.com/szzhiyang"
-"URLUpdateInfo"="https://www.github.com/szzhiyang"
-"Contact"="https://www.github.com/szzhiyang"
-"EstimatedSize"=dword:00000000
+"URLInfoAbout"="https://www.github.com/szzhiyang/PerfectWindows"
+"HelpLink"="https://www.github.com/szzhiyang/PerfectWindows"
+"URLUpdateInfo"="https://www.github.com/szzhiyang/PerfectWindows"
+"Contact"="https://www.github.com/szzhiyang/PerfectWindows"
+"EstimatedSize"=dword:00000008
 "NoRemove"=dword:00000000
 "NoRepair"=dword:00000000
 
