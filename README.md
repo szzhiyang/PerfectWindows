@@ -6,7 +6,7 @@
 
 ![Demo 2](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo2.png)
 
-![Demo 3](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo3.png)
+![Demo 3](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo5.png)
 
 ![Demo 4](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo4.png)
 
