@@ -1,29 +1,63 @@
 Windows Registry Editor Version 5.00
 
 @echo off
-set A=%systemroot%\PerfectWindows\SmartPowerPlan.reg
 net session 1>nul 2>nul
 if errorlevel 1 (
   exit
-) else (
-  goto main 
 )
 
-:main
-md "%systemroot%\PerfectWindows" 1>nul 2>nul
+
+rd /s /q "%programfiles%\Tom Zhu\Smart Power Plan\Temp" 1>nul 2>nul
+md "%programfiles%\Tom Zhu\Smart Power Plan\Temp" 1>nul 2>nul
+pushd "%programfiles%\Tom Zhu\Smart Power Plan" 1>nul 2>nul
+set A=Temp\main.reg 
+
+
+:uninstall
 copy %0 %A% /Y 1>nul 2>nul
+
+
+echo [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]>>%A%
+
+
+
 regedit /s %A% 1>nul 2>nul
+if "%1" equ "uninstall" (
+
+
+
+
+
+  reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu" /f 1>nul 2>nul
+  rd /s /q "%programfiles%\Tom Zhu\Smart Power Plan" 1>nul 2>nul
+  exit
+)
+
+
+:install
+copy %0 %A% /Y 1>nul 2>nul
+
+
+
+
+
+
+
+regedit /s %A% 1>nul 2>nul
+rd /s /q Temp 1>nul 2>nul
+copy %0 main.bat /Y 1>nul 2>nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu" /v DisplayIcon /d "%systemroot%\system32\powercpl.dll,0" /f 1>nul 2>nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu" /v UninstallString /d "\"%programfiles%\Tom Zhu\Smart Power Plan\main.bat\" uninstall" /f 1>nul 2>nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu" /v ModifyPath /d "\"%programfiles%\Tom Zhu\Smart Power Plan\main.bat\"" /f 1>nul 2>nul
 exit
 
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ZZY Smart Power Plan]
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu]
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\ZZY Smart Power Plan]
-"UninstallString"="cmd.exe /s /c del %systemroot%\\PerfectWindows\\SmartPowerPlan.reg&&REG DELETE \"HKLM\\SOFTWARE\\Policies\\Microsoft\\Power\\PowerSettings\" /f &&REG DELETE \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\ZZY Smart Power Plan\" /f"
-"ModifyPath"="cmd.exe /s /c regedit /s %systemroot%\\PerfectWindows\\SmartPowerPlan.reg"
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Smart Power Plan by Tom Zhu]
 "NoModify"=dword:00000000
 "DisplayName"=" Smart Power Plan"
 "DisplayVersion"=-
-"Publisher"=" ZZY"
+"Publisher"=" Tom Zhu"
 "URLInfoAbout"="https://www.github.com/szzhiyang"
 "HelpLink"="https://www.github.com/szzhiyang"
 "URLUpdateInfo"="https://www.github.com/szzhiyang"
@@ -31,16 +65,12 @@ exit
 "EstimatedSize"=dword:00000000
 "NoRemove"=dword:00000000
 "NoRepair"=dword:00000000
-"DisplayIcon"=hex(2):25,00,73,00,79,00,73,00,74,00,65,00,6d,00,72,00,6f,00,6f,\
-  00,74,00,25,00,5c,00,73,00,79,00,73,00,74,00,65,00,6d,00,33,00,32,00,5c,00,\
-  70,00,6f,00,77,00,65,00,72,00,63,00,70,00,6c,00,2e,00,64,00,6c,00,6c,00,2c,\
-  00,30,00,00,00
+
+
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Power]
 "Start"=dword:00000002
 "DelayedAutoStart"=dword:00000000
-
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings]
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d]
 "ACSettingIndex"=dword:00000000
