@@ -52,7 +52,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\IEdge by Tom Zhu]
 "NoModify"=dword:00000000
 "DisplayName"=" IEdge"
-"DisplayVersion"="1.0.0"
+"DisplayVersion"=" 1.0.0"
 "Publisher"=" Tom Zhu"
 "URLInfoAbout"="https://www.github.com/szzhiyang/PerfectWindows"
 "HelpLink"="https://www.github.com/szzhiyang/PerfectWindows"

@@ -102,7 +102,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows Defender Enhancer by Tom Zhu]
 "NoModify"=dword:00000000
 "DisplayName"=" Windows Defender Enhancer"
-"DisplayVersion"="1.0.1"
+"DisplayVersion"=" 1.0.1"
 "Publisher"=" Tom Zhu"
 "URLInfoAbout"="https://www.github.com/szzhiyang/PerfectWindows"
 "HelpLink"="https://www.github.com/szzhiyang/PerfectWindows"

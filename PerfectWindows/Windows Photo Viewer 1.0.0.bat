@@ -44,7 +44,7 @@ exit
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Windows Photo Viewer by Tom Zhu]
 "NoModify"=dword:00000000
 "DisplayName"=" Windows Photo Viewer"
-"DisplayVersion"="1.0.0"
+"DisplayVersion"=" 1.0.0"
 "Publisher"=" Tom Zhu"
 "URLInfoAbout"="https://www.github.com/szzhiyang/PerfectWindows"
 "HelpLink"="https://www.github.com/szzhiyang/PerfectWindows"
