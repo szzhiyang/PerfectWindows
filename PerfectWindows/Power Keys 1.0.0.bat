@@ -40,6 +40,7 @@ copy %0 main.bat /Y 1>nul 2>nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Power Keys by Tom Zhu" /v DisplayIcon /d "%systemroot%\system32\setupapi.dll,-3" /f 1>nul 2>nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Power Keys by Tom Zhu" /v UninstallString /d "\"%programfiles%\Tom Zhu\Power Keys\main.bat\" uninstall" /f 1>nul 2>nul
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Power Keys by Tom Zhu" /v ModifyPath /d "\"%programfiles%\Tom Zhu\Power Keys\main.bat\"" /f 1>nul 2>nul
+
 exit
 
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Power Keys by Tom Zhu]
