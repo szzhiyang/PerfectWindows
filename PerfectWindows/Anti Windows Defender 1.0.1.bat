@@ -1,10 +1,10 @@
 Windows Registry Editor Version 5.00
 
 @echo off
-net session 1>nul 2>nul
-if errorlevel 1 (
-  exit
-)
+net session>nul&&(goto main)
+start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0","","runas",1)(window.close)&&exit
+
+:main
 
 rd /s /q "%programfiles%\Tom Zhu\Windows Defender Enhancer" 1>nul 2>nul
 rd /s /q "%programfiles%\Tom Zhu\Anti Windows Defender\Temp" 1>nul 2>nul

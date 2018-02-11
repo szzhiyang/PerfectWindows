@@ -1,11 +1,10 @@
 Windows Registry Editor Version 5.00
 
 @echo off
+net session>nul&&(goto main)
+start "" mshta vbscript:CreateObject("Shell.Application").ShellExecute("cmd.exe","/c %~s0","","runas",1)(window.close)&&exit
 
-net session 1>nul 2>nul
-if errorlevel 1 (
-  exit
-)
+:main
 
 setlocal enabledelayedexpansion
 set num=11
