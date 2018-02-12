@@ -154,24 +154,31 @@
 <br>
 <br>
 <br>
+
 # 只要您与上面的某些话产生了共鸣，您只需点击对应的蓝色链接下载安装我们专门为您量身定制的软件即可！:smile:
+
 <br>
 <br>
 <br>
 <br>
+
 # 您甚至可以随意修复或者卸载我们的软件，就像您修复或者卸载 Microsoft Office 一样！:smile:
+
 <br>
 
 ![Demo 1](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo1.png)
 
 ![Demo 6](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo6.png)
+
 <br>
+
 # 如果您有任何疑问:question:、建议:sparkles:或其他需求:triangular_flag_on_post:，请 [在知乎联系知阳](https://www.zhihu.com/people/zhi-yang-18-69) 或者 [提交 issue](https://github.com/szzhiyang/PerfectWindows/issues)！:smile:
 
 <br>
 <br>
 <br>
 <br>
+
 # 如果 PerfectWindows 可以解决你在使用 Windows 时的痛点 :broken_heart:，不妨请我喝杯咖啡 :coffee:，想必也是非常愉悦的事情！:pray::heart:
 
 ![支付](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/Pay.jpg)
