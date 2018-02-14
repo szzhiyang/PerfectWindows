@@ -35,6 +35,7 @@
 |<kbd>Home</kbd>|**上一首**
 |<kbd>End</kbd>|**下一首**
 |<kbd>Scroll Lock</kbd>|**启动 Windows 计算器**
+|<kbd>Print Screen</kbd>|**启动 Windows 截图工具**
 
 **Power Keys 仅在您重新登录电脑后才会开始工作。**
 
