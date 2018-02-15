@@ -41,13 +41,14 @@
 |按下 <kbd>End</kbd>|**下一首歌**
 |按下 <kbd>B</kbd>|**启动您最喜爱的浏览器**
 |按下 <kbd>C</kbd>|**启动 Windows 计算器**
-|按下 <kbd>Print Screen</kbd>|**启动 Windows 截图工具**
 |按下 <kbd>Esc</kbd>|**关闭活动的窗口**
 
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
 
 您可以从任务栏退出 **Power Keys**。
+
+您也可以为 **Power Keys** 添加计划任务以使其开机自启。
 
 **Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 Power-Keys.ahk。
 
