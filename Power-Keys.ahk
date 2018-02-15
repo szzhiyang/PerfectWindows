@@ -14,7 +14,6 @@
 #End::Media_Next
 #MButton::Media_Play_Pause
 #Del::Media_Play_Pause
-#PrintScreen::run,snippingtool
 #c::run,calc
 #b::run,https:
 #Esc::!F4
