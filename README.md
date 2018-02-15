@@ -25,19 +25,31 @@
 
 # Windows 竟然没有控制音量和音乐播放的热键！这有损我的听歌体验和游戏体验！:angry:
 
-真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.bat) 的软件可以将您几乎不用的几个按键的功能**替换**为媒体调节功能，就像这样：
+真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以 **增强 <kbd>Win</kbd> 徽标键的功能**，快来试试吧！
 
-|按键|功能|
+|按住 <kbd>Win</kbd> 徽标键时|功能|
 |:-|:-|
-|<kbd>Page Up</kbd>|**大点声**
-|<kbd>Page Down</kbd>|**小点声（直到静音）**
-|<kbd>Insert</kbd>|**暂停或继续**
-|<kbd>Home</kbd>|**上一首**
-|<kbd>End</kbd>|**下一首**
-|<kbd>Scroll Lock</kbd>|**启动 Windows 计算器**
-|<kbd>Print Screen</kbd>|**启动 Windows 截图工具**
+|**向上滚动鼠标**|**大点声**
+|**向下滚动鼠标**|**小点声（直到静音）**
+|**按下鼠标左键**|**上一首歌**
+|**按下鼠标中键**|**暂停或继续播放**
+|**按下鼠标右键**|**下一首歌**
+|**按下 <kbd>Page Up</kbd>**|**大点声**
+|**按下 <kbd>Page Down</kbd>**|**小点声（直到静音）**
+|**按下 <kbd>Home</kbd>**|**上一首歌**
+|**按下 <kbd>Delete</kbd>**|**暂停或继续播放**
+|**按下 <kbd>End</kbd>**|**下一首歌**
+|**按下 <kbd>B</kbd>**|**启动您最喜爱的浏览器**
+|**按下 <kbd>C</kbd>**|**启动 Windows 计算器**
+|**按下 <kbd>Print Screen</kbd>**|**启动 Windows 截图工具**
+|**按下 <kbd>Esc</kbd>**|**关闭活动的窗口**
 
-**Power Keys 仅在您重新登录电脑后才会开始工作。**
+
+**Power Keys 为免安装型软件，一旦运行即可生效。**
+
+您可以从任务栏退出 **Power Keys**。
+
+**Power Keys** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 Power-Keys.ahk。
 
 ---
 
