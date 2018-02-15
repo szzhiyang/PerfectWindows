@@ -57,15 +57,6 @@
 
 ---
 
-# 要是当我向上推动鼠标滚轮时，网页或文档的页面能一起向上移动，一切就像我使用触摸屏或触控板时那样自然，那种感觉岂不美哉？:smile:
-真巧！我们这儿正好有款名叫 [**Natural Scrolling**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Natural-Scrolling.bat) 的软件可以让您获得这种美好的体验！
-
-**安装完成后请重新连接您的鼠标以使新的鼠标设置生效。**
-
-**如果您后来添加了新鼠标，请前往程序和功能修复 Natural Scrolling 后重新连接新鼠标。**
-
----
-
 # 要是 Windows 也能像 Linux 和 macOS 那样安全无虞就好了，这样我的电脑就不会被防病毒软件拖慢速度，我所信任的软件也不会被无辜误杀了！:smile:
 真巧！我们这儿正好有款名叫 [**Checkpoint**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Checkpoint.bat) 的软件可以充分调动 Windows 自带的软件限制策略功能来增强 Windows 的安全性。
 
