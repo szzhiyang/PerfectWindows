@@ -25,19 +25,19 @@
 
 # Windows 竟然没有控制音量和音乐播放的热键！这有损我的听歌体验和游戏体验！:angry:
 
-真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 <kbd>Win</kbd> 徽标键的功能**，快来试试吧！
+真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 <kbd>**Win**</kbd> 徽标键的功能**，快来试试吧！
 
-|随同 <kbd>Win</kbd> 按下|功能|
+|随同 <kbd>**Win**</kbd> 按下|功能|
 |:-|:-|
-|**<kbd>+</kbd> <kbd>-</kbd>**|**大点声 / 小点声**
-|**<kbd><</kbd> <kbd>\|\|</kbd> <kbd>></kbd>**|**上一首 / 暂停（继续） / 下一首**
-|**<kbd>Caps Lock</kbd>**|**（不再）将窗口锁定至最前**
+|<kbd>**+**</kbd> <kbd>**-**</kbd>|**大点声 / 小点声**
+|<kbd>**<**</kbd> <kbd>**\|\|**</kbd> <kbd>**>**</kbd>|**上一首 / 暂停（继续） / 下一首**
+|<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
-|<kbd>B</kbd>|**默认浏览器**
-|<kbd>C</kbd>|**计算器**
-|<kbd>P</kbd>|**控制面板**
-|<kbd>U</kbd>|**用户文件夹**
-|<kbd>Delete</kbd>|**回收站**
+|<kbd>**B**</kbd>|**默认浏览器**
+|<kbd>**C**</kbd>|**计算器**
+|<kbd>**P**</kbd>|**控制面板**
+|<kbd>**U**</kbd>|**用户文件夹**
+|<kbd>**Delete**</kbd>|**回收站**
 
 
 
