@@ -27,15 +27,14 @@
 
 真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以增强 <kbd>Win</kbd> 徽标键的功能，快来试试吧！
 
-|按住 <kbd>Win</kbd> 徽标键时|功能|
+|组合键|功能|
 |:-|:-|
-|按下 <kbd>Page Up</kbd>|**大点声**
-|按下 <kbd>Page Down</kbd>|**小点声（直到静音）**
-|按下 <kbd>Home</kbd>|**上一首歌**
-|按下 <kbd>Delete</kbd>|**暂停或继续播放**
-|按下 <kbd>End</kbd>|**下一首歌**
-|按下 <kbd>B</kbd>|**启动您最喜爱的浏览器**
-|按下 <kbd>C</kbd>|**启动 Windows 计算器**
+|<kbd>Win</kbd> + <kbd>+</kbd> / <kbd>-</kbd>|**大点声 / 小点声**
+|<kbd>Win</kbd> + <kbd><</kbd> / <kbd>></kbd>|**上一首 / 下一首**
+|<kbd>Win</kbd> + <kbd>Enter</kbd>|**暂停或继续播放**
+|<kbd>Win</kbd> + <kbd>B</kbd>|**启动您最喜爱的浏览器**
+|<kbd>Win</kbd> + <kbd>C</kbd>|**启动 Windows 计算器**
+|<kbd>Win</kbd> + <kbd>Esc</kbd>|**关闭窗口**
 
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
