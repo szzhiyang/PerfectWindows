@@ -29,11 +29,6 @@
 
 |按住 <kbd>Win</kbd> 徽标键时|功能|
 |:-|:-|
-|向上滚动鼠标|**大点声**
-|向下滚动鼠标|**小点声（直到静音）**
-|按下鼠标左键|**上一首歌**
-|按下鼠标中键|**暂停或继续播放**
-|按下鼠标右键|**下一首歌**
 |按下 <kbd>Page Up</kbd>|**大点声**
 |按下 <kbd>Page Down</kbd>|**小点声（直到静音）**
 |按下 <kbd>Home</kbd>|**上一首歌**
@@ -41,7 +36,6 @@
 |按下 <kbd>End</kbd>|**下一首歌**
 |按下 <kbd>B</kbd>|**启动您最喜爱的浏览器**
 |按下 <kbd>C</kbd>|**启动 Windows 计算器**
-|按下 <kbd>Esc</kbd>|**关闭活动的窗口**
 
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
@@ -67,6 +61,19 @@
 <br>
 
 ![Demo 5](https://github.com/szzhiyang/Pics/raw/master/PerfectWindows/demo5.png)
+
+---
+
+# 要是当我向上推动鼠标滚轮时，网页或文档的页面能一起向上移动，一切就像我使用触摸屏或触控板时那样自然，那种感觉岂不美哉？:smile:
+真巧！我们这儿正好有款名叫 [**Natural Scrolling**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Natural-Scrolling.exe) 的软件可以让您获得这种美好的体验！
+
+**Natural Scrolling 为免安装型软件，一旦运行即可生效。**
+
+您可以从任务栏退出 **Natural Scrolling**。
+
+您也可以为 **Natural Scrolling** 添加计划任务以使其开机自启。
+
+**Natural Scrolling** 是由 Ahk2Exe 生成的，您可以在 repository 中找到它的源文件 Natural-Scrolling.ahk。
 
 ---
 
