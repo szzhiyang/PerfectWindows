@@ -40,7 +40,7 @@
 |<kbd>**G**</kbd> ames|**游戏 \***
 |<kbd>**H**</kbd> ome|**回到桌面**
 |<kbd>**J**</kbd> ournal|**日记 \***
-|Networ <kbd>**K**</kbd>|**网络连接 \***
+|Networ <kbd>**K**</kbd>|**网络连接**
 |<kbd>**M**</kbd> usic|**音乐 \***
 |<kbd>**N**</kbd> ote|**笔记 \***
 |<kbd>**O**</kbd> nline Storage|**在线存储 \***
