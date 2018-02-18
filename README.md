@@ -33,10 +33,33 @@
 |<kbd>**<**</kbd> <kbd>**\|\|**</kbd> <kbd>**>**</kbd>|**上一首 / 暂停（继续） / 下一首**
 |<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
-|<kbd>**B**</kbd>|**默认浏览器**
+|<kbd>**B**</kbd>|**浏览器（<u>B</u>rowser）\***
+|<kbd>**D**</kbd>|**下载工具（<u>D</u>ownloader）\***
+|<kbd>**E**</kbd>|**邮件（<u>E</u>mail）\***
+|<kbd>**F**</kbd>|**主文件夹（<u>F</u>older）\***
+|<kbd>**G**</kbd>|**游戏（<u>G</u>ames）\***
+|<kbd>**H**</kbd>|**回到桌面（<u>H</u>ome）**
+|<kbd>**J**</kbd>|**日记（<u>J</u>ournal）\***
+|<kbd>**K**</kbd>|**网络连接（Networ<u>k</u>）\***
+|<kbd>**M**</kbd>|**音乐（<u>M</u>usic）\***
+|<kbd>**N**</kbd>|**笔记（<u>N</u>ote）\***
+|<kbd>**O**</kbd>|**在线存储（<u>O</u>nline Storage）\***
+|<kbd>**P**</kbd>|**控制面板（Control <u>P</u>anel）**
+|<kbd>**Q**</kbd>|**聊天（<u>Q</u>Q）\***
+|<kbd>**S**</kbd>|**搜索（<u>S</u>earch）\***
+|<kbd>**T**</kbd>|**任务（<u>T</u>o - Do）\***
+|<kbd>**U**</kbd>|**用户文件夹（<u>U</u>ser Folder）**
+|<kbd>**V**</kbd>|**影视或虚拟机（<u>V</u>ideos / <u>V</u>irtual Machine）\***
+|<kbd>**Y**</kbd>|**库（Librar<u>y</u>）**
+|<kbd>**Z**</kbd>|**您最重要的应用（Ama<u>z</u>ing）\***
+|<kbd>**F1**</kbd> ~ <kbd>**F11**</kbd>|**您想到达的任何地方 \***
+|<kbd>**F12**</kbd>|**终端 \***
 |<kbd>**Delete**</kbd>|**回收站**
 
 
+**\* 需要在桌面为对应应用、文件夹或网站建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**对应按键**</kbd> 。**
+
+<br>
 
 **Power Keys 为免安装型软件，一旦运行即可生效。**
 
