@@ -2,17 +2,17 @@
 #MaxHotkeysPerInterval 1000
 #Persistent
 
-#=::Volume_Up
-#-::Volume_Down
-#,::Media_Prev
-#.::Media_Next
-#'::Media_Play_Pause
+#=::Send {Volume_Up}
+#-::Send {Volume_Down}
+#,::Send {Media_Prev}
+#.::Send {Media_Next}
+#'::Send {Media_Play_Pause}
 
 #b::Send ^+!b
 #d::Send ^+!d
 #e::Send ^+!e
 #f::Send ^+!f
-#h::#d
+#h::Send #d
 #j::Send ^+!j
 #k::Run ::{7007ACC7-3202-11D1-AAD2-00805FC1270E}
 #m::Send ^+!m
@@ -40,6 +40,6 @@
 #F11::Send ^+!{F11}
 #F12::Send ^+!{F12}
 
-#Esc::!F4
+#Esc::Send !{F4}
 #CapsLock::winset,AlwaysOnTop,, A
 #delete::Run ::{645FF040-5081-101B-9F08-00AA002F954E}
