@@ -35,7 +35,7 @@
 |<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
 |<kbd>**Delete**</kbd>|**打开回收站**
-|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd><br><kbd>**0**</kbd> ~ <kbd>**9**</kbd><br><kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd><br><kbd>**Space**</kbd> <kbd>**Backspace**</kbd><br><kbd>**Enter**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！</strong>
+|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd>   <kbd>**0**</kbd> ~ <kbd>**9**</kbd>   <kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd> <kbd>**Space**</kbd> <kbd>**Enter**</kbd><br><kbd>**Backspace**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！</strong>
 
 <br>
 
