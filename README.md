@@ -60,7 +60,9 @@
 
 
 >**<sup>1</sup> 需要在桌面为对应应用、文件夹或网站建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**对应按键**</kbd> 。**
-**<sup>2</sup> 需要在桌面为截图软件建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd> 或者将聊天软件（QQ、微信等）的截图热键设定为 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd>。**
+
+
+>**<sup>2</sup> 需要在桌面为截图软件建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd> 或者将聊天软件（QQ、微信等）的截图热键设定为 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd>。**
 
 <br>
 
