@@ -35,7 +35,20 @@
 |<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
 |<kbd>**Delete**</kbd>|**打开回收站**
-|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd>   <kbd>**0**</kbd> ~ <kbd>**9**</kbd>   <kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd> <kbd>**Space**</kbd> <kbd>**Enter**</kbd><br><kbd>**Backspace**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！</strong>
+|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd>   <kbd>**0**</kbd> ~ <kbd>**9**</kbd>   <kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd> <kbd>**Space**</kbd> <kbd>**Enter**</kbd><br><kbd>**Backspace**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！\*</strong>
+
+\* **为需要快速启动的应用程序（包括来自 Microsoft Store 的应用程序）、文件、文件夹、网站甚至命令指定全局热键的方法：**
+
+1. **在 Power-Keys.exe <u>所处的文件夹中</u>建立指向需要快速启动的应用程序、文件、文件夹、网站或命令的快捷方式。**
+<br>
+2. **将这个快捷方式重命名为您所需要的 <kbd>**Win**</kbd> 热键。**
+        如果您需要用 <kbd>**Win**</kbd> + <kbd>**A**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`A`**;
+        如果您需要用 <kbd>**Win**</kbd> + <kbd>**1**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`1`**；
+        如果您需要用 <kbd>**Win**</kbd> + <kbd>**F1**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`F1`**。
+        如果您需要用 <kbd>**Win**</kbd> + <kbd>**Space**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`Space`**。
+        **以此类推。**
+<br>
+3. **尽情享受前所未有的高效吧！** :smile:
 
 <br>
 
