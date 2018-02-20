@@ -29,35 +29,38 @@
 
 |随同 <kbd>**Win**</kbd> 按下|功能|
 |:-|:-|
+|<kbd>**F1**</kbd> <kbd>**?**</kbd>|**Power Keys 帮助文档**
 |<kbd>**+**</kbd> <kbd>**-**</kbd>|**大点声 / 小点声**
 |<kbd>**<**</kbd> <kbd>**\|\|**</kbd> <kbd>**>**</kbd>|**上一首 / 暂停（继续） / 下一首**
 |<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
-|<kbd>**B**</kbd> rowser|**浏览器 \***
-|<kbd>**D**</kbd> ownloader|**下载工具 \***
-|<kbd>**E**</kbd> mail|**邮件 \***
-|<kbd>**F**</kbd> older|**主文件夹 \***
-|<kbd>**G**</kbd> ames|**游戏 \***
+|<kbd>**B**</kbd> rowser|**浏览器 <sup>1</sup>**
+|<kbd>**D**</kbd> ownloader|**下载工具 <sup>1</sup>**
+|<kbd>**E**</kbd> mail|**邮件 <sup>1</sup>**
+|<kbd>**F**</kbd> older|**主文件夹 <sup>1</sup>**
+|<kbd>**G**</kbd> ames|**游戏 <sup>1</sup>**
 |<kbd>**H**</kbd> ome|**回到桌面**
-|<kbd>**J**</kbd> ournal|**日记 \***
+|<kbd>**J**</kbd> ournal|**日记 <sup>1</sup>**
 |Networ <kbd>**K**</kbd>|**网络连接**
-|<kbd>**M**</kbd> usic|**音乐 \***
-|<kbd>**N**</kbd> ote|**笔记 \***
-|<kbd>**O**</kbd> nline Storage|**在线存储 \***
+|<kbd>**M**</kbd> usic|**音乐 <sup>1</sup>**
+|<kbd>**N**</kbd> ote|**笔记 <sup>1</sup>**
+|<kbd>**O**</kbd> nline Storage|**在线存储 <sup>1</sup>**
 |Control <kbd>**P**</kbd> anel|**控制面板**
-|<kbd>**Q**</kbd>|**聊天 \***
-|<kbd>**S**</kbd> earch|**搜索 \***
-|<kbd>**T**</kbd> asks|**任务 \***
+|<kbd>**Q**</kbd>|**聊天 <sup>1</sup>**
+|<kbd>**S**</kbd> earch|**搜索 <sup>1</sup>**
+|<kbd>**T**</kbd> asks|**任务 <sup>1</sup>**
 |<kbd>**U**</kbd> ser Folder|**用户文件夹**
-|<kbd>**V**</kbd> ideos|**影视 \***
+|<kbd>**V**</kbd> ideos|**影视 <sup>1</sup>**
 |Librar <kbd>**Y**</kbd>|**库**
-|Ama <kbd>**Z**</kbd> ing|**您最重要的应用 \***
-|<kbd>**F1**</kbd> ~ <kbd>**F11**</kbd>|**您想到达的任何地方 \***
-|<kbd>**F12**</kbd>|**终端 \***
+|Ama <kbd>**Z**</kbd> ing|**您最重要的应用 <sup>1</sup>**
+|<kbd>**F3**</kbd>|**Windows 搜索**
+|<kbd>**F12**</kbd>|**终端 <sup>1</sup>**
 |<kbd>**Delete**</kbd>|**回收站**
+|<kbd>**Print Screen**</kbd>|**截图 <sup>2</sup>**
 
 
-**\* 需要在桌面为对应应用、文件夹或网站建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**对应按键**</kbd> 。**
+>**<sup>1</sup> 需要在桌面为对应应用、文件夹或网站建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**对应按键**</kbd> 。**
+**<sup>2</sup> 需要在桌面为截图软件建立快捷方式并为其指定快捷键属性 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd> 或者将聊天软件（QQ、微信等）的截图热键设定为 <kbd>**Ctrl**</kbd> + <kbd>**Shift**</kbd> + <kbd>**Alt**</kbd> + <kbd>**P**</kbd>。**
 
 <br>
 

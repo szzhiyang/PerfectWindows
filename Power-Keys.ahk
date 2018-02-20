@@ -27,19 +27,11 @@
 #y::Run ::{031E4825-7B94-4dc3-B131-E946B44C8DD5}
 #z::Send ^+!z
 
-#F1::Send ^+!{F1}
-#F2::Send ^+!{F2}
-#F3::Send ^+!{F3}
-#F4::Send ^+!{F4}
-#F5::Send ^+!{F5}
-#F6::Send ^+!{F6}
-#F7::Send ^+!{F7}
-#F8::Send ^+!{F8}
-#F9::Send ^+!{F9}
-#F10::Send ^+!{F10}
-#F11::Send ^+!{F11}
+#F1::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
+#F3::Send #s
 #F12::Send ^+!{F12}
-
 #Esc::Send !{F4}
 #CapsLock::winset,AlwaysOnTop,, A
 #delete::Run ::{645FF040-5081-101B-9F08-00AA002F954E}
+#PrintScreen::Send ^+!P
+#/::Run, https://github.com/szzhiyang/PerfectWindows/blob/master/README.md
