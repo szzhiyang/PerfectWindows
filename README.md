@@ -31,11 +31,11 @@
 |:-|:-|
 |<kbd>**?**</kbd>|**打开 Power Keys 帮助页面**
 |<kbd>**+**</kbd><br><kbd>**-**</kbd>|**大点声<br>小点声**
-|<kbd>**<**</kbd><br><kbd>**\|\|**</kbd><br><kbd>**>**</kbd>|**上一首<br>暂停（继续）<br>下一首**
+|<kbd>**<**</kbd><br><kbd><big>"</big></kbd><br><kbd>**>**</kbd>|**上一首<br>暂停（继续）<br>下一首**
 |<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
 |<kbd>**Esc**</kbd>|**关闭窗口**
 |<kbd>**Delete**</kbd>|**打开回收站**
-|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd><br><kbd>**0**</kbd> ~ <kbd>**9**</kbd><br><kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd><br><kbd>**Enter**</kbd> <kbd>**Backspace**</kbd>|<strong>一切都由您来决定！</strong>
+|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd><br><kbd>**0**</kbd> ~ <kbd>**9**</kbd><br><kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd><br><kbd>**Space**</kbd> <kbd>**Backspace**</kbd><br><kbd>**Enter**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！</strong>
 
 <br>
 
