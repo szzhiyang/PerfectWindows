@@ -176,7 +176,7 @@
 ---
 
 # OneDrive 又来刷存在感了，可是我根本就不需要它！:angry:
-真巧！我们这儿正好有款名叫 [**Anti OneDrive**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Anti-Lock-Screen.bat) 的软件可以阻止 OneDrive 运行。
+真巧！我们这儿正好有款名叫 [**Anti OneDrive**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Anti-OneDrive.bat) 的软件可以阻止 OneDrive 运行。
 
 
 ---
