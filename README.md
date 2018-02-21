@@ -23,7 +23,7 @@
 
 ---
 
-# 要是我能<br>按 `Win + E` 秒开 最常用的文件夹<br>按 `Win + B` 秒开 浏览器<br>按 `Win + Z` 秒开 知乎<br>按 `Win + G` 秒开 GitHub<br>按 `Win + V` 秒开 VS Code<br>按 `Win + A` 秒开 Atom<br>按 `Win + S` 秒开 Steam<br>按 `Win + P` 秒开 PUBG<br>按 `Win + 1` 秒开 最爱的人的照片<br>那岂不是美滋滋？   :smile:
+# 要是我能<br><br>按 `Win + E` 秒开 最常用的文件夹<br>按 `Win + B` 秒开 浏览器<br>按 `Win + Z` 秒开 知乎<br>按 `Win + G` 秒开 GitHub<br>按 `Win + V` 秒开 VS Code<br>按 `Win + A` 秒开 Atom<br>按 `Win + S` 秒开 Steam<br>按 `Win + P` 秒开 PUBG<br>按 `Win + 1` 秒开 最爱的人的照片<br>……<br><br>那岂不是美滋滋？   :smile:
 
 真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 `Win` 徽标键的功能**，快来试试吧！
 
