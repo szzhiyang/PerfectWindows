@@ -23,35 +23,35 @@
 
 ---
 
-# 要是我能<br>按 `Win + E` 秒开最常用的文件夹；<br>按 <kbd>**Win**</kbd> + <kbd>**空格**</kbd> 秒开浏览器；<br>按 <kbd>**Win**</kbd> + <kbd>**Z**</kbd> 秒开知乎；<br>按 <kbd>**Win**</kbd> + <kbd>**G**</kbd> 秒开 GitHub；<br>按 <kbd>**Win**</kbd> + <kbd>**V**</kbd> 秒开 VS Code；<br>按 <kbd>**Win**</kbd> + <kbd>**A**</kbd> 秒开 Atom；<br>按 <kbd>**Win**</kbd> + <kbd>**S**</kbd> 秒开 Steam；<br>按 <kbd>**Win**</kbd> + <kbd>**P**</kbd> 秒开 PUBG；<br>按 <kbd>**Win**</kbd> + <kbd>**1**</kbd> 秒开妈咪的照片，<br>那岂不是美滋滋？   :smile:
+# 要是我能<br>按 `Win + E` 秒开最常用的文件夹；<br>按 `Win + 空格` 秒开浏览器；<br>按 `Win + Z` 秒开知乎；<br>按 `Win + G` 秒开 GitHub；<br>按 `Win + V` 秒开 VS Code；<br>按 `Win + A` 秒开 Atom；<br>按 `Win + S` 秒开 Steam；<br>按 `Win + P` 秒开 PUBG；<br>按 `Win + 1` 秒开妈咪的照片，<br>那岂不是美滋滋？   :smile:
 
-真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 <kbd>**Win**</kbd> 徽标键的功能**，快来试试吧！
+真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 `Win` 徽标键的功能**，快来试试吧！
 
-|随同 <kbd>**Win**</kbd> 按下|功能|
+|随同 `Win` 按下|功能|
 |:-|:-|
-|<kbd>**?**</kbd>|**打开 Power Keys 帮助页面**
-|<kbd>**+**</kbd><br><kbd>**-**</kbd>|**增大系统音量<br>减小系统音量**
-|<kbd>**<**</kbd><br><kbd><big>"</big></kbd><br><kbd>**>**</kbd>|**切到上一首歌曲<br>暂停（继续）播放<br>切到下一首歌曲**
-|<kbd>**Caps Lock**</kbd>|**（不再）将窗口锁定至最前**
-|<kbd>**Esc**</kbd>|**关闭窗口**
-|<kbd>**Delete**</kbd>|**打开回收站**
-|<kbd>**A**</kbd> ~ <kbd>**Z**</kbd>   <kbd>**0**</kbd> ~ <kbd>**9**</kbd>   <kbd>**F1**</kbd> ~ <kbd>**F12**</kbd><br><kbd>**Home**</kbd> <kbd>**End**</kbd> <kbd>**Space**</kbd> <kbd>**Enter**</kbd><br><kbd>**Backspace**</kbd> <kbd>**Print Screen**</kbd><br><kbd>**Scroll Lock**</kbd> <kbd>**Numpad Lock**</kbd>|<strong>听您的！\*</strong>
+|`?`|**打开 Power Keys 帮助页面**
+|`+`<br>`-`|**增大系统音量<br>减小系统音量**
+|`<`<br><big>`"`</big><br>`>`|**切到上一首歌曲<br>暂停（继续）播放<br>切到下一首歌曲**
+|`Caps Lock`|**（不再）将窗口锁定至最前**
+|`Esc`|**关闭窗口**
+|`Delete`|**打开回收站**
+|`A` ~ `Z`   `0` ~ `9`   `F1` ~ `F12`<br>`Home` `End` `Space` `Enter`<br>`Backspace` `Print Screen`<br>`Scroll Lock` `Numpad Lock`|<strong>听您的！\*</strong>
 
 \* **为需要快速启动的应用程序（包括来自 Microsoft Store 的应用程序）、文件、文件夹、网站甚至命令指定全局热键的方法：**
 
 1. **在 Power-Keys.exe <u>所处的文件夹中</u>建立指向需要快速启动的应用程序、文件、文件夹、网站或命令的快捷方式。**
 
-2. **将这个快捷方式重命名为您所需要的 <kbd>**Win**</kbd> 热键。**
+2. **将这个快捷方式重命名为您所需要的 `Win` 热键。**
 
-    > 如果您需要用 <kbd>**Win**</kbd> + <kbd>**A**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`A`**；
+    > 如果您需要用 `Win + A` 运行某个快捷方式，那么就将这个快捷方式重命名为 **`A`**；
 
-    > 如果您需要用 <kbd>**Win**</kbd> + <kbd>**1**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`1`**；
+    > 如果您需要用 `Win + 1` 运行某个快捷方式，那么就将这个快捷方式重命名为 **`1`**；
 
-    > 如果您需要用 <kbd>**Win**</kbd> + <kbd>**F1**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`F1`**；
+    > 如果您需要用 `Win + F1` 运行某个快捷方式，那么就将这个快捷方式重命名为 **`F1`**；
 
-    > 如果您需要用 <kbd>**Win**</kbd> + <kbd>**Space**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`Space`**；
+    > 如果您需要用 `Win + Space` 运行某个快捷方式，那么就将这个快捷方式重命名为 **`Space`**；
 
-    > 如果您需要用 <kbd>**Win**</kbd> + <kbd>**Numpad Lock**</kbd> 运行某个快捷方式，那么就将这个快捷方式重命名为 **`Numpad Lock`**。
+    > 如果您需要用 `Win + Numpad Lock` 运行某个快捷方式，那么就将这个快捷方式重命名为 **`Numpad Lock`**。
 
     > **以此类推。**
     
