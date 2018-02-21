@@ -23,7 +23,7 @@
 
 ---
 
-# 要是我能<br>按 <kbd>**Win**</kbd> + <kbd>**E**</kbd> 秒开最常用的文件夹；<br>按 <kbd>**Win**</kbd> + <kbd>**空格**</kbd> 秒开浏览器；<br>按 <kbd>**Win**</kbd> + <kbd>**Z**</kbd> 秒开知乎；<br>按 <kbd>**Win**</kbd> + <kbd>**G**</kbd> 秒开 GitHub；<br>按 <kbd>**Win**</kbd> + <kbd>**V**</kbd> 秒开 VS Code；<br>按 <kbd>**Win**</kbd> + <kbd>**A**</kbd> 秒开 Atom；<br>按 <kbd>**Win**</kbd> + <kbd>**S**</kbd> 秒开 Steam；<br>按 <kbd>**Win**</kbd> + <kbd>**P**</kbd> 秒开 PUBG；<br>按 <kbd>**Win**</kbd> + <kbd>**1**</kbd> 秒开妈咪的照片，<br>那岂不是美滋滋？   :smile:
+# 要是我能<br>按 `Win + E` 秒开最常用的文件夹；<br>按 <kbd>**Win**</kbd> + <kbd>**空格**</kbd> 秒开浏览器；<br>按 <kbd>**Win**</kbd> + <kbd>**Z**</kbd> 秒开知乎；<br>按 <kbd>**Win**</kbd> + <kbd>**G**</kbd> 秒开 GitHub；<br>按 <kbd>**Win**</kbd> + <kbd>**V**</kbd> 秒开 VS Code；<br>按 <kbd>**Win**</kbd> + <kbd>**A**</kbd> 秒开 Atom；<br>按 <kbd>**Win**</kbd> + <kbd>**S**</kbd> 秒开 Steam；<br>按 <kbd>**Win**</kbd> + <kbd>**P**</kbd> 秒开 PUBG；<br>按 <kbd>**Win**</kbd> + <kbd>**1**</kbd> 秒开妈咪的照片，<br>那岂不是美滋滋？   :smile:
 
 真巧！我们这儿正好有款名叫 [**Power Keys**](https://github.com/szzhiyang/PerfectWindows/releases/download/1.0/Power-Keys.exe) 的软件可以**增强 <kbd>**Win**</kbd> 徽标键的功能**，快来试试吧！
 
